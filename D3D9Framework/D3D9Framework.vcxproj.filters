@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\FrameWork">
+      <UniqueIdentifier>{d13acdd7-9429-4947-b4a1-65ba20fa5967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Debug">
+      <UniqueIdentifier>{408fd39c-5126-47ac-86f4-051244d0ee43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Object">
+      <UniqueIdentifier>{b20ce330-8505-461a-8559-f4176398b49e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Scence">
+      <UniqueIdentifier>{d18b3817-7ed4-468f-bc8c-9a55436e52fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Animation, Sprite and Texture">
+      <UniqueIdentifier>{7a6c2e3f-179e-4ec4-867a-3fa3ec6c032d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\tinyXML">
+      <UniqueIdentifier>{de6383f9-5258-4f82-9257-b8a248e8825d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Source Files\FrameWork\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteManager.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Global_Variable.cpp">
+      <Filter>Source Files\FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\FrameWork\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyXML\tinyxml\tinyxmlparser.cpp">
+      <Filter>Source Files\FrameWork\tinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyXML\tinyxml\tinystr.cpp">
+      <Filter>Source Files\FrameWork\tinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyXML\tinyxml\tinyxml.cpp">
+      <Filter>Source Files\FrameWork\tinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyXML\tinyxml\tinyxmlerror.cpp">
+      <Filter>Source Files\FrameWork\tinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationManager.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Global_Variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyXML\tinyxml\tinystr.h">
+      <Filter>Source Files\FrameWork\tinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyXML\tinyxml\tinyxml.h">
+      <Filter>Source Files\FrameWork\tinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
