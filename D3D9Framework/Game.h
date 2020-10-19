@@ -23,7 +23,7 @@ class Game
 
 public:
 	void Init(HWND hWnd);
-	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT Rect, Vector2 scale, float rotation, float centerx, float centery);
+	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT Rect, Vector2 scale, float rotation, float centerx, float centery, int alpha);
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom);
 	LPDIRECT3DTEXTURE9 LoadTexture(LPCWSTR texturePath);
 

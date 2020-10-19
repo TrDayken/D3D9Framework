@@ -19,7 +19,7 @@ Sprite::Sprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTU
 	this->position = Vector2(100, 100);
 }
 
-Sprite::Sprite(std::wstring id, RECT rect, LPDIRECT3DTEXTURE9 texture)
+Sprite::Sprite(std::string id, RECT rect, LPDIRECT3DTEXTURE9 texture)
 {
 	this->id = id;
 	this->spriteRect.left = rect.left;
@@ -49,7 +49,12 @@ void Sprite::SetScale(Vector2 Scale)
 
 void Sprite::Draw()
 {
-	Game::GetInstance()->Draw(position.x, position.y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y));
+	Game::GetInstance()->Draw(position.x, position.y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y), 255);
+}
+
+void Sprite::Draw(int x, int y, int alpha)
+{
+	Game::GetInstance()->Draw(x, y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y), alpha);
 }
 
 

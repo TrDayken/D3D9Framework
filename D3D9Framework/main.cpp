@@ -37,24 +37,8 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 void LoadResources()
 {
-	//sample code
-	Textures* textures = Textures::GetInstance();
-
-	textures->AddTexture(20, L"textures\\mario.png", D3DCOLOR_XRGB(176, 224, 248));
-
-	SpriteManager* spritemanager = SpriteManager::GetInstance();
-
-	LPDIRECT3DTEXTURE9 texMario = textures->GetTexture(20);
-
-	spritemanager->AddSprite(L"Mario-idle", 246, 154, 259, 181, texMario);
-	spritemanager->AddSprite(L"Mario-idle-1", 275, 154, 290, 181, texMario);
-	spritemanager->AddSprite(L"Mario_idle-2", 304, 154, 321, 181, texMario);
-
-	//spritemanager->AddSprite(10011, 186, 154, 199, 181, texMario);
-	//spritemanager->AddSprite(10012, 155, 154, 170, 181, texMario);
-	//spritemanager->AddSprite(10013, 125, 154, 140, 181, texMario);
+	Textures::GetInstance()->LoadResource();
 }
-
 
 /*
 	Update world status for this frame
@@ -66,7 +50,6 @@ void Update(DWORD dt)
 {
 
 }
-
 
 /*
 	Render a frame
@@ -86,7 +69,7 @@ void Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
-		SpriteManager::GetInstance()->GetSprite(L"Mario-idle")->Draw();
+		AnimationManager::GetInstance()->Get("ani-small-mario-walk")->Render(100, 100);
 
 		spriteHandler->End();
 		d3ddv->EndScene();

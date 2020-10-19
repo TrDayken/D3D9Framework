@@ -8,7 +8,7 @@
 
 class Sprite
 {
-	std::wstring id; 
+	std::string id; 
 	
 	RECT spriteRect;
 
@@ -25,13 +25,14 @@ class Sprite
 
 public:
 	Sprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 texture);
-	Sprite(std::wstring id, RECT rect, LPDIRECT3DTEXTURE9 texture);
+	Sprite(std::string id, RECT rect, LPDIRECT3DTEXTURE9 texture);
 
 	~Sprite();
 
 	void SetScale(Vector2 Scale);
 
 	void Draw();
+	void Draw(int x , int y , int alpha);
 
 	Vector2 getPosition();
 	void setPosition(Vector2 position);

@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Game.h"
 
 
 Game* Game::__instance = NULL;
@@ -59,16 +60,16 @@ void Game::Init(HWND hWnd)
 /*
 	Utility function to wrap LPD3DXSPRITE::Draw
 */
-void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT Rect, Vector2 scale, float rotation, float centerx, float centery)
+void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT Rect, Vector2 scale, float rotation, float centerx, float centery,int alpha)
 {
 	D3DXMATRIX defaultMatrix, transformedMatrix;
 
 	spriteHandler->GetTransform(&defaultMatrix);
 
-	D3DXMatrixTransformation2D(&transformedMatrix, new Vector2(x, y), 0.0f, &scale, new Vector2(x, y) , rotation, &Vector2(0.0f,0.0f));
+	D3DXMatrixTransformation2D(&transformedMatrix, &Vector2(x, y), 0.0f, &scale, &Vector2(x, y) , rotation, &Vector2(0.0f,0.0f));
 	
 	spriteHandler->SetTransform(&transformedMatrix);
-	spriteHandler->Draw(texture, &Rect, new Vector3(centerx, centery, 0), new Vector3(x, y, 0), D3DCOLOR_XRGB(255, 255, 255));
+	spriteHandler->Draw(texture, &Rect, &Vector3(centerx, centery, 0), &Vector3(x, y, 0), D3DCOLOR_ARGB(alpha, 255, 255, 255));
 	spriteHandler->SetTransform(&defaultMatrix);
 }
 

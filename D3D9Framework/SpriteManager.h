@@ -12,14 +12,15 @@ class SpriteManager
 private:
 	static SpriteManager* __instance;
 
-	std::unordered_map<std::wstring, LPSPRITE> sprites;
+	std::unordered_map<std::string, LPSPRITE> sprites;
 
 public:
-	void AddSprite(std::wstring id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 texture);
-	
-	void AddSpriteUsingXML(const char* file, LPDIRECT3DTEXTURE9 texture);
+	void AddSprite(std::string id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 texture);
+	void AddSprite1(std::string id, int left, int top, int width, int height, LPDIRECT3DTEXTURE9 texture);
 
-	LPSPRITE GetSprite(std::wstring id);
+	void AddSpriteUsingXML(const char* FilePath, LPDIRECT3DTEXTURE9 texture);
+
+	LPSPRITE GetSprite(std::string id);
 
 	static SpriteManager* GetInstance();
 };
