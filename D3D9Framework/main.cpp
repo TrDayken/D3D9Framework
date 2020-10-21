@@ -7,20 +7,12 @@
 #include "Game.h"
 #include "Textures.h"
 #include "SpriteManager.h"
+#include "Global_Variable.h"
 
 #define WINDOW_CLASS_NAME L"SampleWindow"
 #define WINDOW_TITLE L"00 - Intro"
 
-HWND hWnd = 0;
-
-LPDIRECT3D9 d3d = NULL;						// Direct3D handle
-LPDIRECT3DDEVICE9 d3ddv = NULL;				// Direct3D device object
-
-LPDIRECT3DSURFACE9 backBuffer = NULL;
-int BackBufferWidth = 0;
-int BackBufferHeight = 0;
-
-LPD3DXSPRITE spriteHandler = NULL;			// Sprite helper library to help us draw 2D images 
+Game* game;
 
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -68,8 +60,6 @@ void Render()
 		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-
-		AnimationManager::GetInstance()->Get("ani-small-mario-walk")->Render(100, 100);
 
 		spriteHandler->End();
 		d3ddv->EndScene();
@@ -155,6 +145,9 @@ int Run()
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
+
+			game->ProcessKeyboard();
+
 			Update(dt);
 			Render();
 		}
@@ -168,13 +161,14 @@ int Run()
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	hWnd = CreateGameWindow(hInstance, nCmdShow, WINDOW_WIDTH, WINDOW_HEIGHT);
-	if (hWnd == 0) return 0;
+	HWND hWnd = CreateGameWindow(hInstance, nCmdShow, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	Game *game = game->GetInstance();
+	game = Game::GetInstance();
 	game->Init(hWnd);
+	game->InitKeyboard();
 
 	LoadResources();
+
 	Run();
 
 	return 0;

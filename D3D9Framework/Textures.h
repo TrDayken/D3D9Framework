@@ -1,9 +1,10 @@
-#pragma once
+#ifndef __TEXTURES_H__
+#define __TEXTURES_H__
 
 #include <unordered_map>
 #include <d3dx9.h>
 
-#include "Debug.h"
+#include "Utils.h"
 #include "SpriteManager.h"
 #include "AnimationManager.h"
 
@@ -27,3 +28,4 @@ public:
 	static Textures* GetInstance();
 };
 
+#endif 

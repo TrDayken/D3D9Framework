@@ -1,4 +1,6 @@
-#pragma once
+#ifndef __SPRITE_H__
+#define __SPRITE_H__
+
 #include <d3dx9.h>
 #include <d3dx9math.h>
 #include <string>
@@ -51,3 +53,5 @@ public:
 };
 
 typedef Sprite* LPSPRITE;
+
+#endif

@@ -1,9 +1,10 @@
-#pragma once
+#ifndef __ANIMATION_H__
+#define __ANIMATION_H__
 
 #include <d3dx9.h>
 #include <vector>
 
-#include "Debug.h"
+#include "Utils.h"
 #include "Sprite.h"
 #include "SpriteManager.h"
 
@@ -43,3 +44,4 @@ public:
 
 typedef Animation* LPANIMATION;
 
+#endif

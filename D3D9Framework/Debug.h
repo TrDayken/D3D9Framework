@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __DEBUG_H__
+#define __DEBUG_H__
 
 #include <windows.h>
 #include <signal.h>
@@ -18,6 +19,8 @@
 		va_end(argp);				\
 }
 
-void DebugOut(const wchar_t* fmt, ...);
+//void DebugOut(const wchar_t* fmt, ...);
 void DebugOutTitle(const wchar_t* fmt, ...);
 void SetDebugWindow(HWND hwnd);
+
+#endif

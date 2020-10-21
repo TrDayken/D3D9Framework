@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __SPRITEMANAGER_H__
+#define __SPRITEMANAGER_H__
 
 #include <Windows.h>
 #include <d3dx9.h>
@@ -25,4 +26,4 @@ public:
 	static SpriteManager* GetInstance();
 };
 
-
+#endif

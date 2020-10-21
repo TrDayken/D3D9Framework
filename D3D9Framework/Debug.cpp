@@ -3,12 +3,12 @@
 
 HWND _hwnd = NULL;
 
-void DebugOut(const wchar_t* fmt, ...)
-{
-	wchar_t s[4096];
-	VA_PRINTS(s);
-	OutputDebugString(s);
-}
+//void DebugOut(const wchar_t* fmt, ...)
+//{
+//	wchar_t s[4096];
+//	VA_PRINTS(s);
+//	OutputDebugString(s);
+//}
 
 void DebugOutTitle(const wchar_t* fmt, ...)
 {

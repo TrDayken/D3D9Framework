@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __ANIMATIONMANAGER_H__
+#define __ANIMATIONMANAGER_H__
 
 #include <d3dx9.h>
 #include <unordered_map>
@@ -21,3 +22,4 @@ public:
 	static AnimationManager* GetInstance();
 };
 
+#endif
