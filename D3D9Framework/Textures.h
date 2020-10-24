@@ -21,8 +21,8 @@ public:
 	Textures();
 
 	void AddTexture(int id, LPCWSTR filePath, D3DCOLOR TransColor);
-	LPDIRECT3DTEXTURE9 GetTexture(unsigned int i);
 
+	LPDIRECT3DTEXTURE9 GetTexture(unsigned int i);
 	void LoadResource();
 
 	static Textures* GetInstance();

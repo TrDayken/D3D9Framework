@@ -33,12 +33,10 @@ void AnimationManager::AddAnimationUsingXML(const char* FilePath)
 	if (XMLdoc.LoadFile())
 	{
 		TiXmlElement* root = XMLdoc.RootElement()->FirstChildElement();
-		TiXmlElement* XMLanimation = NULL;
-		TiXmlElement* XMLanimationsprites = NULL;
 
 		LPANIMATION ani;
 
-		for (XMLanimation = root->FirstChildElement(); XMLanimation != NULL; XMLanimation = XMLanimation->NextSiblingElement())
+		for (TiXmlElement* XMLanimation = root->FirstChildElement(); XMLanimation != NULL; XMLanimation = XMLanimation->NextSiblingElement())
 		{
 			int aniframetime;
 			
@@ -46,7 +44,7 @@ void AnimationManager::AddAnimationUsingXML(const char* FilePath)
 			XMLanimation->QueryIntAttribute("frameTime", &aniframetime);
 			ani = new Animation(aniframetime);
 
-			for (XMLanimationsprites = XMLanimation->FirstChildElement(); XMLanimationsprites != NULL; XMLanimationsprites = XMLanimationsprites->NextSiblingElement())
+			for (TiXmlElement* XMLanimationsprites = XMLanimation->FirstChildElement(); XMLanimationsprites != NULL; XMLanimationsprites = XMLanimationsprites->NextSiblingElement())
 			{
 				int frametime;
 				std::string spriteId = XMLanimationsprites->Attribute("id");
@@ -57,12 +55,13 @@ void AnimationManager::AddAnimationUsingXML(const char* FilePath)
 			
 			AddAnimation(aniID, ani);
 
-			DebugOut(L"[INFO] loaded ok %d \n", aniID);
+			//DebugOut(L"[INFO] created animation: %d \n", aniID);
+			OutputDebugStringW(ToLPCWSTR("[INFO] created animation: " + aniID + "\n"));
 		}
 	}
 	else
 	{
-		DebugOut(L"[] could not load file %d \n", FilePath);
+		DebugOut(L"[ERROR] could not load file %d \n", FilePath);
 	}
 }
 

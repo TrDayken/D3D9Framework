@@ -33,9 +33,7 @@ void SpriteManager::AddSpriteUsingXML(const char* FilePath, LPDIRECT3DTEXTURE9 t
 	{
 		TiXmlElement* root	= XMLdoc.RootElement()->FirstChildElement();
 
-		TiXmlElement* XMLsprite = NULL;
-
-		for (XMLsprite = root->FirstChildElement(); XMLsprite != NULL;XMLsprite = XMLsprite->NextSiblingElement())
+		for (TiXmlElement* XMLsprite = root->FirstChildElement(); XMLsprite != NULL;XMLsprite = XMLsprite->NextSiblingElement())
 		{
 			int left, top, width, height;
 			std::string id = XMLsprite->Attribute("id");
@@ -45,12 +43,14 @@ void SpriteManager::AddSpriteUsingXML(const char* FilePath, LPDIRECT3DTEXTURE9 t
 			XMLsprite->Attribute("height" , &height);
 			AddSprite1(id, left, top ,width, height, texture);
 
-			DebugOut(L"[INFO] loaded %x \n", id);
+			//DebugOut(L"[INFO] loaded spirte:%s \n", id.c_str());
+
+			OutputDebugStringW(ToLPCWSTR("[INFO] loaded spirte: " + id + "\n"));
 		}
 	}
 	else
 	{
-		DebugOut(L"[ERROR]could not load file: %n", FilePath);
+		DebugOut(L"[ERROR]could not load file: %s", FilePath);
 	}
 }
 

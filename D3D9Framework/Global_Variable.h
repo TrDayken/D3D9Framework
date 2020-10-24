@@ -7,9 +7,10 @@
 
 #define D3DCOLOR_WHITE D3DCOLOR_XRGB(255, 255, 255)
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(181, 235, 242)
+//#define BACKGROUND_COLOR D3DCOLOR_XRGB(21,155,65)
 
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
+#define WINDOW_WIDTH 1920 //640
+#define WINDOW_HEIGHT 1020 //480
 
 #define MAX_FRAME_RATE 60
 
@@ -20,6 +21,15 @@
 typedef D3DXVECTOR2 Vector2;
 typedef D3DXVECTOR3 Vector3;
 #define VectorZero Vector2(0.0f,0.0f);
+
+enum Texture
+{
+	//mario texture
+	TEX_MARIO = 1,
+
+	//world texture
+	TEX_WORLD_1_1 = 110
+};
 
 class Global_Variable
 {

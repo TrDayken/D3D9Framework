@@ -8,11 +8,13 @@
 #include "Textures.h"
 #include "SpriteManager.h"
 #include "Global_Variable.h"
+#include "PlayScence.h"
 
 #define WINDOW_CLASS_NAME L"SampleWindow"
 #define WINDOW_TITLE L"00 - Intro"
 
 Game* game;
+PlayScence* scence;
 
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -29,7 +31,8 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 void LoadResources()
 {
-	Textures::GetInstance()->LoadResource();
+	scence = new PlayScence();
+	scence->Load();
 }
 
 /*
@@ -60,6 +63,8 @@ void Render()
 		d3ddv->ColorFill(bb, NULL, BACKGROUND_COLOR);
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+
+		scence->Render();
 
 		spriteHandler->End();
 		d3ddv->EndScene();
@@ -146,7 +151,7 @@ int Run()
 		{
 			frameStart = now;
 
-			game->ProcessKeyboard();
+			//game->ProcessKeyboard();
 
 			Update(dt);
 			Render();

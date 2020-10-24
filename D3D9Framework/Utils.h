@@ -12,14 +12,12 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
 void DebugOut(const wchar_t* fmt, ...);
 
-vector<string> split(string line, string delimeter = "\t");
-wstring ToWSTR(string st);
+std::vector<std::string> split(std::string line, std::string delimeter = "\t");
+std::wstring ToWSTR(std::string st);
 
-LPCWSTR ToLPCWSTR(string st);
+LPCWSTR ToLPCWSTR(std::string st);
 
 class Utils
 {

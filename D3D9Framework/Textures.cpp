@@ -10,7 +10,7 @@ Textures::Textures()
 
 void Textures::AddTexture(int id, LPCWSTR filePath, D3DCOLOR TransColor)
 {
-	textures[id] = Game::GetInstance()->LoadTexture(filePath);
+	textures[id] = Game::GetInstance()->LoadTexture(filePath, TransColor);
 }
 
 LPDIRECT3DTEXTURE9 Textures::GetTexture(unsigned int i)

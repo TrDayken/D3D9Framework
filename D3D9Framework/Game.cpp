@@ -146,6 +146,12 @@ void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top,
 	spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
 }
 
+void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT* rect)
+{
+	Vector3 p(x, y, 0);
+	spriteHandler->Draw(texture, rect, NULL, &p, D3DCOLOR_XRGB(255,255,255));
+}
+
 int Game::IsKeyDown(int KeyCode)
 {
 	return (keyStates[KeyCode] & 0x80) > 0;
@@ -298,7 +304,7 @@ void Game::SweptAABB(float ml, float mt, float mr, float mb, float dx, float dy,
 /*
 	Utility function to load texture
 */
-LPDIRECT3DTEXTURE9 Game::LoadTexture(LPCWSTR texturePath)
+LPDIRECT3DTEXTURE9 Game::LoadTexture(LPCWSTR texturePath, D3DCOLOR TransColor)
 {
 	D3DXIMAGE_INFO info;
 	LPDIRECT3DTEXTURE9 texture;
@@ -323,7 +329,8 @@ LPDIRECT3DTEXTURE9 Game::LoadTexture(LPCWSTR texturePath)
 		D3DPOOL_DEFAULT,
 		D3DX_DEFAULT,
 		D3DX_DEFAULT,
-		D3DCOLOR_XRGB(255, 255, 255),			// Transparent color
+		TransColor,
+		//D3DCOLOR_XRGB(255, 255, 255),			// Transparent color
 		&info,
 		NULL,
 		&texture);								// Created texture pointer

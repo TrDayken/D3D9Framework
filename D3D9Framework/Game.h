@@ -36,6 +36,7 @@ public:
 	void Init(HWND hWnd);
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT Rect, Vector2 scale, float rotation, float centerx, float centery, int alpha = 255);
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha = 255);
+	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT* Rect);
 
 	int IsKeyDown(int KeyCode);
 	void ProcessKeyboard();
@@ -55,7 +56,7 @@ public:
 		float& nx,
 		float& ny);
 
-	LPDIRECT3DTEXTURE9 LoadTexture(LPCWSTR texturePath);
+	LPDIRECT3DTEXTURE9 LoadTexture(LPCWSTR texturePath, D3DCOLOR TransColor);
 
 	LPDIRECT3DDEVICE9 GetDirect3DDevice() { return this->d3ddv; }
 	LPDIRECT3DSURFACE9 GetBackBuffer() { return backBuffer; }

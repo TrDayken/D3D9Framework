@@ -37,6 +37,24 @@
     <Filter Include="Source Files\FrameWork\Utils">
       <UniqueIdentifier>{8f23e39c-19eb-4290-b5ee-db293df63aba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FrameWork\Scence\PlayScence">
+      <UniqueIdentifier>{4a46242c-9fad-4346-ad6c-a6d1c7e16df8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{1f3618df-83ea-4f4d-8ab1-ac4a1e308832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Map">
+      <UniqueIdentifier>{ac0d4f8e-3f8e-4c44-89dd-9cfc8d5b980e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Camera">
+      <UniqueIdentifier>{f52d4134-e9be-4f48-a9de-a6bb07e9583d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Map\Tileset">
+      <UniqueIdentifier>{5718cb20-619a-4585-91b8-e23e8a696452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Map\Layer">
+      <UniqueIdentifier>{f1f3040c-d427-4fc8-8d59-c153ff26727b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -90,6 +108,21 @@
     <ClCompile Include="Scence.cpp">
       <Filter>Source Files\FrameWork\Scence</Filter>
     </ClCompile>
+    <ClCompile Include="PlayScence.cpp">
+      <Filter>Source Files\FrameWork\Scence\PlayScence</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\FrameWork\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TileSet.cpp">
+      <Filter>Source Files\FrameWork\Map\Tileset</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Source Files\FrameWork\Map\Layer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -132,6 +165,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

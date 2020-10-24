@@ -15,7 +15,8 @@ void Animation::AddFrame(std::string spriteID, DWORD Frametime)
 
 	if (sprite == NULL)
 	{
-		DebugOut(L"[ERROR] Sprite ID %d cannot find \n", spriteID);
+		//DebugOut(L"[ERROR] Sprite ID %d cannot find \n", spriteID);
+		OutputDebugStringW(ToLPCWSTR("[ERROR] cannot find sprite ID: " + spriteID + "\n"));
 	}
 
 	LPANIMATION_FRAME frame = new AnimationFrame(sprite, t);
