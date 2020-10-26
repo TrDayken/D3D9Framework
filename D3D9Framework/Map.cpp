@@ -59,8 +59,8 @@ void Map::Update(DWORD dt)
 {
 }
 
-//this funtion is ugly and may be refine // note: multilayer cast error need to fix
-void Map::Render()
+//this funtion is ugly and may be refine // note: multilayer cast error need to be fixed
+void Map::Render(Camera* camera)
 {
 	//for (int i = 0; i < width; i++)
 	//{
@@ -78,27 +78,30 @@ void Map::Render()
 	//		}
 	//	}
 	//}
-#define camx 0
-#define camy 480
-	int col = camx / tilewidth;
-	int row = camy / tileheight;
+
+	int col = camera->getCameraPositionX() / tilewidth;
+	int row = camera->getCameraPositionY() / tileheight;
 
 	if (col > 0) col--;
 	if (row > 0) row--;
 
-	Vector2 camSize = Vector2(WINDOW_WIDTH / tilewidth, WINDOW_HEIGHT/ tileheight);
+	float camsizeX = camera->getCameraWidth() / tilewidth;
+	float camsizey = camera->getCameraHeight() / tileheight;
 
-	for (int i = col; i < camSize.x + col + 2; i++) {
-		for (int j = row; j < camSize.y + row + 2; j++) {
+	for (int i = col; i < camsizeX + col + 2; i++)
+	{
+		for (int j = row; j < camsizey + row + 2; j++)
+		{
+			int x = i * tilewidth - camera->getCameraPositionX();
+			int y = j * tileheight - camera->getCameraPositionY();
 
-			int x = i * tilewidth - camx;
-			int y = j * tileheight - camy;
-
-			for (LPLAYER layer : layers) {
-				//if (layer->Hidden) continue;
+			for (LPLAYER layer : layers)
+			{
 				int id = layer->GetTileID(i % width, j % height);
 				if (id != 0)
+				{
 					tilesets->Draw(id - 1, x, y);
+				}
 			}
 		}
 	}

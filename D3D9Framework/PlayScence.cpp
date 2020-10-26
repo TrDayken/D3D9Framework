@@ -14,15 +14,20 @@ void PlayScence::Load()
 {
 	tilemap = new Map();
 	tilemap->LoadMapfromTMX("textures\\Map\\world-1-1-map.tmx", "textures\\Map\\");
+
+	camera = new Camera();
+
+	mario = new Mario(100,100);
 }
 
 void PlayScence::Update(DWORD dt)
 {
+	camera->Update(dt);
 }
 
 void PlayScence::Render()
 {
-	tilemap->Render();
+	tilemap->Render(camera);
 }
 
 void PlayScence::Unload()

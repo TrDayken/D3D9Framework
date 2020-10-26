@@ -9,6 +9,8 @@
 #include "TileSet.h"
 #include "Global_Variable.h"
 #include "tinyXML/tinyxml/tinyxml.h"
+#include "Camera.h"
+
 
 class Map
 {
@@ -31,7 +33,7 @@ public:
 	void LoadMapfromTMX(const char* FilePath, const char* Path);
 
 	void Update(DWORD dt);
-	void Render();
+	void Render(Camera* camera);
 
 	void Unload();
 

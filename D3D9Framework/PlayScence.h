@@ -4,12 +4,14 @@
 #include "Scence.h"
 #include "Mario.h"
 #include "Map.h"
+#include "Camera.h"
+
 class PlayScence : public Scence
 {
 protected:
-	Mario* player;
+	Mario* mario;
 	Map* tilemap;
-
+	Camera* camera;
 
 	std::vector <LPGAMEOBJECT> objects;
 
@@ -22,7 +24,7 @@ public:
 	virtual void Render();
 	virtual void Unload();
 
-	Mario* GetPlayer() { return player; }
+	Mario* GetPlayer() { return mario; }
 };
 
 class PlayScenceKeyHandler : public ScenceKeyHandler

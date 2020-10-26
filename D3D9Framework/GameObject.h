@@ -44,7 +44,7 @@ protected:
 	int direction;
 	// object position
 	float x;
-	float y;
+	float y;	
 	//dx = vx * dt; dy = vy * dt;
 	float dx;
 	float dy;
