@@ -43,14 +43,18 @@ void Map::LoadMapfromTMX(const char* FilePath, const char* Path)
 		for (TiXmlElement* TMXlayer = root->FirstChildElement("layer"); TMXlayer != NULL; TMXlayer = TMXlayer->NextSiblingElement("layer"))
 		{
 			LPLAYER layer = new Layer( TMXlayer);
+			if (layer->getName() == "")
+			{
+
+			}
 			this->AddLayer(layer);
 		}
 		
-		DebugOut(L"[INFO] map load successful");
+		DebugOut(L"[INFO] map load successful \n");
 	}
 	else
 	{
-		DebugOut(L"[ERROR] failed to load map");
+		DebugOut(L"[ERROR] failed to load map \n");
 	}
 
 }
@@ -110,6 +114,16 @@ void Map::Render(Camera* camera)
 void Map::Unload()
 {
 	layers.clear();
+}
+
+float Map::getMapHeight()
+{
+	return this->height*this->tileheight;
+}
+
+float Map::getMapWidth()
+{
+	return this->width * this->tilewidth;
 }
 
 LPTILESET Map::GetTilesetbyTileID(int ID)

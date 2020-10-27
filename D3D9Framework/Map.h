@@ -37,6 +37,9 @@ public:
 
 	void Unload();
 
+	float getMapHeight();
+	float getMapWidth();
+
 	LPTILESET GetTilesetbyTileID(int ID);
 };
 

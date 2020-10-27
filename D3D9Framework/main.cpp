@@ -43,7 +43,7 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
-
+	scence->Update(dt);
 }
 
 /*

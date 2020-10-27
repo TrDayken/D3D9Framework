@@ -16,6 +16,7 @@ void PlayScence::Load()
 	tilemap->LoadMapfromTMX("textures\\Map\\world-1-1-map.tmx", "textures\\Map\\");
 
 	camera = new Camera();
+	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
 
 	mario = new Mario(100,100);
 }

@@ -4,6 +4,7 @@
 //#include <>
 
 #include "Global_Variable.h"
+#include "Utils.h"
 
 class Camera
 {
@@ -24,6 +25,9 @@ private:
 	float bound_right;
 	//camera limit for bottom position (camera_Position.y - camera Height);
 	float bound_bottom;
+
+	bool scroll_x;
+	bool scroll_y;
 public:
 	Camera();
 	~Camera();
@@ -47,6 +51,9 @@ public:
 	float getBoundTop();
 	float getBoundRight();
 	float getBoundBottom();
+
+	void setScrollX(bool isscrollX);
+	void setScrollY(bool isscrollY);
 
 	void Update(DWORD dt);
 };

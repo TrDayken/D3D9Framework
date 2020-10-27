@@ -9,6 +9,9 @@ Camera::Camera()
 
 	//right and bottom should be setCameraXXX(map - camera_width)
 	bound_left = bound_top = bound_right = bound_bottom = 0;
+
+	scroll_x = false;
+	scroll_y = false;
 }
 
 Camera::~Camera()
@@ -94,8 +97,30 @@ float Camera::getBoundBottom()
 	return this->bound_bottom;
 }
 
+void Camera::setScrollX(bool isscrollX)
+{
+	this->scroll_x = isscrollX;
+}
+
+void Camera::setScrollY(bool isscrollY)
+{
+	this->scroll_y = isscrollY;
+}
+
 void Camera::Update(DWORD dt)
 {
+	if (scroll_x)
+	{
+		camera_Position.x += CAMERA_DEFAULT_SCROLLING_SPEED_VX * &dt;
+	}
+
+	if (scroll_y)
+	{
+		camera_Position.y += CAMERA_DEFAULT_SCROLLING_SPEED_VY * &dt;
+	}
+
+	DebugOut(L"[INFO] cam posx: %f \n", camera_Position.x);
+
 	if (this->camera_Position.x < this->bound_left)
 		this->camera_Position.x = this->bound_left;
 
