@@ -144,11 +144,13 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationManager.cpp" />
+    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Global_Variable.cpp" />
+    <ClCompile Include="InvisibleBrick.cpp" />
     <ClCompile Include="KeyEventHandler.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
@@ -169,11 +171,13 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationManager.h" />
+    <ClInclude Include="Brick.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Global_Variable.h" />
+    <ClInclude Include="InvisibleBrick.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Map.h" />

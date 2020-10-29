@@ -7,6 +7,7 @@
 
 #include "SpriteManager.h"
 #include "AnimationManager.h"
+//#include "Camera.h"
 
 class GameObject;
 typedef GameObject* LPGAMEOBJECT;
@@ -42,21 +43,26 @@ protected:
 
 	//object direction 1 = right , 0 = left
 	int direction;
+
 	// object position
-	float x;
-	float y;	
+	float x, y;	
+
 	//dx = vx * dt; dy = vy * dt;
-	float dx;
-	float dy;
+	float dx, dy;
+
 	// object speed
-	float vx;
-	float vy;
+	float vx, vy;
 
 	int state;
 
 	DWORD dt;
 
+	std::vector<LPANIMATION> animation_set;
+
 public: 
+	GameObject();
+	~GameObject();
+
 	//speed and position geter/seter
 	void setPosition(float x, float y);
 	void getPosition(float& x, float& y);
@@ -84,10 +90,11 @@ public:
 	void RenderBoundingBox();
 	
 	void setAnimationSet();
+	void CloneAnimation();
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) = 0;
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
-	virtual void Render() = 0;
+	virtual void Render(/*Camera* camera*/) = 0;
 	virtual void SetState(int state) { this->state = state; }
 
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT coO);

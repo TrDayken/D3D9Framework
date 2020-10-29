@@ -14,7 +14,7 @@ class AnimationManager
 
 public:
 	void AddAnimation(std::string id, LPANIMATION animation);
-	LPANIMATION Get(std::string id);
+	LPANIMATION GetAnimation(std::string id);
 	void Clear();
 
 	void AddAnimationUsingXML(const char* FilePath);

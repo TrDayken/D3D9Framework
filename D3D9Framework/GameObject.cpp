@@ -1,5 +1,17 @@
 #include "GameObject.h"
 
+GameObject::GameObject()
+{
+	x = y = 0;
+	vx = vy = 0;
+	direction = 1;
+}
+
+GameObject::~GameObject()
+{
+	animation_set.clear();
+}
+
 void GameObject::setPosition(float x, float y)
 {
 	this->x = x; 

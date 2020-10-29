@@ -2,7 +2,7 @@
 
 Camera::Camera()
 {
-	camera_Position = Vector2(0, 872);
+	camera_Position = Vector2(0, 720);
 
 	camera_width = CAMERA_WIDTH;
 	camera_height = CAMERA_HEIGHT;
@@ -49,7 +49,7 @@ float Camera::getCameraHeight()
 	return this->camera_height;
 }
 
-Vector2 Camera::getCamPosRelativetoWorldPos(float WorldPositionX, float WorldPositionY)
+Vector2 Camera::toCameraPosistion(float WorldPositionX, float WorldPositionY)
 {
 	return Vector2(WorldPositionX - this->camera_Position.x, WorldPositionY - this->camera_Position.y);
 }
@@ -109,6 +109,23 @@ void Camera::setScrollY(bool isscrollY)
 
 void Camera::Update(DWORD dt)
 {
+	if (!(following_object == NULL))
+		this->setCameraPosition(following_object->getX() - WINDOW_WIDTH / 2, following_object->getY() - WINDOW_HEIGHT/2);
+
+	if (following_object != NULL)
+	{
+		if (following_object->getX() < this->bound_left + 48)
+		{
+			following_object->setX(this->bound_left + 48);
+			following_object->setVx(0.0f);
+		}
+		if (following_object->getX() + 48 > this->bound_right + WINDOW_WIDTH - 200)
+		{
+			following_object->setX(this->bound_right + WINDOW_WIDTH - 200);
+			following_object->setVx(0.0f);
+		}
+	}
+
 	if (scroll_x)
 	{
 		camera_Position.x += CAMERA_DEFAULT_SCROLLING_SPEED_VX * &dt;
@@ -119,7 +136,7 @@ void Camera::Update(DWORD dt)
 		camera_Position.y += CAMERA_DEFAULT_SCROLLING_SPEED_VY * &dt;
 	}
 
-	DebugOut(L"[INFO] cam posx: %f \n", camera_Position.x);
+	//DebugOut(L"[INFO] cam posx: %f \n", camera_Position.x);
 
 	if (this->camera_Position.x < this->bound_left)
 		this->camera_Position.x = this->bound_left;
@@ -133,3 +150,9 @@ void Camera::Update(DWORD dt)
 	if (this->camera_Position.y + this->camera_height > this->bound_bottom)
 		this->camera_Position.y = this->bound_bottom - this->camera_height;
 }
+
+void Camera::FollowObject(LPGAMEOBJECT object)
+{
+	this->following_object = object;
+}
+

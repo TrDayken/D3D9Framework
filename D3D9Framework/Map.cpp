@@ -116,6 +116,40 @@ void Map::Unload()
 	layers.clear();
 }
 
+void Map::setObjectonLayer(std::vector<LPGAMEOBJECT> *listobject, std::string layername)
+{
+	for (int i = 0; i < width; i++)
+	{
+		for (int j = 0; j < height; j++)
+		{
+			int x = i * tilewidth;
+			int y = j * tileheight;
+			for (LPLAYER layer : layers)
+			{
+				if (layer->getName() == layername)
+				{
+					int id = layer->GetTileID(i, j);
+
+					if (id != 0)
+					{
+						GameObject* obj = NULL;
+
+						obj = new InvisibleBrick();
+
+						obj->setPosition(x, y);
+
+						float z, u;
+						obj->getPosition(z, u);
+						DebugOut(L"[INFO] invisible object x:%f y:%f \n", z, u);
+
+						listobject->push_back(obj);
+					}
+				}
+			}
+		}
+	}
+}
+
 float Map::getMapHeight()
 {
 	return this->height*this->tileheight;

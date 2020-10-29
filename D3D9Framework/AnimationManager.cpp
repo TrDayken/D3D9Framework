@@ -7,7 +7,7 @@ void AnimationManager::AddAnimation(std::string id, LPANIMATION animation)
 	animationDatabase[id] = animation;
 }
 
-LPANIMATION AnimationManager::Get(std::string id)
+LPANIMATION AnimationManager::GetAnimation(std::string id)
 {
 	LPANIMATION ani = animationDatabase[id];
 	if (ani == NULL)

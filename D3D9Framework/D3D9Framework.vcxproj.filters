@@ -55,6 +55,21 @@
     <Filter Include="Source Files\FrameWork\Map\Layer">
       <UniqueIdentifier>{f1f3040c-d427-4fc8-8d59-c153ff26727b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity\Mario">
+      <UniqueIdentifier>{327360a0-31b7-4031-a40a-9083e2d4da30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Blocks">
+      <UniqueIdentifier>{e44468bc-d67a-497a-89ca-47ec78b1fe12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Enemy">
+      <UniqueIdentifier>{00eb2f7a-06ab-48ed-a49d-74c3d29e6550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Misc">
+      <UniqueIdentifier>{0009f9b5-8a93-4d1f-908d-ddd751387990}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Game_Variables">
+      <UniqueIdentifier>{454bc349-8cda-4da9-8414-a9db44c69784}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -74,9 +89,6 @@
     </ClCompile>
     <ClCompile Include="SpriteManager.cpp">
       <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Global_Variable.cpp">
-      <Filter>Source Files\FrameWork</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\FrameWork\Object</Filter>
@@ -111,9 +123,6 @@
     <ClCompile Include="PlayScence.cpp">
       <Filter>Source Files\FrameWork\Scence\PlayScence</Filter>
     </ClCompile>
-    <ClCompile Include="Mario.cpp">
-      <Filter>Source Files\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files\FrameWork\Map</Filter>
     </ClCompile>
@@ -125,6 +134,18 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\FrameWork\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario.cpp">
+      <Filter>Source Files\Entity\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="Global_Variable.cpp">
+      <Filter>Source Files\FrameWork\Game_Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Source Files\Entity\Blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="InvisibleBrick.cpp">
+      <Filter>Source Files\Entity\Blocks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +207,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InvisibleBrick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

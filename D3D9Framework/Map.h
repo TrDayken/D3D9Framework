@@ -10,6 +10,8 @@
 #include "Global_Variable.h"
 #include "tinyXML/tinyxml/tinyxml.h"
 #include "Camera.h"
+#include "GameObject.h"
+#include "InvisibleBrick.h"
 
 
 class Map
@@ -36,6 +38,8 @@ public:
 	void Render(Camera* camera);
 
 	void Unload();
+
+	void setObjectonLayer(std::vector<LPGAMEOBJECT> *listobject, std::string layername);
 
 	float getMapHeight();
 	float getMapWidth();
