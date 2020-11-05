@@ -39,7 +39,7 @@ public:
 	void setMultiplier(int multiplier = 1);
 
 	void Update();
-	void Render(float x, float y, int alpha = 255);
+	void Render(float x, float y,int direction =1 , int alpha = 255);
 };
 
 typedef Animation* LPANIMATION;

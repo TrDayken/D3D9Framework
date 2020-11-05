@@ -34,7 +34,7 @@ public:
 	void SetScale(Vector2 Scale);
 
 	void Draw();
-	void Draw(int x , int y , int alpha);
+	void Draw(int x , int y , int direction = 1, int alpha = 255);
 
 	Vector2 getPosition();
 	void setPosition(Vector2 position);

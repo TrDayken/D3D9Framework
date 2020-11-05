@@ -58,7 +58,7 @@ void BigMario::Render(Camera* camera)
 	else if (this->state.movement == MovingStates::Run)
 		ani = ANI_BIG_MARIO_RUN;
 
-	animation_set[ani]->Render(camPos.x, camPos.y);
+	animation_set[ani]->Render(camPos.x, camPos.y, direction);
 
 	//DebugOut(L"[INFO] %f, %f \n", camPos.x, camPos.y);
 }
