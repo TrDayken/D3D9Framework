@@ -5,7 +5,7 @@
 
 #include "Global_Variable.h"
 #include "Utils.h"
-#include "GameObject.h"
+//#include "GameObject.h"
 
 class Camera
 {
@@ -30,7 +30,9 @@ private:
 	bool scroll_x;
 	bool scroll_y;
 
-	LPGAMEOBJECT following_object;
+
+	bool isfollow;
+	//LPGAMEOBJECT following_object;
 public:
 	Camera();
 	~Camera();
@@ -58,9 +60,11 @@ public:
 	void setScrollX(bool isscrollX);
 	void setScrollY(bool isscrollY);
 
+	bool IsFollow();
+
 	void Update(DWORD dt);
 
-	void FollowObject(LPGAMEOBJECT object);
+	//void FollowObject(LPGAMEOBJECT object);
 };
 
 //typedef Camera* LPCAMERA

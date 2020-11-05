@@ -112,6 +112,11 @@ void GameObject::RenderBoundingBox()
 
 }
 
+void GameObject::AddAnimation(std::string name, LPANIMATION animation)
+{
+	animation_set[name] = animation;
+}
+
 void GameObject::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	this->dt = dt;
@@ -192,5 +197,52 @@ void GameObject::FilterCollision(std::vector<LPCOLLISIONEVENT>& coEvents, std::v
 	}
 
 	if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
+	if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
+}
+
+void GameObject::FilterCollisionX(std::vector<LPCOLLISIONEVENT>& coEvents,
+	std::vector<LPCOLLISIONEVENT>& coEventsResult,
+	float& min_tx, 
+	float& nx, float& rdx)
+{
+	min_tx = 1.0f;
+	int min_ix = -1;
+	nx = 0.0f;
+
+	coEventsResult.clear();
+
+	for (UINT i = 0; i < coEvents.size(); i++)
+	{
+		LPCOLLISIONEVENT c = coEvents[i];
+
+		if (c->t < min_tx && c->nx != 0) {
+			min_tx = c->t; nx = c->nx; min_ix = i; rdx = c->dx;
+		}
+	}
+
+	if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
+}
+
+void GameObject::FilterCollisionY(std::vector<LPCOLLISIONEVENT>& coEvents,
+	std::vector<LPCOLLISIONEVENT>& coEventsResult,
+	float& min_ty,
+	float& ny, float& rdy)
+{
+	min_ty = 1.0f;
+	int min_iy = -1;
+
+	ny = 0.0f;
+
+	coEventsResult.clear();
+
+	for (UINT i = 0; i < coEvents.size(); i++)
+	{
+		LPCOLLISIONEVENT c = coEvents[i];
+
+		if (c->t < min_ty && c->ny != 0) {
+			min_ty = c->t; ny = c->ny; min_iy = i; rdy = c->dy;
+		}
+	}
+
 	if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
 }

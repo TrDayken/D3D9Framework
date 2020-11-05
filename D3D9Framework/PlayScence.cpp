@@ -20,11 +20,13 @@ void PlayScence::Load()
 	tilemap->LoadMapfromTMX("textures\\Map\\world-1-1-map.tmx", "textures\\Map\\");
 	tilemap->setObjectonLayer(&objects, "Ground");
 
-	mario = new Mario(100,1000);
 
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
-	camera->FollowObject(mario);
+	//camera->FollowObject(mario);
+	
+	mario = new Mario(100,1000);
+	mario->setCamera(camera);
 }
 
 void PlayScence::Update(DWORD dt)
@@ -43,23 +45,27 @@ void PlayScence::Update(DWORD dt)
 		
 	}
 
-	camera->Update(dt);
+	if (camera->IsFollow())
+		camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, mario->getY() - WINDOW_HEIGHT/2);
 
 	mario->Update(dt, &coObjects);
+
+	camera->Update(dt);
+
 }
 
 void PlayScence::Render()
 {
 	tilemap->Render(camera);
-
+	
 	mario->Render(camera);
 
 	for (size_t i = 0; i < objects.size(); i++)
 	{
-		objects[i]->Render();
-		float l, t, r, b;
-		objects[i]->GetBoundingBox(l, t, r, b);
-		DebugOut(L"[INFO] objects bounding box %f, %f, %f, %f \n", l, t, r, b);
+		objects[i]->Render(camera);
+		//float l, t, r, b;
+		//objects[i]->GetBoundingBox(l, t, r, b);
+		////DebugOut(L"[INFO] objects bounding box %f, %f, %f, %f \n", l, t, r, b);
 	}
 }
 
@@ -69,8 +75,21 @@ void PlayScence::Unload()
 
 void PlayScenceKeyHandler::KeyState(BYTE* states)
 {
+	MarioModel* currentmario= ((PlayScence*)scence)->GetPlayer()->GetCurrentMario();
+
+	currentmario->KeyState(states);
 }
 
 void PlayScenceKeyHandler::OnKeyDown(int KeyCode)
 {
+	MarioModel* currentmario = ((PlayScence*)scence)->GetPlayer()->GetCurrentMario();
+
+	currentmario->OnKeyDown(KeyCode);
+}
+
+void PlayScenceKeyHandler::OnKeyUp(int KeyCode)
+{
+	MarioModel* currentmario = ((PlayScence*)scence)->GetPlayer()->GetCurrentMario();
+
+	currentmario->OnKeyUp(KeyCode);
 }

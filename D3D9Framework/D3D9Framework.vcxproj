@@ -144,9 +144,11 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationManager.cpp" />
+    <ClCompile Include="BigMario.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="FireMario.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Global_Variable.cpp" />
@@ -156,8 +158,11 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Mario.cpp" />
+    <ClCompile Include="MarioModel.cpp" />
     <ClCompile Include="PlayScence.cpp" />
+    <ClCompile Include="RacoonMario.cpp" />
     <ClCompile Include="Scence.cpp" />
+    <ClCompile Include="SmallMario.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="Textures.cpp" />
@@ -171,9 +176,11 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationManager.h" />
+    <ClInclude Include="BigMario.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="FireMario.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Global_Variable.h" />
@@ -182,8 +189,11 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Mario.h" />
+    <ClInclude Include="MarioModel.h" />
     <ClInclude Include="PlayScence.h" />
+    <ClInclude Include="RacoonMario.h" />
     <ClInclude Include="Scence.h" />
+    <ClInclude Include="SmallMario.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="Textures.h" />
@@ -191,6 +201,9 @@
     <ClInclude Include="tinyXML\tinyxml\tinystr.h" />
     <ClInclude Include="tinyXML\tinyxml\tinyxml.h" />
     <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

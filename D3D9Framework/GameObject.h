@@ -7,7 +7,7 @@
 
 #include "SpriteManager.h"
 #include "AnimationManager.h"
-//#include "Camera.h"
+#include "Camera.h"
 
 class GameObject;
 typedef GameObject* LPGAMEOBJECT;
@@ -41,7 +41,7 @@ class GameObject
 {
 protected:
 
-	//object direction 1 = right , 0 = left
+	//object direction 1 = right , -1 = left
 	int direction;
 
 	// object position
@@ -57,7 +57,7 @@ protected:
 
 	DWORD dt;
 
-	std::vector<LPANIMATION> animation_set;
+	std::unordered_map<std::string,LPANIMATION> animation_set;
 
 public: 
 	GameObject();
@@ -89,12 +89,13 @@ public:
 
 	void RenderBoundingBox();
 	
+	void AddAnimation(std::string name , LPANIMATION animation);
 	void setAnimationSet();
-	void CloneAnimation();
+	//void CloneAnimation();
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) = 0;
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
-	virtual void Render(/*Camera* camera*/) = 0;
+	virtual void Render(Camera* camera) = 0;
 	virtual void SetState(int state) { this->state = state; }
 
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT coO);
@@ -108,6 +109,14 @@ public:
 		float& ny,
 		float& rdx,
 		float& rdy);
+	void FilterCollisionX(std::vector<LPCOLLISIONEVENT>& coEvents,
+		std::vector<LPCOLLISIONEVENT>& coEventsResult,
+		float& min_tx,
+		float& nx, float& rdx);
+	void FilterCollisionY(std::vector<LPCOLLISIONEVENT>& coEvents,
+		std::vector<LPCOLLISIONEVENT>& coEventsResult,
+		float& min_ty,
+		float& ny, float& rdy);
 
 };
 

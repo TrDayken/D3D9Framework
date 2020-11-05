@@ -131,7 +131,7 @@ void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT Rect, Vector2
 	D3DXMatrixTransformation2D(&transformedMatrix, &Vector2(x, y), 0.0f, &scale, &Vector2(x, y) , rotation, &Vector2(0.0f,0.0f));
 	
 	spriteHandler->SetTransform(&transformedMatrix);
-	spriteHandler->Draw(texture, &Rect, &Vector3(centerx, centery, 0), &Vector3(x, y, 0), D3DCOLOR_ARGB(alpha, 255, 255, 255));
+	spriteHandler->Draw(texture, &Rect, /*&Vector3(centerx, centery, 0)*/ NULL, &Vector3(x, y, 0), D3DCOLOR_ARGB(alpha, 255, 255, 255));
 	spriteHandler->SetTransform(&defaultMatrix);
 }
 
@@ -177,7 +177,7 @@ void Game::ProcessKeyboard()
 		}
 		else
 		{
-			//DebugOut(L"[ERROR] DINPUT::GetDeviceState failed. Error: %d\n", hr);
+			DebugOut(L"[ERROR] DINPUT::GetDeviceState failed. Error: %d\n", hr);
 			return;
 		}
 	}

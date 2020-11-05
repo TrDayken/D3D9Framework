@@ -140,7 +140,7 @@ void Map::setObjectonLayer(std::vector<LPGAMEOBJECT> *listobject, std::string la
 
 						float z, u;
 						obj->getPosition(z, u);
-						DebugOut(L"[INFO] invisible object x:%f y:%f \n", z, u);
+						//DebugOut(L"[INFO] invisible object x:%f y:%f \n", z, u);
 
 						listobject->push_back(obj);
 					}

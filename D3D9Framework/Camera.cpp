@@ -12,6 +12,8 @@ Camera::Camera()
 
 	scroll_x = false;
 	scroll_y = false;
+
+	isfollow = true;
 }
 
 Camera::~Camera()
@@ -107,24 +109,29 @@ void Camera::setScrollY(bool isscrollY)
 	this->scroll_y = isscrollY;
 }
 
+bool Camera::IsFollow()
+{
+	return this->isfollow;
+}
+
 void Camera::Update(DWORD dt)
 {
-	if (!(following_object == NULL))
-		this->setCameraPosition(following_object->getX() - WINDOW_WIDTH / 2, following_object->getY() - WINDOW_HEIGHT/2);
+	//if (!(following_object == NULL))
+	//	this->setCameraPosition(following_object->getX() - WINDOW_WIDTH / 2, following_object->getY() - WINDOW_HEIGHT/2);
 
-	if (following_object != NULL)
-	{
-		if (following_object->getX() < this->bound_left + 48)
-		{
-			following_object->setX(this->bound_left + 48);
-			following_object->setVx(0.0f);
-		}
-		if (following_object->getX() + 48 > this->bound_right + WINDOW_WIDTH - 200)
-		{
-			following_object->setX(this->bound_right + WINDOW_WIDTH - 200);
-			following_object->setVx(0.0f);
-		}
-	}
+	//if (following_object != NULL)
+	//{
+	//	if (following_object->getX() < this->bound_left + 48)
+	//	{
+	//		following_object->setX(this->bound_left + 48);
+	//		following_object->setVx(0.0f);
+	//	}
+	//	if (following_object->getX() + 48 > this->bound_right + WINDOW_WIDTH - 200)
+	//	{
+	//		following_object->setX(this->bound_right + WINDOW_WIDTH - 200);
+	//		following_object->setVx(0.0f);
+	//	}
+	//}
 
 	if (scroll_x)
 	{
@@ -151,8 +158,8 @@ void Camera::Update(DWORD dt)
 		this->camera_Position.y = this->bound_bottom - this->camera_height;
 }
 
-void Camera::FollowObject(LPGAMEOBJECT object)
-{
-	this->following_object = object;
-}
+//void Camera::FollowObject(LPGAMEOBJECT object)
+//{
+//	this->following_object = object;
+//}
 
