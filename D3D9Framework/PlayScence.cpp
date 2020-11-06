@@ -13,6 +13,7 @@ PlayScence::PlayScence(int id, LPCWSTR filePath) : Scence(id, filePath)
 void PlayScence::Load()
 {
 	Textures::GetInstance()->AddTexture(20, L"textures\\Mario\\Mario48.png", NULL);
+	Textures::GetInstance()->AddTexture(100, L"textures\\bbox.png", NULL);
 	SpriteManager::GetInstance()->AddSpriteUsingXML("textures\\Mario\\MarioDB.xml", Textures::GetInstance()->GetTexture(20));
 	AnimationManager::GetInstance()->AddAnimationUsingXML("textures\\Mario\\MarioAnim.xml");
 

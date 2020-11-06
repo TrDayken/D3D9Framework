@@ -7,8 +7,9 @@
 #include "MarioModel.h"
 #include "Camera.h"
 
-#define MARIO_BIG_BBOX_WIDTH 42
-#define MARIO_BIG_BBOX_HEIGHT 80
+#define MARIO_BIG_BBOX_WIDTH				42
+#define MARIO_BIG_BBOX_HEIGHT				80
+#define MARIO_BIG_BBOX_HEIGHT_CROUCH		54
 
 class BigMario : public MarioModel
 {

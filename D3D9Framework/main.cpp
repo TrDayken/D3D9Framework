@@ -10,8 +10,6 @@
 #include "Global_Variable.h"
 #include "PlayScence.h"
 
-#define WINDOW_CLASS_NAME L"SampleWindow"
-#define WINDOW_TITLE L"00 - Intro"
 
 Game* game;
 PlayScence* scence;

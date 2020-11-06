@@ -24,7 +24,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	std::vector<LPGAMEOBJECT> coObjectsResult;
 	coEvents.clear();
 
-	this->vy = dt * MARIO_GRAVITY;
+	
 
 	if (x + dx <= 1)
 	{
@@ -53,7 +53,6 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		x += dx;
 		y += dy;
 	}
-
 	else
 	{
 		float min_tx, min_ty, nx = 0, ny;
@@ -126,15 +125,36 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			{
 				isOnGround = true;
 				state.jump = JumpingStates::Stand;
-				//canHighjump = true;
+				isHighJump = false;
 			}
 		}
 	}
+
+	
+
+	// clean up collision events
+	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }
 
 void MarioModel::setMovestate(MovingStates move)
 {
+	prestate = this->state;
 	this->state.movement = move;
+
+	//if (state.movement == MovingStates::Crouch)
+	//{
+	//	if (prestate.movement != MovingStates::Crouch)
+	//	{
+	//		y += (MARIO_BBOX_HEIGHT - MARIO_BBOX_HEIGHT_CROUCH - 0.4);
+	//	}
+	//}
+	//else
+	//{
+	//	if (prestate.movement == MovingStates::Crouch)
+	//	{
+	//		y -= (MARIO_BBOX_HEIGHT - MARIO_BBOX_HEIGHT_CROUCH + 0.4);
+	//	}
+	//}
 }
 
 void MarioModel::setJumpstate(JumpingStates jump)
@@ -147,15 +167,27 @@ void MarioModel::OnKeyDown(int KeyCode)
 	//Left = DIK_LEFT;
 	//Right = DIK_RIGHT;
 	//Jump = DIK_S;
-	//Attack = DIK_A;
+	//Attack/Run = DIK_A;
 	//LowJump = DIK_X;
 	//Crouch = DIK_DOWN;
 	switch (KeyCode)
 	{
-	case DIK_S:
-		this->state.jump = JumpingStates::Jump;
-		isOnGround = false;
+	case DIK_X:
+		if (isOnGround)
+		{
+			setJumpstate(JumpingStates::Jump);
+			isOnGround = false;
+		}
 		break;
+	case DIK_S:
+		if (isOnGround)
+		{
+			setJumpstate(JumpingStates::Jump);
+			isOnGround = false;
+			isHighJump = true;
+			HighJumpTime_Start = GetTickCount();
+			vy = MARIO_MINIMUM_LIFT;
+		}
 	//case DIK_A:
 	//	this->state.movement = MovingStates::Run;
 	//	break;
@@ -165,15 +197,17 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	
 	case DIK_F2:
+
 		break;
 
 	case DIK_F3:
+
 		break;
 		
 	case DIK_F4:
 		break;
 	case DIK_DOWN:
-		this->state.movement = MovingStates::Crouch;
+		setMovestate(MovingStates::Crouch);
 		break;
 	}
 }
@@ -184,6 +218,16 @@ void MarioModel::OnKeyUp(int keyCode)
 
 	//if die disable controller
 	if (this->state.movement == MovingStates::Die) return;
+
+	switch (keyCode)
+	{
+	case DIK_S:
+		if (isHighJump)
+		{
+			isHighJump = false;
+		}
+		break;
+	}
 
 }
 
@@ -217,19 +261,36 @@ void MarioModel::KeyState(BYTE* state)
 		acc_x = -MARIO_ACCELERATION;
 		direction = -1;
 	}
-	else this->state.movement = MovingStates::Idle;
-
-	if (game->IsKeyDown(DIK_DOWN))
+	else if (game->IsKeyDown(DIK_DOWN))
 	{
-		if (this->state.jump == JumpingStates::Stand)
-		{
-			setMovestate(MovingStates::Crouch);
-		}
+		setMovestate(MovingStates::Crouch);
 	}
+	else setMovestate(MovingStates::Idle);
+
+	
 
 	if (game->IsKeyDown(DIK_S))
 	{
+		if (isHighJump)
+		{
+			vy = MARIO_JUMP_FORCE;
+		}
+	}
 
+	if (game->IsKeyDown(DIK_X))
+	{
+		if (isOnGround)
+		{
+			isOnGround = false;
+			vy = MARIO_JUMP_FORCE;
+			setJumpstate(JumpingStates::Jump);
+		}
+		//if (isOnGround)
+		//{
+		//	setJumpstate(JumpingStates::Jump);
+		//	isOnGround = false;
+		//	vy = MARIO_JUMP_FORCE;
+		//}
 	}
 	DebugOut(L"[INFO] Moving: %i, Jumping: %i \n", this->state.movement, this->state.jump);
 }

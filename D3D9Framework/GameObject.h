@@ -8,6 +8,7 @@
 #include "SpriteManager.h"
 #include "AnimationManager.h"
 #include "Camera.h"
+#include "Textures.h"
 
 class GameObject;
 typedef GameObject* LPGAMEOBJECT;
@@ -87,7 +88,7 @@ public:
 
 	int getState();
 
-	void RenderBoundingBox();
+	void RenderBoundingBox(Camera* camera);
 	
 	void AddAnimation(std::string name , LPANIMATION animation);
 	void setAnimationSet();

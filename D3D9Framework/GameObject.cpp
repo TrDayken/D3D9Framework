@@ -97,10 +97,13 @@ int GameObject::getState()
 	return 0;
 }
 
-void GameObject::RenderBoundingBox()
+void GameObject::RenderBoundingBox(Camera* camera)
 {
 	RECT rect;
 	float l, t, r, b;
+
+	Vector2 camPos = camera->toCameraPosistion(x, y);
+	LPDIRECT3DTEXTURE9 bbox = Textures::GetInstance()->GetTexture(100);
 
 	GetBoundingBox(l, t, r, b);
 	rect.left = 0;
@@ -108,7 +111,7 @@ void GameObject::RenderBoundingBox()
 	rect.right = (int)r - (int)l;
 	rect.bottom = (int)b - (int)t;
 
-	//Game::GetInstance()->Draw(x, y, /*bbox texture */, rect.left, rect.top, rect.right, rect.bottom, 32);
+	Game::GetInstance()->Draw(camPos.x, camPos.y ,bbox, rect.left, rect.top, rect.right, rect.bottom, 112);
 
 }
 

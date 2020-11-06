@@ -24,6 +24,7 @@ void Mario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* collision_objects)
 	CurrentMario->Update(dt, collision_objects);
 	//after update need to reupdate the mariostate position to mario to render camera;
 	this->setPosition(CurrentMario->getX(), CurrentMario->getY());
+
 	///*if (x < camera->getBoundleft() - 48)
 	//	x = camera->getBoundleft() - 48;
 	//if (x + 48 > camera->getBoundRight() + WINDOW_WIDTH)
