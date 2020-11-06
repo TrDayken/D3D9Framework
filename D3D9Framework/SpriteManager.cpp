@@ -2,25 +2,25 @@
 
 SpriteManager* SpriteManager::__instance = nullptr;
 
-void SpriteManager::AddSprite(std::string id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 texture)
+void SpriteManager::AddSprite(std::string id, int left, int top, int right, int bottom,int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture)
 {
 	RECT rect;
 	rect.top = top;
 	rect.bottom = bottom;
 	rect.left = left;
 	rect.right = right;
-	LPSPRITE sprite = new Sprite(id, rect, texture);
+	LPSPRITE sprite = new Sprite(id, rect,xpivot,ypivot, texture);
 	sprites[id] = sprite;
 }
 
-void SpriteManager::AddSprite1(std::string id, int left, int top, int width, int height, LPDIRECT3DTEXTURE9 texture)
+void SpriteManager::AddSprite1(std::string id, int left, int top, int width, int height,int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture)
 {
 	RECT rect;
 	rect.top = top*3;
 	rect.bottom = top*3 + height*3;
 	rect.left = left*3;
 	rect.right = left*3 + width*3;
-	LPSPRITE sprite = new Sprite(id, rect, texture);
+	LPSPRITE sprite = new Sprite(id, rect,xpivot, ypivot, texture);
 	sprites[id] = sprite;
 }
 
@@ -36,12 +36,16 @@ void SpriteManager::AddSpriteUsingXML(const char* FilePath, LPDIRECT3DTEXTURE9 t
 		for (TiXmlElement* XMLsprite = root->FirstChildElement(); XMLsprite != NULL;XMLsprite = XMLsprite->NextSiblingElement())
 		{
 			int left, top, width, height;
+			int xpivot = 0;
+			int ypivot = 0;
 			std::string id = XMLsprite->Attribute("id");
 			XMLsprite->QueryIntAttribute("left",&left);
 			XMLsprite->Attribute("top", &top);
 			XMLsprite->Attribute("width", &width);
 			XMLsprite->Attribute("height" , &height);
-			AddSprite1(id, left, top ,width, height, texture);
+			XMLsprite->Attribute("xPivot", &xpivot);
+			XMLsprite->Attribute("yPivot", &ypivot);
+			AddSprite1(id, left, top ,width, height,xpivot ,ypivot, texture);
 
 			//DebugOut(L"[INFO] loaded spirte:%s \n", id.c_str());
 

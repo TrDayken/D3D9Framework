@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 texture)
+Sprite::Sprite(int id, int left, int top, int right, int bottom, int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture)
 {
 	//this->id = id;
 	this->spriteRect.left= left;
@@ -8,7 +8,8 @@ Sprite::Sprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTU
 	this->spriteRect.right = right;
 	this->spriteRect.bottom = bottom;
 	this->texture = texture;
-
+	this->xPivot = xpivot;
+	this->yPivot = ypivot;
 	this->SpriteWidth = abs(right - left);
 	this->SpriteHeight = abs(bottom - top);
 
@@ -19,7 +20,7 @@ Sprite::Sprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTU
 	this->position = Vector2(100, 100);
 }
 
-Sprite::Sprite(std::string id, RECT rect, LPDIRECT3DTEXTURE9 texture)
+Sprite::Sprite(std::string id, RECT rect, int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture)
 {
 	this->id = id;
 	this->spriteRect.left = rect.left;
@@ -27,6 +28,9 @@ Sprite::Sprite(std::string id, RECT rect, LPDIRECT3DTEXTURE9 texture)
 	this->spriteRect.right = rect.right;
 	this->spriteRect.bottom = rect.bottom;
 	this->texture = texture;
+
+	this->xPivot = xpivot;
+	this->yPivot = ypivot;
 
 	this->SpriteWidth = abs(rect.right - rect.left);
 	this->SpriteHeight = abs(rect.bottom - rect.top);
@@ -49,12 +53,12 @@ void Sprite::SetScale(Vector2 Scale)
 
 void Sprite::Draw()
 {
-	Game::GetInstance()->Draw(position.x, position.y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y), 255);
+	Game::GetInstance()->Draw(position.x, position.y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y), xPivot, yPivot, 255);
 }
 
 void Sprite::Draw(int x, int y,int direction , int alpha)
 {
-	Game::GetInstance()->Draw(x, y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y), direction , alpha);
+	Game::GetInstance()->Draw(x, y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y), xPivot, yPivot, direction, alpha);
 }
 
 

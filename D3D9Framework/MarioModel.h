@@ -17,38 +17,15 @@
 // mario status
 #define MARIO_HIGH_JUMP_TIME			200
 #define MARIO_UNTOUCHABLE_TIME			5000
+#define MARIO_PMETTER					7
+#define MARIO_PLUS_PMETTER_TIME			750
+#define MARIO_DECAY_PEMETTER_TIME		250
+
 // mario collisionbox status
 #define MARIO_BBOX_WIDTH				42
 #define MARIO_BBOX_HEIGHT				80
 #define MARIO_BBOX_HEIGHT_CROUCH		54
-// small mario animation
-#define ANI_SMALL_MARIO_IDLE		"ani-small-mario-idle"
-#define ANI_SMALL_MARIO_WALK		"ani-small-mario-walk"
-#define ANI_SMALL_MARIO_SKID		"ani-small-mario-skid"
-#define ANI_SMALL_MARIO_RUN			"ani-small-mario-run"
-#define ANI_SMALL_MARIO_JUMP		"ani-small-mario-jump"
-#define ANI_SMALL_MARIO_CROUCH		"ani-small-mario-crouch"	
-// big mario animation
-#define ANI_BIG_MARIO_IDLE			"ani-big-mario-idle"
-#define ANI_BIG_MARIO_WALK			"ani-big-mario-walk"
-#define ANI_BIG_MARIO_SKID			"ani-big-mario-skid"
-#define ANI_BIG_MARIO_RUN			"ani-big-mario-run"
-#define ANI_BIG_MARIO_JUMP			"ani-big-mario-jump"
-#define ANI_BIG_MARIO_CROUCH		"ani-big-mario-crouch"	
-// racoon mario animation
-#define ANI_RACOON_MARIO_IDLE		"ani-racoon-mario-idle"
-#define ANI_RACOON_MARIO_WALK		"ani-racoon-mario-walk"
-#define ANI_RACOON_MARIO_SKID		"ani-racoon-mario-skid"
-#define ANI_RACOON_MARIO_RUN		"ani-racoon-mario-run"
-#define ANI_RACOON_MARIO_JUMP		"ani-racoon-mario-jump"
-#define ANI_RACOON_MARIO_CROUCH		"ani-racoon-mario-crouch"	
-// fire mario animation
-#define ANI_FIRE_MARIO_IDLE			"ani-fire-mario-idle"
-#define ANI_FIRE_MARIO_WALK			"ani-fire-mario-walk"
-#define ANI_FIRE_MARIO_SKID			"ani-fire-mario-skid"
-#define ANI_FIRE_MARIO_RUN			"ani-fire-mario-run"
-#define ANI_FIRE_MARIO_JUMP			"ani-fire-mario-jump"
-#define ANI_FIRE_MARIO_CROUCH		"ani-fire-mario-crouch"	
+
 
 enum class MovingStates
 {
@@ -64,7 +41,8 @@ enum class JumpingStates
 {
 	Stand,
 	Jump,
-	Fall
+	Fall,
+	Fly
 };
 
 struct MarioStateSet
@@ -78,8 +56,9 @@ class MarioModel : public GameObject
 protected:
 	int InvincibleFrame;
 	DWORD InvincibleTime_Start;
-
 	DWORD HighJumpTime_Start;
+	DWORD IncreasePMetterTime_Start;
+	DWORD DecayPMetterTime_Start;
 	//Mario's initial position
 	float start_x;
 	float start_y;
@@ -89,10 +68,13 @@ protected:
 	
 	//mario states
 	MarioStateSet state,prestate;
-
+	int changestate;
 	//mario game's logic
+	bool fullMetter = false;
 	bool isOnGround;
 	bool isHighJump;
+	bool isIncreasingPMetter = false;
+	int  PMetter = 0;
 public:
 	MarioModel(float x = 0, float y = 0);
 
@@ -110,6 +92,9 @@ public:
 
 	virtual void LoadAnimation() {};
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) =0 ;
+	int getLevel();
+	void SetLevel(int level);
+	void SetPosition(int x, int y);
 };
 
 #endif

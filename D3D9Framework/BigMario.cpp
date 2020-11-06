@@ -9,41 +9,9 @@ void BigMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	MarioModel::Update(dt, coObjects);
 
-	//handling mario running state
-	float topspeed = 0;
-	if (this->state.movement == MovingStates::Walk || this->state.movement == MovingStates::Run)
-	{
-		if (this->state.movement == MovingStates::Walk)
-		{
-			topspeed = MARIO_TOP_WALKING_SPEED;
-		}
-		else if (this->state.movement == MovingStates::Run)
-		{
-			topspeed = MARIO_TOP_RUNNING_SPEED;
-		}
+	BigMarioRunandWalkState();
 
-
-		if (acc_x != 0)
-		{
-			if (abs(vx + dt * acc_x) < topspeed)
-			{
-				vx += dt * acc_x;
-			}
-			else if (acc_x > 0)
-				vx = topspeed;
-			else
-				vx = -topspeed;
-		}
-	}
-	else
-	{
-		// drag back if mario is on ground 
-		if(isOnGround)
-		if (vx >= MARIO_MIN_SPEED || vx <= -MARIO_MIN_SPEED)
-			vx -= dt * MARIO_DRAG * vx;
-		else vx = 0;
-	}
-
+	// mario in state jump and still pressing S add up jumpheight until out of time
 	if (this->state.jump == JumpingStates::Jump)
 	{
 		if (GetTickCount() - HighJumpTime_Start > MARIO_HIGH_JUMP_TIME)
@@ -72,7 +40,12 @@ void BigMario::Render(Camera* camera)
 
 	if (!isOnGround)
 	{
-		ani = ANI_BIG_MARIO_JUMP;
+			ani = ANI_BIG_MARIO_JUMP;
+	}
+
+	if (PMetter == 7 && this->state.movement != MovingStates::Idle)
+	{
+		ani = ANI_BIG_MARIO_HIGH_SPEED;
 	}
 
 	//when acceleration and velocity are opposite ani == crouching
@@ -104,6 +77,8 @@ void BigMario::LoadAnimation()
 	AddAnimation(ANI_BIG_MARIO_RUN, animation->GetAnimation(ANI_BIG_MARIO_RUN));
 	AddAnimation(ANI_BIG_MARIO_JUMP, animation->GetAnimation(ANI_BIG_MARIO_JUMP));
 	AddAnimation(ANI_BIG_MARIO_CROUCH, animation->GetAnimation(ANI_BIG_MARIO_CROUCH));
+	AddAnimation(ANI_BIG_MARIO_HIGH_SPEED, animation->GetAnimation(ANI_BIG_MARIO_HIGH_SPEED));
+	AddAnimation(ANI_BIG_MARIO_HIGH_JUMP, animation->GetAnimation(ANI_BIG_MARIO_HIGH_JUMP));
 }
 
 void BigMario::GetBoundingBox(float& l, float& t, float& r, float& b)
@@ -128,4 +103,66 @@ void BigMario::GetBoundingBox(float& l, float& t, float& r, float& b)
 
 void BigMario::BigMarioRunandWalkState()
 {
+	//handling mario running state
+	float topspeed = 0;
+	if (this->state.movement == MovingStates::Walk || this->state.movement == MovingStates::Run)
+	{
+		if (this->state.movement == MovingStates::Walk)
+		{
+			topspeed = MARIO_TOP_WALKING_SPEED;
+		}
+		else if (this->state.movement == MovingStates::Run)
+		{
+			topspeed = MARIO_TOP_RUNNING_SPEED;
+		}
+
+
+		if (acc_x != 0)
+		{
+			if (abs(vx + dt * acc_x) < topspeed)
+			{
+				vx += dt * acc_x;
+			}
+			else if (acc_x > 0)
+			{
+				vx = topspeed;
+				isIncreasingPMetter = true;
+			}
+			else
+			{
+				vx = -topspeed;
+				isIncreasingPMetter = true;
+			}
+		}
+
+	}
+	else
+	{
+		// drag back if mario is on ground 
+		if (isOnGround)
+			if (vx >= MARIO_MIN_SPEED || vx <= -MARIO_MIN_SPEED)
+				vx -= dt * MARIO_DRAG * vx;
+			else vx = 0;
+	}
+	DebugOut(L"[INFO] Mario vx: %f \n", vx);
+	DebugOut(L"[INFO] PMETTER: %d \n", PMetter);
+
+	if (PMetter < MARIO_PMETTER && state.movement == MovingStates::Run && abs(vx) >= MARIO_TOP_RUNNING_SPEED && state.jump == JumpingStates::Stand)
+	{
+		if (isIncreasingPMetter && (GetTickCount() - IncreasePMetterTime_Start > MARIO_PLUS_PMETTER_TIME))
+		{
+			IncreasePMetterTime_Start = GetTickCount();
+			if (PMetter == 7)
+				fullMetter = true;
+			else
+				fullMetter = false;
+			PMetter++;
+		}
+	}
+	
+	if (PMetter > 0 && (GetTickCount() - DecayPMetterTime_Start > MARIO_DECAY_PEMETTER_TIME) && state.movement != MovingStates::Run && abs(vx) < MARIO_TOP_RUNNING_SPEED)
+	{
+		DecayPMetterTime_Start = GetTickCount();
+		PMetter--;
+	}
 }

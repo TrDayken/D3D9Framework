@@ -1,5 +1,9 @@
 #include "SmallMario.h"
 
+void SmallMario::SmallMarioRunandWalkState()
+{
+}
+
 void SmallMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 }

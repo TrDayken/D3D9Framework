@@ -152,8 +152,10 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Global_Variable.cpp" />
+    <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="InvisibleBrick.cpp" />
     <ClCompile Include="KeyEventHandler.cpp" />
+    <ClCompile Include="Koopa.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -184,8 +186,10 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Global_Variable.h" />
+    <ClInclude Include="Goomba.h" />
     <ClInclude Include="InvisibleBrick.h" />
     <ClInclude Include="KeyEventHandler.h" />
+    <ClInclude Include="Koopa.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Mario.h" />
@@ -201,9 +205,6 @@
     <ClInclude Include="tinyXML\tinyxml\tinystr.h" />
     <ClInclude Include="tinyXML\tinyxml\tinyxml.h" />
     <ClInclude Include="Utils.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

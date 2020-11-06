@@ -19,10 +19,11 @@
 #define MARIO_BBOX_Y 48
 
 // mario level
-#define SMALL	1
-#define BIG		2
-#define FIRE	3
-#define RACOON	4
+#define DONTCHANGE	-1
+#define SMALL		0
+#define BIG			1
+#define FIRE		2
+#define RACOON		3
 class Mario : public GameObject
 {
 private:
@@ -34,11 +35,11 @@ private:
 
 	std::vector<MarioModel*> StateofMario;
 	MarioModel* CurrentMario;
+	int levelmario;
 public:
 	Mario(float x = 0.0f, float y = 0.0f);
 		
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* collision_objects = NULL);
-	//virtual void Render();
 	virtual void Render(Camera* camera);
 
 	void SetState(int state);
@@ -49,7 +50,7 @@ public:
 
 	void Reset();
 	void AnimationLoad();
-
+	void SwitchMario(int level);
 	void setCamera(Camera* camera);
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);

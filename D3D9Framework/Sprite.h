@@ -13,7 +13,8 @@ class Sprite
 	std::string id; 
 	
 	RECT spriteRect;
-
+	int xPivot;
+	int yPivot;
 	int SpriteWidth;
 	int SpriteHeight;
 
@@ -26,8 +27,8 @@ class Sprite
 	LPDIRECT3DTEXTURE9 texture;
 
 public:
-	Sprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 texture);
-	Sprite(std::string id, RECT rect, LPDIRECT3DTEXTURE9 texture);
+	Sprite(int id, int left, int top, int right, int bottom,int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture);
+	Sprite(std::string id, RECT rect, int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture);
 
 	~Sprite();
 

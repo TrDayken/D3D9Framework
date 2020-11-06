@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Textures>
-	<Textures id="tex-mario">
+	<Textures textureId="tex-mario">
 		<Sprite id="spr-small-mario-walk-0" left="254" top="9"  width="12" height="15" frameTime="100"/>
 		<Sprite id="spr-small-mario-walk-1" left="269" top="8"  width="15" height="16" frameTime="100"/>
 		<Sprite id="spr-small-mario-skid-0" left="287" top="8"  width="14" height="16" frameTime="100"/>
@@ -11,7 +11,7 @@
 		<Sprite id="spr-small-mario-slide-0" left="379" top="8"  width="15" height="16" frameTime="100"/>
 		<Sprite id="spr-small-mario-die-0" left="416" top="8"  width="16" height="16" frameTime="100"/>
 		<Sprite id="spr-small-mario-hold-0" left="435" top="8"  width="14" height="16" frameTime="100"/>
-		<Sprite id="spr-small-mario-hold-1" left="452" top="8"  width="15" height="16" frameTime="100"/>
+		<Sprite id="spr-small-mario-hold-1" left="452" top="8"  width="15" height="16" frameTime="100" xPivot="8"/>
 		<Sprite id="spr-small-mario-kick-0" left="470" top="8"  width="16" height="16" frameTime="100"/>
 		<Sprite id="spr-small-mario-dive-0" left="489" top="8"  width="16" height="16" frameTime="100"/>
 		<Sprite id="spr-small-mario-dive-1" left="508" top="9"  width="16" height="15" frameTime="100"/>
@@ -26,6 +26,7 @@
 		<Sprite id="spr-big-mario-walk-2" left="233" top="49"  width="16" height="26" frameTime="100"/>
 		<Sprite id="spr-big-mario-skid-0" left="252" top="47"  width="16" height="28" frameTime="100"/>
 		<Sprite id="spr-big-mario-jump-0" left="271" top="49"  width="16" height="26" frameTime="100"/>
+		<Sprite id="spr-big-mario-fall-0" left="233" top="49"  width="16" height="26" frameTime="100"/>
 		<Sprite id="spr-big-mario-run-0" left="290" top="48"  width="19" height="27" frameTime="100"/>
 		<Sprite id="spr-big-mario-run-1" left="312" top="48"  width="19" height="27" frameTime="100"/>
 		<Sprite id="spr-big-mario-run-2" left="335" top="49"  width="19" height="26" frameTime="100"/>
@@ -33,8 +34,8 @@
 		<Sprite id="spr-big-mario-crouch-0" left="379" top="57"  width="14" height="18" frameTime="100"/>
 		<Sprite id="spr-big-mario-slide-0" left="396" top="49"  width="16" height="26" frameTime="100"/>
 		<Sprite id="spr-big-mario-hold-0" left="434" top="48"  width="14" height="27" frameTime="100"/>
-		<Sprite id="spr-big-mario-hold-1" left="451" top="48"  width="15" height="27" frameTime="100"/>
-		<Sprite id="spr-big-mario-hold-2" left="469" top="49"  width="16" height="26" frameTime="100"/>
+		<Sprite id="spr-big-mario-hold-1" left="451" top="48"  width="15" height="27" frameTime="100" xPivot="8"/>
+		<Sprite id="spr-big-mario-hold-2" left="469" top="49"  width="16" height="27" frameTime="100" xPivot="9"/>
 		<Sprite id="spr-big-mario-kick-0" left="488" top="48"  width="21" height="27" frameTime="100"/>
 		<Sprite id="spr-big-mario-dive-0" left="512" top="48"  width="19" height="27" frameTime="100"/>
 		<Sprite id="spr-big-mario-dive-1" left="534" top="49"  width="19" height="26" frameTime="100"/>
@@ -53,37 +54,44 @@
 		<Sprite id="spr-big-mario-roll-5" left="438" top="317"  width="19" height="20" frameTime="100"/>
 		<Sprite id="spr-big-mario-roll-6" left="460" top="315"  width="20" height="22" frameTime="100"/>
 		<Sprite id="spr-big-mario-roll-7" left="483" top="318"  width="20" height="19" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-walk-0" left="80" top="142"  width="21" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-walk-1" left="104" top="142"  width="22" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-walk-2" left="129" top="143"  width="23" height="27" frameTime="100"/>
+		
+    <Sprite id="spr-raccoon-mario-walk-0" left="80" top="142"  width="21" height="28" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-raccoon-mario-walk-1" left="104" top="142"  width="22" height="28" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-raccoon-mario-walk-2" left="129" top="143"  width="23" height="27" frameTime="100" xPivot="15"/>
 		<Sprite id="spr-raccoon-mario-skid-0" left="155" top="140"  width="16" height="30" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-spin-0" left="174" top="142"  width="16" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-spin-1" left="193" top="142"  width="23" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-spin-2" left="219" top="142"  width="16" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-jump-0" left="257" top="143"  width="23" height="27" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-run-0" left="283" top="143"  width="23" height="27" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-run-1" left="309" top="143"  width="23" height="27" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-run-2" left="335" top="142"  width="22" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-speed-up-0" left="360" top="142"  width="24" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-speed-up-1" left="387" top="142"  width="24" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-speed-up-2" left="414" top="143"  width="24" height="27" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-fly-0" left="441" top="143"  width="24" height="27" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-fly-1" left="468" top="143"  width="24" height="27" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-fly-2" left="495" top="142"  width="24" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-crouch-0" left="522" top="152"  width="22" height="18" frameTime="100"/>
+		
+		<Sprite id="spr-raccoon-mario-spin-0" left="80" top="142"  width="21" height="28" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-raccoon-mario-spin-1" left="78" top="107"  width="23" height="28" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-raccoon-mario-spin-2" left="174" top="142"  width="16" height="28" frameTime="100" xPivot="7"/>
+		<Sprite id="spr-raccoon-mario-spin-3" left="193" top="142"  width="23" height="28" frameTime="100" xPivot="7"/>
+		<Sprite id="spr-raccoon-mario-spin-4" left="219" top="142"  width="16" height="28" frameTime="100" xPivot="7"/>
+		<Sprite id="spr-raccoon-mario-spin-5" left="80" top="142"  width="21" height="28" frameTime="100" xPivot="14"/>
+		
+		<Sprite id="spr-raccoon-mario-jump-0" left="257" top="143"  width="23" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-fall-0" left="283" top="143"  width="23" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-run-0" left="283" top="143"  width="23" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-run-1" left="309" top="143"  width="23" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-run-2" left="335" top="142"  width="22" height="28" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-raccoon-mario-speed-up-0" left="360" top="142"  width="24" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-speed-up-1" left="387" top="142"  width="24" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-speed-up-2" left="414" top="143"  width="24" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-fly-0" left="441" top="143"  width="24" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-fly-1" left="468" top="143"  width="24" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-fly-2" left="495" top="142"  width="24" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-crouch-0" left="522" top="152"  width="22" height="18" frameTime="100" xPivot="15"/>
 		<Sprite id="spr-raccoon-mario-slide-0" left="547" top="143"  width="16" height="27" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-hold-0" left="566" top="142"  width="21" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-hold-1" left="590" top="142"  width="22" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-hold-2" left="615" top="143"  width="23" height="27" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-kick-0" left="641" top="142"  width="22" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-dive-0" left="666" top="142"  width="24" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-dive-1" left="693" top="143"  width="24" height="27" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-swim-0" left="720" top="142"  width="24" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-swim-1" left="747" top="142"  width="23" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-swim-2" left="773" top="143"  width="24" height="27" frameTime="100"/>
+		<Sprite id="spr-raccoon-mario-hold-0" left="566" top="142"  width="21" height="28" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-raccoon-mario-hold-1" left="590" top="142"  width="22" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-raccoon-mario-hold-2" left="615" top="143"  width="23" height="28" frameTime="100" xPivot="16"/>
+		<Sprite id="spr-raccoon-mario-kick-0" left="641" top="142"  width="22" height="28" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-raccoon-mario-dive-0" left="666" top="142"  width="24" height="28" frameTime="100" xPivot="16"/>
+		<Sprite id="spr-raccoon-mario-dive-1" left="693" top="143"  width="24" height="27" frameTime="100" xPivot="16"/>
+		<Sprite id="spr-raccoon-mario-swim-0" left="720" top="142"  width="24" height="28" frameTime="100" xPivot="16"/>
+		<Sprite id="spr-raccoon-mario-swim-1" left="747" top="142"  width="23" height="28" frameTime="100" xPivot="16"/>
+		<Sprite id="spr-raccoon-mario-swim-2" left="773" top="143"  width="24" height="27" frameTime="100" xPivot="16"/>
 		<Sprite id="spr-raccoon-mario-climb-0" left="800" top="142"  width="16" height="28" frameTime="100"/>
 		<Sprite id="spr-raccoon-mario-climb-1" left="819" top="142"  width="16" height="28" frameTime="100"/>
-		<Sprite id="spr-raccoon-mario-idle-0" left="80" top="142"  width="21" height="28" frameTime="100"/>
+		<Sprite id="spr-raccoon-mario-idle-0" left="80" top="142"  width="21" height="28" frameTime="100" xPivot="14"/>
 		<Sprite id="spr-raccoon-mario-idle-front-0" left="174" top="142"  width="16" height="28" frameTime="100"/>
 		<Sprite id="spr-raccoon-mario-roll-0" left="319" top="342"  width="22" height="20" frameTime="100"/>
 		<Sprite id="spr-raccoon-mario-roll-1" left="344" top="342"  width="21" height="20" frameTime="100"/>
@@ -103,13 +111,15 @@
 		<Sprite id="spr-fire-mario-skid-0" left="261" top="108"  width="16" height="28" frameTime="100"/>
 		<Sprite id="spr-fire-mario-throw-0" left="280" top="109"  width="14" height="27" frameTime="100"/>
 		<Sprite id="spr-fire-mario-throw-1" left="297" top="109"  width="14" height="27" frameTime="100"/>
+
 		<Sprite id="spr-fire-mario-jump-0" left="314" top="110"  width="16" height="26" frameTime="100"/>
+		<Sprite id="spr-fire-mario-fall-0" left="242" top="110"  width="16" height="26" frameTime="100"/>
 		<Sprite id="spr-fire-mario-run-0" left="333" top="109"  width="19" height="27" frameTime="100"/>
 		<Sprite id="spr-fire-mario-run-1" left="355" top="109"  width="19" height="27" frameTime="100"/>
 		<Sprite id="spr-fire-mario-run-2" left="378" top="110"  width="19" height="26" frameTime="100"/>
 		<Sprite id="spr-fire-mario-hold-0" left="477" top="109"  width="14" height="27" frameTime="100"/>
-		<Sprite id="spr-fire-mario-hold-1" left="494" top="109"  width="15" height="27" frameTime="100"/>
-		<Sprite id="spr-fire-mario-hold-2" left="512" top="110"  width="16" height="26" frameTime="100"/>
+		<Sprite id="spr-fire-mario-hold-1" left="494" top="109"  width="15" height="27" frameTime="100" xPivot="8"/>
+		<Sprite id="spr-fire-mario-hold-2" left="512" top="110"  width="16" height="27" frameTime="100" xPivot="9"/>
 		<Sprite id="spr-fire-mario-high-jump-0" left="400" top="110"  width="19" height="26" frameTime="100"/>
 		<Sprite id="spr-fire-mario-crouch-0" left="422" top="118"  width="14" height="18" frameTime="100"/>
 		<Sprite id="spr-fire-mario-slide-0" left="439" top="110"  width="16" height="26" frameTime="100"/>
@@ -133,6 +143,7 @@
 		<Sprite id="spr-hammer-mario-throw-0" left="286" top="208"  width="16" height="28" frameTime="100"/>
 		<Sprite id="spr-hammer-mario-throw-1" left="305" top="208"  width="16" height="28" frameTime="100"/>
 		<Sprite id="spr-hammer-mario-jump-0" left="324" top="209"  width="16" height="27" frameTime="100"/>
+		<Sprite id="spr-hammer-mario-fall-0" left="248" top="209"  width="16" height="27" frameTime="100"/>
 		<Sprite id="spr-hammer-mario-run-0" left="343" top="208"  width="19" height="28" frameTime="100"/>
 		<Sprite id="spr-hammer-mario-run-1" left="365" top="208"  width="19" height="28" frameTime="100"/>
 		<Sprite id="spr-hammer-mario-run-2" left="387" top="209"  width="19" height="27" frameTime="100"/>
@@ -194,27 +205,28 @@
 		<Sprite id="spr-tanooki-mario-walk-2" left="111" top="280"  width="23" height="27" frameTime="100"/>
 		<Sprite id="spr-tanooki-mario-skid-0" left="137" top="278"  width="16" height="29" frameTime="100"/>
 		<Sprite id="spr-tanooki-mario-jump-0" left="238" top="280"  width="23" height="27" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-run-0" left="264" top="280"  width="23" height="27" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-run-1" left="290" top="280"  width="23" height="27" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-run-2" left="316" top="279"  width="22" height="28" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-speed-up-0" left="341" top="279"  width="23" height="28" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-speed-up-1" left="367" top="279"  width="23" height="28" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-speed-up-2" left="393" top="280"  width="23" height="27" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-fly-0" left="419" top="278"  width="24" height="28" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-fly-1" left="446" top="279"  width="24" height="27" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-fly-2" left="473" top="279"  width="24" height="27" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-crouch-0" left="500" top="288"  width="21" height="18" frameTime="100"/>
+		<Sprite id="spr-tanooki-mario-fall-0" left="264" top="280"  width="23" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-run-0" left="264" top="280"  width="23" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-run-1" left="290" top="280"  width="23" height="27" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-tanooki-mario-run-2" left="316" top="279"  width="22" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-speed-up-0" left="341" top="279"  width="23" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-speed-up-1" left="367" top="279"  width="23" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-speed-up-2" left="393" top="280"  width="23" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-fly-0" left="419" top="278"  width="24" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-fly-1" left="446" top="279"  width="24" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-fly-2" left="473" top="279"  width="24" height="27" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-crouch-0" left="500" top="288"  width="21" height="18" frameTime="100" xPivot="15"/>
 		<Sprite id="spr-tanooki-mario-statue-0" left="524" top="277"  width="16" height="29" frameTime="100"/>
 		<Sprite id="spr-tanooki-mario-slide-0" left="543" top="279"  width="16" height="27" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-hold-0" left="562" top="277"  width="22" height="29" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-hold-1" left="587" top="277"  width="21" height="29" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-hold-2" left="611" top="278"  width="23" height="28" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-kick-0" left="637" top="278"  width="21" height="28" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-swim-0" left="661" top="278"  width="24" height="28" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-swim-1" left="688" top="279"  width="24" height="27" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-swim-2" left="715" top="278"  width="24" height="28" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-swim-3" left="742" top="279"  width="23" height="27" frameTime="100"/>
-		<Sprite id="spr-tanooki-mario-swim-4" left="768" top="279"  width="24" height="27" frameTime="100"/>
+		<Sprite id="spr-tanooki-mario-hold-0" left="562" top="277"  width="22" height="29" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-tanooki-mario-hold-1" left="587" top="277"  width="21" height="29" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-hold-2" left="611" top="278"  width="23" height="28" frameTime="100" xPivot="15"/>
+		<Sprite id="spr-tanooki-mario-kick-0" left="637" top="278"  width="21" height="28" frameTime="100" xPivot="14"/>
+		<Sprite id="spr-tanooki-mario-dive-0" left="661" top="278"  width="24" height="28" frameTime="100" xPivot="16"/>
+		<Sprite id="spr-tanooki-mario-dive-1" left="688" top="279"  width="24" height="27" frameTime="100" xPivot="16"/>
+		<Sprite id="spr-tanooki-mario-swim-0" left="715" top="278"  width="24" height="28" frameTime="100" xPivot="16"/>
+		<Sprite id="spr-tanooki-mario-swim-1" left="742" top="279"  width="23" height="27" frameTime="100" xPivot="16"/>
+		<Sprite id="spr-tanooki-mario-swim-2" left="768" top="279"  width="24" height="27" frameTime="100" xPivot="16"/>
 		<Sprite id="spr-tanooki-mario-climb-0" left="795" top="279"  width="16" height="28" frameTime="100"/>
 		<Sprite id="spr-tanooki-mario-climb-1" left="814" top="279"  width="16" height="28" frameTime="100"/>
 		<Sprite id="spr-tanooki-mario-roll-0" left="320" top="390"  width="23" height="20" frameTime="100"/>

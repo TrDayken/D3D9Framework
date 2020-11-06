@@ -6,6 +6,7 @@ MarioModel::MarioModel(float x, float y)
 	start_y = y;
 	this->x = x; 
 	this->y = y;
+	this->changestate = 1;
 
 	InvincibleFrame = 0;
 
@@ -18,6 +19,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	GameObject::Update(dt);
 
+//DebugOut(L"[INFO]")
 
 	std::vector<LPCOLLISIONEVENT> coEvents;
 	std::vector<LPCOLLISIONEVENT> coEventsResult;
@@ -172,6 +174,8 @@ void MarioModel::OnKeyDown(int KeyCode)
 	//Crouch = DIK_DOWN;
 	switch (KeyCode)
 	{
+	case DIK_A:
+		IncreasePMetterTime_Start = GetTickCount();
 	case DIK_X:
 		if (isOnGround)
 		{
@@ -188,23 +192,25 @@ void MarioModel::OnKeyDown(int KeyCode)
 			HighJumpTime_Start = GetTickCount();
 			vy = MARIO_MINIMUM_LIFT;
 		}
+		break;
 	//case DIK_A:
 	//	this->state.movement = MovingStates::Run;
 	//	break;
 		
 	case DIK_F1:
-
+		this->changestate = 0;
 		break;
 	
 	case DIK_F2:
-
+		this->changestate = 1;
 		break;
 
 	case DIK_F3:
-
+		this->changestate = 2;
 		break;
 		
 	case DIK_F4:
+		this->changestate = 3;
 		break;
 	case DIK_DOWN:
 		setMovestate(MovingStates::Crouch);
@@ -226,6 +232,8 @@ void MarioModel::OnKeyUp(int keyCode)
 		{
 			isHighJump = false;
 		}
+	case DIK_A:
+		DecayPMetterTime_Start = GetTickCount();
 		break;
 	}
 
@@ -292,5 +300,20 @@ void MarioModel::KeyState(BYTE* state)
 		//	vy = MARIO_JUMP_FORCE;
 		//}
 	}
-	DebugOut(L"[INFO] Moving: %i, Jumping: %i \n", this->state.movement, this->state.jump);
+	//DebugOut(L"[INFO] Moving: %i, Jumping: %i \n", this->state.movement, this->state.jump);
+}
+
+int MarioModel::getLevel()
+{
+	return this->changestate;
+}
+
+void MarioModel::SetLevel(int level)
+{
+	changestate = level;
+}
+
+void MarioModel::SetPosition(int x, int y)
+{
+	GameObject::setPosition(x, y);
 }
