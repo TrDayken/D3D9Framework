@@ -38,9 +38,18 @@ struct CCollisionEvent
 	}
 };
 
+enum class Tag
+{
+	platform,
+	enemy,
+	player,
+	projectile
+};
+
 class GameObject
 {
 protected:
+	
 
 	//object direction 1 = right , -1 = left
 	int direction;
@@ -63,7 +72,7 @@ protected:
 public: 
 	GameObject();
 	~GameObject();
-
+	Tag Objecttag;
 	//speed and position geter/seter
 	void setPosition(float x, float y);
 	void getPosition(float& x, float& y);

@@ -41,8 +41,7 @@ enum class JumpingStates
 {
 	Stand,
 	Jump,
-	Fall,
-	Fly
+	Fall
 };
 
 struct MarioStateSet
@@ -70,6 +69,7 @@ protected:
 	MarioStateSet state,prestate;
 	int changestate;
 	//mario game's logic
+	bool canFly = false;
 	bool fullMetter = false;
 	bool isOnGround;
 	bool isHighJump;
@@ -86,9 +86,9 @@ public:
 	void setMovestate(MovingStates move);
 	void setJumpstate(JumpingStates jump);
 
-	void OnKeyDown(int KeyCode);
-	void OnKeyUp (int keyCode);
-	void KeyState(BYTE* state);
+	virtual void OnKeyDown(int KeyCode);
+	virtual void OnKeyUp (int keyCode);
+	virtual void KeyState(BYTE* state);
 
 	virtual void LoadAnimation() {};
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) =0 ;

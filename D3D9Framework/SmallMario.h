@@ -17,12 +17,14 @@
 
 // small mario bbox status
 #define MARIO_SMALL_BBOX_HEIGHT	45
-#define MARIO_SMALL_BBOX_WIDTH
+#define MARIO_SMALL_BBOX_WIDTH	39
 class SmallMario : public MarioModel
 {
 private:
 	void SmallMarioRunandWalkState();
 public:
+	SmallMario();
+
 	void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
 	void Render(Camera* camera);
 	void LoadAnimation();

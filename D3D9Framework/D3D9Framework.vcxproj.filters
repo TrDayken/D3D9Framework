@@ -76,6 +76,9 @@
     <Filter Include="Source Files\Entity\Mario\MarioModel\MarioState">
       <UniqueIdentifier>{0c71ac5e-e9fa-4b7f-83a5-8cc6ce525189}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity\Projectile">
+      <UniqueIdentifier>{5c2b6f52-646d-42ea-9286-b5db906dea78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -174,6 +177,9 @@
     <ClCompile Include="Koopa.cpp">
       <Filter>Source Files\Entity\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="FireShoot.cpp">
+      <Filter>Source Files\Entity\Projectile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -261,6 +267,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Koopa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FireShoot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
