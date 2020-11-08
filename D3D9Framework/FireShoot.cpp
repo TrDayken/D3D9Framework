@@ -1,5 +1,6 @@
 #include "FireShoot.h"
 
+
 FireShoot::FireShoot(float x, float y, int direction)
 {
 	this->x = x;
@@ -9,8 +10,13 @@ FireShoot::FireShoot(float x, float y, int direction)
 	Objecttag = Tag::projectile;
 }
 
-void FireShoot::Render()
+void FireShoot::Render(Camera* camera)
 {
+	Vector2 camPos = camera->toCameraPosistion(x, y);
+
+	string ani = ANI_BULLET;
+
+	animation_set[ani]->Render(camPos.x, camPos.y, direction);
 }
 
 void FireShoot::GetBoundingBox(float& l, float& t, float& r, float& b)
@@ -23,7 +29,9 @@ void FireShoot::GetBoundingBox(float& l, float& t, float& r, float& b)
 
 void FireShoot::LoadAnimation()
 {
-	//undone
+	AnimationManager* animation = AnimationManager::GetInstance();
+
+	AddAnimation(ANI_BULLET, animation->GetAnimation(ANI_BULLET));
 }
 
 void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
@@ -66,9 +74,9 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			if (e->obj->Objecttag == Tag::enemy) // if e->obj is Goomba 
 			{
 				LPGAMEOBJECT obj = e->obj;
-				//obj->CollisionObject(this, e->nx, e->ny);
+				obj->CollisionObject(this, e->nx, e->ny);
 			}
-			//else if (e->nx != 0 && nx != 0) Game::GetInstance()->GetCurrentScene()->delobject(this);
+			else if (e->nx != 0 && nx != 0) ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
 		}
 
 	}

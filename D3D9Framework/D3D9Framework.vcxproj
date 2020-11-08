@@ -165,6 +165,7 @@
     <ClCompile Include="PlayScence.cpp" />
     <ClCompile Include="RacoonMario.cpp" />
     <ClCompile Include="Scence.cpp" />
+    <ClCompile Include="ScenceManager.cpp" />
     <ClCompile Include="SmallMario.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="PlayScence.h" />
     <ClInclude Include="RacoonMario.h" />
     <ClInclude Include="Scence.h" />
+    <ClInclude Include="ScenceManager.h" />
     <ClInclude Include="SmallMario.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />

@@ -2,8 +2,8 @@
 
 void InvisibleBrick::Render(Camera* camera)
 {
-	Vector2 pos = camera->toCameraPosistion(x, y);
-	AnimationManager::GetInstance()->GetAnimation("ani-small-mario-hold")->Render(pos.x, pos.y);
+	//Vector2 pos = camera->toCameraPosistion(x, y);
+	//AnimationManager::GetInstance()->GetAnimation("ani-small-mario-hold")->Render(pos.x, pos.y);
 	
 }
 

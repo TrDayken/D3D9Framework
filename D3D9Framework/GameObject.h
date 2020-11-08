@@ -127,7 +127,7 @@ public:
 		std::vector<LPCOLLISIONEVENT>& coEventsResult,
 		float& min_ty,
 		float& ny, float& rdy);
-
+	virtual void CollisionObject(LPGAMEOBJECT obj, int nx, int ny) {};
 };
 
 #endif

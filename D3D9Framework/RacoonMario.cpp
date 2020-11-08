@@ -14,8 +14,11 @@ void RacoonMario::OnKeyDown(int KeyCode)
 		{
 			canFly = false;
 			flying = 1;
+			isOnGround = false;
+			Flyingtime_start = GetTickCount();
 			//lastFlying_Time = GetTickCount();
 		}
+		else if (isOnGround) vy = -FLOAT_GRAVITY * dt;
 	}
 
 	MarioModel::OnKeyDown(KeyCode);
@@ -62,60 +65,44 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	}
 
 
-	if (flying == 0)
-		vy += MARIO_GRAVITY * dt;
+	if (Game::GetInstance()->IsKeyDown(DIK_Z))
+	{
+		readytoAttack = false;
+		state.movement = MovingStates::Attack;
+	}
 
-	if (flying == 1 && (GetTickCount() - Flyingtime_start) > RACCOON_MARIO_FLYTIME)
+
+	//mario fly logic
+	if (flying == 0 && !isOnGround)
+		if (holdfly)
+		{
+			vy = FLOAT_GRAVITY;
+			setJumpstate(JumpingStates::Float);
+		}
+		else
+		{
+			vy += MARIO_GRAVITY * dt;
+		}
+	
+	DebugOut(L"%d \n", flying);
+	if (flying == 1 && (GetTickCount() - Flyingtime_start) < RACCOON_MARIO_FLYTIME)
 	{
 		flying = 2;
 		PMetter = 0;
 		if (holdfly)
-			vy += FLOAT_GRAVITY * dt;
+		{
+			vy = -FLOAT_GRAVITY * dt;
+			//setJumpstate(JumpingStates::Fly);
+		}
 		else
-			vy += MARIO_GRAVITY * dt;
+		{
+			vy = -RACCOON_MARIO_FLY_FROCE * dt;
+			setJumpstate(JumpingStates::Fly);
+		}
 		
 	}
-	//if (flying == 1 && !(GetTickCount() - lastFlying_Time > RACCOON_MARIO_FLYTIME))
-	//{
-	//	flying = 2;
-	//	PMetter = 0;
-	//	vy += MARIO_GRAVITY * dt;
-	//}
-
-	//if (flying == 1)
-	//{
-	//	isOnGround = false;
-	//	PMetter = 7;
-	//	if (state.jump == JumpingStates::Jump)
-	//	{
-	//		if (holdfly && ((GetTickCount() - Pushtime) > RACCOON_MARIO_FLOATTIME))
-	//		{
-	//			vy = 0;
-	//		}
-	//		else
-	//		{
-	//			vy += MARIO_GRAVITY * dt;
-	//		}
-
-	//	}
-	//}
-	//else if (flying == 2)
-	//{
-	//	if (isOnGround)
-	//	{
-	//		flying = 0;
-	//		PMetter = 0;
-	//	}
-	//	else
-	//		PMetter = 0;
-	//}
-
-	//if (flying == 0)
-	//{
-	//	vy += MARIO_GRAVITY * dt;
-	//}
-	//vy += MARIO_GRAVITY * dt;
-
+	else if(flying ==2 && !(GetTickCount() - Flyingtime_start < RACCOON_MARIO_FLYTIME))
+		flying = 0;
 }
 
 void RacoonMario::Render(Camera* camera)
@@ -135,9 +122,10 @@ void RacoonMario::Render(Camera* camera)
 		animation_set[ani]->setMultiplier();
 	}
 
-	if (!isOnGround)
+
+	if (state.movement == MovingStates::Attack)
 	{
-		ani = ANI_RACCOON_MARIO_JUMP;
+		ani = ANI_RACCOON_MARIO_SPIN;
 	}
 
 	if (PMetter == 7 && this->state.movement != MovingStates::Idle)
@@ -159,6 +147,16 @@ void RacoonMario::Render(Camera* camera)
 		ani = ANI_RACCOON_MARIO_CROUCH;
 	}
 
+	if (!isOnGround)
+	{
+		if (state.jump == JumpingStates::Fly)
+			ani = ANI_RACCOON_MARIO_FLY;
+		else if (state.jump == JumpingStates::Float)
+			ani = ANI_RACCOON_MARIO_FLOAT;
+		else
+			ani = ANI_RACCOON_MARIO_JUMP;
+	}
+
 	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, direction);
 
 }
@@ -173,10 +171,10 @@ void RacoonMario::LoadAnimation()
 	AddAnimation(ANI_RACCOON_MARIO_RUN, animation->GetAnimation(ANI_RACCOON_MARIO_RUN));
 	AddAnimation(ANI_RACCOON_MARIO_JUMP, animation->GetAnimation(ANI_RACCOON_MARIO_JUMP));
 	AddAnimation(ANI_RACCOON_MARIO_CROUCH, animation->GetAnimation(ANI_RACCOON_MARIO_CROUCH));
-
 	AddAnimation(ANI_RACCOON_MARIO_FLOAT, animation->GetAnimation(ANI_RACCOON_MARIO_FLOAT));
 	AddAnimation(ANI_RACCOON_MARIO_FLY, animation->GetAnimation(ANI_RACCOON_MARIO_FLY));
 	AddAnimation(ANI_RACCOON_MARIO_SPIN, animation->GetAnimation(ANI_RACCOON_MARIO_SPIN));
+
 	AddAnimation(ANI_RACCOON_MARIO_HOLD_IDLE, animation->GetAnimation(ANI_RACCOON_MARIO_HOLD_IDLE));
 	AddAnimation(ANI_RACCOON_MARIO_HOLD_MOVE, animation->GetAnimation(ANI_RACCOON_MARIO_HOLD_MOVE));
 	AddAnimation(ANI_RACCOON_MARIO_KICK, animation->GetAnimation(ANI_RACCOON_MARIO_KICK));

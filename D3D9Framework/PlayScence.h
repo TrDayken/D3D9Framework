@@ -5,14 +5,17 @@
 #include "Mario.h"
 #include "Map.h"
 #include "Camera.h"
+#include "ScenceManager.h"
+#include "Goomba.h"
 
 class PlayScence : public Scence
 {
 protected:
 	Mario* mario;
 	Map* tilemap;
-	Camera* camera;
 
+
+	std::vector<LPGAMEOBJECT> earseobjects;
 	std::vector <LPGAMEOBJECT> objects;
 
 public:
@@ -24,7 +27,11 @@ public:
 	virtual void Render();
 	virtual void Unload();
 
+	void addobject(LPGAMEOBJECT object) { objects.push_back(object); }
+	void delobject(LPGAMEOBJECT object) { earseobjects.push_back(object); }
 	Mario* GetPlayer() { return mario; }
+	void addtoScenceManager();
+	Camera* getCamera();
 };
 
 class PlayScenceKeyHandler : public ScenceKeyHandler

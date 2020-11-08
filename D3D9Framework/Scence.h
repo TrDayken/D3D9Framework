@@ -4,6 +4,7 @@
 #include <d3dx9.h>
 
 #include "KeyEventHandler.h"
+#include "GameObject.h"	
 
 class Scence
 {
@@ -11,6 +12,7 @@ protected:
 	KeyEventHandler* key_handler;
 	int id;
 	LPCWSTR sceneFilePath;
+	Camera* camera;
 
 public:
 	Scence();
@@ -18,6 +20,9 @@ public:
 
 	KeyEventHandler* GetKeyEventHandler() { return key_handler; }
 
+	virtual Camera* getCamera() { return this->camera; }
+	virtual void addobject(LPGAMEOBJECT object) = 0;
+	virtual void delobject(LPGAMEOBJECT object) = 0;
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
 	virtual void Update(DWORD dt) = 0;

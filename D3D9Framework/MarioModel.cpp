@@ -175,7 +175,9 @@ void MarioModel::OnKeyDown(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_A:
+	{
 		IncreasePMetterTime_Start = GetTickCount();
+	}
 	case DIK_X:
 		if (isOnGround)
 		{
@@ -289,12 +291,11 @@ void MarioModel::KeyState(BYTE* state)
 	{
 		if (isOnGround)
 		{
-			setJumpstate(JumpingStates::Jump);
 			isOnGround = false;
-			vy = MARIO_JUMP_FORCE;
+			setJumpstate(JumpingStates::Jump);
+			//vy = MARIO_JUMP_FORCE;
 
 			DebugOut(L"vy: %f\n", vy);
-			setJumpstate(JumpingStates::Jump);
 		}
 		//if (isOnGround)
 		//{

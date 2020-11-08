@@ -43,10 +43,14 @@ void BigMario::Render(Camera* camera)
 			ani = ANI_BIG_MARIO_JUMP;
 	}
 
-	if (PMetter == 7 && this->state.movement != MovingStates::Idle)
+	if (PMetter == 7 )
 	{
-		ani = ANI_BIG_MARIO_HIGH_SPEED;
+		if (state.jump == JumpingStates::Jump)
+			ani = ANI_BIG_MARIO_HIGH_JUMP;
+		else if (state.movement != MovingStates::Idle)
+			ani = ANI_BIG_MARIO_HIGH_SPEED;
 	}
+	
 
 	//when acceleration and velocity are opposite ani == crouching
 	if (acc_x * vx < 0)

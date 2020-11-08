@@ -17,7 +17,7 @@
 #define ANI_RACCOON_MARIO_CROUCH			"ani-raccoon-mario-crouch"	
 
 #define ANI_RACCOON_MARIO_FLOAT				"ani-raccoon-mario-float"
-#define ANI_RACCOON_MARIO_FLY				"ani-raccoon-mario-jump"
+#define ANI_RACCOON_MARIO_FLY				"ani-raccoon-mario-fly"
 #define ANI_RACCOON_MARIO_SPIN				"ani-raccoon-mario-spin"
 #define ANI_RACCOON_MARIO_HOLD_IDLE			"ani-raccoon-mario-hold-idle"
 #define ANI_RACCOON_MARIO_HOLD_MOVE			"ani-raccoon-mario-hold"
@@ -28,11 +28,14 @@
 #define MARIO_RACCOON_BBOX_HEIGHT_CROUCH			54
 
 // raccoon status
-#define RACCOON_MARIO_FLYTIME	0.001
-#define RACCOON_MARIO_FLOATTIME 40
+#define RACCOON_MARIO_FLYTIME	4000
+#define RACCOON_MARIO_FLOATTIME 5000
 
-#define FLOAT_GRAVITY			0.0005f
-#define RACCOON_MARIO_FLY_FROCE		-0.00002f
+#define FLOAT_GRAVITY			0.05f
+#define RACCOON_MARIO_FLY_FROCE		0.03f
+
+#define RACOON_ATTACK_ANI_TIME	250
+#define RACOON_ATTACK_COOLDOWN	300
 class RacoonMario : public MarioModel
 {
 private:
@@ -42,6 +45,8 @@ private:
 	DWORD Flyingtime_start;
 	int flying = 0;
 	bool holdfly;
+
+	bool readytoAttack = true;
 public:
 	RacoonMario();
 
