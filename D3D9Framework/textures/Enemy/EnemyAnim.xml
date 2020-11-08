@@ -8,16 +8,16 @@
     <!--Tan Goomba-->
     <!-- Animation IDLE-->
     <Animation aniId="ani-goomba-idle" frameTime="100">
-      <Sprite id="spr-goomba-idle-0" left="9" top="11"  width="16" height="16"/>
+      <Sprite id="spr-goomba-idle-0" left="9" top="11"  width="16" height="16" frameTime="100"/>
     </Animation>
     <!-- Animation WALK-->
     <Animation aniId="ani-goomba-walk" frameTime="100">
-      <Sprite id="spr-goomba-walk-0" left="9" top="11"  width="16" height="16"/>
-      <Sprite id="spr-goomba-walk-1" left="32" top="11"  width="16" height="16"/>
+      <Sprite id="spr-goomba-walk-0" left="9" top="11"  width="16" height="16" frameTime="100"/>
+      <Sprite id="spr-goomba-walk-1" left="32" top="11"  width="16" height="16" frameTime="100"/>
     </Animation>
     <!-- Animation DIE-->
     <Animation aniId="ani-goomba-die" frameTime="100">
-      <Sprite id="spr-goomba-die-0" left="54" top="18"  width="16" height="9"/>
+      <Sprite id="spr-goomba-die-0" left="54" top="18"  width="16" height="9" frameTime="100"/>
     </Animation>
 
     <!--Red Goomba-->

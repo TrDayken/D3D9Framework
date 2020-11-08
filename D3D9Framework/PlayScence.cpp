@@ -18,7 +18,7 @@ void PlayScence::Load()
 	Textures::GetInstance()->AddTexture(30, L"textures\\Misc\\fire-ball.png", D3DCOLOR_ARGB(255, 255, 255, 255));
 	Textures::GetInstance()->AddTexture(20, L"textures\\Mario\\Mario48.png", NULL);
 	Textures::GetInstance()->AddTexture(100, L"textures\\bbox.png", NULL);
-	SpriteManager::GetInstance()->AddSpriteUsingXML("textures\\Enemy\\EnemyDB.xml", Textures::GetInstance()->GetTexture(20));
+	SpriteManager::GetInstance()->AddSpriteUsingXML("textures\\Enemy\\EnemyDB.xml", Textures::GetInstance()->GetTexture(40));
 	SpriteManager::GetInstance()->AddSpriteUsingXML("textures\\Mario\\MarioDB.xml", Textures::GetInstance()->GetTexture(20));
 	SpriteManager::GetInstance()->AddSpriteUsingXML("textures\\Misc\\MiscDB.xml", Textures::GetInstance()->GetTexture(30));
 	AnimationManager::GetInstance()->AddAnimationUsingXML("textures\\Enemy\\EnemyAnim.xml");
@@ -114,18 +114,6 @@ void PlayScenceKeyHandler::KeyState(BYTE* states)
 
 void PlayScenceKeyHandler::OnKeyDown(int KeyCode)
 {
-	switch (KeyCode)
-	{
-	case DIK_9:
-	{
-		GameObject* goom = new Goomba();
-
-		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
-
-		goom->setPosition(cam->getCameraPositionX(),cam->getCameraPositionY());
-	}
-	}
-
 	MarioModel* currentmario = ((PlayScence*)scence)->GetPlayer()->GetCurrentMario();
 
 	currentmario->OnKeyDown(KeyCode);

@@ -38,6 +38,13 @@ struct CCollisionEvent
 	}
 };
 
+enum class Collision2DTag
+{
+	FourSide,
+	Top,
+	None,
+};
+
 enum class Tag
 {
 	platform,
@@ -65,14 +72,15 @@ protected:
 
 	int state;
 
-	DWORD dt;
+	Collision2DTag ColTag;
 
+	DWORD dt;
 	std::unordered_map<std::string,LPANIMATION> animation_set;
 
 public: 
+	Tag EntityTag;
 	GameObject();
 	~GameObject();
-	Tag Objecttag;
 	//speed and position geter/seter
 	void setPosition(float x, float y);
 	void getPosition(float& x, float& y);

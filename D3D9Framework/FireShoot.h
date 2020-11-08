@@ -24,5 +24,6 @@ public:
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void LoadAnimation();
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
+	void CollisionObject(LPGAMEOBJECT obj, int nx, int ny);
 };
 

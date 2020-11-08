@@ -7,9 +7,8 @@
 #include "Global_Variable.h"
 #include "Camera.h"
 
-#define GOOMBA_WALKING_SPEED 0.05f;
+#define GOOMBA_WALKING_SPEED 0.005f
 #define GOOMBA_GRAVITY  0.003f
-#define GOOMBA_FLY_DIE 0.9f
 
 #define GOOMA_TIME_DIE 300
 
@@ -20,23 +19,25 @@
 #define GOOMBA_STATE_WALKING 100
 #define GOOMBA_STATE_DIE 200
 
-#define ANI_GOOMBA_WALK	"ani-goomba-walk"
+#define ANI_GOOMBA_WALK		"ani-goomba-walk"
 #define ANI_GOOMBA_DIE		"ani-goomba-die"
 #define ANI_GOOMBA_IDLE		"ani-goomba-idle"
 
 class Goomba : public GameObject
 {
-	bool flydie;
-	DWORD timedie;
+	DWORD DelayDeadTime_start;
 public:
 
 	Goomba();
-	virtual void SetState(int state);
-	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-	virtual void Render(Camera* camera);
-	virtual void LoadAnimation();
-	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
-	virtual void CollisionObject(LPGAMEOBJECT obj, int nx, int ny);
+	void LoadAnimation();
+
+	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
+	void Render(Camera* camera);
+	
+	void SetState(int state);
+	
+	void CollisionObject(LPGAMEOBJECT obj, int nx, int ny);
 };
 
 #endif

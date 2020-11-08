@@ -5,6 +5,9 @@
 //#include "Utils.h"
 #include "Camera.h"
 #include "AnimationManager.h"
+#include "ScenceManager.h"
+#include "Goomba.h"
+
 //mario physic
 #define MARIO_GRAVITY					0.005f
 #define MARIO_ACCELERATION				0.002f
@@ -14,6 +17,7 @@
 #define MARIO_MIN_SPEED					0.1f
 #define MARIO_JUMP_FORCE				-0.95f
 #define MARIO_MINIMUM_LIFT				-0.001f
+#define MARIO_DEFLECT_MOB				0.3f
 
 // mario status
 #define MARIO_HIGH_JUMP_TIME			200

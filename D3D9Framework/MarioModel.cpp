@@ -17,9 +17,8 @@ MarioModel::MarioModel(float x, float y)
 
 void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
+	
 	GameObject::Update(dt);
-
-//DebugOut(L"[INFO]")
 
 	std::vector<LPCOLLISIONEVENT> coEvents;
 	std::vector<LPCOLLISIONEVENT> coEventsResult;
@@ -110,6 +109,17 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				ny = 0;
 			}
 			dx = vx * dt;
+		}
+
+		for (UINT i = 0; i < coEventsResult.size(); i++)
+		{
+			LPCOLLISIONEVENT e = coEventsResult[i];
+			if (e->obj->EntityTag == Tag::enemy)
+			{
+				LPGAMEOBJECT obj = e->obj;
+				obj->CollisionObject(this, e->nx, e->ny);
+				vy -= MARIO_DEFLECT_MOB * dt;
+			}
 		}
 
 		//collision by X axis stop the mario and dont accelerate
@@ -217,6 +227,16 @@ void MarioModel::OnKeyDown(int KeyCode)
 	case DIK_DOWN:
 		setMovestate(MovingStates::Crouch);
 		break;
+	case DIK_Q:
+	{
+		GameObject* goom = new Goomba();
+
+		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
+
+		goom->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
+		ScenceManager::GetInstance()->getCurrentScence()->addobject(goom);
+
+	}
 	}
 }
 

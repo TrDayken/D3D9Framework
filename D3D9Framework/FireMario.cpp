@@ -5,7 +5,8 @@
 FireMario::FireMario()
 {
 	LoadAnimation();
-
+	ColTag = Collision2DTag::FourSide;
+	EntityTag = Tag::player;
 }
 
 void FireMario::OnKeyDown(int KeyCode)
@@ -212,7 +213,7 @@ void FireMario::FireMarioRunandWalkState()
 		}
 	}
 
-	if (PMetter > 0 && (GetTickCount() - DecayPMetterTime_Start > MARIO_DECAY_PEMETTER_TIME) && state.movement != MovingStates::Run && abs(vx) < MARIO_TOP_RUNNING_SPEED)
+	if (!isOnGround && PMetter > 0 && (GetTickCount() - DecayPMetterTime_Start > MARIO_DECAY_PEMETTER_TIME) && state.movement != MovingStates::Run && abs(vx) < MARIO_TOP_RUNNING_SPEED)
 	{
 		DecayPMetterTime_Start = GetTickCount();
 		PMetter--;

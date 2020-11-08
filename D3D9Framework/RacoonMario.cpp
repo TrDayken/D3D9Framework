@@ -3,6 +3,8 @@
 RacoonMario::RacoonMario()
 {
 	LoadAnimation();
+	ColTag = Collision2DTag::FourSide;
+	EntityTag = Tag::player;
 }
 
 void RacoonMario::OnKeyDown(int KeyCode)

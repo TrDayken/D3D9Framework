@@ -16,10 +16,10 @@ void SpriteManager::AddSprite(std::string id, int left, int top, int right, int 
 void SpriteManager::AddSprite1(std::string id, int left, int top, int width, int height,int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture)
 {
 	RECT rect;
-	rect.top = top*3;
-	rect.bottom = top*3 + height*3;
 	rect.left = left*3;
+	rect.top = top*3;
 	rect.right = left*3 + width*3;
+	rect.bottom = top*3 + height*3;
 	LPSPRITE sprite = new Sprite(id, rect,xpivot, ypivot, texture);
 	sprites[id] = sprite;
 }

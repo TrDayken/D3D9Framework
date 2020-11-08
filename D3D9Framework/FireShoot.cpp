@@ -3,11 +3,11 @@
 
 FireShoot::FireShoot(float x, float y, int direction)
 {
+	EntityTag = Tag::projectile;
 	this->x = x;
 	this->y = y;
 	vx = direction * BULLET_VX;
 	LoadAnimation();
-	Objecttag = Tag::projectile;
 }
 
 void FireShoot::Render(Camera* camera)
@@ -63,22 +63,25 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		x += min_tx * dx + nx * 0.4;
 		y += min_ty * dy + ny * 0.4;
 		if (ny < 0) vy = -BULLET_BOUNCE;
-		if (nx != 0)
-		{
 
-		}
+
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
 
-			if (e->obj->Objecttag == Tag::enemy) // if e->obj is Goomba 
+			if (e->obj->EntityTag == Tag::enemy) // if e->obj is Goomba 
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->CollisionObject(this, e->nx, e->ny);
+				ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
 			}
 			else if (e->nx != 0 && nx != 0) ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
 		}
 
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+}
+
+void FireShoot::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
+{
 }

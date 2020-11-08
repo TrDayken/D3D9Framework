@@ -3,6 +3,8 @@
 BigMario::BigMario()
 {
 	LoadAnimation();
+	ColTag = Collision2DTag::FourSide;
+	EntityTag = Tag::player;
 }
 
 void BigMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
@@ -64,6 +66,8 @@ void BigMario::Render(Camera* camera)
 		crouchdiff = MARIO_BIG_BBOX_HEIGHT - MARIO_BIG_BBOX_HEIGHT_CROUCH;
 		ani = ANI_BIG_MARIO_CROUCH;
 	}
+
+	DebugOut(L"[INFO] Mario Pos %f %f \n", camPos.x, camPos.y);
 
 	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, direction);
 
@@ -148,8 +152,8 @@ void BigMario::BigMarioRunandWalkState()
 				vx -= dt * MARIO_DRAG * vx;
 			else vx = 0;
 	}
-	DebugOut(L"[INFO] Mario vx: %f \n", vx);
-	DebugOut(L"[INFO] PMETTER: %d \n", PMetter);
+	//DebugOut(L"[INFO] Mario vx: %f \n", vx);
+	//DebugOut(L"[INFO] PMETTER: %d \n", PMetter);
 
 	if (PMetter < MARIO_PMETTER && state.movement == MovingStates::Run && abs(vx) >= MARIO_TOP_RUNNING_SPEED && state.jump == JumpingStates::Stand)
 	{

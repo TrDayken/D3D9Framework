@@ -63,6 +63,7 @@ void Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
+
 		scence->Render();
 
 		spriteHandler->End();

@@ -66,6 +66,8 @@ void SmallMario::SmallMarioRunandWalkState()
 SmallMario::SmallMario()
 {
 	LoadAnimation();
+	ColTag = Collision2DTag::FourSide;
+	EntityTag = Tag::player;
 }
 
 void SmallMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
