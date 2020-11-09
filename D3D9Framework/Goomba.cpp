@@ -13,7 +13,7 @@ void Goomba::SetState(int state)
 	{
 	case GOOMBA_STATE_DIE:
 		vx = 0;
-		//ColTag = Collision2DTag::None;
+		ColTag = Collision2DTag::None;
 		y += GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE - 0.4;
 		break;
 	case GOOMBA_STATE_WALKING:

@@ -118,7 +118,8 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->CollisionObject(this, e->nx, e->ny);
-				vy -= MARIO_DEFLECT_MOB * dt;
+				if (e->ny < 0)
+				vy = -MARIO_DEFLECT_MOB * dt;
 			}
 		}
 
@@ -132,7 +133,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				state.movement = MovingStates::Idle;
 		}
 		if (ny != 0) {
-			vy = 0;
+			//vy = 0;
 			if (ny < 0)
 			{
 				isOnGround = true;
@@ -235,7 +236,17 @@ void MarioModel::OnKeyDown(int KeyCode)
 
 		goom->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
 		ScenceManager::GetInstance()->getCurrentScence()->addobject(goom);
+		break;
+	}
+	case DIK_W:
+	{
+		GameObject* koop = new Koopa();
 
+		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
+
+		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
+		ScenceManager::GetInstance()->getCurrentScence()->addobject(koop);
+		break;
 	}
 	}
 }
