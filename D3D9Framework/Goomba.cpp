@@ -12,6 +12,7 @@ void Goomba::SetState(int state)
 	switch (state)
 	{
 	case GOOMBA_STATE_DIE:
+		DelayDeadTime_start = GetTickCount();
 		vx = 0;
 		ColTag = Collision2DTag::None;
 		y += GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE - 0.4;
@@ -60,7 +61,7 @@ void Goomba::LoadAnimation()
 void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	GameObject::Update(dt);
-	vy += GOOMBA_GRAVITY * dt;
+
 
 	
 
@@ -71,6 +72,7 @@ void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	if (state != GOOMBA_STATE_DIE)
 	{
+		vy += GOOMBA_GRAVITY * dt;
 		vx = GOOMBA_WALKING_SPEED * dt;
 		CalcPotentialCollisions(coObjects, coEvents);
 	}
@@ -185,7 +187,6 @@ void Goomba::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
 
 	if (obj->EntityTag == Tag::projectile)
 	{
-		DelayDeadTime_start = GetTickCount();
 		SetState(GOOMBA_STATE_DIE);
 		vy = vx = 0;
 	}
@@ -194,7 +195,6 @@ void Goomba::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
 	{
 		if (ny < 0)
 		{
-			DelayDeadTime_start = GetTickCount();
 			SetState(GOOMBA_STATE_DIE);
 			vy = 0;
 		}

@@ -43,7 +43,7 @@ public:
 	void Render(Camera* camera);
 
 	void SetState(KoopaState state);
-
+	void OnOverLap(GameObject* obj);
 	void CollisionObject(LPGAMEOBJECT obj, int nx, int ny);
 };
 

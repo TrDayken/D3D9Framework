@@ -7,6 +7,7 @@
 #include "MarioModel.h"
 #include "Camera.h"
 #include "Animation.h"
+#include "AttackTail.h"
 
 // raccoon mario animation
 #define ANI_RACCOON_MARIO_IDLE				"ani-raccoon-mario-idle"
@@ -28,7 +29,7 @@
 #define MARIO_RACCOON_BBOX_HEIGHT_CROUCH			54
 
 // raccoon status
-#define RACCOON_MARIO_FLYTIME	4000
+#define RACCOON_MARIO_FLYTIME	1000
 #define RACCOON_MARIO_FLOATTIME 5000
 
 #define FLOAT_GRAVITY			0.05f
@@ -47,6 +48,12 @@ private:
 	bool holdfly;
 
 	bool readytoAttack = true;
+
+	DWORD timeAttackani_Start;
+	DWORD timeAttack_Start;
+
+	bool attackani;
+	bool canattack;
 public:
 	RacoonMario();
 

@@ -21,6 +21,14 @@ void RacoonMario::OnKeyDown(int KeyCode)
 			//lastFlying_Time = GetTickCount();
 		}
 		else if (isOnGround) vy = -FLOAT_GRAVITY * dt;
+	case DIK_A:
+		if (GetTickCount() - timeAttack_Start > RACOON_ATTACK_COOLDOWN)
+		{
+			timeAttackani_Start = GetTickCount();
+			timeAttack_Start = GetTickCount();
+			attackani = true;
+			canattack = true;
+		}
 	}
 
 	MarioModel::OnKeyDown(KeyCode);
@@ -56,6 +64,28 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	MarioModel::Update(dt, coObjects);
 
 	RacoonMarioRunandWalkState();
+
+	if ((GetTickCount() - timeAttackani_Start > RACOON_ATTACK_ANI_TIME))
+	{
+		attackani = false;
+	}
+
+	if (attackani)
+	{
+		setMovestate(MovingStates::Attack);
+	}
+
+	if (canattack)
+	{
+		canattack = false;
+		AttackTail* tail;
+		if (direction == 1)
+			tail = new AttackTail(x + 25, y + 45, direction);
+		else
+			tail = new AttackTail(x - 40, y + 45, direction);
+
+		ScenceManager::GetInstance()->getCurrentScence()->addobject(tail);
+	}
 
 	// mario in state jump and still pressing S add up jumpheight until out of time
 	if (this->state.jump == JumpingStates::Jump)

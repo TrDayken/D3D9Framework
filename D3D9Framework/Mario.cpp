@@ -42,6 +42,11 @@ void Mario::Render(Camera* camera)
 	CurrentMario->Render(camera);
 }
 
+void Mario::OnOverLap(GameObject* obj)
+{
+	CurrentMario->OnOverLap(obj);
+}
+
 void Mario::SetState(int state)
 {
 }

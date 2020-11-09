@@ -43,6 +43,7 @@ enum class Collision2DTag
 	FourSide,
 	Top,
 	None,
+	Overlapped
 };
 
 enum class Tag
@@ -50,7 +51,8 @@ enum class Tag
 	platform,
 	enemy,
 	player,
-	projectile
+	projectile,
+	shell
 };
 
 class GameObject
@@ -115,6 +117,10 @@ public:
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
 	virtual void Render(Camera* camera) = 0;
 	virtual void SetState(int state) { this->state = state; }
+
+	virtual void OnOverLap(GameObject* object) {};
+	bool IsOverLapped(GameObject* object);
+	bool CheckOverlapped(float left, float top, float right, float bottom, float left1, float top1, float right1, float bottom1);
 
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT coO);
 	void CalcPotentialCollisions(std::vector<LPGAMEOBJECT>* coObjects, std::vector<LPCOLLISIONEVENT>& coEvents);

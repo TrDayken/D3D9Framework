@@ -186,6 +186,9 @@
     <ClCompile Include="KoopaShell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AttackTail.cpp">
+      <Filter>Source Files\Entity\Projectile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -282,6 +285,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KoopaShell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackTail.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

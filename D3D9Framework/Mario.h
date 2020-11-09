@@ -41,7 +41,7 @@ public:
 		
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* collision_objects = NULL);
 	virtual void Render(Camera* camera);
-
+	virtual void OnOverLap(GameObject* obj);
 	void SetState(int state);
 	void SetLevel(int level) { level = 1; }
 	//void StartInvincibleFrame() { InvincibleFrame = 1; InvincibleTime = GetTickCount(); }

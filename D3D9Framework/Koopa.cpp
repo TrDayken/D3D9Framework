@@ -168,13 +168,22 @@ void Koopa::SetState(KoopaState state)
 	}
 }
 
+void Koopa::OnOverLap(GameObject* obj)
+{
+	if (obj->EntityTag == Tag::projectile)
+	{
+		ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+	}
+}
+
 void Koopa::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
 {
 	if (obj->EntityTag == Tag::enemy) return;
 
 	if (obj->EntityTag == Tag::projectile)
 	{
-		SetState(KoopaState::die);
+		if (IsOverLapped(obj));
+			SetState(KoopaState::die);
 		vx = 0, vy = 0;
 	}
 
@@ -186,6 +195,7 @@ void Koopa::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
 			{
 				SetState(KoopaState::shell);
 				vy = 0;
+				EntityTag = Tag::shell;
 			}
 			else
 			{
@@ -200,6 +210,20 @@ void Koopa::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
 					vx -= KOOPA_SLIDE_SPEED * dt;
 					//obj->setVy(-0.3f);
 				}
+			}
+		}
+
+		if (koopstate == KoopaState::shell)
+		{
+			if (nx < 0)
+			{
+				SetState(KoopaState::slide);
+				vx += KOOPA_SLIDE_SPEED * dt;
+			}
+			else if (nx > 0)
+			{
+				SetState(KoopaState::slide);
+				vx -= KOOPA_SLIDE_SPEED * dt;
 			}
 		}
 	}

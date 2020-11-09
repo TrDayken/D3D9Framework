@@ -114,13 +114,14 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
-			if (e->obj->EntityTag == Tag::enemy)
+			if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->CollisionObject(this, e->nx, e->ny);
 				if (e->ny < 0)
 				vy = -MARIO_DEFLECT_MOB * dt;
 			}
+
 		}
 
 		//collision by X axis stop the mario and dont accelerate

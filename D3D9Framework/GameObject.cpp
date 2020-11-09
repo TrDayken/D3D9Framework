@@ -127,6 +127,27 @@ void GameObject::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	dy = vy * dt;
 }
 
+
+
+bool GameObject::IsOverLapped(GameObject* object)
+{
+	float left, top, right, bottom;
+	float left1, top1, right1, bottom1;
+
+	this->GetBoundingBox(left, top, right, bottom);
+	object->GetBoundingBox(left1, top1, right1, bottom1);
+
+	return CheckOverlapped(left, top, right, bottom, left1, top1, right1, bottom1);
+}
+
+bool GameObject::CheckOverlapped(float left, float top, float right, float bottom, float left1, float top1, float right1, float bottom1)
+{
+	if (left >= right1 || left1 >= right || top >= bottom1 || top1 >= bottom)
+		return false;
+
+	return true;
+}
+
 LPCOLLISIONEVENT GameObject::SweptAABBEx(LPGAMEOBJECT coO)
 {
 	float sl, st, sr, sb;		// static object bbox
@@ -162,17 +183,26 @@ LPCOLLISIONEVENT GameObject::SweptAABBEx(LPGAMEOBJECT coO)
 void GameObject::CalcPotentialCollisions(std::vector<LPGAMEOBJECT>* coObjects, std::vector<LPCOLLISIONEVENT>& coEvents)
 {
 	for (UINT i = 0; i < coObjects->size(); i++)
-	{
+	{		
+
+		if(IsOverLapped(coObjects->at(i)))
+		{
+			this->OnOverLap(coObjects->at(i));
+		}
+
 		LPCOLLISIONEVENT e = SweptAABBEx(coObjects->at(i));
+
 
 		if (e->t > 0 && e->t <= 1.0f)
 		{
+			
 			float ml, mt, mr, mb;
 			e->obj->GetBoundingBox(ml, mt, mr, mb);
 			if (e->obj->ColTag == Collision2DTag::FourSide)
 				coEvents.push_back(e);
 			else if (e->ny < 0 && e->obj->ColTag == Collision2DTag::Top)
 				coEvents.push_back(e);
+
 		}
 		else
 			delete e;
@@ -205,7 +235,6 @@ void GameObject::FilterCollision(std::vector<LPCOLLISIONEVENT>& coEvents, std::v
 			min_ty = c->t; ny = c->ny; min_iy = i; rdy = c->dy;
 		}
 	}
-
 	if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
 	if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
 }
