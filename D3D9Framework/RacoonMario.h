@@ -29,11 +29,12 @@
 #define MARIO_RACCOON_BBOX_HEIGHT_CROUCH			54
 
 // raccoon status
-#define RACCOON_MARIO_FLYTIME	1000
+#define RACCOON_MARIO_FLYTIME	3000
 #define RACCOON_MARIO_FLOATTIME 5000
 
 #define FLOAT_GRAVITY			0.05f
 #define RACCOON_MARIO_FLY_FROCE		0.03f
+#define RACCOON_MARIO_FLOAT_FROCE	0.002f
 
 #define RACOON_ATTACK_ANI_TIME	250
 #define RACOON_ATTACK_COOLDOWN	300
@@ -44,14 +45,17 @@ private:
 
 	DWORD Pushtime;
 	DWORD Flyingtime_start;
-	int flying = 0;
-	bool holdfly;
+	//int flying = 0;
+	bool holdFloat;
+	bool isFlying;
+	bool isFloating;
 
-	bool readytoAttack = true;
 
+	//mario attack and attack animation
 	DWORD timeAttackani_Start;
 	DWORD timeAttack_Start;
 
+	bool readytoAttack = true;
 	bool attackani;
 	bool canattack;
 public:

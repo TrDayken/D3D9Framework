@@ -150,21 +150,26 @@ void Koopa::SetState(KoopaState state)
 	switch (state)
 	{
 	case KoopaState::die:
+		isHoldAble = false;
 		vx = 0;
 		ColTag = Collision2DTag::None;
-		y += KOOPA_BBOX_HEIGHT - KOOPA_BBOX_HEIGHT_SHELL - 0.4;
+		y += KOOPA_BBOX_HEIGHT - KOOPA_BBOX_HEIGHT_SHELL - 0.4f;
 		koopstate = KoopaState::die;
 		break;
 	case KoopaState::walking:
+		isHoldAble = false;
 		vx = -KOOPA_WALKING_SPEED;
 		koopstate = KoopaState::walking;
 		break;
 	case KoopaState::shell:
+		isHoldAble = true;
 		koopstate = KoopaState::shell;
 		vx = 0;
 		break;
 	case KoopaState::slide:
+		isHoldAble = false;
 		koopstate = KoopaState::slide;
+		break;
 	}
 }
 
@@ -197,34 +202,34 @@ void Koopa::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
 				vy = 0;
 				EntityTag = Tag::shell;
 			}
-			else
-			{
-				SetState(KoopaState::slide);
-				if (obj->getDirection() == 1)
-				{
-					vx += KOOPA_SLIDE_SPEED * dt;
-					//obj->setVy(-0.3f);
-				}
-				else
-				{
-					vx -= KOOPA_SLIDE_SPEED * dt;
-					//obj->setVy(-0.3f);
-				}
-			}
-		}
+		//	else
+		//	{
+		//		SetState(KoopaState::slide);
+		//		if (obj->getDirection() == 1)
+		//		{
+		//			vx += KOOPA_SLIDE_SPEED * dt;
+		//			//obj->setVy(-0.3f);
+		//		}
+		//		else
+		//		{
+		//			vx -= KOOPA_SLIDE_SPEED * dt;
+		//			//obj->setVy(-0.3f);
+		//		}
+		//	}
+		//}
 
-		if (koopstate == KoopaState::shell)
-		{
-			if (nx < 0)
-			{
-				SetState(KoopaState::slide);
-				vx += KOOPA_SLIDE_SPEED * dt;
-			}
-			else if (nx > 0)
-			{
-				SetState(KoopaState::slide);
-				vx -= KOOPA_SLIDE_SPEED * dt;
-			}
+		//if (koopstate == KoopaState::shell)
+		//{
+		//	if (nx < 0)
+		//	{
+		//		SetState(KoopaState::slide);
+		//		vx += KOOPA_SLIDE_SPEED * dt;
+		//	}
+		//	else if (nx > 0)
+		//	{
+		//		SetState(KoopaState::slide);
+		//		vx -= KOOPA_SLIDE_SPEED * dt;
+		//	}
 		}
 	}
 }

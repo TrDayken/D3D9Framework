@@ -76,6 +76,7 @@ protected:
 
 	Collision2DTag ColTag;
 
+	bool isHoldAble = false;
 	DWORD dt;
 	std::unordered_map<std::string,LPANIMATION> animation_set;
 
@@ -90,6 +91,8 @@ public:
 	void setSpeed(float vx, float vy);
 	void GetSpeed(float& vx, float& vy);
 	
+	bool IsHoldAble();
+
 	float getX();
 	void setX(float x);
 

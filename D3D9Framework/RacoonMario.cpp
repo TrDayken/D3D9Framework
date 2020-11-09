@@ -14,13 +14,17 @@ void RacoonMario::OnKeyDown(int KeyCode)
 	case DIK_X:
 		if (canFly == true)
 		{
+			setJumpstate(JumpingStates::Fly);
+			//isOnGround = false;
 			canFly = false;
-			flying = 1;
-			isOnGround = false;
+			isFlying = true;
 			Flyingtime_start = GetTickCount();
+			vy = -MARIO_GRAVITY * dt;
 			//lastFlying_Time = GetTickCount();
 		}
-		else if (isOnGround) vy = -FLOAT_GRAVITY * dt;
+		//else if (isOnGround) 
+		//	vy = -FLOAT_GRAVITY * dt;
+		break;
 	case DIK_A:
 		if (GetTickCount() - timeAttack_Start > RACOON_ATTACK_COOLDOWN)
 		{
@@ -29,6 +33,7 @@ void RacoonMario::OnKeyDown(int KeyCode)
 			attackani = true;
 			canattack = true;
 		}
+		break;
 	}
 
 	MarioModel::OnKeyDown(KeyCode);
@@ -41,9 +46,9 @@ void RacoonMario::KeyState(BYTE* state)
 	if (game->IsKeyDown(DIK_X))
 	{
 		if(!isOnGround)
-		holdfly = true;
+		holdFloat = true;
 	}
-	else holdfly = false;
+	else holdFloat = false;
 
 	MarioModel::KeyState(state);
 }
@@ -53,7 +58,9 @@ void RacoonMario::OnKeyUp(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_X:
-		flying = 0;
+		isFlying = false;
+		isFloating = false;
+		break;
 	}
 
 	MarioModel::OnKeyUp(KeyCode);
@@ -82,7 +89,7 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		if (direction == 1)
 			tail = new AttackTail(x + 25, y + 45, direction);
 		else
-			tail = new AttackTail(x - 40, y + 45, direction);
+			tail = new AttackTail(x , y + 45, direction);
 
 		ScenceManager::GetInstance()->getCurrentScence()->addobject(tail);
 	}
@@ -105,36 +112,58 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 
 	//mario fly logic
-	if (flying == 0 && !isOnGround)
-		if (holdfly)
-		{
-			vy = FLOAT_GRAVITY;
-			setJumpstate(JumpingStates::Float);
-		}
-		else
-		{
-			vy += MARIO_GRAVITY * dt;
-		}
-	
-	DebugOut(L"%d \n", flying);
-	if (flying == 1 && (GetTickCount() - Flyingtime_start) < RACCOON_MARIO_FLYTIME)
+	if (state.jump == JumpingStates::Fly && !isOnGround)
 	{
-		flying = 2;
-		PMetter = 0;
-		if (holdfly)
-		{
-			vy = -FLOAT_GRAVITY * dt;
-			//setJumpstate(JumpingStates::Fly);
-		}
-		else
-		{
-			vy = -RACCOON_MARIO_FLY_FROCE * dt;
-			setJumpstate(JumpingStates::Fly);
-		}
-		
+
+		if (!(GetTickCount() - Flyingtime_start > RACCOON_MARIO_FLYTIME) && isFlying)
+			//if (isFlying)
+			//{
+				vy = -RACCOON_MARIO_FLY_FROCE * dt;
+			//}
+			else
+			{
+				state.jump = JumpingStates::Float;
+			}
 	}
-	else if(flying ==2 && !(GetTickCount() - Flyingtime_start < RACCOON_MARIO_FLYTIME))
-		flying = 0;
+	else if (holdFloat)
+	{
+		if (state.jump == JumpingStates::Float && !isOnGround);
+		{
+			vy = RACCOON_MARIO_FLOAT_FROCE * dt;
+		}
+	}
+	else vy += MARIO_GRAVITY * dt;
+	
+	//if (flying == 0 && !isOnGround)
+	//	if (holdfly)
+	//	{
+	//		vy = FLOAT_GRAVITY;
+	//		setJumpstate(JumpingStates::Float);
+	//	}
+	//	else
+	//	{
+	//		vy += MARIO_GRAVITY * dt;
+	//	}
+	//
+	//DebugOut(L"%d \n", flying);
+	//if (flying == 1 && (GetTickCount() - Flyingtime_start) < RACCOON_MARIO_FLYTIME)
+	//{
+	//	flying = 2;
+	//	PMetter = 0;
+	//	if (holdfly)
+	//	{
+	//		vy = -FLOAT_GRAVITY * dt;
+	//		//setJumpstate(JumpingStates::Fly);
+	//	}
+	//	else
+	//	{
+	//		vy = -RACCOON_MARIO_FLY_FROCE * dt;
+	//		setJumpstate(JumpingStates::Fly);
+	//	}
+	//	
+	//}
+	//else if(flying ==2 && !(GetTickCount() - Flyingtime_start < RACCOON_MARIO_FLYTIME))
+	//	flying = 0;
 }
 
 void RacoonMario::Render(Camera* camera)
@@ -297,9 +326,12 @@ void RacoonMario::RacoonMarioRunandWalkState()
 		}
 	}
 
+
 	if (PMetter > 0 && (GetTickCount() - DecayPMetterTime_Start > MARIO_DECAY_PEMETTER_TIME) && state.movement != MovingStates::Run && abs(vx) < MARIO_TOP_RUNNING_SPEED)
 	{
 		DecayPMetterTime_Start = GetTickCount();
 		PMetter--;
 	}
+
+	DebugOut(L"[INFO] PMETTER: %d \n ", PMetter);
 }

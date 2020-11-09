@@ -5,7 +5,7 @@
 #include "Camera.h"
 #include "ScenceManager.h"
 
-#define ATTACKTAIL_BBOX_WIDTH 100
+#define ATTACKTAIL_BBOX_WIDTH 50
 #define ATTACKTAIL_BBOX_HEIGHT 30
 
 #define RACOON_ATTACK_ANI_TIME	250

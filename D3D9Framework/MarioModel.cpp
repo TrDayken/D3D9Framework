@@ -114,6 +114,10 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
+			if (e->obj->EntityTag == Tag::shell && e->obj->IsHoldAble())
+			{
+				Hold = e->obj;
+			}
 			if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell)
 			{
 				LPGAMEOBJECT obj = e->obj;
@@ -134,7 +138,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				state.movement = MovingStates::Idle;
 		}
 		if (ny != 0) {
-			//vy = 0;
+			vy = 0;
 			if (ny < 0)
 			{
 				isOnGround = true;
@@ -144,7 +148,10 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		}
 	}
 
-	
+	if (Hold != NULL)
+	{
+		Hold->setPosition(x, y);
+	}
 
 	// clean up collision events
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
@@ -173,6 +180,12 @@ void MarioModel::setMovestate(MovingStates move)
 
 void MarioModel::setJumpstate(JumpingStates jump)
 {
+	switch (jump)
+	{
+	case JumpingStates::Fly:
+		isOnGround = false;
+		break;
+	}
 	this->state.jump = jump;
 }
 

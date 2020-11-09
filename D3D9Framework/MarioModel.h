@@ -83,7 +83,7 @@ protected:
 	bool isHighJump;
 	bool isIncreasingPMetter = false;
 	int  PMetter = 0;
-
+	GameObject* Hold;
 public:
 	MarioModel(float x = 0, float y = 0);
 

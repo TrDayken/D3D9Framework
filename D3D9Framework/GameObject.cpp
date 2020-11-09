@@ -36,6 +36,11 @@ void GameObject::GetSpeed(float& vx, float& vy)
 	vy = this->vy;
 }
 
+bool GameObject::IsHoldAble()
+{
+	return isHoldAble;
+}
+
 float GameObject::getX()
 {
 	return this->x;
