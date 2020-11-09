@@ -116,14 +116,14 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	{
 
 		if (!(GetTickCount() - Flyingtime_start > RACCOON_MARIO_FLYTIME) && isFlying)
-			//if (isFlying)
-			//{
-				vy = -RACCOON_MARIO_FLY_FROCE * dt;
-			//}
-			else
-			{
-				state.jump = JumpingStates::Float;
-			}
+		{
+			PMetter = 0;
+			vy = -RACCOON_MARIO_FLY_FROCE * dt;
+		}
+		else
+		{
+			state.jump = JumpingStates::Float;
+		}
 	}
 	else if (holdFloat)
 	{
