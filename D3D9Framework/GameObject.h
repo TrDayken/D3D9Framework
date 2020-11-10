@@ -43,7 +43,6 @@ enum class Collision2DTag
 	FourSide,
 	Top,
 	None,
-	Overlapped
 };
 
 enum class Tag
@@ -52,7 +51,8 @@ enum class Tag
 	enemy,
 	player,
 	projectile,
-	shell
+	shell,
+	tail
 };
 
 class GameObject

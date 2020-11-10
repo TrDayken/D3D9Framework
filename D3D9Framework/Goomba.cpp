@@ -4,22 +4,42 @@ Goomba::Goomba()
 {
 	LoadAnimation();
 	EntityTag = Tag::enemy;
+	direction = 1;
+	SetState(GoombaState::walking);
 }
 
-void Goomba::SetState(int state)
+void Goomba::SetState(GoombaState state)
 {
-	GameObject::SetState(state);
+	//GameObject::SetState(state);
 	switch (state)
 	{
-	case GOOMBA_STATE_DIE:
+	case GoombaState::die:
+		goomstate = GoombaState::die;
 		DelayDeadTime_start = GetTickCount();
 		vx = 0;
 		ColTag = Collision2DTag::None;
-		y += GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE - 0.4;
 		break;
-	case GOOMBA_STATE_WALKING:
+	case GoombaState::walking:
 		vx = -GOOMBA_WALKING_SPEED;
+		goomstate = GoombaState::walking;
 		break;
+	case GoombaState::flydie:
+		FlyDieTime_start = GetTickCount();
+		DelayDeadTime_start = GetTickCount();
+		ColTag = Collision2DTag::None;
+		goomstate = GoombaState::flydie;
+		break;
+	}
+}
+
+void Goomba::OnOverLap(GameObject* obj)
+{
+	if (obj->EntityTag == Tag::tail)
+	{
+		if (this->getDirection() != obj->getDirection())
+			vx = -vx;
+			
+		SetState(GoombaState::flydie);
 	}
 }
 
@@ -29,7 +49,7 @@ void Goomba::GetBoundingBox(float& left, float& top, float& right, float& bottom
 	top = y;
 	right = x + GOOMBA_BBOX_WIDTH;
 
-	if (state == GOOMBA_STATE_DIE)
+	if (goomstate == GoombaState::die)
 		bottom = y + GOOMBA_BBOX_HEIGHT_DIE;
 	else
 		bottom = y + GOOMBA_BBOX_HEIGHT;
@@ -39,14 +59,21 @@ void Goomba::Render(Camera* camera)
 {
 	Vector2 camPos = camera->toCameraPosistion(x, y);
 	
+	float diediff = 0;
+
+	if (goomstate == GoombaState::die)
+	{
+		diediff = GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE;
+	}
+
 	string ani = ANI_GOOMBA_WALK;
 
-	if (state == GOOMBA_STATE_DIE) 
+	if (goomstate == GoombaState::die) 
 	{
 			ani = ANI_GOOMBA_DIE;
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y,direction);
+	animation_set[ani]->Render(camPos.x, camPos.y + diediff,direction);
 }
 
 void Goomba::LoadAnimation()
@@ -60,20 +87,31 @@ void Goomba::LoadAnimation()
 
 void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+	goomstate;
 	GameObject::Update(dt);
-
-
-	
 
 	std::vector<LPCOLLISIONEVENT> coEvents;
 	std::vector<LPCOLLISIONEVENT> coEventsResult;
 	std::vector<LPGAMEOBJECT> coObjectsResult;
 	coEvents.clear();
 
-	if (state != GOOMBA_STATE_DIE)
+	if (goomstate == GoombaState::flydie)
+	{
+		if (!(GetTickCount() - FlyDieTime_start > GOOMBA_TIME_FLYDIE))
+			vy = -GOOMBA_FLYDIE_FORCE_VY *dt;
+
+		vy += GOOMBA_GRAVITY * dt;
+	}
+
+	//if goomba not die -> can collison with other obj
+	if (goomstate != GoombaState::die && goomstate != GoombaState::flydie)
 	{
 		vy += GOOMBA_GRAVITY * dt;
-		vx = GOOMBA_WALKING_SPEED * dt;
+		//direction = right
+		if (direction == 1)
+			vx = GOOMBA_WALKING_SPEED * dt;
+		else
+			vx = -GOOMBA_WALKING_SPEED * dt;
 		CalcPotentialCollisions(coObjects, coEvents);
 	}
 
@@ -88,7 +126,6 @@ void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		float rdx = 0;
 		float rdy = 0;
 
-		// TODO: This is a very ugly designed function!!!!
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
 		//filter colision axis by axis
@@ -99,7 +136,6 @@ void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			y += min_ty * dy + ny * 0.4f;
 			dy = 0;
 
-			//DebugOut(L"		[X]point = : %f \n",px);
 			coEvents.clear();
 			CalcPotentialCollisions(&coObjectsResult, coEvents);
 			if (coEvents.size() > 0)
@@ -107,7 +143,6 @@ void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				FilterCollisionX(coEvents, coEventsResult, min_tx, nx, rdx);
 				//x -= min_ty * dx;
 				x += min_tx * dx + nx * 0.4f;
-				DebugOut(L"		[X] coEvents.size() = : %d \n", coEvents.size());
 			}
 			else
 			{
@@ -139,46 +174,28 @@ void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			dx = vx * dt;
 		}
 
-		//if (coEvents.size() == 0)
-		//{
-		//	x += dx;
-		//	y += dy;
-		//}
-		//else
-		//{
-		//	float min_tx, min_ty, nx = 0, ny = 0;
-		//	float rdx = 0;
-		//	float rdy = 0;
-		//	FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
-
-		//	y += min_ty * dy + ny * 0.4;
-		//	x += min_tx * dx + nx * 0.4;
-
-		//	if (ny != 0) vy = 0;
-		//	if (nx != 0)
-		//	{
-		//		vx = -vx;
-		//	}
-		//}
 		if (ny != 0) vy = 0;
 		if (nx != 0)
 		{
+			direction = -direction;
 			vx = -vx;
 		}
 
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 
 
-		//after die delete this
-		Game* game = Game::GetInstance();
-		if (state == GOOMBA_STATE_DIE )
-			if (GetTickCount() -  DelayDeadTime_start >= GOOMA_TIME_DIE)
-				ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
-
+		// not in viewport delete goomba
 		float camy = ScenceManager::GetInstance()->getCurrentScence()->getCamera()->getCameraPositionY();
 
 		if (y > camy + WINDOW_HEIGHT) ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
 	}
+
+	//after die delete this
+	Game* game = Game::GetInstance();
+	if (goomstate == GoombaState::die|| goomstate== GoombaState::flydie)
+		if (GetTickCount() -  DelayDeadTime_start >= GOOMBA_TIME_DIE)
+			ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+
 }
 
 void Goomba::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
@@ -187,7 +204,7 @@ void Goomba::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
 
 	if (obj->EntityTag == Tag::projectile)
 	{
-		SetState(GOOMBA_STATE_DIE);
+		SetState(GoombaState::die);
 		vy = vx = 0;
 	}
 
@@ -195,14 +212,13 @@ void Goomba::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
 	{
 		if (ny < 0)
 		{
-			SetState(GOOMBA_STATE_DIE);
+			SetState(GoombaState::die);
 			vy = 0;
 		}
-		//else
-			//obj->DownLevel();
 	}
+
 	else if (obj->EntityTag != Tag::player)
 	{
-		SetState(GOOMBA_STATE_DIE);
+		SetState(GoombaState::die);
 	}
 }

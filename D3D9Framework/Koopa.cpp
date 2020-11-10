@@ -139,7 +139,7 @@ void Koopa::Render(Camera* camera)
 		ani = ANI_RED_KOOPA_SLIDE;
 
 	animation_set[ani]->Render(camPos.x, camPos.y, direction);
-	DebugOut(L"%d \n", koopstate);
+	//DebugOut(L"[INFO] KoopaState: %d \n", koopstate);
 
 	//RenderBoundingBox(camera);
 }
@@ -163,8 +163,8 @@ void Koopa::SetState(KoopaState state)
 		break;
 	case KoopaState::shell:
 		isHoldAble = true;
-		koopstate = KoopaState::shell;
 		vx = 0;
+		koopstate = KoopaState::shell;
 		break;
 	case KoopaState::slide:
 		isHoldAble = false;

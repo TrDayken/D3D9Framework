@@ -3,9 +3,10 @@
 AttackTail::AttackTail(float x, float y, int direction)
 {
 	Deletetime = GetTickCount();
-	EntityTag = Tag::projectile;
+	EntityTag = Tag::tail;
 	this->x = x; 
 	this->y = y;
+	direction = 1;
 }
 
 void AttackTail::Render(Camera* camera)

@@ -87,9 +87,15 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		canattack = false;
 		AttackTail* tail;
 		if (direction == 1)
+		{
 			tail = new AttackTail(x + 25, y + 45, direction);
+			tail->setDirection(direction);
+		}
 		else
-			tail = new AttackTail(x , y + 45, direction);
+		{
+			tail = new AttackTail(x, y + 45, direction);
+			tail->setDirection(direction);
+		}
 
 		ScenceManager::GetInstance()->getCurrentScence()->addobject(tail);
 	}

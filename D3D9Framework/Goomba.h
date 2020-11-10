@@ -7,25 +7,34 @@
 #include "Global_Variable.h"
 #include "Camera.h"
 
-#define GOOMBA_WALKING_SPEED 0.005f
-#define GOOMBA_GRAVITY  0.003f
+#define GOOMBA_WALKING_SPEED			0.005f
+#define GOOMBA_GRAVITY					0.005f
+#define GOOMBA_FLYDIE_FORCE_VY			0.095f
 
-#define GOOMA_TIME_DIE 300
+#define GOOMBA_TIME_DIE					2000
+#define GOOMBA_TIME_FLYDIE				50
 
-#define GOOMBA_BBOX_WIDTH 48
-#define GOOMBA_BBOX_HEIGHT 48
-#define GOOMBA_BBOX_HEIGHT_DIE 27
-
-#define GOOMBA_STATE_WALKING 100
-#define GOOMBA_STATE_DIE 200
+#define GOOMBA_BBOX_WIDTH				48
+#define GOOMBA_BBOX_HEIGHT				48
+#define GOOMBA_BBOX_HEIGHT_DIE			27
 
 #define ANI_GOOMBA_WALK		"ani-goomba-walk"
 #define ANI_GOOMBA_DIE		"ani-goomba-die"
 #define ANI_GOOMBA_IDLE		"ani-goomba-idle"
 
+enum class GoombaState
+{
+	die,
+	walking,
+	flydie
+};
+
 class Goomba : public GameObject
 {
+	GoombaState goomstate;
 	DWORD DelayDeadTime_start;
+	DWORD FlyDieTime_start;
+
 public:
 
 	Goomba();
@@ -35,8 +44,8 @@ public:
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
 	void Render(Camera* camera);
 	
-	void SetState(int state);
-	
+	void SetState(GoombaState state);
+	void OnOverLap(GameObject* obj);
 	void CollisionObject(LPGAMEOBJECT obj, int nx, int ny);
 };
 

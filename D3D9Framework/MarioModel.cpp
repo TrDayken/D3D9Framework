@@ -66,7 +66,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		//filter colision axis by axis
 		if (min_tx > min_ty)
 		{
-			float px = x;
+			//float px = x;
 			x += min_ty * dx;
 			y += min_ty * dy + ny * 0.4f;
 			dy = 0;
@@ -78,12 +78,12 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			{
 				FilterCollisionX(coEvents, coEventsResult, min_tx, nx, rdx);
 				//x -= min_ty * dx;
-				x += min_tx * dx + nx * 0.4f;
-				DebugOut(L"		[X] coEvents.size() = : %d \n", coEvents.size());
+				x += min_tx * dx + nx * 0.4f - min_ty * dx;
+				//DebugOut(L"		[X] coEvents.size() = : %d \n", coEvents.size());
 			}
 			else
 			{
-				x = px + dx;
+				x += dx - min_ty * dx;
 				nx = 0;
 			}
 			dy = vy * dt;
@@ -91,7 +91,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		}
 		else
 		{
-			float py = y;
+			//float py = y;
 			x += min_tx * dx + nx * 0.4f;
 			y += min_tx * dy;
 			dx = 0;
@@ -100,12 +100,12 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			if (coEvents.size() > 0)
 			{
 				FilterCollisionY(coEvents, coEventsResult, min_ty, ny, rdy);
-				y += min_ty * dy + ny * 0.4f;
+				y += min_ty * dy + ny * 0.4f - min_tx * dy;
 			}
 
 			else
 			{
-				y = py + dy;
+				y = y + dy - min_tx * dy;
 				ny = 0;
 			}
 			dx = vx * dt;
@@ -162,20 +162,6 @@ void MarioModel::setMovestate(MovingStates move)
 	prestate = this->state;
 	this->state.movement = move;
 
-	//if (state.movement == MovingStates::Crouch)
-	//{
-	//	if (prestate.movement != MovingStates::Crouch)
-	//	{
-	//		y += (MARIO_BBOX_HEIGHT - MARIO_BBOX_HEIGHT_CROUCH - 0.4);
-	//	}
-	//}
-	//else
-	//{
-	//	if (prestate.movement == MovingStates::Crouch)
-	//	{
-	//		y -= (MARIO_BBOX_HEIGHT - MARIO_BBOX_HEIGHT_CROUCH + 0.4);
-	//	}
-	//}
 }
 
 void MarioModel::setJumpstate(JumpingStates jump)
