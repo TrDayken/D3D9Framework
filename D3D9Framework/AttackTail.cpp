@@ -4,6 +4,7 @@ AttackTail::AttackTail(float x, float y, int direction)
 {
 	Deletetime = GetTickCount();
 	EntityTag = Tag::tail;
+	ColTag = Collision2DTag::None;
 	this->x = x; 
 	this->y = y;
 	direction = 1;
