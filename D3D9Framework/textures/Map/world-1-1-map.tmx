@@ -429,7 +429,7 @@
   <object id="23" x="6719.8" y="1103.91" width="96.2045" height="144.419"/>
   <object id="24" x="6911.77" y="1150" width="96.2345" height="98"/>
   <object id="25" x="6720" y="478" width="96" height="530"/>
-  <object id="26" x="1056" y="1103.33" width="96.6667" height="144.667"/>
+  <object id="26" x="1056" y="1103.33" width="96.6667" height="145.667"/>
   <object id="27" x="4464" y="1006" width="96" height="51"/>
  </objectgroup>
  <objectgroup id="14" name="Ghost">

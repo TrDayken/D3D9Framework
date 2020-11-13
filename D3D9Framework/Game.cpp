@@ -122,16 +122,19 @@ void Game::Init(HWND hWnd)
 /*
 	Utility function to wrap LPD3DXSPRITE::Draw
 */
-void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT Rect, Vector2 scale, float rotation, float centerx, float centery,int xpivot, int ypivot, int direction ,int alpha)
+void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT Rect, Vector2 scale, float rotation, float centerx, float centery,int xpivot, int ypivot, int direction , int flipy ,int alpha)
 {
 	D3DXMATRIX defaultMatrix, transformedMatrix;
 
 	spriteHandler->GetTransform(&defaultMatrix);
 
-	if(direction == 1)
-		D3DXMatrixTransformation2D(&transformedMatrix, &Vector2(x + centerx, y + centery), 0.0f, &scale, &Vector2(x, y) , rotation, &Vector2(-xpivot,ypivot));
-	else 
-		D3DXMatrixTransformation2D(&transformedMatrix, &Vector2(x + centerx, y + centery), 0.0f, &Vector2(- scale.x,scale.y), &Vector2(x, y), rotation, &Vector2(xpivot, ypivot));
+	if (direction != 1)
+		scale.x = -scale.x;
+
+	if (flipy != 1)
+		scale.y = -scale.y;
+
+	D3DXMatrixTransformation2D(&transformedMatrix, &Vector2(x + centerx, y + centery), 0.0f, &scale, &Vector2(x, y) , rotation, &Vector2(-xpivot,ypivot));
 	
 	spriteHandler->SetTransform(&transformedMatrix);
 	spriteHandler->Draw(texture, &Rect, /*&Vector3(centerx, centery, 0)*/ NULL, &Vector3(x, y, 0), D3DCOLOR_ARGB(alpha, 255, 255, 255));

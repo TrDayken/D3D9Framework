@@ -93,7 +93,7 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		}
 		else
 		{
-			tail = new AttackTail(x, y + 45, direction);
+			tail = new AttackTail(x - 30, y + 45, direction);
 			tail->setDirection(direction);
 		}
 

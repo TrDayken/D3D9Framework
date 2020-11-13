@@ -71,7 +71,6 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			y += min_ty * dy + ny * 0.4f;
 			dy = 0;
 
-			//DebugOut(L"		[X]point = : %f \n",px);
 			coEvents.clear();
 			CalcPotentialCollisions(&coObjectsResult, coEvents);
 			if (coEvents.size() > 0)

@@ -70,7 +70,7 @@ void BigMario::Render(Camera* camera)
 
 	//DebugOut(L"[INFO] Mario Pos %f %f \n", camPos.x, camPos.y);
 
-	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, direction);
+	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, direction, flipy);
 
 	RenderBoundingBox(camera);
 	//DebugOut(L"[INFO] %f, %f \n", camPos.x, camPos.y);

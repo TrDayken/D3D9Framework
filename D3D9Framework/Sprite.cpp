@@ -56,9 +56,9 @@ void Sprite::Draw()
 	Game::GetInstance()->Draw(position.x, position.y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y), xPivot, yPivot, 255);
 }
 
-void Sprite::Draw(int x, int y,int direction , int alpha)
+void Sprite::Draw(int x, int y,int direction , int flipy, int alpha)
 {
-	Game::GetInstance()->Draw(x, y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y), xPivot, yPivot, direction, alpha);
+	Game::GetInstance()->Draw(x, y, texture, spriteRect, scale, rotation, SpriteWidth * origin.x, SpriteHeight * (1 - origin.y), xPivot, yPivot, direction ,flipy, alpha);
 }
 
 

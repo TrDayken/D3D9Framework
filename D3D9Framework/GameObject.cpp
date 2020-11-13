@@ -5,6 +5,7 @@ GameObject::GameObject()
 	x = y = 0;
 	vx = vy = 0;
 	direction = 1;
+	flipy = 1;
 }
 
 GameObject::~GameObject()
@@ -233,6 +234,7 @@ void GameObject::CalcPotentialCollisions(std::vector<LPGAMEOBJECT>* coObjects, s
 		{
 			
 			float ml, mt, mr, mb;
+			// check for collisiont tag and collide direction if match then create the event!!!
 			e->obj->GetBoundingBox(ml, mt, mr, mb);
 			if (e->obj->ColTag == Collision2DTag::FourSide)
 				coEvents.push_back(e);

@@ -28,7 +28,7 @@ void Animation::setMultiplier(int multiplier)
 	this->multiplier = multiplier;
 }
 
-void Animation::Render(float x, float y,int direction , int alpha)
+void Animation::Render(float x, float y,int direction , int flipy , int alpha)
 {
 	DWORD now = GetTickCount();
 
@@ -48,6 +48,6 @@ void Animation::Render(float x, float y,int direction , int alpha)
 				currentFrame = 0;
 		}
 
-		frames[currentFrame]->GetSprite()->Draw(x, y, direction, alpha);
+		frames[currentFrame]->GetSprite()->Draw(x, y, direction, flipy, alpha);
 	}
 }

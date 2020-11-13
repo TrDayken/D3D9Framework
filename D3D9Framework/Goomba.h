@@ -11,7 +11,7 @@
 #define GOOMBA_GRAVITY					0.005f
 #define GOOMBA_FLYDIE_FORCE_VY			0.095f
 // goomba time config
-#define GOOMBA_TIME_DIE					2000
+#define GOOMBA_TIME_DIE					1000
 #define GOOMBA_TIME_FLYDIE				50
 // goomba bbox settings
 #define GOOMBA_BBOX_WIDTH				48

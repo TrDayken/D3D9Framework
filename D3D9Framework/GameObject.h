@@ -61,7 +61,7 @@ protected:
 	
 
 	//object direction 1 = right , -1 = left
-	int direction;
+	int direction, flipy;
 
 	// object position
 	float x, y;	
