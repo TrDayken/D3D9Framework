@@ -26,6 +26,7 @@
 
 #define KEYBOARD_BUFFER_SIZE 1024
 
+//game math configuration
 #define PI 3.1614f
 
 typedef D3DXVECTOR2 Vector2;

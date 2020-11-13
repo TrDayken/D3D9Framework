@@ -97,7 +97,7 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			tail->setDirection(direction);
 		}
 
-		ScenceManager::GetInstance()->getCurrentScence()->addobject(tail);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(tail);
 	}
 
 	// mario in state jump and still pressing S add up jumpheight until out of time

@@ -1,16 +1,16 @@
-#ifndef __INVISIBLEBRICK_H__
-#define __INVISIBLEBRICK_H__
+#ifndef __GHOSTPLATFORM_H__
+#define __GHOSTPLATFORM_H__
 
 #include "GameObject.h"
 #include "Camera.h"
 
-class InvisibleBrick: public GameObject
+class GhostPlatform :public GameObject
 {
+
 public:
-	InvisibleBrick();
+	GhostPlatform();
 	virtual void Render(Camera* camera);
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 };
 
-#endif
-
+#endif // !__GHOSTPLATFORM_H__

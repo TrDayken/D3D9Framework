@@ -47,7 +47,7 @@ void FireMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		canattack = false;
 		FireShoot* fireshoot = new FireShoot(x, y, direction);
 
-		ScenceManager::GetInstance()->getCurrentScence()->addobject(fireshoot);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(fireshoot);
 	}
 
 	if (this->state.jump == JumpingStates::Jump)

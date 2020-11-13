@@ -72,10 +72,14 @@ protected:
 	// object speed
 	float vx, vy;
 
+	// object width, height;
+	float width, height;
+
 	int state;
 
 	Collision2DTag ColTag;
 
+	bool isBeingHold = false;
 	bool isHoldAble = false;
 	DWORD dt;
 	std::unordered_map<std::string,LPANIMATION> animation_set;
@@ -91,7 +95,9 @@ public:
 	void setSpeed(float vx, float vy);
 	void GetSpeed(float& vx, float& vy);
 	
+	void setIsBeingHold(bool isBeingHold);
 	bool IsHoldAble();
+	void setIsHoldAble(bool ishold);
 
 	float getX();
 	void setX(float x);
@@ -105,6 +111,12 @@ public:
 	float getVy();
 	void setVy(float vy);
 
+	float getWidth();
+	void setWidth(float width);
+
+	float getHeight();
+	void setHeight(float height);
+
 	void setDirection(int direction);
 	int getDirection();
 
@@ -113,7 +125,7 @@ public:
 	void RenderBoundingBox(Camera* camera);
 	
 	void AddAnimation(std::string name , LPANIMATION animation);
-	void setAnimationSet();
+	//void setAnimationSet();
 	//void CloneAnimation();
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) = 0;
@@ -144,7 +156,7 @@ public:
 		std::vector<LPCOLLISIONEVENT>& coEventsResult,
 		float& min_ty,
 		float& ny, float& rdy);
-	virtual void CollisionObject(LPGAMEOBJECT obj, int nx, int ny) {};
+	virtual void OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny) {};
 };
 
 #endif

@@ -114,16 +114,23 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
-			if (e->obj->EntityTag == Tag::shell && e->obj->IsHoldAble())
+			//if collide with obj with the right tag -> process the mario collide with the object
+			if (e->obj->EntityTag == Tag::shell && e->obj->IsHoldAble() && Game::GetInstance()->IsKeyDown(DIK_A))
 			{
+				e->obj->setIsBeingHold(true);
+				e->obj->setIsHoldAble(false);
 				Hold = e->obj;
 			}
 			if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell)
 			{
 				LPGAMEOBJECT obj = e->obj;
-				obj->CollisionObject(this, e->nx, e->ny);
-				if (e->ny < 0)
-				vy = -MARIO_DEFLECT_MOB * dt;
+				obj->OnCollisionEnter(this, e->nx, e->ny);
+				//if (e->ny < 0)
+				//{
+				//	//vy = -MARIO_DEFLECT_MOB * dt;
+				//	//state.jump = JumpingStates::Jump;
+				//}
+					
 			}
 
 		}
@@ -133,7 +140,6 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		{
  			vx = 0;
 			acc_x = 0;
-			//DebugOut(L"%f \n", acc_x);
 			if (state.movement != MovingStates::Crouch)
 				state.movement = MovingStates::Idle;
 		}
@@ -147,10 +153,14 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			}
 		}
 	}
-
+	
+	//if mario hold an object set the object with mario position;
 	if (Hold != NULL)
 	{
-		Hold->setPosition(x, y);
+		if (direction == 1)
+			Hold->setPosition(x + 30, y + 25);
+		else
+			Hold->setPosition(x - 30, y + 25);
 	}
 
 	// clean up collision events
@@ -210,19 +220,19 @@ void MarioModel::OnKeyDown(int KeyCode)
 	//	this->state.movement = MovingStates::Run;
 	//	break;
 		
-	case DIK_F1:
+	case DIK_1:
 		this->changestate = 0;
 		break;
 	
-	case DIK_F2:
+	case DIK_2:
 		this->changestate = 1;
 		break;
 
-	case DIK_F3:
+	case DIK_3:
 		this->changestate = 2;
 		break;
 		
-	case DIK_F4:
+	case DIK_4:
 		this->changestate = 3;
 		break;
 	case DIK_DOWN:
@@ -235,7 +245,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
 		goom->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
-		ScenceManager::GetInstance()->getCurrentScence()->addobject(goom);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(goom);
 		break;
 	}
 	case DIK_W:
@@ -245,7 +255,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
 		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
-		ScenceManager::GetInstance()->getCurrentScence()->addobject(koop);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
 		break;
 	}
 	}
@@ -265,7 +275,16 @@ void MarioModel::OnKeyUp(int keyCode)
 		{
 			isHighJump = false;
 		}
+		break;
 	case DIK_A:
+		if (Hold != NULL)
+		{
+			if(this->direction == Hold->getDirection())
+				Hold->setVx(-Hold->getVx());
+			Hold->setIsBeingHold(false);
+			Hold->setIsHoldAble(true);
+			Hold = NULL;
+		}
 		DecayPMetterTime_Start = GetTickCount();
 		break;
 	}
@@ -325,8 +344,6 @@ void MarioModel::KeyState(BYTE* state)
 			isOnGround = false;
 			setJumpstate(JumpingStates::Jump);
 			//vy = MARIO_JUMP_FORCE;
-
-			DebugOut(L"vy: %f\n", vy);
 		}
 		//if (isOnGround)
 		//{

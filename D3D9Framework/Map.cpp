@@ -43,13 +43,45 @@ void Map::LoadMapfromTMX(const char* FilePath, const char* Path)
 		for (TiXmlElement* TMXlayer = root->FirstChildElement("layer"); TMXlayer != NULL; TMXlayer = TMXlayer->NextSiblingElement("layer"))
 		{
 			LPLAYER layer = new Layer( TMXlayer);
-			if (layer->getName() == "")
-			{
-
-			}
 			this->AddLayer(layer);
 		}
-		
+
+		for (TiXmlElement* TMXObjectsgroup = root->FirstChildElement("objectgroup"); TMXObjectsgroup != NULL; TMXObjectsgroup = TMXObjectsgroup->NextSiblingElement("objectgroup"))
+		{
+			for (TiXmlElement* TMXObject = TMXObjectsgroup->FirstChildElement("object"); TMXObject != NULL; TMXObject = TMXObject->NextSiblingElement("object"))
+			{
+				LPGAMEOBJECT object{};
+				std::string name = TMXObjectsgroup->Attribute("name");
+				if (name == "Solid")
+				{
+					object = new InvisibleBrick();
+				}
+				else if (name == "Ghost")
+				{
+					//continue;
+					object = new GhostPlatform();
+				}
+				else if (name == "Enemies")
+				{
+					continue;
+				}
+
+				float x, y, width, height;
+
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y); 
+				TMXObject->QueryFloatAttribute("width", &width);
+				TMXObject->QueryFloatAttribute("height", &height);
+
+				object->setX(x);
+				object->setY(y);
+				object->setWidth(width);
+				object->setHeight(height);
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(object);
+			}
+		}
+
 		DebugOut(L"[INFO] map load successful \n");
 	}
 	else

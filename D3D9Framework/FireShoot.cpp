@@ -72,10 +72,10 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			if (e->obj->EntityTag == Tag::enemy)
 			{
 				LPGAMEOBJECT obj = e->obj;
-				obj->CollisionObject(this, e->nx, e->ny);
-				ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+				obj->OnCollisionEnter(this, e->nx, e->ny);
+				ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 			}
-			else if (e->nx != 0 && nx != 0) ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+			else if (e->nx != 0 && nx != 0) ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 		}
 
 	}

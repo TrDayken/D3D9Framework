@@ -18,7 +18,7 @@
 #define MARIO_MIN_SPEED					0.1f
 #define MARIO_JUMP_FORCE				-0.95f
 #define MARIO_MINIMUM_LIFT				-0.001f
-#define MARIO_DEFLECT_MOB				0.05f
+#define MARIO_DEFLECT_MOB				0.95f
 
 // mario status
 #define MARIO_HIGH_JUMP_TIME			200

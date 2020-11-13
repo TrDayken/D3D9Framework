@@ -36,9 +36,19 @@ void GameObject::GetSpeed(float& vx, float& vy)
 	vy = this->vy;
 }
 
+void GameObject::setIsBeingHold(bool isBeingHold)
+{
+	this->isBeingHold = isBeingHold;
+}
+
 bool GameObject::IsHoldAble()
 {
 	return isHoldAble;
+}
+
+void GameObject::setIsHoldAble(bool ishold)
+{
+	isHoldAble = ishold;
 }
 
 float GameObject::getX()
@@ -68,6 +78,7 @@ float GameObject::getVx()
 
 void GameObject::setVx(float vx)
 {
+	this->vx += vx;
 }
 
 float GameObject::getVy()
@@ -77,7 +88,27 @@ float GameObject::getVy()
 
 void GameObject::setVy(float vy)
 {
-	this->vy = vy;
+	this->vy += vy;
+}
+
+float GameObject::getWidth()
+{
+	return this->width;
+}
+
+void GameObject::setWidth(float width)
+{
+	this->width = width;
+}
+
+float GameObject::getHeight()
+{
+	return this->height;
+}
+
+void GameObject::setHeight(float height)
+{
+	this->height = height;
 }
 
 void GameObject::setDirection(int direction)

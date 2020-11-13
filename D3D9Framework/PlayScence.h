@@ -27,8 +27,8 @@ public:
 	virtual void Render();
 	virtual void Unload();
 
-	void addobject(LPGAMEOBJECT object) { objects.push_back(object); }
-	void delobject(LPGAMEOBJECT object) { earseobjects.push_back(object); }
+	void AddObject(LPGAMEOBJECT object) { objects.push_back(object); }
+	void DeleteObject(LPGAMEOBJECT object) { earseobjects.push_back(object); }
 	Mario* GetPlayer() { return mario; }
 	void addtoScenceManager();
 	Camera* getCamera();

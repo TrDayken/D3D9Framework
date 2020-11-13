@@ -59,17 +59,17 @@ void AttackTail::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 			if (e->obj->EntityTag == Tag::enemy)
 			{
 				LPGAMEOBJECT obj = e->obj;
-				obj->CollisionObject(this, e->nx, e->ny);
-				ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+				obj->OnCollisionEnter(this, e->nx, e->ny);
+				ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 			}
-			else if (e->nx != 0 && nx != 0) ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+			else if (e->nx != 0 && nx != 0) ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 		}
 
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 
 	if (GetTickCount() - Deletetime > RACOON_ATTACK_ANI_TIME)
-		ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 }
 
 void AttackTail::OnOverLap(GameObject* obj)

@@ -12,6 +12,8 @@
 #include "Camera.h"
 #include "GameObject.h"
 #include "InvisibleBrick.h"
+#include "GhostPlatform.h"
+#include "ScenceManager.h"
 
 
 class Map

@@ -187,18 +187,18 @@ void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		// not in viewport delete goomba
 		float camy = ScenceManager::GetInstance()->getCurrentScence()->getCamera()->getCameraPositionY();
 
-		if (y > camy + WINDOW_HEIGHT) ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+		if (y > camy + WINDOW_HEIGHT) ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 	}
 
 	//after die delete this
 	Game* game = Game::GetInstance();
 	if (goomstate == GoombaState::die|| goomstate== GoombaState::flydie)
 		if (GetTickCount() -  DelayDeadTime_start >= GOOMBA_TIME_DIE)
-			ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+			ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 
 }
 
-void Goomba::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
+void Goomba::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 {
 	if (obj->EntityTag == Tag::enemy) return;
 

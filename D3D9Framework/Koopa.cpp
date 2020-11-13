@@ -107,6 +107,16 @@ void Koopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				ny = 0;
 			}
 			dx = vx * dt;
+
+			for (UINT i = 0; i < coEventsResult.size(); i++)
+			{
+				LPCOLLISIONEVENT e = coEventsResult[i];
+				if (e->obj->EntityTag == Tag::enemy)
+				{
+					LPGAMEOBJECT obj = e->obj;
+					obj->OnCollisionEnter(this, e->nx, e->ny);
+				}
+			}
 		}
 
 		if (ny != 0) vy = 0;
@@ -136,12 +146,17 @@ void Koopa::Render(Camera* camera)
 		ani = ANI_RED_KOOPA_IDLE;
 	}
 	else if (koopstate == KoopaState::slide)
-		ani = ANI_RED_KOOPA_SLIDE;
+	{
+		if (!isBeingHold)
+			ani = ANI_RED_KOOPA_SLIDE;
+		else
+			ani = ANI_RED_KOOPA_IDLE;
+	}
 
 	animation_set[ani]->Render(camPos.x, camPos.y, direction);
 	//DebugOut(L"[INFO] KoopaState: %d \n", koopstate);
 
-	//RenderBoundingBox(camera);
+	RenderBoundingBox(camera);
 }
 
 void Koopa::SetState(KoopaState state)
@@ -175,15 +190,23 @@ void Koopa::SetState(KoopaState state)
 
 void Koopa::OnOverLap(GameObject* obj)
 {
-	if (obj->EntityTag == Tag::projectile)
+	if (obj->EntityTag == Tag::tail)
 	{
-		ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+		SetState(KoopaState::shell);
+		//ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
 	}
 }
 
-void Koopa::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
+void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 {
-	if (obj->EntityTag == Tag::enemy) return;
+	if (obj->EntityTag == Tag::shell)
+	{
+		if (koopstate == KoopaState::walking)
+		{
+			SetState(KoopaState::die);
+			vx = 0; vy = 0;
+		}
+	}
 
 	if (obj->EntityTag == Tag::projectile)
 	{
@@ -202,34 +225,34 @@ void Koopa::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
 				vy = 0;
 				EntityTag = Tag::shell;
 			}
-		//	else
-		//	{
-		//		SetState(KoopaState::slide);
-		//		if (obj->getDirection() == 1)
-		//		{
-		//			vx += KOOPA_SLIDE_SPEED * dt;
-		//			//obj->setVy(-0.3f);
-		//		}
-		//		else
-		//		{
-		//			vx -= KOOPA_SLIDE_SPEED * dt;
-		//			//obj->setVy(-0.3f);
-		//		}
-		//	}
-		//}
+			else
+			{
+				SetState(KoopaState::slide);
+				if (obj->getX() <= this->x)
+				{
+					vx += KOOPA_SLIDE_SPEED * dt;
+					//obj->setVy(-10.3f);
+				}
+				else
+				{
+					vx -= KOOPA_SLIDE_SPEED * dt;
+					//obj->setVy(-10.3f);
+				}
+			}	
+		}
 
-		//if (koopstate == KoopaState::shell)
-		//{
-		//	if (nx < 0)
-		//	{
-		//		SetState(KoopaState::slide);
-		//		vx += KOOPA_SLIDE_SPEED * dt;
-		//	}
-		//	else if (nx > 0)
-		//	{
-		//		SetState(KoopaState::slide);
-		//		vx -= KOOPA_SLIDE_SPEED * dt;
-		//	}
+		if (koopstate == KoopaState::shell)
+		{
+			if (nx < 0)
+			{	
+				SetState(KoopaState::slide);
+				vx += KOOPA_SLIDE_SPEED * dt;
+			}
+			else if (nx > 0)
+			{
+				SetState(KoopaState::slide);
+				vx -= KOOPA_SLIDE_SPEED * dt;
+			}
 		}
 	}
 }

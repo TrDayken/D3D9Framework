@@ -45,7 +45,7 @@ public:
 
 	void SetState(KoopaState state);
 	void OnOverLap(GameObject* obj);
-	void CollisionObject(LPGAMEOBJECT obj, int nx, int ny);
+	void OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny);
 };
 
 #endif // !__KOOPA_H__

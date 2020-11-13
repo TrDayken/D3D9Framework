@@ -27,8 +27,6 @@ void PlayScence::Load()
 
 	tilemap = new Map();
 	tilemap->LoadMapfromTMX("textures\\Map\\world-1-1-map.tmx", "textures\\Map\\");
-	tilemap->setObjectonLayer(&objects, "Ground");
-
 
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
