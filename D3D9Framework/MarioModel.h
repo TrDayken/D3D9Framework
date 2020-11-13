@@ -10,15 +10,15 @@
 #include "Koopa.h"
 
 //mario physic
-#define MARIO_GRAVITY					0.005f
+#define MARIO_GRAVITY					0.003f
 #define MARIO_ACCELERATION				0.002f
 #define MARIO_DRAG						0.007f
 #define MARIO_TOP_WALKING_SPEED			0.30f
 #define MARIO_TOP_RUNNING_SPEED			0.4f
 #define MARIO_MIN_SPEED					0.1f
-#define MARIO_JUMP_FORCE				-0.95f
+#define MARIO_JUMP_FORCE				-0.65f
 #define MARIO_MINIMUM_LIFT				-0.001f
-#define MARIO_DEFLECT_MOB				0.95f
+#define MARIO_DEFLECT_MOB				0.05f
 
 // mario status
 #define MARIO_HIGH_JUMP_TIME			200

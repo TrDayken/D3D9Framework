@@ -8,7 +8,7 @@
 #include "Camera.h"
 //koopa physics
 #define KOOPA_WALKING_SPEED			0.005f
-#define KOOPA_SLIDE_SPEED			0.05f
+#define KOOPA_SLIDE_SPEED			0.03f
 #define KOOPA_GRAVITY				0.003f
 #define KOOPA_TIME_DIE				300
 //koopa bbox settings

@@ -30,7 +30,6 @@ void PlayScence::Load()
 
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
-	//camera->FollowObject(mario);
 	
 	mario = new Mario(100,1000);
 	mario->setCamera(camera);
@@ -52,6 +51,7 @@ void PlayScence::Update(DWORD dt)
 		
 	}
 
+
 	if (earseobjects.size() > 0)
 	{
 		for (auto e : earseobjects)
@@ -65,12 +65,13 @@ void PlayScence::Update(DWORD dt)
 		earseobjects.clear();
 	}
 
+
 	if (camera->IsFollow())
-		camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, mario->getY() - WINDOW_HEIGHT/2);
+		camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, 800/*mario->getY() - WINDOW_HEIGHT/2*/);
 
 	mario->Update(dt, &coObjects);
-
 	camera->Update(dt);
+
 
 }
 

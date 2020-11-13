@@ -2,6 +2,11 @@
 #define __SCENCEMANAGER_H__
 
 #include "Scence.h"
+//#include "PlayScence.h"
+#include "AnimationManager.h"
+#include "SpriteManager.h"
+#include "Textures.h"
+#include "Utils.h"
 
 class ScenceManager
 {
@@ -11,6 +16,8 @@ class ScenceManager
 public:
 
 	void AddScence(Scence* scence);
+
+	void LoadScenceFromXML(const char* FilePath);
 
 	Scence* getCurrentScence();
 

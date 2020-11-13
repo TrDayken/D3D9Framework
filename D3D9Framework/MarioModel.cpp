@@ -66,7 +66,6 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		//filter colision axis by axis
 		if (min_tx > min_ty)
 		{
-			//float px = x;
 			x += min_ty * dx;
 			y += min_ty * dy + ny * 0.4f;
 			dy = 0;
@@ -78,7 +77,6 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				FilterCollisionX(coEvents, coEventsResult, min_tx, nx, rdx);
 				//x -= min_ty * dx;
 				x += min_tx * dx + nx * 0.4f - min_ty * dx;
-				//DebugOut(L"		[X] coEvents.size() = : %d \n", coEvents.size());
 			}
 			else
 			{
@@ -124,11 +122,11 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->OnCollisionEnter(this, e->nx, e->ny);
-				//if (e->ny < 0)
-				//{
-				//	//vy = -MARIO_DEFLECT_MOB * dt;
-				//	//state.jump = JumpingStates::Jump;
-				//}
+				if (e->ny < 0)
+				{
+					vy = -MARIO_DEFLECT_MOB * dt;
+					state.jump = JumpingStates::Jump;
+				}
 					
 			}
 
@@ -137,13 +135,14 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		//collision by X axis stop the mario and dont accelerate
 		if (nx != 0)
 		{
- 			vx = 0;
-			acc_x = 0;
 			if (state.movement != MovingStates::Crouch)
 				state.movement = MovingStates::Idle;
+ 			vx = 0;
+			acc_x = 0;
 		}
 		if (ny != 0) {
-			vy = 0;
+			if(isOnGround)
+				vy = 0;
 			if (ny < 0)
 			{
 				isOnGround = true;

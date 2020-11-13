@@ -14,9 +14,6 @@
     <Filter Include="Source Files\FrameWork\Object">
       <UniqueIdentifier>{b20ce330-8505-461a-8559-f4176398b49e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FrameWork\Scence">
-      <UniqueIdentifier>{d18b3817-7ed4-468f-bc8c-9a55436e52fa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\FrameWork\Animation, Sprite and Texture">
       <UniqueIdentifier>{7a6c2e3f-179e-4ec4-867a-3fa3ec6c032d}</UniqueIdentifier>
     </Filter>
@@ -28,9 +25,6 @@
     </Filter>
     <Filter Include="Source Files\FrameWork\Utils">
       <UniqueIdentifier>{8f23e39c-19eb-4290-b5ee-db293df63aba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FrameWork\Scence\PlayScence">
-      <UniqueIdentifier>{4a46242c-9fad-4346-ad6c-a6d1c7e16df8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Entity">
       <UniqueIdentifier>{1f3618df-83ea-4f4d-8ab1-ac4a1e308832}</UniqueIdentifier>
@@ -71,14 +65,29 @@
     <Filter Include="Source Files\Entity\Projectile">
       <UniqueIdentifier>{5c2b6f52-646d-42ea-9286-b5db906dea78}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FrameWork\Scence\ScenceManager">
-      <UniqueIdentifier>{70d3b879-0292-468f-9da7-474862b71f69}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Entity\Blocks\SolidBlocks">
       <UniqueIdentifier>{4766121c-71d0-4cc4-b458-74dc55c3df59}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Entity\Blocks\GhostBlock">
       <UniqueIdentifier>{6e222f9b-505c-42d7-9a6c-8a541f3fa704}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Animation, Sprite and Texture\Animation">
+      <UniqueIdentifier>{9380efbc-6643-472c-8454-ec328804e6c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Animation, Sprite and Texture\Sprite">
+      <UniqueIdentifier>{080125e5-c01f-412e-8412-e06e25cdf99e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Animation, Sprite and Texture\Texture">
+      <UniqueIdentifier>{043a0153-5fb7-4c53-a31f-e3bee0e67a65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\ScenceManager">
+      <UniqueIdentifier>{70d3b879-0292-468f-9da7-474862b71f69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\ScenceManager\Scence">
+      <UniqueIdentifier>{d18b3817-7ed4-468f-bc8c-9a55436e52fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\ScenceManager\Scence\PlayScence">
+      <UniqueIdentifier>{4a46242c-9fad-4346-ad6c-a6d1c7e16df8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,15 +99,6 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\FrameWork</Filter>
-    </ClCompile>
-    <ClCompile Include="Textures.cpp">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteManager.cpp">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\FrameWork\Object</Filter>
@@ -115,12 +115,6 @@
     <ClCompile Include="tinyXML\tinyxml\tinyxmlerror.cpp">
       <Filter>Source Files\FrameWork\tinyXML</Filter>
     </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimationManager.cpp">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
-    </ClCompile>
     <ClCompile Include="KeyEventHandler.cpp">
       <Filter>Source Files\FrameWork\KeyHandler</Filter>
     </ClCompile>
@@ -128,10 +122,10 @@
       <Filter>Source Files\FrameWork\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Scence.cpp">
-      <Filter>Source Files\FrameWork\Scence</Filter>
+      <Filter>Source Files\FrameWork\ScenceManager\Scence</Filter>
     </ClCompile>
     <ClCompile Include="PlayScence.cpp">
-      <Filter>Source Files\FrameWork\Scence\PlayScence</Filter>
+      <Filter>Source Files\FrameWork\ScenceManager\Scence\PlayScence</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files\FrameWork\Map</Filter>
@@ -179,7 +173,7 @@
       <Filter>Source Files\Entity\Projectile</Filter>
     </ClCompile>
     <ClCompile Include="ScenceManager.cpp">
-      <Filter>Source Files\FrameWork\Scence\ScenceManager</Filter>
+      <Filter>Source Files\FrameWork\ScenceManager</Filter>
     </ClCompile>
     <ClCompile Include="InvisibleBrick.cpp">
       <Filter>Source Files\Entity\Blocks\SolidBlocks</Filter>
@@ -193,6 +187,21 @@
     <ClCompile Include="KoopaShell.cpp">
       <Filter>Source Files\Entity\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationManager.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteManager.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -201,23 +210,11 @@
     <ClInclude Include="tinyXML\tinyxml\tinyxml.h">
       <Filter>Source Files\FrameWork\tinyXML</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Source Files\FrameWork\Utils</Filter>
     </ClInclude>
     <ClInclude Include="TileSet.h">
       <Filter>Source Files\FrameWork\Map\Tileset</Filter>
-    </ClInclude>
-    <ClInclude Include="Textures.h">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteManager.h">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
     </ClInclude>
     <ClInclude Include="SmallMario.h">
       <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
@@ -230,9 +227,6 @@
     </ClInclude>
     <ClInclude Include="FireMario.h">
       <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationManager.h">
-      <Filter>Source Files\FrameWork\Animation, Sprite and Texture</Filter>
     </ClInclude>
     <ClInclude Include="AttackTail.h">
       <Filter>Source Files\Entity\Projectile</Filter>
@@ -253,7 +247,7 @@
       <Filter>Source Files\Entity\Mario\MarioModel</Filter>
     </ClInclude>
     <ClInclude Include="Scence.h">
-      <Filter>Source Files\FrameWork\Scence</Filter>
+      <Filter>Source Files\FrameWork\ScenceManager\Scence</Filter>
     </ClInclude>
     <ClInclude Include="Global_Variable.h">
       <Filter>Source Files\FrameWork\Game_Variables</Filter>
@@ -268,7 +262,7 @@
       <Filter>Source Files\FrameWork\Map\Layer</Filter>
     </ClInclude>
     <ClInclude Include="PlayScence.h">
-      <Filter>Source Files\FrameWork\Scence\PlayScence</Filter>
+      <Filter>Source Files\FrameWork\ScenceManager\Scence\PlayScence</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Source Files\FrameWork\Map</Filter>
@@ -283,7 +277,7 @@
       <Filter>Source Files\Entity\Mario</Filter>
     </ClInclude>
     <ClInclude Include="ScenceManager.h">
-      <Filter>Source Files\FrameWork\Scence\ScenceManager</Filter>
+      <Filter>Source Files\FrameWork\ScenceManager</Filter>
     </ClInclude>
     <ClInclude Include="InvisibleBrick.h">
       <Filter>Source Files\Entity\Blocks\SolidBlocks</Filter>
@@ -296,6 +290,21 @@
     </ClInclude>
     <ClInclude Include="KoopaShell.h">
       <Filter>Source Files\Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationManager.h">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteManager.h">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Texture</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

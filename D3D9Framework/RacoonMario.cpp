@@ -189,7 +189,6 @@ void RacoonMario::Render(Camera* camera)
 		animation_set[ani]->setMultiplier();
 	}
 
-
 	if (state.movement == MovingStates::Attack)
 	{
 		ani = ANI_RACCOON_MARIO_SPIN;
@@ -222,6 +221,8 @@ void RacoonMario::Render(Camera* camera)
 			ani = ANI_RACCOON_MARIO_FLOAT;
 		else
 			ani = ANI_RACCOON_MARIO_JUMP;
+
+		crouchdiff = 0;
 	}
 
 	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, direction);

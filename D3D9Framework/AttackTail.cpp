@@ -12,7 +12,7 @@ AttackTail::AttackTail(float x, float y, int direction)
 
 void AttackTail::Render(Camera* camera)
 {
-	RenderBoundingBox(camera);
+	//RenderBoundingBox(camera);
 }
 
 void AttackTail::GetBoundingBox(float& l, float& t, float& r, float& b)

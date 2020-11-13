@@ -15,7 +15,6 @@ void Koopa::LoadAnimation()
 
 	AddAnimation(ANI_RED_KOOPA_MOVE, animation->GetAnimation(ANI_RED_KOOPA_MOVE));
 	AddAnimation(ANI_RED_KOOPA_IDLE, animation->GetAnimation(ANI_RED_KOOPA_IDLE));
-
 	AddAnimation(ANI_RED_KOOPA_SLIDE, animation->GetAnimation(ANI_RED_KOOPA_SLIDE));
 	AddAnimation(ANI_RED_KOOPA_CROUCH, animation->GetAnimation(ANI_RED_KOOPA_CROUCH));
 }
@@ -57,77 +56,112 @@ void Koopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	}
 	else
 	{
-		float min_tx, min_ty, nx = 0, ny;
+		float min_tx, min_ty, nx = 0, ny = 0;
 		float rdx = 0;
 		float rdy = 0;
 
 		// TODO: This is a very ugly designed function!!!!
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
-		//filter colision axis by axis
-		if (min_tx > min_ty)
-		{
-			float px = x;
-			x += min_ty * dx;
-			y += min_ty * dy + ny * 0.4f;
-			dy = 0;
-
-			coEvents.clear();
-			CalcPotentialCollisions(&coObjectsResult, coEvents);
-			if (coEvents.size() > 0)
-			{
-				FilterCollisionX(coEvents, coEventsResult, min_tx, nx, rdx);
-				x += min_tx * dx + nx * 0.4f;
-			}
-			else
-			{
-				x = px + dx;
-				nx = 0;
-			}
-			dy = vy * dt;
-
-		}
-		else
-		{
-			float py = y;
-			x += min_tx * dx + nx * 0.4f;
-			y += min_tx * dy;
-			dx = 0;
-			coEvents.clear();
-			CalcPotentialCollisions(&coObjectsResult, coEvents);
-			if (coEvents.size() > 0)
-			{
-				FilterCollisionY(coEvents, coEventsResult, min_ty, ny, rdy);
-				y += min_ty * dy + ny * 0.4f;
-			}
-
-			else
-			{
-				y = py + dy;
-				ny = 0;
-			}
-			dx = vx * dt;
-
-			for (UINT i = 0; i < coEventsResult.size(); i++)
-			{
-				LPCOLLISIONEVENT e = coEventsResult[i];
-				if (e->obj->EntityTag == Tag::enemy)
-				{
-					LPGAMEOBJECT obj = e->obj;
-					obj->OnCollisionEnter(this, e->nx, e->ny);
-				}
-			}
-		}
+		y += min_ty * dy + ny * 0.4;
+		x += min_tx * dx + nx * 0.4;
 
 		if (ny != 0) vy = 0;
 		if (nx != 0)
 		{
-			direction = -direction;
-			vx = -vx;
+			//direction = -direction;
+			if(koopstate != KoopaState::slide)
+				vx = -vx;
 		}
+
+		for (UINT i = 0; i < coEventsResult.size(); i++)
+		{
+			LPCOLLISIONEVENT e = coEventsResult[i];
+			if (e->obj->EntityTag == Tag::enemy)
+			{
+				LPGAMEOBJECT obj = e->obj;
+				obj->OnCollisionEnter(this, e->nx, e->ny);
+			}
+			if (e->obj->EntityTag == Tag::platform)
+			{
+				if (e->nx != 0)
+				vx = -vx;
+			}
+		}
+
+		//float min_tx, min_ty, nx = 0, ny;
+		//float rdx = 0;
+		//float rdy = 0;
+
+		//// TODO: This is a very ugly designed function!!!!
+		//FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
+
+		////filter colision axis by axis
+		//if (min_tx > min_ty)
+		//{
+		//	float px = x;
+		//	x += min_ty * dx;
+		//	y += min_ty * dy + ny * 0.4f;
+		//	dy = 0;
+
+		//	coEvents.clear();
+		//	CalcPotentialCollisions(&coObjectsResult, coEvents);
+		//	if (coEvents.size() > 0)
+		//	{
+		//		FilterCollisionX(coEvents, coEventsResult, min_tx, nx, rdx);
+		//		x += min_tx * dx + nx * 0.4f;
+		//	}
+		//	else
+		//	{
+		//		x = px + dx;
+		//		nx = 0;
+		//	}
+		//	dy = vy * dt;
+
+		//}
+		//else
+		//{
+		//	float py = y;
+		//	x += min_tx * dx + nx * 0.4f;
+		//	y += min_tx * dy;
+		//	dx = 0;
+		//	coEvents.clear();
+		//	CalcPotentialCollisions(&coObjectsResult, coEvents);
+		//	if (coEvents.size() > 0)
+		//	{
+		//		FilterCollisionY(coEvents, coEventsResult, min_ty, ny, rdy);
+		//		y += min_ty * dy + ny * 0.4f;
+		//	}
+
+		//	else
+		//	{
+		//		y = py + dy;
+		//		ny = 0;
+		//	}
+		//	dx = vx * dt;
+
+		//	for (UINT i = 0; i < coEventsResult.size(); i++)
+		//	{
+		//		LPCOLLISIONEVENT e = coEventsResult[i];
+		//		if (e->obj->EntityTag == Tag::enemy)
+		//		{
+		//			LPGAMEOBJECT obj = e->obj;
+		//			obj->OnCollisionEnter(this, e->nx, e->ny);
+		//		}
+		//	}
+		//}
+
+		//if (ny != 0) vy = 0;
+		//if (nx != 0)
+		//{
+		//	direction = -direction;
+		//	vx = -vx;
+		//}
 
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	}
+
+	DebugOut(L"[INFO] Koopa's speed: %f \n", this->vx);
 }
 
 void Koopa::Render(Camera* camera)
@@ -153,7 +187,7 @@ void Koopa::Render(Camera* camera)
 			ani = ANI_RED_KOOPA_IDLE;
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y, direction);
+	animation_set[ani]->Render(camPos.x, camPos.y, direction, flipy);
 	//DebugOut(L"[INFO] KoopaState: %d \n", koopstate);
 
 	RenderBoundingBox(camera);
@@ -192,27 +226,30 @@ void Koopa::OnOverLap(GameObject* obj)
 {
 	if (obj->EntityTag == Tag::tail)
 	{
+		flipy = -1;
 		SetState(KoopaState::shell);
-		//ScenceManager::GetInstance()->getCurrentScence()->delobject(this);
+		vy = -0.9f;
 	}
 }
 
 void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 {
+	if (koopstate == KoopaState::die) return;
+
 	if (obj->EntityTag == Tag::shell)
 	{
 		if (koopstate == KoopaState::walking)
 		{
 			SetState(KoopaState::die);
-			vx = 0; vy = 0;
+			vy = -0.05f;
 		}
 	}
 
 	if (obj->EntityTag == Tag::projectile)
 	{
-		if (IsOverLapped(obj));
-			SetState(KoopaState::die);
-		vx = 0, vy = 0;
+		flipy = -1;
+		SetState(KoopaState::die);
+		vy = -0.9;
 	}
 
 	if (obj->EntityTag == Tag::player)
@@ -230,12 +267,12 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 				SetState(KoopaState::slide);
 				if (obj->getX() <= this->x)
 				{
-					vx += KOOPA_SLIDE_SPEED * dt;
+					vx = KOOPA_SLIDE_SPEED * dt;
 					//obj->setVy(-10.3f);
 				}
 				else
 				{
-					vx -= KOOPA_SLIDE_SPEED * dt;
+					vx = -KOOPA_SLIDE_SPEED * dt;
 					//obj->setVy(-10.3f);
 				}
 			}	
@@ -246,12 +283,12 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 			if (nx < 0)
 			{	
 				SetState(KoopaState::slide);
-				vx += KOOPA_SLIDE_SPEED * dt;
+				vx = KOOPA_SLIDE_SPEED * dt;
 			}
 			else if (nx > 0)
 			{
 				SetState(KoopaState::slide);
-				vx -= KOOPA_SLIDE_SPEED * dt;
+				vx = -KOOPA_SLIDE_SPEED * dt;
 			}
 		}
 	}
