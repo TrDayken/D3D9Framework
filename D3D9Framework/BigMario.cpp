@@ -110,6 +110,11 @@ void BigMario::GetBoundingBox(float& l, float& t, float& r, float& b)
 	}
 }
 
+int BigMario::getCurrentLevel()
+{
+	return 1;
+}
+
 void BigMario::BigMarioRunandWalkState()
 {
 	//handling mario running state

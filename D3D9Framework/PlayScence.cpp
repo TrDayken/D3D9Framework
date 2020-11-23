@@ -67,7 +67,7 @@ void PlayScence::Update(DWORD dt)
 
 
 	if (camera->IsFollow())
-		camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, 800/*mario->getY() - WINDOW_HEIGHT/2*/);
+		camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, mario->getY() - WINDOW_HEIGHT/2);/*800*/
 
 	mario->Update(dt, &coObjects);
 	camera->Update(dt);

@@ -267,6 +267,11 @@ void RacoonMario::GetBoundingBox(float& l, float& t, float& r, float& b)
 	}
 }
 
+int RacoonMario::getCurrentLevel()
+{
+	return 3;
+}
+
 void RacoonMario::RacoonMarioRunandWalkState()
 {
 	//handling mario running state

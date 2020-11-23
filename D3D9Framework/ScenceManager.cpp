@@ -1,4 +1,5 @@
 #include "ScenceManager.h"
+#include "PlayScence.h"
 
 ScenceManager* ScenceManager::_instance = NULL;
 

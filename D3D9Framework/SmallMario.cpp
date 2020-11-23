@@ -142,3 +142,8 @@ void SmallMario::GetBoundingBox(float& l, float& t, float& r, float& b)
 	r = x + MARIO_SMALL_BBOX_WIDTH;
 	b = y + MARIO_SMALL_BBOX_HEIGHT;
 }
+
+int SmallMario::getCurrentLevel()
+{
+	return 0;
+}

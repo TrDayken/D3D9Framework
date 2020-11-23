@@ -28,7 +28,10 @@ public:
 	void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
 	void Render(Camera* camera);
 	void LoadAnimation();
+
 	void GetBoundingBox(float& l, float& t, float& r, float& b);
+
+	int getCurrentLevel();
 };
 
 #endif

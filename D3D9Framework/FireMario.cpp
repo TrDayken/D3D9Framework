@@ -155,6 +155,11 @@ void FireMario::GetBoundingBox(float& l, float& t, float& r, float& b)
 
 }
 
+int FireMario::getCurrentLevel()
+{
+	return 2;
+}
+
 void FireMario::FireMarioRunandWalkState()
 {
 	float topspeed = 0;

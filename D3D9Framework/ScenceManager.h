@@ -8,6 +8,8 @@
 #include "Textures.h"
 #include "Utils.h"
 
+
+
 class ScenceManager
 {
 	static ScenceManager* _instance;

@@ -27,6 +27,7 @@ public:
 	virtual void Render();
 	virtual void Unload();
 
+	//spawnobject(obj)
 	void AddObject(LPGAMEOBJECT object) { objects.push_back(object); }
 	void DeleteObject(LPGAMEOBJECT object) { earseobjects.push_back(object); }
 	Mario* GetPlayer() { return mario; }

@@ -35,7 +35,6 @@ private:
 
 	std::vector<MarioModel*> StateofMario;
 	MarioModel* CurrentMario;
-	int levelmario;
 public:
 	Mario(float x = 0.0f, float y = 0.0f);
 		

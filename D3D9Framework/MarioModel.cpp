@@ -6,7 +6,8 @@ MarioModel::MarioModel(float x, float y)
 	start_y = y;
 	this->x = x; 
 	this->y = y;
-	this->changestate = 1;
+
+	this->changestate = -1;
 
 	InvincibleFrame = 0;
 
@@ -141,7 +142,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			acc_x = 0;
 		}
 		if (ny != 0) {
-			if(isOnGround)
+			if (isOnGround)
 				vy = 0;
 			if (ny < 0)
 			{
@@ -150,6 +151,13 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				isHighJump = false;
 			}
 		}
+
+	}
+
+	if (vy > 0)
+	{
+		state.jump = JumpingStates::Fall;
+		//isOnGround = false;
 	}
 	
 	//if mario hold an object set the object with mario position;
@@ -353,12 +361,12 @@ void MarioModel::KeyState(BYTE* state)
 	//DebugOut(L"[INFO] Moving: %i, Jumping: %i \n", this->state.movement, this->state.jump);
 }
 
-int MarioModel::getLevel()
+int MarioModel::getChangetoLevel()
 {
 	return this->changestate;
 }
 
-void MarioModel::SetLevel(int level)
+void MarioModel::SetChangetoLevel(int level)
 {
 	changestate = level;
 }

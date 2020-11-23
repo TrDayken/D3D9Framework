@@ -100,9 +100,14 @@ public:
 	virtual void KeyState(BYTE* state);
 
 	virtual void LoadAnimation() {};
+
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) =0 ;
-	int getLevel();
-	void SetLevel(int level);
+
+	virtual int getCurrentLevel() { return -1; };
+
+	int getChangetoLevel();
+	void SetChangetoLevel(int level);
+
 	void SetPosition(int x, int y);
 };
 
