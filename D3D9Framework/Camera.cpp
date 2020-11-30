@@ -135,12 +135,12 @@ void Camera::Update(DWORD dt)
 
 	if (scroll_x)
 	{
-		camera_Position.x += CAMERA_DEFAULT_SCROLLING_SPEED_VX * &dt;
+		camera_Position.x += CAMERA_DEFAULT_SCROLLING_SPEED_VX * dt;
 	}
 
 	if (scroll_y)
 	{
-		camera_Position.y += CAMERA_DEFAULT_SCROLLING_SPEED_VY * &dt;
+		camera_Position.y += CAMERA_DEFAULT_SCROLLING_SPEED_VY * dt;
 	}
 
 	//DebugOut(L"[INFO] cam posx: %f \n", camera_Position.x);

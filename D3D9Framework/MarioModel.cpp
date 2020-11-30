@@ -28,19 +28,19 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	
 
-	if (x + dx <= 1)
-	{
-		dx = 0;
-		x = 2;
-		//DebugOut(L"[INFO] mario position %d, \n", x);
-	}
+	//if (x + dx <= 1)
+	//{
+	//	dx = 0;
+	//	x = 2;
+	//	//DebugOut(L"[INFO] mario position %d, \n", x);
+	//}
+
 	// turn off collision when die 
 	if (state.movement != MovingStates::Die)
 	{
 		CalcPotentialCollisions(coObjects, coEvents);
 		for (UINT i = 0; i < coEvents.size(); i++)  coObjectsResult.push_back(coEvents[i]->obj);
 	}
-
 
 	// reset untouchable timer if untouchable time has passed
 	if (GetTickCount() - InvincibleTime_Start > MARIO_UNTOUCHABLE_TIME)

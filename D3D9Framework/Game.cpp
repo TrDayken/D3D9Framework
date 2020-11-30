@@ -351,12 +351,47 @@ LPDIRECT3DTEXTURE9 Game::LoadTexture(LPCWSTR texturePath, D3DCOLOR TransColor)
 	return texture;
 }
 
+/*
+	Ultility function for Loading Font
+*/
+LPD3DXFONT Game::LoadFont(LPCWSTR FontPath, D3DCOLOR TransColor)
+{
+	LPD3DXFONT font;
+
+	LPDIRECT3DDEVICE9 d3ddv = Game::GetInstance()->GetDirect3DDevice();
+
+	HRESULT result = D3DXCreateFont(
+		d3ddv,						//D3D Device		
+		12,							//Font Height
+		0,							//Font Width	
+		FW_NORMAL,					//Font Weight
+		1,							//MipLevels
+		false,						//Italic
+		DEFAULT_CHARSET,			//Charset
+		OUT_DEFAULT_PRECIS,			//OutPutPrecision
+		DEFAULT_QUALITY,			//Quality
+		DEFAULT_PITCH | FF_DONTCARE,//PitchAndFamily
+		L"Mario_Font",				//Font interface
+		&font						//Font output
+	);
+
+	if (result != D3D_OK)
+	{
+		DebugOut(L"[ERROR] CreateFont failed. File: %s\n", FontPath);
+		return NULL;
+	}
+
+	DebugOut(L"[INFO] Texture loaded Ok: %s \n", FontPath);
+	return font;
+}
+
 Game::~Game()
 {
 	if (spriteHandler != NULL) spriteHandler->Release();
 	if (backBuffer != NULL) backBuffer->Release();
 	if (d3ddv != NULL) d3ddv->Release();
 	if (d3d != NULL) d3d->Release();
+
 }
 
 

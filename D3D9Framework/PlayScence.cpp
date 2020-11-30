@@ -25,6 +25,8 @@ void PlayScence::Load()
 	AnimationManager::GetInstance()->AddAnimationUsingXML("textures\\Mario\\MarioAnim.xml");
 	AnimationManager::GetInstance()->AddAnimationUsingXML("textures\\Misc\\MiscAnim.xml");
 
+	//load Font
+
 	tilemap = new Map();
 	tilemap->LoadMapfromTMX("textures\\Map\\world-1-1-map.tmx", "textures\\Map\\");
 
@@ -59,6 +61,8 @@ void PlayScence::Update(DWORD dt)
 			for (size_t i = 0; i < objects.size(); i++)
 			{
 				if (objects[i] == e) objects.erase(objects.begin() + i);
+
+				//cannot delete gameojbect pointer cause exception
 				//e->~GameObject();
 			}
 		}
@@ -84,6 +88,7 @@ void PlayScence::Render()
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Render(camera);
+
 		//float l, t, r, b;
 		//objects[i]->GetBoundingBox(l, t, r, b);
 		////DebugOut(L"[INFO] objects bounding box %f, %f, %f, %f \n", l, t, r, b);

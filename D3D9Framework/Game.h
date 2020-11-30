@@ -57,6 +57,7 @@ public:
 		float& ny);
 
 	LPDIRECT3DTEXTURE9 LoadTexture(LPCWSTR texturePath, D3DCOLOR TransColor);
+	LPD3DXFONT LoadFont(LPCWSTR FontPath, D3DCOLOR TransColor);
 
 	LPDIRECT3DDEVICE9 GetDirect3DDevice() { return this->d3ddv; }
 	LPDIRECT3DSURFACE9 GetBackBuffer() { return backBuffer; }

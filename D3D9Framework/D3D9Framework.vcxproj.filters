@@ -11,9 +11,6 @@
     <Filter Include="Source Files\FrameWork\Debug">
       <UniqueIdentifier>{408fd39c-5126-47ac-86f4-051244d0ee43}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FrameWork\Object">
-      <UniqueIdentifier>{b20ce330-8505-461a-8559-f4176398b49e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\FrameWork\Animation, Sprite and Texture">
       <UniqueIdentifier>{7a6c2e3f-179e-4ec4-867a-3fa3ec6c032d}</UniqueIdentifier>
     </Filter>
@@ -53,9 +50,6 @@
     <Filter Include="Source Files\Entity\Misc">
       <UniqueIdentifier>{0009f9b5-8a93-4d1f-908d-ddd751387990}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FrameWork\Game_Variables">
-      <UniqueIdentifier>{454bc349-8cda-4da9-8414-a9db44c69784}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Entity\Mario\MarioModel">
       <UniqueIdentifier>{6671e8d9-87b4-4f24-8f71-47599908397e}</UniqueIdentifier>
     </Filter>
@@ -89,6 +83,24 @@
     <Filter Include="Source Files\FrameWork\ScenceManager\Scence\PlayScence">
       <UniqueIdentifier>{4a46242c-9fad-4346-ad6c-a6d1c7e16df8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FrameWork\HUD">
+      <UniqueIdentifier>{c0a11498-bda2-456a-a558-de6664b34ad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Game Object">
+      <UniqueIdentifier>{b20ce330-8505-461a-8559-f4176398b49e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Game Variables">
+      <UniqueIdentifier>{454bc349-8cda-4da9-8414-a9db44c69784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Font Manager">
+      <UniqueIdentifier>{02450c0c-8a7a-43f5-87e9-ae16a4fbe8c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Enemy\Goomba">
+      <UniqueIdentifier>{2e241fa2-6ea7-457f-84b8-780f793d82d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Enemy\Koopa">
+      <UniqueIdentifier>{173b1c93-3b5a-47a0-8420-8327422ae6da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -101,7 +113,7 @@
       <Filter>Source Files\FrameWork</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files\FrameWork\Object</Filter>
+      <Filter>Source Files\FrameWork\Game Object</Filter>
     </ClCompile>
     <ClCompile Include="tinyXML\tinyxml\tinyxmlparser.cpp">
       <Filter>Source Files\FrameWork\tinyXML</Filter>
@@ -143,7 +155,7 @@
       <Filter>Source Files\Entity\Mario</Filter>
     </ClCompile>
     <ClCompile Include="Global_Variable.cpp">
-      <Filter>Source Files\FrameWork\Game_Variables</Filter>
+      <Filter>Source Files\FrameWork\Game Variables</Filter>
     </ClCompile>
     <ClCompile Include="MarioModel.cpp">
       <Filter>Source Files\Entity\Mario\MarioModel</Filter>
@@ -159,12 +171,6 @@
     </ClCompile>
     <ClCompile Include="FireMario.cpp">
       <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
-    </ClCompile>
-    <ClCompile Include="Goomba.cpp">
-      <Filter>Source Files\Entity\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Koopa.cpp">
-      <Filter>Source Files\Entity\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="FireShoot.cpp">
       <Filter>Source Files\Entity\Projectile</Filter>
@@ -184,9 +190,6 @@
     <ClCompile Include="GhostPlatform.cpp">
       <Filter>Source Files\Entity\Blocks\GhostBlock</Filter>
     </ClCompile>
-    <ClCompile Include="KoopaShell.cpp">
-      <Filter>Source Files\Entity\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Animation</Filter>
     </ClCompile>
@@ -201,6 +204,21 @@
     </ClCompile>
     <ClCompile Include="Textures.cpp">
       <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files\FrameWork\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Source Files\FrameWork\Font Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Goomba.cpp">
+      <Filter>Source Files\Entity\Enemy\Goomba</Filter>
+    </ClCompile>
+    <ClCompile Include="Koopa.cpp">
+      <Filter>Source Files\Entity\Enemy\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="KoopaShell.cpp">
+      <Filter>Source Files\Entity\Enemy\Koopa</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -237,12 +255,6 @@
     <ClInclude Include="Camera.h">
       <Filter>Source Files\FrameWork\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Goomba.h">
-      <Filter>Source Files\Entity\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Koopa.h">
-      <Filter>Source Files\Entity\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="MarioModel.h">
       <Filter>Source Files\Entity\Mario\MarioModel</Filter>
     </ClInclude>
@@ -250,10 +262,10 @@
       <Filter>Source Files\FrameWork\ScenceManager\Scence</Filter>
     </ClInclude>
     <ClInclude Include="Global_Variable.h">
-      <Filter>Source Files\FrameWork\Game_Variables</Filter>
+      <Filter>Source Files\FrameWork\Game Variables</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Source Files\FrameWork\Object</Filter>
+      <Filter>Source Files\FrameWork\Game Object</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Source Files\FrameWork\Debug</Filter>
@@ -288,9 +300,6 @@
     <ClInclude Include="GhostPlatform.h">
       <Filter>Source Files\Entity\Blocks\GhostBlock</Filter>
     </ClInclude>
-    <ClInclude Include="KoopaShell.h">
-      <Filter>Source Files\Entity\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Animation</Filter>
     </ClInclude>
@@ -305,6 +314,21 @@
     </ClInclude>
     <ClInclude Include="Textures.h">
       <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Source Files\FrameWork\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Source Files\FrameWork\Font Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Goomba.h">
+      <Filter>Source Files\Entity\Enemy\Goomba</Filter>
+    </ClInclude>
+    <ClInclude Include="Koopa.h">
+      <Filter>Source Files\Entity\Enemy\Koopa</Filter>
+    </ClInclude>
+    <ClInclude Include="KoopaShell.h">
+      <Filter>Source Files\Entity\Enemy\Koopa</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

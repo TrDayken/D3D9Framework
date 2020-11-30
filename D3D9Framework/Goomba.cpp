@@ -90,7 +90,6 @@ void Goomba::LoadAnimation()
 
 void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	goomstate;
 	GameObject::Update(dt);
 
 	std::vector<LPCOLLISIONEVENT> coEvents;
@@ -129,77 +128,31 @@ void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		float rdx = 0;
 		float rdy = 0;
 
-		// TODO: This is a very ugly designed function!!!!
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
 		y += min_ty * dy + ny * 0.4;
 		x += min_tx * dx + nx * 0.4;
-		//y += min_ty * dy + ny * 0.5;
 		if (ny != 0) vy = 0;
 		if (nx != 0)
 		{
 			direction = -direction;
-			vx = -vx;
+			//vx = -vx;
 		}
 
-		//float min_tx, min_ty, nx = 0, ny;
-		//float rdx = 0;
-		//float rdy = 0;
-
-		//FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
-
-		////filter colision axis by axis
-		//if (min_tx > min_ty)
-		//{
-		//	//float px = x;
-		//	x += min_ty * dx;
-		//	y += min_ty * dy + ny * 0.4f;
-		//	dy = 0;
-
-		//	coEvents.clear();
-		//	CalcPotentialCollisions(&coObjectsResult, coEvents);
-		//	if (coEvents.size() > 0)
-		//	{
-		//		FilterCollisionX(coEvents, coEventsResult, min_tx, nx, rdx);
-		//		//x -= min_ty * dx;
-		//		x += min_tx * dx + nx * 0.4f - min_ty * dx;
-		//	}
-		//	else
-		//	{
-		//		x += dx - min_ty * dx;
-		//		nx = 0;
-		//	}
-		//	dy = vy * dt;
-
-		//}
-		//else
-		//{
-		//	//float py = y;
-		//	x += min_tx * dx + nx * 0.4f;
-		//	y += min_tx * dy;
-		//	dx = 0;
-		//	coEvents.clear();
-		//	CalcPotentialCollisions(&coObjectsResult, coEvents);
-		//	if (coEvents.size() > 0)
-		//	{
-		//		FilterCollisionY(coEvents, coEventsResult, min_ty, ny, rdy);
-		//		y += min_ty * dy + ny * 0.4f - min_tx * dy;
-		//	}
-
-		//	else
-		//	{
-		//		y += dy - min_ty * dx;
-		//		ny = 0;
-		//	}
-		//	dx = vx * dt;
-		//}
-
-		//if (ny != 0) vy = 0;
-		//if (nx != 0)
-		//{
-		//	direction = -direction;
-		//	vx = -vx;
-		//}
+		for (UINT i = 0; i < coEventsResult.size(); i++)
+		{
+			LPCOLLISIONEVENT e = coEventsResult[i];
+			if (e->obj->EntityTag == Tag::enemy)
+			{
+				LPGAMEOBJECT obj = e->obj;
+				obj->OnCollisionEnter(this, e->nx, e->ny);
+			}
+			if (e->obj->EntityTag == Tag::platform)
+			{
+				if (e->nx != 0)
+					vx = -vx;
+			}
+		}
 
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	}
@@ -224,10 +177,19 @@ void Goomba::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 		}
 	}
 
+	if (obj->EntityTag == Tag::platform)
+	{
+		if (nx != 0)
+		{
+			direction = -direction;
+			vx = -vx;
+		}
+	}
+
 	if (obj->EntityTag == Tag::enemy)
 	{
-		vx = -vx;
 		direction = -direction;
+		vx = -vx;
 	}
 
 	if (obj->EntityTag == Tag::projectile)
