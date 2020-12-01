@@ -13,7 +13,7 @@ void SpriteManager::AddSprite(std::string id, int left, int top, int right, int 
 	sprites[id] = sprite;
 }
 
-void SpriteManager::AddSprite1(std::string id, int left, int top, int width, int height,int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture)
+void SpriteManager::AddSpriteX3(std::string id, int left, int top, int width, int height,int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture)
 {
 	RECT rect;
 	rect.left = left*3;
@@ -31,25 +31,29 @@ void SpriteManager::AddSpriteUsingXML(const char* FilePath, LPDIRECT3DTEXTURE9 t
 
 	if (XMLdoc.LoadFile())
 	{
-		TiXmlElement* root	= XMLdoc.RootElement()->FirstChildElement();
+		TiXmlElement* root = XMLdoc.RootElement();
 
-		for (TiXmlElement* XMLsprite = root->FirstChildElement(); XMLsprite != NULL;XMLsprite = XMLsprite->NextSiblingElement())
+		for (TiXmlElement* XMLtexture = root->FirstChildElement("Textures"); XMLtexture != NULL ; XMLtexture = XMLtexture->NextSiblingElement("Textures"))
 		{
-			int left, top, width, height;
-			int xpivot = 0;
-			int ypivot = 0;
-			std::string id = XMLsprite->Attribute("id");
-			XMLsprite->QueryIntAttribute("left",&left);
-			XMLsprite->Attribute("top", &top);
-			XMLsprite->Attribute("width", &width);
-			XMLsprite->Attribute("height" , &height);
-			XMLsprite->Attribute("xPivot", &xpivot);
-			XMLsprite->Attribute("yPivot", &ypivot);
-			AddSprite1(id, left, top ,width, height,xpivot ,ypivot, texture);
 
-			//DebugOut(L"[INFO] loaded spirte:%s \n", id.c_str());
+			for (TiXmlElement* XMLsprite = XMLtexture->FirstChildElement("Sprite"); XMLsprite != NULL; XMLsprite = XMLsprite->NextSiblingElement("Sprite"))
+			{
+				int left, top, width, height;
+				int xpivot = 0;
+				int ypivot = 0;
+				std::string id = XMLsprite->Attribute("id");
+				XMLsprite->QueryIntAttribute("left", &left);
+				XMLsprite->Attribute("top", &top);
+				XMLsprite->Attribute("width", &width);
+				XMLsprite->Attribute("height", &height);
+				XMLsprite->Attribute("xPivot", &xpivot);
+				XMLsprite->Attribute("yPivot", &ypivot);
+				AddSpriteX3(id, left, top, width, height, xpivot, ypivot, texture);
 
-			OutputDebugStringW(ToLPCWSTR("[INFO] loaded spirte: " + id + "\n"));
+				//DebugOut(L"[INFO] loaded spirte:%s \n", id.c_str());
+
+				OutputDebugStringW(ToLPCWSTR("[INFO] loaded spirte: " + id + "\n"));
+			}
 		}
 	}
 	else

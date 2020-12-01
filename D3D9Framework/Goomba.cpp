@@ -130,8 +130,11 @@ void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
+		// pull up after collision
 		y += min_ty * dy + ny * 0.4;
 		x += min_tx * dx + nx * 0.4;
+
+
 		if (ny != 0) vy = 0;
 		if (nx != 0)
 		{

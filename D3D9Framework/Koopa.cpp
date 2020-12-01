@@ -89,6 +89,7 @@ void Koopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				LPGAMEOBJECT obj = e->obj;
 				obj->OnCollisionEnter(this, e->nx, e->ny);
 			}
+
 			if (e->obj->EntityTag == Tag::platform)
 			{
 				if (e->nx != 0)
@@ -185,6 +186,7 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 
 	//if (obj->EntityTag == Tag::platform)
 	//{
+	//	if(this->koopstate != KoopaState::slide)
 	//	if (nx != 0)
 	//	{
 	//		direction = -direction;
