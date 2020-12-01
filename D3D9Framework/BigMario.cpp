@@ -58,7 +58,10 @@ void BigMario::Render(Camera* camera)
 	if (acc_x * vx < 0)
 	{
 		if (this->state.jump == JumpingStates::Stand)
-		ani = ANI_BIG_MARIO_SKID;
+		{
+			direction = -direction;
+			ani = ANI_BIG_MARIO_SKID;
+		}
 	}
 
 	if (this->state.movement == MovingStates::Crouch)

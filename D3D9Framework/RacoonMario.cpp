@@ -204,7 +204,10 @@ void RacoonMario::Render(Camera* camera)
 	if (acc_x * vx < 0)
 	{
 		if (this->state.jump == JumpingStates::Stand)
+		{
 			ani = ANI_RACCOON_MARIO_SKID;
+			direction = -direction;
+		}
 	}
 
 	if (this->state.movement == MovingStates::Crouch)

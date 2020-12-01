@@ -104,7 +104,10 @@ void FireMario::Render(Camera* camera)
 	if (acc_x * vx < 0)
 	{
 		if (this->state.jump == JumpingStates::Stand)
+		{
+			direction = -direction;
 			ani = ANI_FIRE_MARIO_SKID;
+		}
 	}
 
 	if (this->state.movement == MovingStates::Crouch)

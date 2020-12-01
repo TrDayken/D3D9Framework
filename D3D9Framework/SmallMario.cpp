@@ -117,7 +117,10 @@ void SmallMario::Render(Camera* camera)
 	if (acc_x * vx < 0)
 	{
 		if (this->state.jump == JumpingStates::Stand)
+		{
 			ani = ANI_SMALL_MARIO_SKID;
+			direction = -direction;
+		}
 	}
 
 	animation_set[ani]->Render(camPos.x, camPos.y, direction);
