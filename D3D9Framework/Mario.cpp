@@ -89,6 +89,7 @@ void Mario::SwitchMario(int level)
 	CurrentMario = StateofMario[changetolevel];
 	//update on the changed mario => prevent AABB overlaping
 	CurrentMario->SetPosition(this->x, this->y);
+
 	CurrentMario->setDirection(StateofMario[prechangelevel]->getDirection());
 	//delete &changetolevel;
 }

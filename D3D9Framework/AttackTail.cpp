@@ -27,8 +27,8 @@ void AttackTail::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 {
 	GameObject::Update(dt);
 
-	vector<LPCOLLISIONEVENT> coEvents;
-	vector<LPCOLLISIONEVENT> coEventsResult;
+	std::vector<LPCOLLISIONEVENT> coEvents;
+	std::vector<LPCOLLISIONEVENT> coEventsResult;
 	coEvents.clear();
 
 	CalcPotentialCollisions(coObject, coEvents);

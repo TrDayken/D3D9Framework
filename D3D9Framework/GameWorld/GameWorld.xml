@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0"?>
 <Game>
   <Scence type = "PlayScence">
-    <Map id= "Map1" filelocation = "textures\\Map\\world-1-1-map.tmx" filepath = "textures\\Map\\">
+    <Map id= "world-1-1-map" filelocation = "textures\\Map\\world-1-1-map.tmx" filepath = "textures\\Map\\">
+      <!--Map's Texture -->
       <Texture textureid = "20" path = "textures\\Mario\\Mario48.png">
       </Texture>
       <Texture textureid = "30" path = "textures\\Misc\\fire-ball.png" a="255" r="255" g="255" b="255">
@@ -10,12 +11,14 @@
       </Texture>
       <Texture textureid = "100" path = "textures\\bbox.png">
       </Texture>
+      <!--Map's Spite -->
       <Sprite path = "textures\\Mario\\MarioDB.xml" textureid = "20">
       </Sprite>
       <Sprite path = "textures\\Misc\\MiscDB.xml" textureid = "30">
       </Sprite>
       <Sprite path = "textures\\Enemy\\EnemyDB.xml" textureid = "40" >
       </Sprite>
+      <!--Map's Animation -->
       <Animation path = "textures\\Enemy\\EnemyAnim.xml">
       </Animation>
       <Animation path = "textures\\Mario\\MarioAnim.xml">

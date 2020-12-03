@@ -3,7 +3,9 @@
 BigMario::BigMario()
 {
 	LoadAnimation();
+
 	ColTag = Collision2DTag::FourSide;
+
 	EntityTag = Tag::player;
 }
 

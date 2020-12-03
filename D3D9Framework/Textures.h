@@ -8,14 +8,12 @@
 #include "SpriteManager.h"
 #include "AnimationManager.h"
 
-using namespace std;
-
 class Textures
 {
 private:
 	static Textures* __instance;
 
-	unordered_map<int, LPDIRECT3DTEXTURE9> textures;
+	std::unordered_map<int, LPDIRECT3DTEXTURE9> textures;
 
 public:
 	Textures();

@@ -147,8 +147,8 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			if (ny < 0)
 			{
 				// mario collide top down
-				isOnGround = true;
 				state.jump = JumpingStates::Stand;
+				isOnGround = true;
 				isHighJump = false;
 			}
 			else if (ny > 0)

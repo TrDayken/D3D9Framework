@@ -14,7 +14,7 @@ void FireShoot::Render(Camera* camera)
 {
 	Vector2 camPos = camera->toCameraPosistion(x, y);
 
-	string ani = ANI_BULLET;
+	std::string ani = ANI_BULLET;
 
 	animation_set[ani]->Render(camPos.x, camPos.y, direction);
 }
@@ -40,8 +40,8 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	vy += BULLET_GRAVITY * dt;
 
-	vector<LPCOLLISIONEVENT> coEvents;
-	vector<LPCOLLISIONEVENT> coEventsResult;
+	std::vector<LPCOLLISIONEVENT> coEvents;
+	std::vector<LPCOLLISIONEVENT> coEventsResult;
 	coEvents.clear();
 
 	CalcPotentialCollisions(coObjects, coEvents);

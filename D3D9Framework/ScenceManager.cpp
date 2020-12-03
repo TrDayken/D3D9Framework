@@ -1,6 +1,8 @@
 #include "ScenceManager.h"
 #include "PlayScence.h"
 
+
+
 ScenceManager* ScenceManager::_instance = NULL;
 
 void ScenceManager::AddScence(Scence* scence)
@@ -40,9 +42,28 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 
 				Textures::GetInstance()->AddTexture(texid, ToLPCWSTR(path), D3DCOLOR_ARGB(a, r, g, b));
 			}
+
+			for (TiXmlElement* XMLsprite = XMLMap->FirstChildElement("Sprite"); XMLsprite != NULL; XMLsprite = XMLsprite->NextSiblingElement("Sprite"))
+			{
+				int textureid = NULL;
+				std::string path = XMLsprite->Attribute("path");
+
+				XMLsprite->QueryIntAttribute("textureid", &textureid);
+
+				SpriteManager::GetInstance()->AddSpriteUsingXML(path.c_str(), Textures::GetInstance()->GetTexture(textureid));
+			}
+
+			for (TiXmlElement* XMLAnimation = XMLMap->FirstChildElement("Animation"); XMLAnimation != NULL; XMLAnimation = XMLAnimation->NextSiblingElement("Animation"))
+			{
+				std::string path = XMLAnimation->Attribute("path");
+
+				AnimationManager::GetInstance()->AddAnimationUsingXML(path.c_str());
+			}
+
+			AddScence(scence);
 		}
 
-		DebugOut(L"[INFO] map Scence successful \n");
+		DebugOut(L"[INFO] Load Scence successful \n");
 	}
 	else
 	{

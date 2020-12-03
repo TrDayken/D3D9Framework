@@ -69,7 +69,7 @@ void Goomba::Render(Camera* camera)
 		diediff = GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE;
 	}
 
-	string ani = ANI_GOOMBA_WALK;
+	std::string ani = ANI_GOOMBA_WALK;
 
 	if (goomstate == GoombaState::die) 
 	{
@@ -88,7 +88,7 @@ void Goomba::LoadAnimation()
 	AddAnimation(ANI_GOOMBA_DIE, animation->GetAnimation(ANI_GOOMBA_DIE));
 }
 
-void Goomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+void Goomba::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	GameObject::Update(dt);
 

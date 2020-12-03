@@ -30,7 +30,7 @@ void Koopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 		bottom = y + KOOPA_BBOX_HEIGHT;
 }
 
-void Koopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	GameObject::Update(dt);
 
@@ -107,7 +107,7 @@ void Koopa::Render(Camera* camera)
 {
 	Vector2 camPos = camera->toCameraPosistion(x, y);
 
-	string ani = ANI_RED_KOOPA_MOVE;
+	std::string ani = ANI_RED_KOOPA_MOVE;
 
 	if (koopstate == KoopaState::die)
 	{

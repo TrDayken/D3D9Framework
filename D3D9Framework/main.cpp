@@ -8,11 +8,12 @@
 #include "Textures.h"
 #include "SpriteManager.h"
 #include "Global_Variable.h"
-#include "PlayScence.h"
+//#include "PlayScence.h"
+#include "ScenceManager.h"
 
 
 Game* game;
-PlayScence* scence;
+//PlayScence* scence;
 
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -29,9 +30,14 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 void LoadResources()
 {
-	scence = new PlayScence();
-	scence->Load();
-	Game::GetInstance()->SetKeyHandler(scence->GetKeyEventHandler());
+	/*textures\\Mario\\MarioDB.xml*/
+	ScenceManager::GetInstance()->LoadScenceFromXML("GameWorld\\GameWorld.xml");
+	Game::GetInstance()->SetKeyHandler(ScenceManager::GetInstance()->getCurrentScence()->GetKeyEventHandler());
+	ScenceManager::GetInstance()->getCurrentScence()->Load();
+	
+	//scence = new PlayScence();
+	//scence->Load();
+	//Game::GetInstance()->SetKeyHandler(scence->GetKeyEventHandler());
 }
 
 /*
@@ -42,7 +48,8 @@ void LoadResources()
 */
 void Update(DWORD dt)
 {
-	scence->Update(dt);
+	ScenceManager::GetInstance()->getCurrentScence()->Update(dt);
+	/*scence->Update(dt);*/
 }
 
 /*
@@ -64,7 +71,8 @@ void Render()
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
 
-		scence->Render();
+		ScenceManager::GetInstance()->getCurrentScence()->Render();
+	/*	scence->Render();*/
 
 		spriteHandler->End();
 		d3ddv->EndScene();

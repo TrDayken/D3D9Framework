@@ -40,7 +40,7 @@ public:
 	void LoadAnimation();
 
 	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
+	void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
 	void Render(Camera* camera);
 
 	void SetState(KoopaState state);
