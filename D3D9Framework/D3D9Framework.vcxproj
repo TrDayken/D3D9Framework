@@ -148,6 +148,7 @@
     <ClCompile Include="BigMario.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="FireMario.cpp" />
     <ClCompile Include="FireShoot.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="MarioModel.cpp" />
     <ClCompile Include="PlayScence.cpp" />
+    <ClCompile Include="QuestionBlock.cpp" />
     <ClCompile Include="RacoonMario.cpp" />
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="ScenceManager.cpp" />
@@ -189,6 +191,7 @@
     <ClInclude Include="BigMario.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Coin.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="FireMario.h" />
     <ClInclude Include="FireShoot.h" />
@@ -208,6 +211,7 @@
     <ClInclude Include="Mario.h" />
     <ClInclude Include="MarioModel.h" />
     <ClInclude Include="PlayScence.h" />
+    <ClInclude Include="QuestionBlock.h" />
     <ClInclude Include="RacoonMario.h" />
     <ClInclude Include="Scence.h" />
     <ClInclude Include="ScenceManager.h" />

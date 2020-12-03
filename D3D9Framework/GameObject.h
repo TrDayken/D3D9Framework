@@ -132,6 +132,7 @@ public:
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
 	virtual void Render(Camera* camera) = 0;
 	virtual void SetState(int state) { this->state = state; }
+	//virtual void LoadAnimation() = 0;
 
 	virtual void OnOverLap(GameObject* object) {};
 	bool IsOverLapped(GameObject* object);

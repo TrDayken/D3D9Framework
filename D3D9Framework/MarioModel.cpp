@@ -146,9 +146,16 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				vy = 0;
 			if (ny < 0)
 			{
+				// mario collide top down
 				isOnGround = true;
 				state.jump = JumpingStates::Stand;
 				isHighJump = false;
+			}
+			else if (ny > 0)
+			{
+				// mario collide bottom up
+				state.jump = JumpingStates::Fall;
+				vy = 0;
 			}
 		}
 
@@ -213,13 +220,13 @@ void MarioModel::OnKeyDown(int KeyCode)
 		}
 		break;
 	case DIK_S:
-		if (isOnGround)
+		if (isOnGround && state.jump != JumpingStates::Fall)
 		{
-			setJumpstate(JumpingStates::Jump);
-			isOnGround = false;
-			isHighJump = true;
-			HighJumpTime_Start = GetTickCount();
-			vy = MARIO_MINIMUM_LIFT;
+				setJumpstate(JumpingStates::Jump);
+				isOnGround = false;
+				isHighJump = true;
+				HighJumpTime_Start = GetTickCount();
+				vy = MARIO_JUMP_FORCE;
 		}
 		break;
 	//case DIK_A:
@@ -337,7 +344,7 @@ void MarioModel::KeyState(BYTE* state)
 
 	if (game->IsKeyDown(DIK_S))
 	{
-		if (isHighJump)
+		if (isHighJump && this->state.jump != JumpingStates::Fall)
 		{
 			vy = MARIO_JUMP_FORCE;
 		}

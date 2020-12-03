@@ -32,31 +32,33 @@ void AnimationManager::AddAnimationUsingXML(const char* FilePath)
 
 	if (XMLdoc.LoadFile())
 	{
-		TiXmlElement* root = XMLdoc.RootElement()->FirstChildElement();
+		TiXmlElement* root = XMLdoc.RootElement();
 
-		LPANIMATION ani;
-
-		for (TiXmlElement* XMLanimation = root->FirstChildElement(); XMLanimation != NULL; XMLanimation = XMLanimation->NextSiblingElement())
+		for (TiXmlElement* XMLtexture = root->FirstChildElement("Textures"); XMLtexture != NULL; XMLtexture = XMLtexture->NextSiblingElement("Textures"))
 		{
-			int aniframetime;
-			
-			std::string aniID = XMLanimation->Attribute("aniId");
-			XMLanimation->QueryIntAttribute("frameTime", &aniframetime);
-			ani = new Animation(aniframetime);
-
-			for (TiXmlElement* XMLanimationsprites = XMLanimation->FirstChildElement(); XMLanimationsprites != NULL; XMLanimationsprites = XMLanimationsprites->NextSiblingElement())
+			for (TiXmlElement* XMLanimation = XMLtexture->FirstChildElement("Animation"); XMLanimation != NULL; XMLanimation = XMLanimation->NextSiblingElement("Animation"))
 			{
-				int frametime;
-				std::string spriteId = XMLanimationsprites->Attribute("id");
-				XMLanimationsprites->QueryIntAttribute("frameTime", &frametime);
+				LPANIMATION ani;
+				int aniframetime;
 
-				ani->AddFrame(spriteId, frametime);
+				std::string aniID = XMLanimation->Attribute("aniId");
+				XMLanimation->QueryIntAttribute("frameTime", &aniframetime);
+				ani = new Animation(aniframetime);
+
+				for (TiXmlElement* XMLanimationsprites = XMLanimation->FirstChildElement("Sprite"); XMLanimationsprites != NULL; XMLanimationsprites = XMLanimationsprites->NextSiblingElement("Sprite"))
+				{
+					int frametime;
+					std::string spriteId = XMLanimationsprites->Attribute("id");
+					XMLanimationsprites->QueryIntAttribute("frameTime", &frametime);
+
+					ani->AddFrame(spriteId, frametime);
+				}
+
+				AddAnimation(aniID, ani);
+
+				//DebugOut(L"[INFO] created animation: %d \n", aniID);
+				OutputDebugStringW(ToLPCWSTR("[INFO] created animation: " + aniID + "\n"));
 			}
-			
-			AddAnimation(aniID, ani);
-
-			//DebugOut(L"[INFO] created animation: %d \n", aniID);
-			OutputDebugStringW(ToLPCWSTR("[INFO] created animation: " + aniID + "\n"));
 		}
 	}
 	else

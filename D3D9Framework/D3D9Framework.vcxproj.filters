@@ -101,6 +101,15 @@
     <Filter Include="Source Files\Entity\Enemy\Koopa">
       <UniqueIdentifier>{173b1c93-3b5a-47a0-8420-8327422ae6da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity\Blocks\SolidBlocks\QuestionBlock">
+      <UniqueIdentifier>{f4f876ee-1e9a-465f-bf58-3ab5491da1ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Blocks\SolidBlocks\GamePlatform">
+      <UniqueIdentifier>{910455bb-25ae-488b-831c-0ac36f407738}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Blocks\GhostBlock\GamePlatform">
+      <UniqueIdentifier>{282ed2e6-ca17-47cb-8c8c-5fc1ab938a25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -181,15 +190,6 @@
     <ClCompile Include="ScenceManager.cpp">
       <Filter>Source Files\FrameWork\ScenceManager</Filter>
     </ClCompile>
-    <ClCompile Include="InvisibleBrick.cpp">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks</Filter>
-    </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks</Filter>
-    </ClCompile>
-    <ClCompile Include="GhostPlatform.cpp">
-      <Filter>Source Files\Entity\Blocks\GhostBlock</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Animation</Filter>
     </ClCompile>
@@ -219,6 +219,21 @@
     </ClCompile>
     <ClCompile Include="KoopaShell.cpp">
       <Filter>Source Files\Entity\Enemy\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestionBlock.cpp">
+      <Filter>Source Files\Entity\Blocks\SolidBlocks\QuestionBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="InvisibleBrick.cpp">
+      <Filter>Source Files\Entity\Blocks\SolidBlocks\GamePlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Source Files\Entity\Blocks\SolidBlocks\GamePlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="GhostPlatform.cpp">
+      <Filter>Source Files\Entity\Blocks\GhostBlock\GamePlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Source Files\Entity\Misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -291,15 +306,6 @@
     <ClInclude Include="ScenceManager.h">
       <Filter>Source Files\FrameWork\ScenceManager</Filter>
     </ClInclude>
-    <ClInclude Include="InvisibleBrick.h">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks</Filter>
-    </ClInclude>
-    <ClInclude Include="GhostPlatform.h">
-      <Filter>Source Files\Entity\Blocks\GhostBlock</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Animation</Filter>
     </ClInclude>
@@ -329,6 +335,21 @@
     </ClInclude>
     <ClInclude Include="KoopaShell.h">
       <Filter>Source Files\Entity\Enemy\Koopa</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestionBlock.h">
+      <Filter>Source Files\Entity\Blocks\SolidBlocks\QuestionBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="InvisibleBrick.h">
+      <Filter>Source Files\Entity\Blocks\SolidBlocks\GamePlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Source Files\Entity\Blocks\SolidBlocks\GamePlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="GhostPlatform.h">
+      <Filter>Source Files\Entity\Blocks\GhostBlock\GamePlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Source Files\Entity\Misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

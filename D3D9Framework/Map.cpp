@@ -98,6 +98,7 @@ void Map::Update(DWORD dt)
 //this funtion is ugly and may be refine // note: multilayer cast error need to be fixed
 void Map::Render(Camera* camera)
 {
+	//[NAIVE APPROACH]
 	//for (int i = 0; i < width; i++)
 	//{
 	//	for (int j = 0; j < height; j++)

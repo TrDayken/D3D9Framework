@@ -42,12 +42,14 @@ void SpriteManager::AddSpriteUsingXML(const char* FilePath, LPDIRECT3DTEXTURE9 t
 				int xpivot = 0;
 				int ypivot = 0;
 				std::string id = XMLsprite->Attribute("id");
+
 				XMLsprite->QueryIntAttribute("left", &left);
-				XMLsprite->Attribute("top", &top);
-				XMLsprite->Attribute("width", &width);
-				XMLsprite->Attribute("height", &height);
-				XMLsprite->Attribute("xPivot", &xpivot);
-				XMLsprite->Attribute("yPivot", &ypivot);
+				XMLsprite->QueryIntAttribute("top", &top);
+				XMLsprite->QueryIntAttribute("height", &height);
+				XMLsprite->QueryIntAttribute("width", &width);
+				XMLsprite->QueryIntAttribute("xPivot", &xpivot);
+				XMLsprite->QueryIntAttribute("yPivot", &ypivot);
+
 				AddSpriteX3(id, left, top, width, height, xpivot, ypivot, texture);
 
 				//DebugOut(L"[INFO] loaded spirte:%s \n", id.c_str());

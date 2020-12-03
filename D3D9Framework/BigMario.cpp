@@ -31,6 +31,8 @@ void BigMario::Render(Camera* camera)
 {
 	Vector2 camPos = camera->toCameraPosistion(this->x, this->y);
 
+	int renderdiretion = 1;
+
 	std::string ani = ANI_BIG_MARIO_IDLE;
 
 	float crouchdiff = 0;
@@ -59,7 +61,7 @@ void BigMario::Render(Camera* camera)
 	{
 		if (this->state.jump == JumpingStates::Stand)
 		{
-			direction = -direction;
+			renderdiretion = -direction;
 			ani = ANI_BIG_MARIO_SKID;
 		}
 	}
@@ -73,7 +75,7 @@ void BigMario::Render(Camera* camera)
 
 	//DebugOut(L"[INFO] Mario Pos %f %f \n", camPos.x, camPos.y);
 
-	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, direction, flipy);
+	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, direction * renderdiretion, flipy);
 
 	RenderBoundingBox(camera);
 	//DebugOut(L"[INFO] %f, %f \n", camPos.x, camPos.y);

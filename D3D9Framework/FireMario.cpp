@@ -65,6 +65,7 @@ void FireMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 void FireMario::Render(Camera* camera)
 {
 	Vector2 camPos = camera->toCameraPosistion(this->x, this->y);
+	int renderdirection = 1;
 
 	std::string ani = ANI_FIRE_MARIO_IDLE;
 
