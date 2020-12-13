@@ -11,9 +11,7 @@
 #include "tinyXML/tinyxml/tinyxml.h"
 #include "Camera.h"
 #include "GameObject.h"
-#include "InvisibleBrick.h"
-#include "GhostPlatform.h"
-#include "ScenceManager.h"
+
 
 
 class Map
@@ -31,7 +29,10 @@ public:
 	~Map();
 
 	void AddTileSet(LPTILESET tileset);
+
 	void AddLayer(LPLAYER layer);
+
+	void AddObject(TiXmlElement* RootElement);
 
 	//FilePath is path to the file itself , Path = Path to storage area
 	void LoadMapfromTMX(const char* FilePath, const char* Path);

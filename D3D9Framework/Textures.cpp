@@ -8,14 +8,14 @@ Textures::Textures()
 {
 }
 
-void Textures::AddTexture(int id, LPCWSTR filePath, D3DCOLOR TransColor)
+void Textures::AddTexture(std::string id, LPCWSTR filePath, D3DCOLOR TransColor)
 {
 	textures[id] = Game::GetInstance()->LoadTexture(filePath, TransColor);
 }
 
-LPDIRECT3DTEXTURE9 Textures::GetTexture(unsigned int i)
+LPDIRECT3DTEXTURE9 Textures::GetTexture(std::string id)
 {
-	return textures[i];
+	return textures[id];
 }
 
 void Textures::LoadResource()
@@ -24,9 +24,9 @@ void Textures::LoadResource()
 	AnimationManager* animationmanager = AnimationManager::GetInstance();
 
 	//add sprite and animation for mario
-	this->AddTexture(20, L"textures\\Mario\\Mario48.png", D3DCOLOR_XRGB(255,255,255));
-	spritemanager->AddSpriteUsingXML("textures\\Mario\\MarioDB.xml", this->GetTexture(20));
-	animationmanager->AddAnimationUsingXML("textures\\Mario\\MarioAnim.xml");
+	//this->AddTexture(20, L"textures\\Mario\\Mario48.png", D3DCOLOR_XRGB(255,255,255));
+	//spritemanager->AddSpriteUsingXML("textures\\Mario\\MarioDB.xml", this->GetTexture(20));
+	//animationmanager->AddAnimationUsingXML("textures\\Mario\\MarioAnim.xml");
 }
 
 Textures* Textures::GetInstance()

@@ -8,7 +8,9 @@ class InvisibleBrick: public GameObject
 {
 public:
 	InvisibleBrick();
+
 	virtual void Render(Camera* camera);
+
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 };
 

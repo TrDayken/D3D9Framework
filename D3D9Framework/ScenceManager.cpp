@@ -30,11 +30,13 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 
 			for (TiXmlElement* XMLtexture = XMLMap->FirstChildElement("Texture"); XMLtexture != NULL; XMLtexture = XMLtexture->NextSiblingElement("Texture"))
 			{
-				int texid = NULL;
 				int a = 0, r = 0, g = 0, b = 0;
+				std::string texid;
 				std::string path;
+
+				//XMLtexture->QueryIntAttribute("textureid", &texid);
 				path = XMLtexture->Attribute("path");
-				XMLtexture->QueryIntAttribute("textureid", &texid);
+				texid = XMLtexture->Attribute("textureid");
 				XMLtexture->QueryIntAttribute("a", &a);
 				XMLtexture->QueryIntAttribute("r", &r);
 				XMLtexture->QueryIntAttribute("g", &g);
@@ -45,12 +47,10 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 
 			for (TiXmlElement* XMLsprite = XMLMap->FirstChildElement("Sprite"); XMLsprite != NULL; XMLsprite = XMLsprite->NextSiblingElement("Sprite"))
 			{
-				int textureid = NULL;
+				//std::string textureid;
 				std::string path = XMLsprite->Attribute("path");
 
-				XMLsprite->QueryIntAttribute("textureid", &textureid);
-
-				SpriteManager::GetInstance()->AddSpriteUsingXML(path.c_str(), Textures::GetInstance()->GetTexture(textureid));
+				SpriteManager::GetInstance()->AddSpriteUsingXML(path.c_str());
 			}
 
 			for (TiXmlElement* XMLAnimation = XMLMap->FirstChildElement("Animation"); XMLAnimation != NULL; XMLAnimation = XMLAnimation->NextSiblingElement("Animation"))

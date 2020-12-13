@@ -13,14 +13,15 @@ class Textures
 private:
 	static Textures* __instance;
 
-	std::unordered_map<int, LPDIRECT3DTEXTURE9> textures;
+	std::unordered_map<std::string, LPDIRECT3DTEXTURE9> textures;
 
 public:
 	Textures();
 
-	void AddTexture(int id, LPCWSTR filePath, D3DCOLOR TransColor);
+	void AddTexture(std::string id, LPCWSTR filePath, D3DCOLOR TransColor);
 
-	LPDIRECT3DTEXTURE9 GetTexture(unsigned int i);
+	LPDIRECT3DTEXTURE9 GetTexture(std::string id);
+
 	void LoadResource();
 
 	static Textures* GetInstance();

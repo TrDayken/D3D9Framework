@@ -6,11 +6,16 @@
 #define BRICK_BBOX_WIDTH 48
 #define BRICK_BBOX_HEIGHT 48
 
-class Brick
+class Brick : public GameObject
 {
 public:
-	virtual void Render();
-	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
+	Brick();
+
+	void LoadAnimation();
+
+	void Render(Camera* camera);
+
+	void GetBoundingBox(float& l, float& t, float& r, float& b);
 };
 
 #endif

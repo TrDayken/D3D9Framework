@@ -3,20 +3,22 @@
   <Scence type = "PlayScence">
     <Map id= "world-1-1-map" filelocation = "textures\\Map\\world-1-1-map.tmx" filepath = "textures\\Map\\">
       <!--Map's Texture -->
-      <Texture textureid = "20" path = "textures\\Mario\\Mario48.png">
+      <Texture textureid = "tex-mario" path = "textures\\Mario\\Mario48.png">
       </Texture>
-      <Texture textureid = "30" path = "textures\\Misc\\fire-ball.png" a="255" r="255" g="255" b="255">
+      <Texture textureid = "tex-fire-ball" path = "textures\\Misc\\fire-ball.png" a="255" r="255" g="255" b="255">
       </Texture>
-      <Texture textureid = "40" path = "textures\\Enemy\\enemy.png">
+      <Texture textureid = "tex-misc" path = "textures\\Misc\\misc_x3.png">
       </Texture>
-      <Texture textureid = "100" path = "textures\\bbox.png">
+      <Texture textureid = "tex-enemy" path = "textures\\Enemy\\enemy.png">
+      </Texture>
+      <Texture textureid = "tex-bbox" path = "textures\\bbox.png">
       </Texture>
       <!--Map's Spite -->
-      <Sprite path = "textures\\Mario\\MarioDB.xml" textureid = "20">
+      <Sprite path = "textures\\Mario\\MarioDB.xml">
       </Sprite>
-      <Sprite path = "textures\\Misc\\MiscDB.xml" textureid = "30">
+      <Sprite path = "textures\\Misc\\MiscDB.xml" >
       </Sprite>
-      <Sprite path = "textures\\Enemy\\EnemyDB.xml" textureid = "40" >
+      <Sprite path = "textures\\Enemy\\EnemyDB.xml">
       </Sprite>
       <!--Map's Animation -->
       <Animation path = "textures\\Enemy\\EnemyAnim.xml">

@@ -11,7 +11,7 @@ LPANIMATION AnimationManager::GetAnimation(std::string id)
 {
 	LPANIMATION ani = animationDatabase[id];
 	if (ani == NULL)
-		DebugOut(L"[ERROR] Failed to find animation id: %d \n", id);
+		OutputDebugStringW(ToLPCWSTR("[ERROR] Failed to find animation id: " + id + "\n"));
 	return ani;
 }
 

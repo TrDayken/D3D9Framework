@@ -140,7 +140,7 @@ void GameObject::RenderBoundingBox(Camera* camera)
 	float l, t, r, b;
 
 	Vector2 camPos = camera->toCameraPosistion(x, y);
-	LPDIRECT3DTEXTURE9 bbox = Textures::GetInstance()->GetTexture(100);
+	LPDIRECT3DTEXTURE9 bbox = Textures::GetInstance()->GetTexture("tex-bbox");
 
 	GetBoundingBox(l, t, r, b);
 	rect.left = 0;

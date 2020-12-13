@@ -62,7 +62,7 @@ void PlayScence::Update(DWORD dt)
 			{
 				if (objects[i] == e) objects.erase(objects.begin() + i);
 
-				//cannot delete gameojbect pointer cause exception
+				//delete this gameojbect pointer cause exception why??
 				//e->~GameObject();
 			}
 		}

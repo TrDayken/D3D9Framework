@@ -1,4 +1,8 @@
 #include "Map.h"
+#include "InvisibleBrick.h"
+#include "GhostPlatform.h"
+#include "QuestionBlock.h"
+#include "ScenceManager.h"
 
 Map::Map()
 {
@@ -17,6 +21,77 @@ void Map::AddTileSet(LPTILESET tileset)
 void Map::AddLayer(LPLAYER layer)
 {
 	this->layers.push_back(layer);
+}
+
+void Map::AddObject(TiXmlElement* RootElement)
+{
+	for (TiXmlElement* TMXObjectsgroup = RootElement->FirstChildElement("objectgroup"); TMXObjectsgroup != NULL; TMXObjectsgroup = TMXObjectsgroup->NextSiblingElement("objectgroup"))
+	{
+		for (TiXmlElement* TMXObject = TMXObjectsgroup->FirstChildElement("object"); TMXObject != NULL; TMXObject = TMXObject->NextSiblingElement("object"))
+		{
+
+			float x, y, width, height;
+			//LPGAMEOBJECT object{};
+			std::string name = TMXObjectsgroup->Attribute("name");
+			if (name == "Solid")
+			{
+				InvisibleBrick* invisiblebrick = new InvisibleBrick();
+
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+				TMXObject->QueryFloatAttribute("width", &width);
+				TMXObject->QueryFloatAttribute("height", &height);
+
+				invisiblebrick->setX(x);
+				invisiblebrick->setY(y);
+				invisiblebrick->setWidth(width);
+				invisiblebrick->setHeight(height);
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(invisiblebrick);
+				//object = new InvisibleBrick();
+			}
+			else if (name == "Ghost")
+			{
+				GhostPlatform* ghostplatform = new GhostPlatform();
+
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+				TMXObject->QueryFloatAttribute("width", &width);
+				TMXObject->QueryFloatAttribute("height", &height);
+
+				ghostplatform->setX(x);
+				ghostplatform->setY(y);
+				ghostplatform->setWidth(width);
+				ghostplatform->setHeight(height);
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(ghostplatform);
+			}
+			else if (name == "Enemies")
+			{
+				continue;
+			}
+			else if (name == "Items")
+			{
+				continue;
+			}
+			else if (name == "QuestionBlocks")
+			{
+				QuestionBlock* questionblock = new QuestionBlock();
+
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+
+				questionblock->setX(x); 
+				questionblock->setY(y);
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(questionblock);
+			}
+			else
+			{
+				continue;
+			}	
+		}
+	}
 }
 
 void Map::LoadMapfromTMX(const char* FilePath, const char* Path)
@@ -46,41 +121,7 @@ void Map::LoadMapfromTMX(const char* FilePath, const char* Path)
 			this->AddLayer(layer);
 		}
 
-		for (TiXmlElement* TMXObjectsgroup = root->FirstChildElement("objectgroup"); TMXObjectsgroup != NULL; TMXObjectsgroup = TMXObjectsgroup->NextSiblingElement("objectgroup"))
-		{
-			for (TiXmlElement* TMXObject = TMXObjectsgroup->FirstChildElement("object"); TMXObject != NULL; TMXObject = TMXObject->NextSiblingElement("object"))
-			{
-				LPGAMEOBJECT object{};
-				std::string name = TMXObjectsgroup->Attribute("name");
-				if (name == "Solid")
-				{
-					object = new InvisibleBrick();
-				}
-				else if (name == "Ghost")
-				{
-					//continue;
-					object = new GhostPlatform();
-				}
-				else if (name == "Enemies")
-				{
-					continue;
-				}
-
-				float x, y, width, height;
-
-				TMXObject->QueryFloatAttribute("x", &x);
-				TMXObject->QueryFloatAttribute("y", &y); 
-				TMXObject->QueryFloatAttribute("width", &width);
-				TMXObject->QueryFloatAttribute("height", &height);
-
-				object->setX(x);
-				object->setY(y);
-				object->setWidth(width);
-				object->setHeight(height);
-
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(object);
-			}
-		}
+		this->AddObject(root);
 
 		DebugOut(L"[INFO] map load successful \n");
 	}
@@ -95,7 +136,8 @@ void Map::Update(DWORD dt)
 {
 }
 
-//this funtion is ugly and may be refine // note: multilayer cast error need to be fixed
+//this funtion is ugly and may be refine 
+// note: multilayer cast error need to be fixed
 void Map::Render(Camera* camera)
 {
 	//[NAIVE APPROACH]
@@ -149,6 +191,7 @@ void Map::Unload()
 	layers.clear();
 }
 
+//use this to set specific layers as object
 void Map::setObjectonLayer(std::vector<LPGAMEOBJECT> *listobject, std::string layername)
 {
 	for (int i = 0; i < width; i++)

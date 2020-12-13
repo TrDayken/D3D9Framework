@@ -1,4 +1,5 @@
 #include "SpriteManager.h"
+#include "Textures.h"
 
 SpriteManager* SpriteManager::__instance = nullptr;
 
@@ -25,7 +26,7 @@ void SpriteManager::AddSpriteX3(std::string id, int left, int top, int width, in
 }
 
 
-void SpriteManager::AddSpriteUsingXML(const char* FilePath, LPDIRECT3DTEXTURE9 texture)
+void SpriteManager::AddSpriteUsingXML(const char* FilePath)
 {
 	TiXmlDocument XMLdoc(FilePath);
 
@@ -35,7 +36,7 @@ void SpriteManager::AddSpriteUsingXML(const char* FilePath, LPDIRECT3DTEXTURE9 t
 
 		for (TiXmlElement* XMLtexture = root->FirstChildElement("Textures"); XMLtexture != NULL ; XMLtexture = XMLtexture->NextSiblingElement("Textures"))
 		{
-
+			std::string texture = XMLtexture->Attribute("textureId");
 			for (TiXmlElement* XMLsprite = XMLtexture->FirstChildElement("Sprite"); XMLsprite != NULL; XMLsprite = XMLsprite->NextSiblingElement("Sprite"))
 			{
 				int left, top, width, height;
@@ -50,7 +51,7 @@ void SpriteManager::AddSpriteUsingXML(const char* FilePath, LPDIRECT3DTEXTURE9 t
 				XMLsprite->QueryIntAttribute("xPivot", &xpivot);
 				XMLsprite->QueryIntAttribute("yPivot", &ypivot);
 
-				AddSpriteX3(id, left, top, width, height, xpivot, ypivot, texture);
+				AddSpriteX3(id, left, top, width, height, xpivot, ypivot, Textures::GetInstance()->GetTexture(texture));
 
 				//DebugOut(L"[INFO] loaded spirte:%s \n", id.c_str());
 

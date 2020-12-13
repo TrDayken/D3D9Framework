@@ -14,7 +14,7 @@ QuestionBlock::~QuestionBlock()
 
 void QuestionBlock::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 {
-	//theres one more 
+	//theres one more problem
 	//check if the question block had already deactivated or not
 	//if none quantity -- 
 	//poop out the item which this object hold;
@@ -32,15 +32,27 @@ void QuestionBlock::Render(Camera* camera)
 {
 	Vector2 pos = camera->toCameraPosistion(this->x, this->y);
 
+	animation_set["Active"]->Render(pos.x, pos.y);
 
+	//AnimationManager::GetInstance()->GetAnimation("ani-coin")->Render(pos.x, pos.y);
+
+	RenderBoundingBox(camera);
 }
 
 void QuestionBlock::LoadAnimation()
 {
 	auto animationmanager = AnimationManager::GetInstance();
 
-	AddAnimation("Active_Question_Block", animationmanager->GetAnimation("ani-question-block"));
-	AddAnimation("Empty_Question_Block", animationmanager->GetAnimation("ani-empty-block"));
+	AddAnimation("Active", animationmanager->GetAnimation("ani-question-block"));
+	AddAnimation("Empty", animationmanager->GetAnimation("ani-empty-block"));
+}
+
+void QuestionBlock::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+{
+	left = x; 
+	top = y; 
+	right = x + 48; 
+	bottom = y + 48;
 }
 
 void QuestionBlock::SetInBlockItem(Item inblockitem)

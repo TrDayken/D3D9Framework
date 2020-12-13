@@ -34,7 +34,9 @@ private:
 	std::unordered_map<int, RECT*> cells;
 public:
 	TileSet();
+
 	TileSet(TiXmlElement* TMXtileset, std::string Path);
+
 	~TileSet();
 
 	int getFirstgid();

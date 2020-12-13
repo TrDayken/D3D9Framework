@@ -34,6 +34,8 @@ public:
 
 	void LoadAnimation();
 
+	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+
 	void SetInBlockItem(Item inblockitem);
 	Item GetInBlockItem();
 
