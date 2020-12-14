@@ -2,6 +2,8 @@
 
 GameObject::GameObject()
 {
+	this->RenderPosition = VectorZero;
+	this->RelativePosition = VectorZero;
 	this->Position.x = this->Position.y = 0;
 	vx = vy = 0;
 	direction = 1;
@@ -23,6 +25,18 @@ void GameObject::getPosition(float& x, float& y)
 {
 	x = this->Position.x;
 	y = this->Position.y;
+}
+
+void GameObject::setRelativePosition(float x, float y)
+{
+	this->RelativePosition.x = x; 
+	this->RelativePosition.y = y;
+}
+
+void GameObject::getRelativePosition(float& x, float& y)
+{
+	x = RelativePosition.x; 
+	y = RelativePosition.y;
 }
 
 void GameObject::setSpeed(float vx, float vy)
@@ -162,6 +176,13 @@ void GameObject::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;
+}
+
+void GameObject::Render(Camera* camera)
+{
+	Vector2 pos = camera->toCameraPosistion(this->Position.x, this->Position.y);
+
+	this->RenderPosition = pos + RelativePosition;
 }
 
 

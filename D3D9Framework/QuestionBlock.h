@@ -28,9 +28,11 @@ class QuestionBlock :
 
 	bool isBounce;
 
+	int BounceState;
+
 	DWORD Start_Bounce_Time;
 
-	Vector2 relativePosition; 
+	//Vector2 relativePosition; 
 
 public:
 	QuestionBlock();

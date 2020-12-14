@@ -12,7 +12,9 @@ QuestionBlock::QuestionBlock()
 
 	this->isBounce = false;
 
-	this->relativePosition = VectorZero;
+	this->BounceState = 0; 
+
+	//this->relativePosition = VectorZero;
 }
 
 QuestionBlock::~QuestionBlock()
@@ -43,7 +45,7 @@ void QuestionBlock::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 	{
 		this->isBounce = true;
 		this->Start_Bounce_Time = GetTickCount();
-
+		this->BounceState = 1; 
 		DebugOut(L"[INFO] start bounce \n");
 	}
 }
@@ -52,23 +54,35 @@ void QuestionBlock::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	if (isBounce)
 	{
-		if(!(GetTickCount() - Start_Bounce_Time > BOUNCE_TIME))
-			this->relativePosition.y -= BOUNCE_VEL * dt;			
+		if (BounceState == 1)
+		{
+			//if (!(GetTickCount() - Start_Bounce_Time > BOUNCE_TIME))
+			this->RelativePosition.y -= BOUNCE_VEL * dt;
+			if (GetTickCount() - Start_Bounce_Time > BOUNCE_TIME)
+			{
+				Start_Bounce_Time = GetTickCount();
+				BounceState = 2;
+			}
+		}
+		else if (BounceState == 2)
+		{
+			this->RelativePosition.y += BOUNCE_VEL * dt;
+			if (GetTickCount() - Start_Bounce_Time > BOUNCE_TIME)
+			{
+				this->RelativePosition.y = 0; 
+				BounceState = 0;
+			}
+		}
 	}
 }
 
 void QuestionBlock::Render(Camera* camera)
 {
-	//[TODO] relative position 
-	Vector2 pos = camera->toCameraPosistion(this->Position.x, this->Position.y);
+	GameObject::Render(camera); 
 
-	Vector2 relativerenderpos = pos + relativePosition;
-	//Vector2 relativepos = pos;
-	animation_set["Active"]->Render(relativerenderpos.x, relativerenderpos.y);
+	animation_set["Active"]->Render(RenderPosition.x, RenderPosition.y);
 
-	//AnimationManager::GetInstance()->GetAnimation("ani-coin")->Render(pos.x, pos.y);
-
-	RenderBoundingBox(camera);
+	//RenderBoundingBox(camera);
 }
 
 void QuestionBlock::LoadAnimation()

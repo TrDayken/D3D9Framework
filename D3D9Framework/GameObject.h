@@ -67,6 +67,9 @@ protected:
 	// object position
 	Vector2 Position;
 
+	// object relative sprite position
+	Vector2 RelativePosition;
+	Vector2 RenderPosition;
 	//dx = vx * dt; dy = vy * dt;
 	float dx, dy;
 
@@ -94,6 +97,9 @@ public:
 	void setPosition(float x, float y);
 	void getPosition(float& x, float& y);
 	
+	void setRelativePosition(float x, float y);
+	void getRelativePosition(float& x, float& y);
+
 	void setSpeed(float vx, float vy);
 	void GetSpeed(float& vx, float& vy);
 	
@@ -132,7 +138,7 @@ public:
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) = 0;
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
-	virtual void Render(Camera* camera) = 0;
+	virtual void Render(Camera* camera);
 	virtual void SetState(int state) { this->state = state; }
 	//virtual void LoadAnimation() = 0;
 
