@@ -77,12 +77,17 @@ void Map::AddObject(TiXmlElement* RootElement)
 			else if (name == "QuestionBlocks")
 			{
 				QuestionBlock* questionblock = new QuestionBlock();
+				int quantity = 0; 
 
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
+				TMXObject->QueryIntAttribute("type", &quantity);
 
+				questionblock->SetQuantity(quantity);
 				questionblock->setX(x); 
 				questionblock->setY(y);
+				if (quantity <= 0)
+					questionblock->SetDeflected(true); 
 
 				ScenceManager::GetInstance()->getCurrentScence()->AddObject(questionblock);
 			}
@@ -176,10 +181,13 @@ void Map::Render(Camera* camera)
 
 			for (LPLAYER layer : layers)
 			{
-				int id = layer->GetTileID(i % width, j % height);
-				if (id != 0)
+				if (layer->getVisible() == true)
 				{
-					tilesets->Draw(id - 1, x, y);
+					int id = layer->GetTileID(i % width, j % height);
+					if (id != 0)
+					{
+						tilesets->Draw(id - 1, x, y);
+					}
 				}
 			}
 		}

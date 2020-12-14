@@ -303,7 +303,7 @@
   <object id="141" x="6624" y="1824" width="48" height="48"/>
   <object id="142" x="6336" y="1392" width="576" height="48"/>
  </objectgroup>
- <objectgroup id="14" name="Ghost">
+ <objectgroup id="14" name="Ghost" visible="0">
   <object id="143" x="720" y="1104" width="144" height="48"/>
   <object id="144" x="816" y="1008" width="144" height="48"/>
   <object id="145" x="1200" y="1104" width="240" height="48"/>
@@ -478,7 +478,7 @@
   <object id="104" name="bcoin" type="1" x="4272" y="384">
    <point/>
   </object>
-  <object id="183" name="bcoin" type="1" x="528.25" y="1056">
+  <object id="183" name="bcoin" type="4" x="528.25" y="1056">
    <point/>
   </object>
   <object id="184" name="bcoin" type="1" x="576" y="1056">

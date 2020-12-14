@@ -55,6 +55,9 @@ public:
 	void SetQuantity(int quantity);
 	int GetQuantity();
 
+	void SetDeflected(bool isdeflected);
+	bool GetDeflected(); 
+
 };
 
 #endif // !__QUESTIONBLOCK_H__

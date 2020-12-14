@@ -40,13 +40,23 @@ void QuestionBlock::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 	//		shietouttheobjectit's holding;
 	//	}
 	//}
-
-	if (obj->EntityTag == Tag::player)
+	if (!Deflected)
 	{
-		this->isBounce = true;
-		this->Start_Bounce_Time = GetTickCount();
-		this->BounceState = 1; 
-		DebugOut(L"[INFO] start bounce \n");
+		if (obj->EntityTag == Tag::player)
+		{
+			this->isBounce = true;
+			this->Start_Bounce_Time = GetTickCount();
+			this->BounceState = 1;
+			DebugOut(L"[INFO] start bounce \n");
+
+
+			//spawn holding obj
+			// and defy holdingobject's logic
+			this->Quantity--;
+
+			if (this->Quantity <= 0)
+				this->Deflected = true;
+		}
 	}
 }
 
@@ -67,6 +77,10 @@ void QuestionBlock::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		else if (BounceState == 2)
 		{
 			this->RelativePosition.y += BOUNCE_VEL * dt;
+
+
+
+
 			if (GetTickCount() - Start_Bounce_Time > BOUNCE_TIME)
 			{
 				this->RelativePosition.y = 0; 
@@ -80,7 +94,12 @@ void QuestionBlock::Render(Camera* camera)
 {
 	GameObject::Render(camera); 
 
-	animation_set["Active"]->Render(RenderPosition.x, RenderPosition.y);
+	std::string ani = "Active";
+
+	if (Deflected)
+		ani = "Empty";
+
+	animation_set[ani]->Render(RenderPosition.x, RenderPosition.y);
 
 	//RenderBoundingBox(camera);
 }
@@ -119,4 +138,14 @@ void QuestionBlock::SetQuantity(int quantity)
 int QuestionBlock::GetQuantity()
 {
 	return this->Quantity;
+}
+
+void QuestionBlock::SetDeflected(bool isdeflected)
+{
+	this->Deflected = isdeflected; 
+}
+
+bool QuestionBlock::GetDeflected()
+{
+	return this->Deflected;
 }
