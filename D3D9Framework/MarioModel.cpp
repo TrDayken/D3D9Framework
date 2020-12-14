@@ -4,8 +4,8 @@ MarioModel::MarioModel(float x, float y)
 {
 	start_x = x; 
 	start_y = y;
-	this->x = x; 
-	this->y = y;
+	this->Position.x = x; 
+	this->Position.y = y;
 
 	this->changestate = -1;
 
@@ -52,8 +52,8 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
 	{
-		x += dx;
-		y += dy;
+		this->Position.x += dx;
+		this->Position.y += dy;
 	}
 	else
 	{
@@ -67,8 +67,8 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		//filter colision axis by axis
 		if (min_tx > min_ty)
 		{
-			x += min_ty * dx;
-			y += min_ty * dy + ny * 0.4f;
+			this->Position.x += min_ty * dx;
+			this->Position.y += min_ty * dy + ny * 0.4f;
 			dy = 0;
 
 			coEvents.clear();
@@ -77,11 +77,11 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			{
 				FilterCollisionX(coEvents, coEventsResult, min_tx, nx, rdx);
 				//x -= min_ty * dx;
-				x += min_tx * dx + nx * 0.4f - min_ty * dx;
+				this->Position.x += min_tx * dx + nx * 0.4f - min_ty * dx;
 			}
 			else
 			{
-				x += dx - min_ty * dx;
+				this->Position.x += dx - min_ty * dx;
 				nx = 0;
 			}
 			dy = vy * dt;
@@ -90,20 +90,20 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		else
 		{
 			//float py = y;
-			x += min_tx * dx + nx * 0.4f;
-			y += min_tx * dy;
+			this->Position.x += min_tx * dx + nx * 0.4f;
+			this->Position.y += min_tx * dy;
 			dx = 0;
 			coEvents.clear();
 			CalcPotentialCollisions(&coObjectsResult, coEvents);
 			if (coEvents.size() > 0)
 			{
 				FilterCollisionY(coEvents, coEventsResult, min_ty, ny, rdy);
-				y += min_ty * dy + ny * 0.4f - min_tx * dy;
+				this->Position.y += min_ty * dy + ny * 0.4f - min_tx * dy;
 			}
 
 			else
 			{
-				y = y + dy - min_tx * dy;
+				this->Position.y = this->Position.y + dy - min_tx * dy;
 				ny = 0;
 			}
 			dx = vx * dt;
@@ -119,7 +119,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				e->obj->setIsHoldAble(false);
 				Hold = e->obj;
 			}
-			if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell)
+			else if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->OnCollisionEnter(this, e->nx, e->ny);
@@ -128,7 +128,17 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 					vy = -MARIO_DEFLECT_MOB * dt;
 					state.jump = JumpingStates::Jump;
 				}
+				else
+				{
+					//mario take damage
+				}
 					
+			}
+			else if (e->obj->EntityTag == Tag::questionblock)
+			{
+				LPGAMEOBJECT obj = e->obj;
+				if (e->ny > 0)
+					obj->OnCollisionEnter(this, e->nx, e->ny);
 			}
 
 		}
@@ -171,9 +181,9 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	if (Hold != NULL)
 	{
 		if (direction == 1)
-			Hold->setPosition(x + 30, y + 25);
+			Hold->setPosition(this->Position.x + 30, this->Position.y + 25);
 		else
-			Hold->setPosition(x - 30, y + 25);
+			Hold->setPosition(this->Position.x - 30, this->Position.y + 25);
 	}
 
 	// clean up collision events

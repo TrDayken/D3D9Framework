@@ -21,13 +21,13 @@ void Koopa::LoadAnimation()
 
 void Koopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	left = x; 
-	top = y;
-	right = x + KOOPA_BBOX_WIDTH;
+	left = this->Position.x;
+	top = this->Position.y;
+	right = this->Position.x + KOOPA_BBOX_WIDTH;
 	if (koopstate == KoopaState::shell || koopstate == KoopaState::slide)
-		bottom = y + KOOPA_BBOX_HEIGHT_SHELL;
+		bottom = this->Position.y + KOOPA_BBOX_HEIGHT_SHELL;
 	else
-		bottom = y + KOOPA_BBOX_HEIGHT;
+		bottom = this->Position.y + KOOPA_BBOX_HEIGHT;
 }
 
 void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
@@ -55,8 +55,8 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	if (coEvents.size() == 0)
 	{
-		x += dx;
-		y += dy;
+		this->Position.x += dx;
+		this->Position.y += dy;
 	}
 	else
 	{
@@ -67,8 +67,8 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		// TODO: This is a very ugly designed function!!!!
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
-		y += min_ty * dy + ny * 0.4;
-		x += min_tx * dx + nx * 0.4;
+		this->Position.y += min_ty * dy + ny * 0.4;
+		this->Position.x += min_tx * dx + nx * 0.4;
 
 		if (ny != 0) vy = 0;
 		if (nx != 0)
@@ -105,7 +105,7 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void Koopa::Render(Camera* camera)
 {
-	Vector2 camPos = camera->toCameraPosistion(x, y);
+	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 
 	std::string ani = ANI_RED_KOOPA_MOVE;
 
@@ -141,7 +141,7 @@ void Koopa::SetState(KoopaState state)
 		isHoldAble = false;
 		vx = 0;
 		ColTag = Collision2DTag::None;
-		y += KOOPA_BBOX_HEIGHT - KOOPA_BBOX_HEIGHT_SHELL - 0.4f;
+		this->Position.y += KOOPA_BBOX_HEIGHT - KOOPA_BBOX_HEIGHT_SHELL - 0.4f;
 		koopstate = KoopaState::die;
 		break;
 	case KoopaState::walking:
@@ -220,7 +220,7 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 			else
 			{
 				SetState(KoopaState::slide);
-				if (obj->getX() <= this->x)
+				if (obj->getX() <= this->Position.x)
 				{
 					vx = KOOPA_SLIDE_SPEED * dt;
 					//obj->setVy(-10.3f);

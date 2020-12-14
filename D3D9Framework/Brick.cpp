@@ -24,8 +24,8 @@ void Brick::LoadAnimation()
 
 void Brick::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
-	l = this->x;
-	t = this->y;
-	r = this->x + BRICK_BBOX_WIDTH;
-	b = this->y + BRICK_BBOX_HEIGHT;
+	l = this->Position.x;
+	t = this->Position.y;
+	r = this->Position.x + BRICK_BBOX_WIDTH;
+	b = this->Position.y + BRICK_BBOX_HEIGHT;
 }

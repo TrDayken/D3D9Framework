@@ -13,8 +13,8 @@ void InvisibleBrick::Render(Camera* camera)
 
 void InvisibleBrick::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
-	l = x;
-	t = y;
-	r = x + width;
-	b = y + height;
+	l = this->Position.x;
+	t = this->Position.y;
+	r = this->Position.x + width;
+	b = this->Position.y + height;
 }

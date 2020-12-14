@@ -4,15 +4,15 @@
 FireShoot::FireShoot(float x, float y, int direction)
 {
 	EntityTag = Tag::projectile;
-	this->x = x;
-	this->y = y;
+	this->Position.x = x;
+	this->Position.y = y;
 	vx = direction * BULLET_VX;
 	LoadAnimation();
 }
 
 void FireShoot::Render(Camera* camera)
 {
-	Vector2 camPos = camera->toCameraPosistion(x, y);
+	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 
 	std::string ani = ANI_BULLET;
 
@@ -21,10 +21,10 @@ void FireShoot::Render(Camera* camera)
 
 void FireShoot::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
-	l = x;
-	t = y;
-	r = x + BULLET_BBOX_WIDTH;
-	b = y + BULLET_BBOX_HEIGHT;
+	l = this->Position.x;
+	t = this->Position.y;
+	r = this->Position.x + BULLET_BBOX_WIDTH;
+	b = this->Position.y + BULLET_BBOX_HEIGHT;
 }
 
 void FireShoot::LoadAnimation()
@@ -48,8 +48,8 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	if (coEvents.size() == 0)
 	{
-		x += dx;
-		y += dy;
+		this->Position.x += dx;
+		this->Position.y += dy;
 	}
 	else
 	{
@@ -60,8 +60,8 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		// TODO: This is a very ugly designed function!!!!
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
-		x += min_tx * dx + nx * 0.4;
-		y += min_ty * dy + ny * 0.4;
+		this->Position.x += min_tx * dx + nx * 0.4;
+		this->Position.y += min_ty * dy + ny * 0.4;
 		if (ny < 0) vy = -BULLET_BOUNCE;
 
 

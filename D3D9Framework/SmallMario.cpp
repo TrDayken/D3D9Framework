@@ -91,7 +91,7 @@ void SmallMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void SmallMario::Render(Camera* camera)
 {
-	Vector2 camPos = camera->toCameraPosistion(this->x, this->y);
+	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 
 	std::string ani = ANI_SMALL_MARIO_IDLE;
 
@@ -140,10 +140,10 @@ void SmallMario::LoadAnimation()
 
 void SmallMario::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
-	l = x;
-	t = y;
-	r = x + MARIO_SMALL_BBOX_WIDTH;
-	b = y + MARIO_SMALL_BBOX_HEIGHT;
+	l = this->Position.x;
+	t = this->Position.y;
+	r = this->Position.x + MARIO_SMALL_BBOX_WIDTH;
+	b = this->Position.y + MARIO_SMALL_BBOX_HEIGHT;
 }
 
 int SmallMario::getCurrentLevel()

@@ -9,8 +9,8 @@ Mario::Mario(float x, float y)
 	this->start_x = x; 
 	this->start_y = y;
 
-	this->x = x;
-	this->y = y;
+	this->Position.x = x;
+	this->Position.y = y;
 
 	//create every mario in the list
 	StateofMario.push_back(new SmallMario());
@@ -88,7 +88,7 @@ void Mario::SwitchMario(int level)
 	//change the mario to the desire mario
 	CurrentMario = StateofMario[changetolevel];
 	//update on the changed mario => prevent AABB overlaping
-	CurrentMario->SetPosition(this->x, this->y);
+	CurrentMario->SetPosition(this->Position.x, this->Position.y);
 
 	CurrentMario->setDirection(StateofMario[prechangelevel]->getDirection());
 	//delete &changetolevel;

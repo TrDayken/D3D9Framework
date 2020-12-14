@@ -2,7 +2,7 @@
 
 GameObject::GameObject()
 {
-	x = y = 0;
+	this->Position.x = this->Position.y = 0;
 	vx = vy = 0;
 	direction = 1;
 	flipy = 1;
@@ -15,14 +15,14 @@ GameObject::~GameObject()
 
 void GameObject::setPosition(float x, float y)
 {
-	this->x = x; 
-	this->y = y;
+	this->Position.x = x; 
+	this->Position.y = y;
 }
 
 void GameObject::getPosition(float& x, float& y)
 {
-	x = this->x;
-	y = this->y;
+	x = this->Position.x;
+	y = this->Position.y;
 }
 
 void GameObject::setSpeed(float vx, float vy)
@@ -54,22 +54,22 @@ void GameObject::setIsHoldAble(bool ishold)
 
 float GameObject::getX()
 {
-	return this->x;
+	return this->Position.x;
 }
 
 void GameObject::setX(float x)
 {
-	this->x = x;
+	this->Position.x = x;
 }
 
 float GameObject::getY()
 {
-	return this->y;
+	return this->Position.y;
 }
 
 void GameObject::setY(float y)
 {
-	this->y = y;
+	this->Position.y = y;
 }
 
 float GameObject::getVx()
@@ -139,7 +139,7 @@ void GameObject::RenderBoundingBox(Camera* camera)
 	RECT rect;
 	float l, t, r, b;
 
-	Vector2 camPos = camera->toCameraPosistion(x, y);
+	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 	LPDIRECT3DTEXTURE9 bbox = Textures::GetInstance()->GetTexture("tex-bbox");
 
 	GetBoundingBox(l, t, r, b);

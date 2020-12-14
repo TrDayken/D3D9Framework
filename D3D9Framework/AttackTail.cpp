@@ -5,11 +5,11 @@ AttackTail::AttackTail(float x, float y, int direction)
 	Deletetime = GetTickCount();
 	EntityTag = Tag::tail;
 	ColTag = Collision2DTag::None;
-	this->x = x; 
-	this->y = y;
+	this->Position.x = x; 
+	this->Position.y = y;
 	direction = 1;
 }
-
+	
 void AttackTail::Render(Camera* camera)
 {
 	//RenderBoundingBox(camera);
@@ -17,10 +17,10 @@ void AttackTail::Render(Camera* camera)
 
 void AttackTail::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
-	l = x;
-	t = y; 
-	r = x + ATTACKTAIL_BBOX_WIDTH;
-	b = y + ATTACKTAIL_BBOX_HEIGHT;
+	l = this->Position.x;
+	t = this->Position.y;
+	r = this->Position.x + ATTACKTAIL_BBOX_WIDTH;
+	b = this->Position.y + ATTACKTAIL_BBOX_HEIGHT;
 }
 
 void AttackTail::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
@@ -35,8 +35,8 @@ void AttackTail::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 
 	if (coEvents.size() == 0)
 	{
-		x += dx;
-		y += dy;
+		this->Position.x += dx;
+		this->Position.y += dy;
 	}
 	else
 	{
@@ -47,8 +47,8 @@ void AttackTail::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 		// TODO: This is a very ugly designed function!!!!
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
-		x += min_tx * dx + nx * 0.4;
-		y += min_ty * dy + ny * 0.4;
+		this->Position.x += min_tx * dx + nx * 0.4;
+		this->Position.y += min_ty * dy + ny * 0.4;
 
 		
 

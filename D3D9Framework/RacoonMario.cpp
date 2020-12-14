@@ -88,12 +88,12 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		AttackTail* tail;
 		if (direction == 1)
 		{
-			tail = new AttackTail(x + 25, y + 45, direction);
+			tail = new AttackTail(this->Position.x + 25, this->Position.y + 45, direction);
 			tail->setDirection(direction);
 		}
 		else
 		{
-			tail = new AttackTail(x - 30, y + 45, direction);
+			tail = new AttackTail(this->Position.x - 30, this->Position.y + 45, direction);
 			tail->setDirection(direction);
 		}
 
@@ -174,7 +174,7 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void RacoonMario::Render(Camera* camera)
 {
-	Vector2 camPos = camera->toCameraPosistion(this->x, this->y);
+	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 
 	std::string ani = ANI_RACCOON_MARIO_IDLE;
 
@@ -256,17 +256,17 @@ void RacoonMario::GetBoundingBox(float& l, float& t, float& r, float& b)
 	if (this->state.movement == MovingStates::Crouch)
 	{
 		float crouchdiff = MARIO_RACCOON_BBOX_HEIGHT - MARIO_RACCOON_BBOX_HEIGHT_CROUCH;
-		l = x;
-		t = y + crouchdiff;
-		r = x + MARIO_RACCOON_BBOX_WIDTH;
-		b = y + crouchdiff + MARIO_RACCOON_BBOX_HEIGHT_CROUCH;
+		l = this->Position.x;
+		t = this->Position.y + crouchdiff;
+		r = this->Position.x + MARIO_RACCOON_BBOX_WIDTH;
+		b = this->Position.y + crouchdiff + MARIO_RACCOON_BBOX_HEIGHT_CROUCH;
 	}
 	else
 	{
-		l = x;
-		t = y;
-		r = x + MARIO_RACCOON_BBOX_WIDTH;
-		b = y + MARIO_RACCOON_BBOX_HEIGHT;
+		l = this->Position.x;
+		t = this->Position.y;
+		r = this->Position.x + MARIO_RACCOON_BBOX_WIDTH;
+		b = this->Position.y + MARIO_RACCOON_BBOX_HEIGHT;
 	}
 }
 

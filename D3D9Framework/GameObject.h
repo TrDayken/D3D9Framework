@@ -52,7 +52,8 @@ enum class Tag
 	player,
 	projectile,
 	shell,
-	tail
+	tail,
+	questionblock
 };
 
 class GameObject
@@ -64,7 +65,7 @@ protected:
 	int direction, flipy;
 
 	// object position
-	float x, y;	
+	Vector2 Position;
 
 	//dx = vx * dt; dy = vy * dt;
 	float dx, dy;
@@ -81,6 +82,7 @@ protected:
 
 	bool isBeingHold = false;
 	bool isHoldAble = false;
+
 	DWORD dt;
 	std::unordered_map<std::string,LPANIMATION> animation_set;
 

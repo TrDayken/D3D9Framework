@@ -48,19 +48,19 @@ void Goomba::OnOverLap(GameObject* obj)
 
 void Goomba::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	left = x;
-	top = y;
-	right = x + GOOMBA_BBOX_WIDTH;
+	left = this->Position.x;
+	top = this->Position.y;
+	right = this->Position.x + GOOMBA_BBOX_WIDTH;
 
 	if (goomstate == GoombaState::die)
-		bottom = y + GOOMBA_BBOX_HEIGHT_DIE;
+		bottom = this->Position.y + GOOMBA_BBOX_HEIGHT_DIE;
 	else
-		bottom = y + GOOMBA_BBOX_HEIGHT;
+		bottom = this->Position.y + GOOMBA_BBOX_HEIGHT;
 }
 
 void Goomba::Render(Camera* camera)
 {
-	Vector2 camPos = camera->toCameraPosistion(x, y);
+	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 	
 	float diediff = 0;
 
@@ -119,8 +119,8 @@ void Goomba::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	if (coEvents.size() == 0)
 	{
-		x += dx;
-		y += dy;
+		this->Position.x += dx;
+		this->Position.y += dy;
 	}
 	else
 	{
@@ -131,8 +131,8 @@ void Goomba::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
 		// pull up after collision
-		y += min_ty * dy + ny * 0.4;
-		x += min_tx * dx + nx * 0.4;
+		this->Position.y += min_ty * dy + ny * 0.4;
+		this->Position.x += min_tx * dx + nx * 0.4;
 
 
 		if (ny != 0) vy = 0;

@@ -4,6 +4,9 @@
 #include "GameObject.h"
 #include "Camera.h"
 
+#define BOUNCE_VEL	24.0f / 50.0f
+#define BOUNCE_TIME	50
+
 enum class Item
 {
 	RedShroom,
@@ -17,18 +20,26 @@ class QuestionBlock :
 {
 	//in block object config
 	int Quantity;
+
 	Item InBlockItem;
 	
 	//question block boucing state
-	int Deflected;
+	bool Deflected;
+
+	bool isBounce;
+
+	DWORD Start_Bounce_Time;
+
+	Vector2 relativePosition; 
 
 public:
 	QuestionBlock();
+
 	~QuestionBlock();
 
 	void OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny);
 
-	//void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
+	void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
 
 	void Render(Camera* camera);
 
