@@ -41,10 +41,7 @@ void PlayScence::Update(DWORD dt)
 {
 	std::vector<LPGAMEOBJECT> coObjects;
 
-	for (size_t i = 0; i < objects.size(); i++)
-	{
-		coObjects.push_back(objects[i]);
-	}
+	coObjects = objects; 
 
 	for (size_t i = 0; i < objects.size(); i++)
 	{
@@ -53,14 +50,17 @@ void PlayScence::Update(DWORD dt)
 		
 	}
 
-
+	//if object in erase vector delete it
 	if (earseobjects.size() > 0)
 	{
 		for (auto e : earseobjects)
 		{
 			for (size_t i = 0; i < objects.size(); i++)
 			{
-				if (objects[i] == e) objects.erase(objects.begin() + i);
+				if (objects[i] == e)
+				{
+					objects.erase(objects.begin() + i);
+				}
 
 				//delete this gameojbect pointer cause exception why??
 				//e->~GameObject();
@@ -74,6 +74,7 @@ void PlayScence::Update(DWORD dt)
 		camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, mario->getY() - WINDOW_HEIGHT/2);/*800*/
 
 	mario->Update(dt, &coObjects);
+
 	camera->Update(dt);
 
 

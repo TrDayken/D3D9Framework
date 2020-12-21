@@ -648,5 +648,30 @@
 			<Sprite id="spr-tanooki-mario-roll-6" left="466" top="387"  width="20" height="23" frameTime="100"/>
 			<Sprite id="spr-tanooki-mario-roll-7" left="489" top="389"  width="20" height="21" frameTime="100"/>
 		</Animation>
+
+    <Animation aniId="ani-mario-grow-up" frameTime="180" name = "MARIO-GROW-UP">
+      <Sprite id="spr-small-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-small-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-small-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-big-mario-idle-0" frameTime="180"/>
+      <Sprite id="spr-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-big-mario-idle-0" frameTime="180"/>
+    </Animation>
+
+    <Animation aniId="ani-mario-shrink-down" frameTime="180" name = "MARIO-SHRINK-DOWN">
+      <Sprite id="spr-big-mario-idle-0" frameTime="180"/>
+      <Sprite id="spr-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-big-mario-idle-0" frameTime="180"/>
+      <Sprite id="spr-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-small-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-small-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-mario-grow-up" frameTime="180"/>
+      <Sprite id="spr-small-mario-grow-up" frameTime="180"/>
+    </Animation>
+    
 	</Textures>
 </Textures>

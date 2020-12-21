@@ -136,7 +136,7 @@ public:
 	//void setAnimationSet();
 	//void CloneAnimation();
 
-	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) = 0;
+	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) {};
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
 	virtual void Render(Camera* camera);
 	virtual void SetState(int state) { this->state = state; }

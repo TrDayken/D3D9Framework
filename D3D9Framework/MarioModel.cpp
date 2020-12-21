@@ -1,5 +1,5 @@
 #include "MarioModel.h"
-
+#include "SmokeFx.h"
 MarioModel::MarioModel(float x, float y)
 {
 	start_x = x; 
@@ -263,12 +263,15 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 	{
-		GameObject* goom = new Goomba();
+		SmokeFx* smoke = new SmokeFx();
 
-		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
+		//Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
-		goom->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
-		ScenceManager::GetInstance()->getCurrentScence()->AddObject(goom);
+		//goom->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
+
+		smoke->setStartPosition(this->Position); 
+
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(smoke);
 		break;
 	}
 	case DIK_W:

@@ -49,9 +49,9 @@ void QuestionBlock::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 			this->BounceState = 1;
 			DebugOut(L"[INFO] start bounce \n");
 
-
-			//spawn holding obj
+			// spawn holding obj
 			// and defy holdingobject's logic
+
 			this->Quantity--;
 
 			if (this->Quantity <= 0)
@@ -78,9 +78,6 @@ void QuestionBlock::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		{
 			this->RelativePosition.y += BOUNCE_VEL * dt;
 
-
-
-
 			if (GetTickCount() - Start_Bounce_Time > BOUNCE_TIME)
 			{
 				this->RelativePosition.y = 0; 
@@ -98,7 +95,7 @@ void QuestionBlock::Render(Camera* camera)
 
 	if (Deflected)
 		ani = "Empty";
-
+	
 	animation_set[ani]->Render(RenderPosition.x, RenderPosition.y);
 
 	//RenderBoundingBox(camera);

@@ -20,6 +20,8 @@ public:
 
 	FireShoot(float x, float y, int direction);
 
+	~FireShoot();
+
 	virtual void Render(Camera* camera);
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void LoadAnimation();

@@ -23,9 +23,6 @@
     <Filter Include="Source Files\FrameWork\Utils">
       <UniqueIdentifier>{8f23e39c-19eb-4290-b5ee-db293df63aba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity">
-      <UniqueIdentifier>{1f3618df-83ea-4f4d-8ab1-ac4a1e308832}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\FrameWork\Map">
       <UniqueIdentifier>{ac0d4f8e-3f8e-4c44-89dd-9cfc8d5b980e}</UniqueIdentifier>
     </Filter>
@@ -37,33 +34,6 @@
     </Filter>
     <Filter Include="Source Files\FrameWork\Map\Layer">
       <UniqueIdentifier>{f1f3040c-d427-4fc8-8d59-c153ff26727b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Mario">
-      <UniqueIdentifier>{327360a0-31b7-4031-a40a-9083e2d4da30}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Blocks">
-      <UniqueIdentifier>{e44468bc-d67a-497a-89ca-47ec78b1fe12}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Enemy">
-      <UniqueIdentifier>{00eb2f7a-06ab-48ed-a49d-74c3d29e6550}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Misc">
-      <UniqueIdentifier>{0009f9b5-8a93-4d1f-908d-ddd751387990}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Mario\MarioModel">
-      <UniqueIdentifier>{6671e8d9-87b4-4f24-8f71-47599908397e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Mario\MarioModel\MarioState">
-      <UniqueIdentifier>{0c71ac5e-e9fa-4b7f-83a5-8cc6ce525189}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Projectile">
-      <UniqueIdentifier>{5c2b6f52-646d-42ea-9286-b5db906dea78}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Blocks\SolidBlocks">
-      <UniqueIdentifier>{4766121c-71d0-4cc4-b458-74dc55c3df59}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entity\Blocks\GhostBlock">
-      <UniqueIdentifier>{6e222f9b-505c-42d7-9a6c-8a541f3fa704}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\FrameWork\Animation, Sprite and Texture\Animation">
       <UniqueIdentifier>{9380efbc-6643-472c-8454-ec328804e6c0}</UniqueIdentifier>
@@ -86,29 +56,83 @@
     <Filter Include="Source Files\FrameWork\HUD">
       <UniqueIdentifier>{c0a11498-bda2-456a-a558-de6664b34ad1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FrameWork\Game Object">
-      <UniqueIdentifier>{b20ce330-8505-461a-8559-f4176398b49e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FrameWork\Game Variables">
-      <UniqueIdentifier>{454bc349-8cda-4da9-8414-a9db44c69784}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\FrameWork\Font Manager">
       <UniqueIdentifier>{02450c0c-8a7a-43f5-87e9-ae16a4fbe8c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Enemy\Goomba">
-      <UniqueIdentifier>{2e241fa2-6ea7-457f-84b8-780f793d82d9}</UniqueIdentifier>
+    <Filter Include="Entity">
+      <UniqueIdentifier>{1f3618df-83ea-4f4d-8ab1-ac4a1e308832}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Enemy\Koopa">
-      <UniqueIdentifier>{173b1c93-3b5a-47a0-8420-8327422ae6da}</UniqueIdentifier>
+    <Filter Include="Entity\Mario">
+      <UniqueIdentifier>{327360a0-31b7-4031-a40a-9083e2d4da30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Blocks\SolidBlocks\QuestionBlock">
+    <Filter Include="Entity\Mario\MarioModel">
+      <UniqueIdentifier>{6671e8d9-87b4-4f24-8f71-47599908397e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Mario\MarioModel\MarioState">
+      <UniqueIdentifier>{0c71ac5e-e9fa-4b7f-83a5-8cc6ce525189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Blocks">
+      <UniqueIdentifier>{e44468bc-d67a-497a-89ca-47ec78b1fe12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Blocks\SolidBlocks">
+      <UniqueIdentifier>{4766121c-71d0-4cc4-b458-74dc55c3df59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Blocks\SolidBlocks\QuestionBlock">
       <UniqueIdentifier>{f4f876ee-1e9a-465f-bf58-3ab5491da1ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Blocks\SolidBlocks\GamePlatform">
+    <Filter Include="Entity\Blocks\SolidBlocks\GamePlatform">
       <UniqueIdentifier>{910455bb-25ae-488b-831c-0ac36f407738}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity\Blocks\GhostBlock\GamePlatform">
+    <Filter Include="Entity\Blocks\GhostBlock">
+      <UniqueIdentifier>{6e222f9b-505c-42d7-9a6c-8a541f3fa704}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Blocks\GhostBlock\GamePlatform">
       <UniqueIdentifier>{282ed2e6-ca17-47cb-8c8c-5fc1ab938a25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Enemy">
+      <UniqueIdentifier>{00eb2f7a-06ab-48ed-a49d-74c3d29e6550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Enemy\Goomba">
+      <UniqueIdentifier>{2e241fa2-6ea7-457f-84b8-780f793d82d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Enemy\Koopa">
+      <UniqueIdentifier>{173b1c93-3b5a-47a0-8420-8327422ae6da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Misc">
+      <UniqueIdentifier>{0009f9b5-8a93-4d1f-908d-ddd751387990}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Misc\PowerUps">
+      <UniqueIdentifier>{9f0455e6-7ef4-4da5-ae22-219be6f78935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Misc\PowerUps\Raccoon">
+      <UniqueIdentifier>{c71438e2-c8f3-48d4-b81e-3720157538bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Misc\PowerUps\Bigmario">
+      <UniqueIdentifier>{0a672bd9-4936-4230-85c2-966c8c0b404e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Projectile">
+      <UniqueIdentifier>{5c2b6f52-646d-42ea-9286-b5db906dea78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Object">
+      <UniqueIdentifier>{b20ce330-8505-461a-8559-f4176398b49e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Object\GameObject">
+      <UniqueIdentifier>{ee5663b7-31d1-4598-8f97-ecfb98f84332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Object\FxObject">
+      <UniqueIdentifier>{f8ed972f-b5f6-4e44-8121-ac1cc449382a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Object\UIObject">
+      <UniqueIdentifier>{ad398e79-282b-4952-91b9-0849fdb0d15b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Object\FxObject\FXManager">
+      <UniqueIdentifier>{ec1bd360-0c91-4251-bc95-866fb4a6b5a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Object\FxObject\Game Variables">
+      <UniqueIdentifier>{454bc349-8cda-4da9-8414-a9db44c69784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Effect">
+      <UniqueIdentifier>{34f84a0b-63ce-42fe-b136-578f34e233ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -120,9 +144,6 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\FrameWork</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files\FrameWork\Game Object</Filter>
     </ClCompile>
     <ClCompile Include="tinyXML\tinyxml\tinyxmlparser.cpp">
       <Filter>Source Files\FrameWork\tinyXML</Filter>
@@ -161,31 +182,31 @@
       <Filter>Source Files\FrameWork\Camera</Filter>
     </ClCompile>
     <ClCompile Include="Mario.cpp">
-      <Filter>Source Files\Entity\Mario</Filter>
+      <Filter>Entity\Mario</Filter>
     </ClCompile>
     <ClCompile Include="Global_Variable.cpp">
-      <Filter>Source Files\FrameWork\Game Variables</Filter>
+      <Filter>Source Files\FrameWork\Object\FxObject\Game Variables</Filter>
     </ClCompile>
     <ClCompile Include="MarioModel.cpp">
-      <Filter>Source Files\Entity\Mario\MarioModel</Filter>
+      <Filter>Entity\Mario\MarioModel</Filter>
     </ClCompile>
     <ClCompile Include="RacoonMario.cpp">
-      <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
     </ClCompile>
     <ClCompile Include="BigMario.cpp">
-      <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
     </ClCompile>
     <ClCompile Include="SmallMario.cpp">
-      <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
     </ClCompile>
     <ClCompile Include="FireMario.cpp">
-      <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
     </ClCompile>
     <ClCompile Include="FireShoot.cpp">
-      <Filter>Source Files\Entity\Projectile</Filter>
+      <Filter>Entity\Projectile</Filter>
     </ClCompile>
     <ClCompile Include="AttackTail.cpp">
-      <Filter>Source Files\Entity\Projectile</Filter>
+      <Filter>Entity\Projectile</Filter>
     </ClCompile>
     <ClCompile Include="ScenceManager.cpp">
       <Filter>Source Files\FrameWork\ScenceManager</Filter>
@@ -212,28 +233,46 @@
       <Filter>Source Files\FrameWork\Font Manager</Filter>
     </ClCompile>
     <ClCompile Include="Goomba.cpp">
-      <Filter>Source Files\Entity\Enemy\Goomba</Filter>
+      <Filter>Entity\Enemy\Goomba</Filter>
     </ClCompile>
     <ClCompile Include="Koopa.cpp">
-      <Filter>Source Files\Entity\Enemy\Koopa</Filter>
+      <Filter>Entity\Enemy\Koopa</Filter>
     </ClCompile>
     <ClCompile Include="KoopaShell.cpp">
-      <Filter>Source Files\Entity\Enemy\Koopa</Filter>
+      <Filter>Entity\Enemy\Koopa</Filter>
     </ClCompile>
     <ClCompile Include="QuestionBlock.cpp">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks\QuestionBlock</Filter>
+      <Filter>Entity\Blocks\SolidBlocks\QuestionBlock</Filter>
     </ClCompile>
     <ClCompile Include="InvisibleBrick.cpp">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks\GamePlatform</Filter>
+      <Filter>Entity\Blocks\SolidBlocks\GamePlatform</Filter>
     </ClCompile>
     <ClCompile Include="Brick.cpp">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks\GamePlatform</Filter>
+      <Filter>Entity\Blocks\SolidBlocks\GamePlatform</Filter>
     </ClCompile>
     <ClCompile Include="GhostPlatform.cpp">
-      <Filter>Source Files\Entity\Blocks\GhostBlock\GamePlatform</Filter>
+      <Filter>Entity\Blocks\GhostBlock\GamePlatform</Filter>
     </ClCompile>
     <ClCompile Include="Coin.cpp">
-      <Filter>Source Files\Entity\Misc</Filter>
+      <Filter>Entity\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="RaccoonPowerUps.cpp">
+      <Filter>Entity\Misc\PowerUps\Bigmario</Filter>
+    </ClCompile>
+    <ClCompile Include="RedMushroomPowerUps.cpp">
+      <Filter>Entity\Misc\PowerUps\Bigmario</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\FrameWork\Object\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="FXObjectManager.cpp">
+      <Filter>Source Files\FrameWork\Object\FxObject\FXManager</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractFXObject.cpp">
+      <Filter>Source Files\FrameWork\Object\FxObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SmokeFx.cpp">
+      <Filter>Entity\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -250,37 +289,31 @@
       <Filter>Source Files\FrameWork\Map\Tileset</Filter>
     </ClInclude>
     <ClInclude Include="SmallMario.h">
-      <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
     </ClInclude>
     <ClInclude Include="RacoonMario.h">
-      <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
-    </ClInclude>
-    <ClInclude Include="BigMario.h">
-      <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
     </ClInclude>
     <ClInclude Include="FireMario.h">
-      <Filter>Source Files\Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
     </ClInclude>
     <ClInclude Include="AttackTail.h">
-      <Filter>Source Files\Entity\Projectile</Filter>
+      <Filter>Entity\Projectile</Filter>
     </ClInclude>
     <ClInclude Include="FireShoot.h">
-      <Filter>Source Files\Entity\Projectile</Filter>
+      <Filter>Entity\Projectile</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Source Files\FrameWork\Camera</Filter>
     </ClInclude>
     <ClInclude Include="MarioModel.h">
-      <Filter>Source Files\Entity\Mario\MarioModel</Filter>
+      <Filter>Entity\Mario\MarioModel</Filter>
     </ClInclude>
     <ClInclude Include="Scence.h">
       <Filter>Source Files\FrameWork\ScenceManager\Scence</Filter>
     </ClInclude>
     <ClInclude Include="Global_Variable.h">
-      <Filter>Source Files\FrameWork\Game Variables</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Source Files\FrameWork\Game Object</Filter>
+      <Filter>Source Files\FrameWork\Object\FxObject\Game Variables</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Source Files\FrameWork\Debug</Filter>
@@ -301,7 +334,7 @@
       <Filter>Source Files\FrameWork</Filter>
     </ClInclude>
     <ClInclude Include="Mario.h">
-      <Filter>Source Files\Entity\Mario</Filter>
+      <Filter>Entity\Mario</Filter>
     </ClInclude>
     <ClInclude Include="ScenceManager.h">
       <Filter>Source Files\FrameWork\ScenceManager</Filter>
@@ -328,28 +361,49 @@
       <Filter>Source Files\FrameWork\Font Manager</Filter>
     </ClInclude>
     <ClInclude Include="Goomba.h">
-      <Filter>Source Files\Entity\Enemy\Goomba</Filter>
+      <Filter>Entity\Enemy\Goomba</Filter>
     </ClInclude>
     <ClInclude Include="Koopa.h">
-      <Filter>Source Files\Entity\Enemy\Koopa</Filter>
+      <Filter>Entity\Enemy\Koopa</Filter>
     </ClInclude>
     <ClInclude Include="KoopaShell.h">
-      <Filter>Source Files\Entity\Enemy\Koopa</Filter>
+      <Filter>Entity\Enemy\Koopa</Filter>
     </ClInclude>
     <ClInclude Include="QuestionBlock.h">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks\QuestionBlock</Filter>
+      <Filter>Entity\Blocks\SolidBlocks\QuestionBlock</Filter>
     </ClInclude>
     <ClInclude Include="InvisibleBrick.h">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks\GamePlatform</Filter>
+      <Filter>Entity\Blocks\SolidBlocks\GamePlatform</Filter>
     </ClInclude>
     <ClInclude Include="Brick.h">
-      <Filter>Source Files\Entity\Blocks\SolidBlocks\GamePlatform</Filter>
+      <Filter>Entity\Blocks\SolidBlocks\GamePlatform</Filter>
     </ClInclude>
     <ClInclude Include="GhostPlatform.h">
-      <Filter>Source Files\Entity\Blocks\GhostBlock\GamePlatform</Filter>
+      <Filter>Entity\Blocks\GhostBlock\GamePlatform</Filter>
     </ClInclude>
     <ClInclude Include="Coin.h">
-      <Filter>Source Files\Entity\Misc</Filter>
+      <Filter>Entity\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="RaccoonPowerUps.h">
+      <Filter>Entity\Misc\PowerUps\Raccoon</Filter>
+    </ClInclude>
+    <ClInclude Include="RedMushroomPowerUps.h">
+      <Filter>Entity\Misc\PowerUps\Bigmario</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\FrameWork\Object\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="FXObjectManager.h">
+      <Filter>Source Files\FrameWork\Object\FxObject\FXManager</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFXObject.h">
+      <Filter>Source Files\FrameWork\Object\FxObject</Filter>
+    </ClInclude>
+    <ClInclude Include="BigMario.h">
+      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
+    </ClInclude>
+    <ClInclude Include="SmokeFx.h">
+      <Filter>Entity\Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

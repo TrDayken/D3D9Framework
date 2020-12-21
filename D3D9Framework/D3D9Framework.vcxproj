@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractFXObject.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationManager.cpp" />
     <ClCompile Include="AttackTail.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="FireMario.cpp" />
     <ClCompile Include="FireShoot.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="FXObjectManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GhostPlatform.cpp" />
@@ -170,10 +172,13 @@
     <ClCompile Include="MarioModel.cpp" />
     <ClCompile Include="PlayScence.cpp" />
     <ClCompile Include="QuestionBlock.cpp" />
+    <ClCompile Include="RaccoonPowerUps.cpp" />
     <ClCompile Include="RacoonMario.cpp" />
+    <ClCompile Include="RedMushroomPowerUps.cpp" />
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="ScenceManager.cpp" />
     <ClCompile Include="SmallMario.cpp" />
+    <ClCompile Include="SmokeFx.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="Textures.cpp" />
@@ -185,6 +190,7 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractFXObject.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationManager.h" />
     <ClInclude Include="AttackTail.h" />
@@ -196,6 +202,7 @@
     <ClInclude Include="FireMario.h" />
     <ClInclude Include="FireShoot.h" />
     <ClInclude Include="FontManager.h" />
+    <ClInclude Include="FXObjectManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GhostPlatform.h" />
@@ -212,10 +219,13 @@
     <ClInclude Include="MarioModel.h" />
     <ClInclude Include="PlayScence.h" />
     <ClInclude Include="QuestionBlock.h" />
+    <ClInclude Include="RaccoonPowerUps.h" />
     <ClInclude Include="RacoonMario.h" />
+    <ClInclude Include="RedMushroomPowerUps.h" />
     <ClInclude Include="Scence.h" />
     <ClInclude Include="ScenceManager.h" />
     <ClInclude Include="SmallMario.h" />
+    <ClInclude Include="SmokeFx.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="Textures.h" />

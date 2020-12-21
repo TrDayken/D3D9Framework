@@ -13,6 +13,9 @@
       </Texture>
       <Texture textureid = "tex-bbox" path = "textures\\bbox.png">
       </Texture>
+      <Texture textureid = "tex-effect" path = "textures\\Effect\\effect_white_254_x3.png">
+      </Texture>
+      
       <!--Map's Spite -->
       <Sprite path = "textures\\Mario\\MarioDB.xml">
       </Sprite>
@@ -20,6 +23,9 @@
       </Sprite>
       <Sprite path = "textures\\Enemy\\EnemyDB.xml">
       </Sprite>
+      <Sprite path = "textures\\Effect\\EffectDB.xml">
+      </Sprite>
+      
       <!--Map's Animation -->
       <Animation path = "textures\\Enemy\\EnemyAnim.xml">
       </Animation>
@@ -27,6 +33,9 @@
       </Animation>
       <Animation path= "textures\\Misc\\MiscAnim.xml">
       </Animation>
+      <Animation path ="textures\\Effect\\EffectAnim.xml">
+      </Animation>
+    
     </Map>
   </Scence>
 </Game>

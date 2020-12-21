@@ -10,6 +10,10 @@ FireShoot::FireShoot(float x, float y, int direction)
 	LoadAnimation();
 }
 
+FireShoot::~FireShoot()
+{
+}
+
 void FireShoot::Render(Camera* camera)
 {
 	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
@@ -75,7 +79,10 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				obj->OnCollisionEnter(this, e->nx, e->ny);
 				ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 			}
-			else if (e->nx != 0 && nx != 0) ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
+
+			//delete when have horizontal collision with another object
+			else if (e->nx != 0 && nx != 0) 
+				ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 		}
 
 	}

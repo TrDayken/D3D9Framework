@@ -162,9 +162,9 @@ void Goomba::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	//after die delete this
 	Game* game = Game::GetInstance();
-	if (goomstate == GoombaState::die|| goomstate== GoombaState::flydie)
-		if (GetTickCount() -  DelayDeadTime_start >= GOOMBA_TIME_DIE)
-			ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
+	if (goomstate == GoombaState::die || goomstate == GoombaState::flydie)
+		if (GetTickCount() - DelayDeadTime_start >= GOOMBA_TIME_DIE)
+				ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 
 }
 
