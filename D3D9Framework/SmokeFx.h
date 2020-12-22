@@ -5,7 +5,6 @@ class SmokeFx :
 	public AbstractFXObject
 {
 private:
-	DWORD Animation_created;
 
 	void LoadAnimation(); 
 

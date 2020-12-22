@@ -1,5 +1,8 @@
 #include "MarioModel.h"
 #include "SmokeFx.h"
+
+#include "FXObjectManager.h"
+
 MarioModel::MarioModel(float x, float y)
 {
 	start_x = x; 
@@ -263,15 +266,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 	{
-		SmokeFx* smoke = new SmokeFx();
-
-		//Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
-
-		//goom->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
-
-		smoke->setStartPosition(this->Position); 
-
-		ScenceManager::GetInstance()->getCurrentScence()->AddObject(smoke);
+		FXObjectManager::GetInstance()->CreateFx("smoke", this->Position); 
 		break;
 	}
 	case DIK_W:
