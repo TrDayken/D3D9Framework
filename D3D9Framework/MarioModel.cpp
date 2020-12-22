@@ -1,6 +1,4 @@
 #include "MarioModel.h"
-#include "SmokeFx.h"
-
 #include "FXObjectManager.h"
 
 MarioModel::MarioModel(float x, float y)
