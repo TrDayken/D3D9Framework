@@ -158,6 +158,11 @@ void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT* rect)
 	spriteHandler->Draw(texture, rect, NULL, &p, D3DCOLOR_XRGB(255,255,255));
 }
 
+void Game::SetFont(Font* font)
+{
+	this->font = font; 
+}
+
 int Game::IsKeyDown(int KeyCode)
 {
 	return (keyStates[KeyCode] & 0x80) > 0;
@@ -394,6 +399,11 @@ Game::~Game()
 
 }
 
+
+Font* Game::GetFont()
+{
+	return this->font;
+}
 
 Game* Game::GetInstance()
 {

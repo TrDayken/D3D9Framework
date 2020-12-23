@@ -1,4 +1,5 @@
 #include "Sprite.h"
+#include "Game.h"
 
 Sprite::Sprite(int id, int left, int top, int right, int bottom, int xpivot, int ypivot, LPDIRECT3DTEXTURE9 texture)
 {
@@ -110,4 +111,14 @@ void Sprite::flipX()
 void Sprite::flipY()
 {
 	setScale(scale.x, -scale.y);
+}
+
+int Sprite::getSpriteWidth()
+{
+	return this->SpriteWidth;
+}
+
+int Sprite::getSpriteHeight()
+{
+	return this->SpriteHeight;
 }

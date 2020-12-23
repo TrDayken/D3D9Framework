@@ -1,11 +1,12 @@
 #include "SmokeFx.h"
 #include "ScenceManager.h"
+#include "Game.h"
 
 void SmokeFx::LoadAnimation()
 {
 	AnimationManager* animation = AnimationManager::GetInstance(); 
 
-	AddAnimation("Smokefx", animation->GetAnimation("ani-brick-debris"));
+	AddAnimation("Smokefx", animation->GetAnimation("ani-fireball-damaged"));
 }
 
 SmokeFx::SmokeFx()

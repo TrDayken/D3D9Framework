@@ -1,5 +1,5 @@
 #include "FireMario.h"
-
+#include "Game.h"
 
 
 FireMario::FireMario()

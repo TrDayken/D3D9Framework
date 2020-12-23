@@ -1,5 +1,6 @@
 #include "MarioModel.h"
 #include "FXObjectManager.h"
+#include "Game.h"
 
 MarioModel::MarioModel(float x, float y)
 {

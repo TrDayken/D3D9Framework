@@ -28,7 +28,33 @@ void Font::setXMLprefix(std::string prefix)
 	this->XMLprefix = prefix; 
 }
 
+void Font::RenderText(std::string text, Vector2 pos, TextAlignment align)
+{
+	//missing render for align
+	for (int i = 0; i <= text.length() - 1; i++)
+	{
+		char c = text.at(i);
+
+		if (c == ' ')
+		{
+			pos.x += this->getSpace(); 
+			continue; 
+		}
+
+		LPSPRITE charsprite = this->GetChar(c); 
+
+		charsprite->Draw(pos.x, pos.y);
+
+		pos.x += charsprite->getSpriteWidth() + 3;
+	}
+}
+
 void Font::setSpace(float x)
 {
 	this->Space = x; 
+}
+
+float Font::getSpace()
+{
+	return this->Space;
 }

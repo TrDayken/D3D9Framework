@@ -38,6 +38,12 @@ void LoadResources()
 	//scence = new PlayScence();
 	//scence->Load();
 	//Game::GetInstance()->SetKeyHandler(scence->GetKeyEventHandler());
+
+	//init font 
+	Font* font = new Font();
+	font->setXMLprefix("spr-font-"); 
+	font->LoadFont(); 
+	Game::GetInstance()->SetFont(font); 
 }
 
 /*

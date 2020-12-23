@@ -3,7 +3,13 @@
 
 #include <unordered_map>
 
-#include "SpriteManager.h"
+#include "Sprite.h"
+
+enum class TextAlignment
+{
+	Right,
+	Left
+};
 
 class Font
 {
@@ -28,7 +34,11 @@ public:
 	//use this to change prefix for font in XML, in this case spr-font-
 	void setXMLprefix(std::string prefix); 
 
+	void RenderText(std::string text, Vector2 pos, TextAlignment align = TextAlignment::Left);
+
 	void setSpace(float x); 
+
+	float getSpace(); 
 };
 
 #endif

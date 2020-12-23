@@ -10,6 +10,7 @@
 #include "Utils.h"
 #include "Global_Variable.h"
 #include "KeyEventHandler.h"
+#include "Font.h"
 
 #define DIRECTINPUT_VERSION 0x0800
 
@@ -31,6 +32,8 @@ class Game
 	DIDEVICEOBJECTDATA keyEvents[KEYBOARD_BUFFER_SIZE];		// Buffered keyboard data
 
 	LPKEYEVENTHANDLER keyHandler;
+
+	Font* font;
 public:
 	void InitKeyboard();
 	void Init(HWND hWnd);
@@ -38,6 +41,7 @@ public:
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha = 255);
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT* Rect);
 	void SetKeyHandler(LPKEYEVENTHANDLER handler) { keyHandler = handler; }
+	void SetFont(Font* font);
 	int IsKeyDown(int KeyCode);
 	void ProcessKeyboard();
 
@@ -62,7 +66,7 @@ public:
 	LPDIRECT3DDEVICE9 GetDirect3DDevice() { return this->d3ddv; }
 	LPDIRECT3DSURFACE9 GetBackBuffer() { return backBuffer; }
 	LPD3DXSPRITE GetSpriteHandler() { return this->spriteHandler; }
-
+	Font* GetFont();
 	static Game* GetInstance();
 
 	~Game();

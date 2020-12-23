@@ -5,7 +5,7 @@
 #include <d3dx9math.h>
 #include <string>
 
-#include "Game.h" 
+//#include "Game.h" 
 #include "Global_Variable.h"
 
 class Sprite
@@ -47,10 +47,12 @@ public:
 	Vector2 getScale();
 	void setScale(Vector2 scale);
 	void setScale(float scaleX, float scaleY);
+
 	void flipX();
 	void flipY();
 
-
+	int getSpriteWidth(); 
+	int getSpriteHeight(); 
 };
 
 typedef Sprite* LPSPRITE;

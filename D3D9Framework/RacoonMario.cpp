@@ -1,4 +1,5 @@
 #include "RacoonMario.h"
+#include "Game.h"
 
 RacoonMario::RacoonMario()
 {

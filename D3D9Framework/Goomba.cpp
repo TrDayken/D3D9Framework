@@ -1,4 +1,5 @@
 #include "Goomba.h"
+#include "Game.h"
 
 Goomba::Goomba()
 {
