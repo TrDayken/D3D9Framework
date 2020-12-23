@@ -2,6 +2,14 @@
 <Textures>
 	<!--	Texture Misc  	-->
 	<Textures gameObjectId="0" textureId="tex-misc">
+
+    <!-- DEBRIS -->
+    <Animation aniId="ani-brick-debris" frameTime="100" name = "BRICK-DEBRIS">
+      <Sprite id="spr-debris-0" frameTime="100"/>
+      <Sprite id="spr-debris-1" frameTime="100"/>
+      <Sprite id="spr-debris-2" frameTime="100"/>
+      <Sprite id="spr-debris-3" frameTime="100"/>
+    </Animation>
     
 		<!-- COIN -->
 		<Animation aniId="ani-coin" frameTime="100">

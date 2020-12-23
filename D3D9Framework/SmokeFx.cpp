@@ -5,7 +5,7 @@ void SmokeFx::LoadAnimation()
 {
 	AnimationManager* animation = AnimationManager::GetInstance(); 
 
-	AddAnimation("Smokefx", animation->GetAnimation("ani-fireball-damaged"));
+	AddAnimation("Smokefx", animation->GetAnimation("ani-brick-debris"));
 }
 
 SmokeFx::SmokeFx()

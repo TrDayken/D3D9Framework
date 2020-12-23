@@ -153,6 +153,7 @@
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="FireMario.cpp" />
     <ClCompile Include="FireShoot.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="FXObjectManager.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -181,6 +182,7 @@
     <ClCompile Include="SmokeFx.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="tinyXML\tinyxml\tinystr.cpp" />
@@ -201,6 +203,7 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="FireMario.h" />
     <ClInclude Include="FireShoot.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="FXObjectManager.h" />
     <ClInclude Include="Game.h" />
@@ -228,6 +231,7 @@
     <ClInclude Include="SmokeFx.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="tinyXML\tinyxml\tinystr.h" />

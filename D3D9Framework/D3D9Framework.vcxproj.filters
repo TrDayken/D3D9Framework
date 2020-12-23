@@ -134,6 +134,12 @@
     <Filter Include="Entity\Effect">
       <UniqueIdentifier>{34f84a0b-63ce-42fe-b136-578f34e233ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FrameWork\Object\UIObject\Font">
+      <UniqueIdentifier>{b70c2ba2-a2b2-49cc-80f0-ffdbf2049bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Object\UIObject\Text">
+      <UniqueIdentifier>{fea234fb-d26b-4c94-9ff0-e4c4b456b600}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -274,6 +280,12 @@
     <ClCompile Include="SmokeFx.cpp">
       <Filter>Entity\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files\FrameWork\Object\UIObject\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -405,5 +417,9 @@
     <ClInclude Include="SmokeFx.h">
       <Filter>Entity\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Source Files\FrameWork\Object\UIObject\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h" />
   </ItemGroup>
 </Project>
