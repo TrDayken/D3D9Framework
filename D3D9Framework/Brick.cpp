@@ -12,7 +12,11 @@ Brick::Brick()
 
 void Brick::Render(Camera* camera)
 {
-	RenderBoundingBox(camera);
+	GameObject::Render(camera); 
+
+	animation_set["GoldenBrick"]->Render(RenderPosition.x, RenderPosition.y); 
+
+	//RenderBoundingBox(camera);
 }
 
 void Brick::LoadAnimation()

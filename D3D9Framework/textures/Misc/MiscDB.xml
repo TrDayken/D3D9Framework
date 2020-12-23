@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Textures>
 	<Textures textureId="tex-misc">
-		<Sprite id="spr-coin-0" left="294" top="101"  width="8" height="14"/>
-		<Sprite id="spr-coin-1" left="311" top="101"  width="1" height="14"/>
-		<Sprite id="spr-coin-2" left="321" top="101"  width="4" height="14"/>
-		<Sprite id="spr-coin-3" left="334" top="100"  width="14" height="16"/>
-		<Sprite id="spr-coin-4" left="357" top="100"  width="6" height="16"/>
-		<Sprite id="spr-coin-5" left="372" top="100"  width="10" height="16"/>
+		<Sprite id="spr-coin-0" left="294" top="101"  width="8" height="14" xPivot="-10"/>
+    <Sprite id="spr-coin-1" left="311" top="101"  width="1" height="14" xPivot="-20"/>
+    <Sprite id="spr-coin-2" left="321" top="101"  width="4" height="14" xPivot="-17"/>
+    <Sprite id="spr-coin-3" left="334" top="100"  width="14" height="16" xPivot="0"/>
+    <Sprite id="spr-coin-4" left="357" top="100"  width="6" height="16" xPivot="-12"/>
+    <Sprite id="spr-coin-5" left="372" top="100"  width="10" height="16" xPivot="-8"/>
 		<Sprite id="spr-super-mushroom-0" left="156" top="121"  width="16" height="16"/>
 		<Sprite id="spr-1-up-mushroom-0" left="286" top="121"  width="16" height="16"/>
 		<Sprite id="spr-super-leaf-red-0" left="180" top="123"  width="16" height="14"/>

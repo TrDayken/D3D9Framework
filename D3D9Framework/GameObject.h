@@ -53,7 +53,8 @@ enum class Tag
 	projectile,
 	shell,
 	tail,
-	questionblock
+	questionblock,
+	coin
 };
 
 class GameObject

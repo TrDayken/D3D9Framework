@@ -56,9 +56,6 @@
     <Filter Include="Source Files\FrameWork\HUD">
       <UniqueIdentifier>{c0a11498-bda2-456a-a558-de6664b34ad1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FrameWork\Font Manager">
-      <UniqueIdentifier>{02450c0c-8a7a-43f5-87e9-ae16a4fbe8c0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Entity">
       <UniqueIdentifier>{1f3618df-83ea-4f4d-8ab1-ac4a1e308832}</UniqueIdentifier>
     </Filter>
@@ -128,9 +125,6 @@
     <Filter Include="Source Files\FrameWork\Object\FxObject\FXManager">
       <UniqueIdentifier>{ec1bd360-0c91-4251-bc95-866fb4a6b5a6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FrameWork\Object\FxObject\Game Variables">
-      <UniqueIdentifier>{454bc349-8cda-4da9-8414-a9db44c69784}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Entity\Effect">
       <UniqueIdentifier>{34f84a0b-63ce-42fe-b136-578f34e233ff}</UniqueIdentifier>
     </Filter>
@@ -139,6 +133,9 @@
     </Filter>
     <Filter Include="Source Files\FrameWork\Object\UIObject\Text">
       <UniqueIdentifier>{fea234fb-d26b-4c94-9ff0-e4c4b456b600}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Game Variables">
+      <UniqueIdentifier>{454bc349-8cda-4da9-8414-a9db44c69784}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -191,7 +188,7 @@
       <Filter>Entity\Mario</Filter>
     </ClCompile>
     <ClCompile Include="Global_Variable.cpp">
-      <Filter>Source Files\FrameWork\Object\FxObject\Game Variables</Filter>
+      <Filter>Source Files\FrameWork\Game Variables</Filter>
     </ClCompile>
     <ClCompile Include="MarioModel.cpp">
       <Filter>Entity\Mario\MarioModel</Filter>
@@ -234,9 +231,6 @@
     </ClCompile>
     <ClCompile Include="HUD.cpp">
       <Filter>Source Files\FrameWork\HUD</Filter>
-    </ClCompile>
-    <ClCompile Include="FontManager.cpp">
-      <Filter>Source Files\FrameWork\Font Manager</Filter>
     </ClCompile>
     <ClCompile Include="Goomba.cpp">
       <Filter>Entity\Enemy\Goomba</Filter>
@@ -325,7 +319,7 @@
       <Filter>Source Files\FrameWork\ScenceManager\Scence</Filter>
     </ClInclude>
     <ClInclude Include="Global_Variable.h">
-      <Filter>Source Files\FrameWork\Object\FxObject\Game Variables</Filter>
+      <Filter>Source Files\FrameWork\Game Variables</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Source Files\FrameWork\Debug</Filter>
@@ -368,9 +362,6 @@
     </ClInclude>
     <ClInclude Include="HUD.h">
       <Filter>Source Files\FrameWork\HUD</Filter>
-    </ClInclude>
-    <ClInclude Include="FontManager.h">
-      <Filter>Source Files\FrameWork\Font Manager</Filter>
     </ClInclude>
     <ClInclude Include="Goomba.h">
       <Filter>Entity\Enemy\Goomba</Filter>

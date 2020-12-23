@@ -13,12 +13,11 @@
     
 		<!-- COIN -->
 		<Animation aniId="ani-coin" frameTime="100">
-			<Sprite id="spr-coin-0" left="294" top="101"  width="8" height="14" frameTime="100"/>
-      <Sprite id="spr-coin-1" left="311" top="101"  width="1" height="14" frameTime="100"/>
-      <Sprite id="spr-coin-2" left="321" top="101"  width="4" height="14" frameTime="100"/>
       <Sprite id="spr-coin-3" left="334" top="100"  width="14" height="16" frameTime="100"/>
+			<Sprite id="spr-coin-0" left="294" top="101"  width="8" height="14" frameTime="100"/>
       <Sprite id="spr-coin-4" left="357" top="100"  width="6" height="16" frameTime="100"/>
       <Sprite id="spr-coin-5" left="372" top="100"  width="10" height="16" frameTime="100"/>
+
     </Animation>
 
     <!-- SUPER MUSHROOM -->

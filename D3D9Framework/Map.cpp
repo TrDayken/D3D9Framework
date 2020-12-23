@@ -2,6 +2,8 @@
 #include "InvisibleBrick.h"
 #include "GhostPlatform.h"
 #include "QuestionBlock.h"
+#include "Brick.h"
+#include "Coin.h"
 #include "ScenceManager.h"
 
 Map::Map()
@@ -72,7 +74,15 @@ void Map::AddObject(TiXmlElement* RootElement)
 			}
 			else if (name == "Items")
 			{
-				continue;
+				Coin* coin = new Coin(); 
+
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+
+				coin->setX(x);
+				coin->setY(y);
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(coin);
 			}
 			else if (name == "QuestionBlocks")
 			{
@@ -90,6 +100,18 @@ void Map::AddObject(TiXmlElement* RootElement)
 					questionblock->SetDeflected(true); 
 
 				ScenceManager::GetInstance()->getCurrentScence()->AddObject(questionblock);
+			}
+			else if (name == "Bricks")
+			{
+				Brick* brick = new Brick();
+
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+
+				brick->setX(x); 
+				brick->setY(y); 
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(brick); 
 			}
 			else
 			{

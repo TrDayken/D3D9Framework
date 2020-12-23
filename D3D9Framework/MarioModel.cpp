@@ -1,6 +1,7 @@
 #include "MarioModel.h"
 #include "FXObjectManager.h"
 #include "Game.h"
+#include "Brick.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -270,7 +271,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 	}
 	case DIK_W:
 	{
-		GameObject* koop = new Koopa();
+		GameObject* koop = new Brick();
 
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
