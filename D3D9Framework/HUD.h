@@ -3,13 +3,29 @@
 
 #include "Global_Variable.h"
 #include "UIObject.h"
+#include "PMetter.h"
 
 
-class HUD : UIObject
+class HUD : public UIObject
 {
+private:
+	Vector2 world, life, score, coin, timer; 
+
+	PMetter* metter; 
+
+	LPSPRITE hud; 
+
+public:
+
+	HUD();
+
+	~HUD();
+
 	void Update(DWORD dt); 
 
 	void Render(); 
+
+
 };
 
 #endif

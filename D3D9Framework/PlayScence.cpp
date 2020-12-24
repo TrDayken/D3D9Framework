@@ -27,9 +27,11 @@ void PlayScence::Load()
 
 	//load Font
 
-	metter = new PMetter(); 
-	metter->setStaticPosition(Vector2(100, 100)); 
-	AddUI(metter); 
+	hud = new HUD(); 
+
+	AddUI(hud);
+
+
 
 	tilemap = new Map();
 	tilemap->LoadMapfromTMX("textures\\Map\\world-1-1-map.tmx", "textures\\Map\\");

@@ -5,6 +5,8 @@
 
 #include "Sprite.h"
 
+#define KEY_SPACE 24
+
 enum class TextAlignment
 {
 	Right,

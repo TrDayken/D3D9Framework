@@ -34,10 +34,6 @@ void LoadResources()
 	ScenceManager::GetInstance()->LoadScenceFromXML("GameWorld\\GameWorld.xml");
 	Game::GetInstance()->SetKeyHandler(ScenceManager::GetInstance()->getCurrentScence()->GetKeyEventHandler());
 	ScenceManager::GetInstance()->getCurrentScence()->Load();
-	
-	//scence = new PlayScence();
-	//scence->Load();
-	//Game::GetInstance()->SetKeyHandler(scence->GetKeyEventHandler());
 
 	//init font 
 	Font* font = new Font();

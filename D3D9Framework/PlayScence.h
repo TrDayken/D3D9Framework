@@ -8,7 +8,7 @@
 #include "ScenceManager.h"
 #include "Goomba.h"
 #include "UIObject.h"
-#include "PMetter.h"
+#include "HUD.h"
 
 class PlayScence : public Scence
 {
@@ -16,7 +16,7 @@ protected:
 	Mario* mario;
 	Map* tilemap;
 
-	PMetter* metter; 
+	HUD* hud; 
 
 	std::vector<LPGAMEOBJECT> earseobjects;
 	std::vector <LPGAMEOBJECT> objects;

@@ -13,6 +13,8 @@
       </Texture>
       <Texture textureid = "tex-bbox" path = "textures\\bbox.png">
       </Texture>
+      <Texture textureid = "tex-pannel" path = "textures\\box-small.png">
+      </Texture>
       <Texture textureid = "tex-effect" path = "textures\\Effect\\effect_white_254_x3.png">
       </Texture>
       <Texture textureid = "tex-ui" path = "textures\\GameUI\\ui_x3.png"> 
