@@ -27,6 +27,10 @@ void PlayScence::Load()
 
 	//load Font
 
+	metter = new PMetter(); 
+	metter->setStaticPosition(Vector2(100, 100)); 
+	AddUI(metter); 
+
 	tilemap = new Map();
 	tilemap->LoadMapfromTMX("textures\\Map\\world-1-1-map.tmx", "textures\\Map\\");
 
@@ -48,6 +52,11 @@ void PlayScence::Update(DWORD dt)
 		
 		objects[i]->Update(dt, &coObjects);
 		
+	}
+
+	for (size_t i = 0; i < UIElement.size(); i++)
+	{
+		UIElement[i]->Update(dt); 
 	}
 
 	//if object in erase vector delete it
@@ -93,6 +102,11 @@ void PlayScence::Render()
 		//float l, t, r, b;
 		//objects[i]->GetBoundingBox(l, t, r, b);
 		////DebugOut(L"[INFO] objects bounding box %f, %f, %f, %f \n", l, t, r, b);
+	}
+
+	for (size_t i = 0; i < UIElement.size(); i++)
+	{
+		UIElement[i]->Render();
 	}
 }
 

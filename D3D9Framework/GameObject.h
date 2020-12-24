@@ -42,7 +42,7 @@ enum class Collision2DTag
 {
 	FourSide,
 	Top,
-	None,
+	None
 };
 
 enum class Tag

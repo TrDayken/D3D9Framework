@@ -6,7 +6,8 @@ void SmokeFx::LoadAnimation()
 {
 	AnimationManager* animation = AnimationManager::GetInstance(); 
 
-	AddAnimation("Smokefx", animation->GetAnimation("ani-fireball-damaged"));
+	//AddAnimation("Smokefx", animation->GetAnimation("ani-fireball-damaged"));
+	AddAnimation("Smokefx", animation->GetAnimation("ani-p-icon"));
 }
 
 SmokeFx::SmokeFx()
@@ -19,6 +20,8 @@ SmokeFx::SmokeFx()
 void SmokeFx::Render(Camera* camera)
 {
 	Vector2 pos = camera->toCameraPosistion(startPosition.x, startPosition.y); 
+
+	//Game::GetInstance()->GetFont()->RenderText("THE QUICK BROWN FOX", pos); 
 
 	animation_set["Smokefx"]->Render(pos.x, pos.y); 
 }

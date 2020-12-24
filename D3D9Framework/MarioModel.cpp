@@ -390,3 +390,8 @@ void MarioModel::SetPosition(int x, int y)
 {
 	GameObject::setPosition(x, y);
 }
+
+int MarioModel::getPmetter()
+{
+	return this->PMetter;
+}

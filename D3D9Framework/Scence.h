@@ -5,6 +5,7 @@
 
 #include "KeyEventHandler.h"
 #include "GameObject.h"	
+#include "UIObject.h"
 
 class Scence
 {
@@ -23,6 +24,8 @@ public:
 	virtual Camera* getCamera() { return this->camera; }
 	virtual void AddObject(LPGAMEOBJECT object) = 0;
 	virtual void DeleteObject(LPGAMEOBJECT object) = 0;
+	virtual void AddUI(UIObject* UI) = 0; 
+	//virtual void DeleteUI(UIObject* UI) {};
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
 	virtual void Update(DWORD dt) = 0;

@@ -53,9 +53,6 @@
     <Filter Include="Source Files\FrameWork\ScenceManager\Scence\PlayScence">
       <UniqueIdentifier>{4a46242c-9fad-4346-ad6c-a6d1c7e16df8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FrameWork\HUD">
-      <UniqueIdentifier>{c0a11498-bda2-456a-a558-de6664b34ad1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Entity">
       <UniqueIdentifier>{1f3618df-83ea-4f4d-8ab1-ac4a1e308832}</UniqueIdentifier>
     </Filter>
@@ -128,14 +125,17 @@
     <Filter Include="Entity\Effect">
       <UniqueIdentifier>{34f84a0b-63ce-42fe-b136-578f34e233ff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FrameWork\Object\UIObject\Font">
-      <UniqueIdentifier>{b70c2ba2-a2b2-49cc-80f0-ffdbf2049bbd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FrameWork\Object\UIObject\Text">
-      <UniqueIdentifier>{fea234fb-d26b-4c94-9ff0-e4c4b456b600}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\FrameWork\Game Variables">
       <UniqueIdentifier>{454bc349-8cda-4da9-8414-a9db44c69784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Font">
+      <UniqueIdentifier>{b70c2ba2-a2b2-49cc-80f0-ffdbf2049bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\HUD">
+      <UniqueIdentifier>{c0a11498-bda2-456a-a558-de6664b34ad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\HUD\PMetter">
+      <UniqueIdentifier>{ec1e2f3b-9c3d-4113-9dc1-f74e121e344b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -230,7 +230,7 @@
       <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Texture</Filter>
     </ClCompile>
     <ClCompile Include="HUD.cpp">
-      <Filter>Source Files\FrameWork\HUD</Filter>
+      <Filter>Entity\HUD</Filter>
     </ClCompile>
     <ClCompile Include="Goomba.cpp">
       <Filter>Entity\Enemy\Goomba</Filter>
@@ -275,10 +275,13 @@
       <Filter>Entity\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
-      <Filter>Source Files\FrameWork\Object\UIObject\Font</Filter>
+      <Filter>Source Files\FrameWork\Font</Filter>
     </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="UIObject.cpp">
+      <Filter>Source Files\FrameWork\Object\UIObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PMetter.cpp">
+      <Filter>Entity\HUD\PMetter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -361,7 +364,7 @@
       <Filter>Source Files\FrameWork\Animation, Sprite and Texture\Texture</Filter>
     </ClInclude>
     <ClInclude Include="HUD.h">
-      <Filter>Source Files\FrameWork\HUD</Filter>
+      <Filter>Entity\HUD</Filter>
     </ClInclude>
     <ClInclude Include="Goomba.h">
       <Filter>Entity\Enemy\Goomba</Filter>
@@ -409,8 +412,13 @@
       <Filter>Entity\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
-      <Filter>Source Files\FrameWork\Object\UIObject\Font</Filter>
+      <Filter>Source Files\FrameWork\Font</Filter>
     </ClInclude>
-    <ClInclude Include="Text.h" />
+    <ClInclude Include="UIObject.h">
+      <Filter>Source Files\FrameWork\Object\UIObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PMetter.h">
+      <Filter>Entity\HUD\PMetter</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

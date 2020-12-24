@@ -171,6 +171,7 @@
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="MarioModel.cpp" />
     <ClCompile Include="PlayScence.cpp" />
+    <ClCompile Include="PMetter.cpp" />
     <ClCompile Include="QuestionBlock.cpp" />
     <ClCompile Include="RaccoonPowerUps.cpp" />
     <ClCompile Include="RacoonMario.cpp" />
@@ -181,13 +182,13 @@
     <ClCompile Include="SmokeFx.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
-    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="tinyXML\tinyxml\tinystr.cpp" />
     <ClCompile Include="tinyXML\tinyxml\tinyxml.cpp" />
     <ClCompile Include="tinyXML\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="tinyXML\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="UIObject.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +220,7 @@
     <ClInclude Include="Mario.h" />
     <ClInclude Include="MarioModel.h" />
     <ClInclude Include="PlayScence.h" />
+    <ClInclude Include="PMetter.h" />
     <ClInclude Include="QuestionBlock.h" />
     <ClInclude Include="RaccoonPowerUps.h" />
     <ClInclude Include="RacoonMario.h" />
@@ -229,11 +231,11 @@
     <ClInclude Include="SmokeFx.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
-    <ClInclude Include="Text.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="tinyXML\tinyxml\tinystr.h" />
     <ClInclude Include="tinyXML\tinyxml\tinyxml.h" />
+    <ClInclude Include="UIObject.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

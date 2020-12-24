@@ -33,8 +33,20 @@ private:
 
 	Camera* camera;
 
+	//Mario's state storage.
 	std::vector<MarioModel*> StateofMario;
 	MarioModel* CurrentMario;
+
+	//Mario's gameplay mechanics 
+	int Life, Coin; 
+
+	int Combo;
+
+	long Score; 
+
+	//store mario cards, unimplemented.
+	std::vector<int> Cards; 
+
 public:
 	Mario(float x = 0.0f, float y = 0.0f);
 		
@@ -47,12 +59,28 @@ public:
 	void SetLevel(int level) { level = 1; }
 	//void StartInvincibleFrame() { InvincibleFrame = 1; InvincibleTime = GetTickCount(); }
 
-	MarioModel* GetCurrentMario();
+	MarioModel* GetCurrentMario(); 
 
 	void Reset();
 	void AnimationLoad();
 	void SwitchMario(int level);
 	void setCamera(Camera* camera);
+
+	int getPmetter();
+
+	//in game mechanics modification.
+	void setCoin(int coin); 
+	int getCoin(); 
+
+	void setLife(int life); 
+	int getLife(); 
+
+	void setScore(long score); 
+	long getScore(); 
+
+	void ResetCombo(); 
+	void ComboUp(); 
+	int getCombo(); 
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 };

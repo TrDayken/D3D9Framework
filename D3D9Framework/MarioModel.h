@@ -106,9 +106,12 @@ public:
 	virtual int getCurrentLevel() { return -1; };
 
 	int getChangetoLevel();
+
 	void SetChangetoLevel(int level);
 
 	void SetPosition(int x, int y);
+
+	int getPmetter(); 
 };
 
 #endif

@@ -12,6 +12,14 @@ Mario::Mario(float x, float y)
 	this->Position.x = x;
 	this->Position.y = y;
 
+	this->Life = 4; 
+
+	this->Coin = 0; 
+
+	this->Score = 0; 
+
+	this->Combo = 0; 
+
 	//create every mario in the list
 	StateofMario.push_back(new SmallMario());
 	StateofMario.push_back(new BigMario());
@@ -61,6 +69,11 @@ MarioModel* Mario::GetCurrentMario()
 
 void Mario::Reset()
 {
+	this->Life = 4; 
+
+	this->Coin = 0; 
+
+	this->Score = 0; 
 }
 
 void Mario::AnimationLoad()
@@ -97,6 +110,56 @@ void Mario::SwitchMario(int level)
 void Mario::setCamera(Camera* camera)
 {
 	this->camera = camera;
+}
+
+int Mario::getPmetter()
+{
+	return this->CurrentMario->getPmetter();
+}
+
+void Mario::setCoin(int coin)
+{
+	this->Coin = coin;
+}
+
+int Mario::getCoin()
+{
+	return this->Coin;
+}
+
+void Mario::setLife(int life)
+{
+	this->Life = life; 
+}
+
+int Mario::getLife()
+{
+	return this->Life;
+}
+
+void Mario::setScore(long score)
+{
+	this->Score = score; 
+}
+
+long Mario::getScore()
+{
+	return this->Score;
+}
+
+void Mario::ResetCombo()
+{
+	this->Combo = 0; 
+}
+
+void Mario::ComboUp()
+{
+	this->Combo++; 
+}
+
+int Mario::getCombo()
+{
+	return this->Combo;
 }
 
 void Mario::GetBoundingBox(float& left, float& top, float& right, float& bottom)

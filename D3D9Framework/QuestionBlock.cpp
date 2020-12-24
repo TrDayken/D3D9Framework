@@ -14,6 +14,8 @@ QuestionBlock::QuestionBlock()
 
 	this->BounceState = 0; 
 
+	this->ColTag = Collision2DTag::FourSide;
+
 	//this->relativePosition = VectorZero;
 }
 

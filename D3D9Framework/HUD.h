@@ -2,25 +2,14 @@
 #define __HUD_H__
 
 #include "Global_Variable.h"
+#include "UIObject.h"
 
-class HUD
+
+class HUD : UIObject
 {
-	//on screen position rendering the HUD
-	Vector2 Position;
+	void Update(DWORD dt); 
 
-	//
-	Vector2 Size;
+	void Render(); 
 };
 
 #endif
-
-
-//font draw function
-//INT DrawText(
-//    LPD3DXSPRITE pSprite,
-//    LPCTSTR pString,
-//    int Count,
-//    LPRECT pRect,
-//    DWORD Format,
-//    D3DCOLOR Color
-//);
