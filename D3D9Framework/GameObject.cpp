@@ -260,6 +260,7 @@ void GameObject::CalcPotentialCollisions(std::vector<LPGAMEOBJECT>* coObjects, s
 			e->obj->GetBoundingBox(ml, mt, mr, mb);
 			if (e->obj->ColTag == Collision2DTag::FourSide)
 				coEvents.push_back(e);
+
 			else if (e->ny < 0 && e->obj->ColTag == Collision2DTag::Top)
 				coEvents.push_back(e);
 

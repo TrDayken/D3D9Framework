@@ -1,6 +1,9 @@
 #include "FXObjectManager.h"
 #include "ScenceManager.h"
 #include "SmokeFx.h"
+#include "HitFx.h"
+#include "DebrisFx.h"
+#include "CoinFx.h"
 
 FXObjectManager* FXObjectManager::_instance = NULL; 
 
@@ -16,7 +19,15 @@ AbstractFXObject* FXObjectManager::CreateFx(std::string name, Vector2 start_posi
 	AbstractFXObject* fx = nullptr;
 
 	if (name == "smoke")
-		fx = new SmokeFx(); 
+		fx = new SmokeFx();
+	else if (name == "hit")
+		fx = new HitFx(); 
+	else if (name == "debris")
+	{
+		fx = new DebrisFx();
+	}
+	else if (name == "coin")
+		fx = new CoinFx();
 	else
 		DebugOut(L"[ERROR] Cannot find Fx validation"); 
 

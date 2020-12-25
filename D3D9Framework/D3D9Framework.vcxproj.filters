@@ -146,6 +146,18 @@
     <Filter Include="Entity\Projectile\Others">
       <UniqueIdentifier>{17e31d91-1c87-448b-a131-85b391d546de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Blocks\SolidBlocks\Brick">
+      <UniqueIdentifier>{c40afa88-96e8-4b66-95c7-fc0019c42704}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Effect\Collide Effect">
+      <UniqueIdentifier>{ba04fab5-50d9-4fcd-a1ff-bfd7b93d65a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Effect\Mario effect">
+      <UniqueIdentifier>{6e886d15-7a09-43eb-bba3-584658efea41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Effect\Misc Effect">
+      <UniqueIdentifier>{5b84265a-9ef0-4ae3-84c6-b5a5bf2677ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -250,9 +262,6 @@
     <ClCompile Include="InvisibleBrick.cpp">
       <Filter>Entity\Blocks\SolidBlocks\GamePlatform</Filter>
     </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>Entity\Blocks\SolidBlocks\GamePlatform</Filter>
-    </ClCompile>
     <ClCompile Include="GhostPlatform.cpp">
       <Filter>Entity\Blocks\GhostBlock\GamePlatform</Filter>
     </ClCompile>
@@ -270,9 +279,6 @@
     </ClCompile>
     <ClCompile Include="AbstractFXObject.cpp">
       <Filter>Source Files\FrameWork\Object\FxObject</Filter>
-    </ClCompile>
-    <ClCompile Include="SmokeFx.cpp">
-      <Filter>Entity\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
       <Filter>Source Files\FrameWork\Font</Filter>
@@ -297,6 +303,21 @@
     </ClCompile>
     <ClCompile Include="VenusFireShoot.cpp">
       <Filter>Entity\Projectile\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Entity\Blocks\SolidBlocks\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="SmokeFx.cpp">
+      <Filter>Entity\Effect\Collide Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HitFx.cpp">
+      <Filter>Entity\Effect\Collide Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="DebrisFx.cpp">
+      <Filter>Entity\Effect\Misc Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinFx.cpp">
+      <Filter>Entity\Effect\Misc Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -390,9 +411,6 @@
     <ClInclude Include="InvisibleBrick.h">
       <Filter>Entity\Blocks\SolidBlocks\GamePlatform</Filter>
     </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>Entity\Blocks\SolidBlocks\GamePlatform</Filter>
-    </ClInclude>
     <ClInclude Include="GhostPlatform.h">
       <Filter>Entity\Blocks\GhostBlock\GamePlatform</Filter>
     </ClInclude>
@@ -417,9 +435,6 @@
     <ClInclude Include="BigMario.h">
       <Filter>Entity\Mario\MarioModel\MarioState</Filter>
     </ClInclude>
-    <ClInclude Include="SmokeFx.h">
-      <Filter>Entity\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>Source Files\FrameWork\Font</Filter>
     </ClInclude>
@@ -440,6 +455,21 @@
     </ClInclude>
     <ClInclude Include="VenusFireShoot.h">
       <Filter>Entity\Projectile\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Entity\Blocks\SolidBlocks\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="SmokeFx.h">
+      <Filter>Entity\Effect\Collide Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HitFx.h">
+      <Filter>Entity\Effect\Collide Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="DebrisFx.h">
+      <Filter>Entity\Effect\Misc Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinFx.h">
+      <Filter>Entity\Effect\Misc Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

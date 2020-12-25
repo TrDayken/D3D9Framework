@@ -2,6 +2,7 @@
 #include "FXObjectManager.h"
 #include "Game.h"
 #include "RedVenus.h"
+#include "Goomba.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -266,7 +267,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 	{
-		FXObjectManager::GetInstance()->CreateFx("smoke", this->Position); 
+		auto fx = FXObjectManager::GetInstance()->CreateFx("debris", this->Position); 
 		break;
 	}
 	case DIK_W:

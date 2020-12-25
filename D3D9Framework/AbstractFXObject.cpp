@@ -8,6 +8,8 @@ AbstractFXObject::AbstractFXObject()
 
 void AbstractFXObject::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
+	GameObject::Update(dt);
+
 	if (GetTickCount() - Animation_created > ANIMATIONTIME)
 		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 
@@ -15,5 +17,15 @@ void AbstractFXObject::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void AbstractFXObject::setStartPosition(Vector2 pos)
 {
-	this->startPosition = pos; 
+	this->Position = pos; 
+}
+
+void AbstractFXObject::Render(Camera* camera)
+{
+	GameObject::Render(camera); 
+}
+
+void AbstractFXObject::setForce(Vector2 force)
+{
+	this->Force = force;
 }

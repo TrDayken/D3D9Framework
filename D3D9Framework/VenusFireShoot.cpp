@@ -2,7 +2,7 @@
 
 VenusFireShoot::VenusFireShoot(float x, float y, int direction, int vertical )
 {
-	ColTag == Collision2DTag::FourSide;
+	ColTag == Collision2DTag::None;
 	EntityTag = Tag::projectile;
 	this->Position.x = x;
 	this->Position.y = y;
