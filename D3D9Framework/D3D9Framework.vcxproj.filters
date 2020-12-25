@@ -319,6 +319,9 @@
     <ClCompile Include="CoinFx.cpp">
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClCompile>
+    <ClCompile Include="GrowUpFx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -471,5 +474,6 @@
     <ClInclude Include="CoinFx.h">
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClInclude>
+    <ClInclude Include="GrowUpFx.h" />
   </ItemGroup>
 </Project>

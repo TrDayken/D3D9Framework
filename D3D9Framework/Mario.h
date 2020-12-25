@@ -37,16 +37,6 @@ private:
 	std::vector<MarioModel*> StateofMario;
 	MarioModel* CurrentMario;
 
-	//Mario's gameplay mechanics 
-	int Life, Coin; 
-
-	int Combo;
-
-	long Score; 
-
-	//store mario cards, unimplemented.
-	std::vector<int> Cards; 
-
 public:
 	Mario(float x = 0.0f, float y = 0.0f);
 		

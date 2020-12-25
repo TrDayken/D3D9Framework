@@ -54,7 +54,9 @@ enum class Tag
 	shell,
 	tail,
 	questionblock,
-	coin
+	coin,
+	mushroom,
+	leaf
 };
 
 class GameObject

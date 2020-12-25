@@ -3,6 +3,8 @@
 #include "Textures.h"
 #include "SpriteManager.h"
 #include "Game.h"
+#include "ScenceManager.h"
+
 
 HUD::HUD()
 {
@@ -34,11 +36,10 @@ void HUD::Render()
 
 	hud->Draw(0 + 32, WINDOW_HEIGHT - 150); 
 
-
 	Game::GetInstance()->GetFont()->RenderText("1", world);
 	Game::GetInstance()->GetFont()->RenderText("4", life);
-	Game::GetInstance()->GetFont()->RenderText("0002340", score);
-	Game::GetInstance()->GetFont()->RenderText("23", coin);
+	Game::GetInstance()->GetFont()->RenderText(Global_Variable::GetInstance()->FormatScore(), score);
+	Game::GetInstance()->GetFont()->RenderText(Global_Variable::GetInstance()->Formatcoin() , coin);
 	Game::GetInstance()->GetFont()->RenderText("248", timer);
 
 	metter->Render();

@@ -3,6 +3,8 @@
 
 #include <d3dx9.h>
 #include <directxmath.h>
+#include <vector>
+#include <string>
 
 
 #define D3DCOLOR_WHITE D3DCOLOR_XRGB(255, 255, 255)
@@ -44,6 +46,39 @@ enum Texture
 
 class Global_Variable
 {
+	static Global_Variable* _instance;
+
+	long score; 
+
+	int life, coin; 
+
+	int combo; 
+
+	int time;
+
+	//store mario cards, unimplemented.
+	std::vector<int> Cards;
+
+public:
+
+	void ComboUp();
+	void ResetCombo();
+	int GetCombo(); 
+
+	void ResetScore();
+	void AddScore(long x); 
+
+
+	void AddCoin(int x); 
+	void ResetCoin();
+
+	void AddLife(int x); 
+	void ResetLife(); 
+
+	std::string FormatScore();
+	std::string Formatcoin(); 
+
+	static Global_Variable* GetInstance(); 
 };
 
 #endif

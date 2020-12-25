@@ -3,6 +3,8 @@
 #include "Game.h"
 #include "RedVenus.h"
 #include "Goomba.h"
+#include "RedMushroomPowerUps.h"
+#include "RaccoonPowerUps.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -272,11 +274,11 @@ void MarioModel::OnKeyDown(int KeyCode)
 	}
 	case DIK_W:
 	{
-		GameObject* koop = new RedVenus();
+		GameObject* koop = new RaccoonPowerUps();
 
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
-		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
+		koop->setPosition(cam->getCameraPositionX() +500, cam->getCameraPositionY() + 500);
 		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
 		break;
 	}
