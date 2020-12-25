@@ -25,7 +25,7 @@ void RaccoonPowerUps::Render(Camera* camera)
 {
 	GameObject::Render(camera);
 
-	animation_set["Idle"]->Render(RenderPosition.x, RenderPosition.y, -direction);
+	animation_set["Idle"]->Render(RenderPosition.x, RenderPosition.y, direction);
 }
 
 void RaccoonPowerUps::GetBoundingBox(float& l, float& t, float& r, float& b)
@@ -62,7 +62,7 @@ void RaccoonPowerUps::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 	case 2:
 	{
 		vy = LEAF_FALLING_VEL;
-		vx = LEAF_FALLING_VX * direction; 
+		vx = -LEAF_FALLING_VX * direction; 
 	}
 	break;
 	}

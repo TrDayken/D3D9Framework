@@ -88,14 +88,31 @@ void Map::AddObject(TiXmlElement* RootElement)
 			{
 				QuestionBlock* questionblock = new QuestionBlock();
 				int quantity = 0; 
+				std::string blockname; 
 
+				blockname = TMXObject->Attribute("name");
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
 				TMXObject->QueryIntAttribute("type", &quantity);
 
+				if (blockname == "bleaf")
+				{
+					questionblock->SetInBlockItem(Item::RaccoonLeaf);
+				}
+				else if (blockname == "bcoin")
+				{
+					questionblock->SetInBlockItem(Item::Coin);
+				}
+				else if (blockname == "bmushroom")
+				{
+					questionblock->SetInBlockItem(Item::RedShroom);
+				}
+
+
 				questionblock->SetQuantity(quantity);
 				questionblock->setX(x); 
 				questionblock->setY(y);
+
 				if (quantity <= 0)
 					questionblock->SetDeflected(true); 
 

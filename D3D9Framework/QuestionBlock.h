@@ -12,7 +12,8 @@ enum class Item
 	RedShroom,
 	RaccoonLeaf,
 	FireFlower,
-	GreenShroom
+	GreenShroom,
+	Coin
 };
 
 class QuestionBlock :

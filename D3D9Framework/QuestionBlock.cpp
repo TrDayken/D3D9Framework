@@ -1,6 +1,9 @@
 #include "QuestionBlock.h"
 #include "AnimationManager.h"
 #include "ScenceManager.h"
+#include "RedMushroomPowerUps.h"
+#include "RaccoonPowerUps.h"
+#include "FXObjectManager.h"
 
 QuestionBlock::QuestionBlock()
 {
@@ -51,8 +54,34 @@ void QuestionBlock::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 			this->BounceState = 1;
 			DebugOut(L"[INFO] start bounce \n");
 
-			// spawn holding obj
-			// and defy holdingobject's logic
+			switch (InBlockItem)
+			{
+			case Item::RedShroom:
+			{
+				GameObject* mush = new RedMushroomPowerUps(); 
+
+				mush->setPosition(this->Position.x, this->Position.y - 49);
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(mush);
+			}
+				break;
+			case Item::RaccoonLeaf:
+			{
+				GameObject* leaf = new RaccoonPowerUps();
+
+				leaf->setPosition(this->Position.x, this->Position.y);
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(leaf);
+			}
+				break;
+			case Item::FireFlower:
+				break;
+			case Item::GreenShroom:
+				break;
+			case Item::Coin:
+				FXObjectManager::GetInstance()->CreateFx("coin", this->Position);
+				break;
+			default:
+				break;
+			}
 
 			this->Quantity--;
 

@@ -12,7 +12,7 @@ CoinFx::CoinFx()
 {
 	LoadAnimation();
 
-	ANIMATIONTIME = 650;
+	ANIMATIONTIME = 575;
 
 	Bounce_start = GetTickCount(); 
 }
