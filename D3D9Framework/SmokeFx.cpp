@@ -7,7 +7,7 @@ void SmokeFx::LoadAnimation()
 	AnimationManager* animation = AnimationManager::GetInstance(); 
 
 	//AddAnimation("Smokefx", animation->GetAnimation("ani-fireball-damaged"));
-	AddAnimation("Smokefx", animation->GetAnimation("ani-p-icon"));
+	AddAnimation("Smokefx", animation->GetAnimation("ani-fireball-damaged"));
 }
 
 SmokeFx::SmokeFx()

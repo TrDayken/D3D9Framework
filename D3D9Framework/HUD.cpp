@@ -30,7 +30,7 @@ void HUD::Update(DWORD dt)
 
 void HUD::Render()
 {
-	Game::GetInstance()->Draw(0, 580, Textures::GetInstance()->GetTexture("tex-pannel"), 0, 0, 824, 150);
+	Game::GetInstance()->Draw(0, 594, Textures::GetInstance()->GetTexture("tex-pannel"), 0, 0, 824, 150);
 
 	hud->Draw(0 + 32, WINDOW_HEIGHT - 150); 
 
@@ -38,8 +38,8 @@ void HUD::Render()
 	Game::GetInstance()->GetFont()->RenderText("1", world);
 	Game::GetInstance()->GetFont()->RenderText("4", life);
 	Game::GetInstance()->GetFont()->RenderText("0002340", score);
-	Game::GetInstance()->GetFont()->RenderText("11", coin);
-	Game::GetInstance()->GetFont()->RenderText("000", timer);
+	Game::GetInstance()->GetFont()->RenderText("23", coin);
+	Game::GetInstance()->GetFont()->RenderText("248", timer);
 
 	metter->Render();
 }

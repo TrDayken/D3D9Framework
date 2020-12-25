@@ -176,6 +176,7 @@
     <ClCompile Include="RaccoonPowerUps.cpp" />
     <ClCompile Include="RacoonMario.cpp" />
     <ClCompile Include="RedMushroomPowerUps.cpp" />
+    <ClCompile Include="RedVenus.cpp" />
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="ScenceManager.cpp" />
     <ClCompile Include="SmallMario.cpp" />
@@ -190,6 +191,7 @@
     <ClCompile Include="tinyXML\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="UIObject.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="VenusFireShoot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFXObject.h" />
@@ -225,6 +227,7 @@
     <ClInclude Include="RaccoonPowerUps.h" />
     <ClInclude Include="RacoonMario.h" />
     <ClInclude Include="RedMushroomPowerUps.h" />
+    <ClInclude Include="RedVenus.h" />
     <ClInclude Include="Scence.h" />
     <ClInclude Include="ScenceManager.h" />
     <ClInclude Include="SmallMario.h" />
@@ -237,6 +240,7 @@
     <ClInclude Include="tinyXML\tinyxml\tinyxml.h" />
     <ClInclude Include="UIObject.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="VenusFireShoot.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

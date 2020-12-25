@@ -1,7 +1,7 @@
 #include "MarioModel.h"
 #include "FXObjectManager.h"
 #include "Game.h"
-#include "Brick.h"
+#include "RedVenus.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -271,7 +271,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 	}
 	case DIK_W:
 	{
-		GameObject* koop = new Brick();
+		GameObject* koop = new RedVenus();
 
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 

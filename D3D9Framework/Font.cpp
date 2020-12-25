@@ -45,7 +45,7 @@ void Font::RenderText(std::string text, Vector2 pos, TextAlignment align)
 
 		charsprite->Draw(pos.x, pos.y);
 
-		pos.x += charsprite->getSpriteWidth() - 1;
+		pos.x += charsprite->getSpriteWidth() - 3;
 	}
 }
 

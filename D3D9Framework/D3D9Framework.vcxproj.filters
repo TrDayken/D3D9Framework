@@ -137,6 +137,15 @@
     <Filter Include="Entity\HUD\PMetter">
       <UniqueIdentifier>{ec1e2f3b-9c3d-4113-9dc1-f74e121e344b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Enemy\Venus">
+      <UniqueIdentifier>{82e0224b-1bcb-4edd-982d-d0d348d4650f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Projectile\Mario">
+      <UniqueIdentifier>{a152501a-6f68-4b4b-8e36-3f29e2f1dec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Projectile\Others">
+      <UniqueIdentifier>{17e31d91-1c87-448b-a131-85b391d546de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -205,12 +214,6 @@
     <ClCompile Include="FireMario.cpp">
       <Filter>Entity\Mario\MarioModel\MarioState</Filter>
     </ClCompile>
-    <ClCompile Include="FireShoot.cpp">
-      <Filter>Entity\Projectile</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackTail.cpp">
-      <Filter>Entity\Projectile</Filter>
-    </ClCompile>
     <ClCompile Include="ScenceManager.cpp">
       <Filter>Source Files\FrameWork\ScenceManager</Filter>
     </ClCompile>
@@ -256,9 +259,6 @@
     <ClCompile Include="Coin.cpp">
       <Filter>Entity\Misc</Filter>
     </ClCompile>
-    <ClCompile Include="RaccoonPowerUps.cpp">
-      <Filter>Entity\Misc\PowerUps\Bigmario</Filter>
-    </ClCompile>
     <ClCompile Include="RedMushroomPowerUps.cpp">
       <Filter>Entity\Misc\PowerUps\Bigmario</Filter>
     </ClCompile>
@@ -283,6 +283,21 @@
     <ClCompile Include="PMetter.cpp">
       <Filter>Entity\HUD\PMetter</Filter>
     </ClCompile>
+    <ClCompile Include="RaccoonPowerUps.cpp">
+      <Filter>Entity\Misc\PowerUps\Raccoon</Filter>
+    </ClCompile>
+    <ClCompile Include="RedVenus.cpp">
+      <Filter>Entity\Enemy\Venus</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackTail.cpp">
+      <Filter>Entity\Projectile\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="FireShoot.cpp">
+      <Filter>Entity\Projectile\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="VenusFireShoot.cpp">
+      <Filter>Entity\Projectile\Others</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -305,12 +320,6 @@
     </ClInclude>
     <ClInclude Include="FireMario.h">
       <Filter>Entity\Mario\MarioModel\MarioState</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackTail.h">
-      <Filter>Entity\Projectile</Filter>
-    </ClInclude>
-    <ClInclude Include="FireShoot.h">
-      <Filter>Entity\Projectile</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Source Files\FrameWork\Camera</Filter>
@@ -419,6 +428,18 @@
     </ClInclude>
     <ClInclude Include="PMetter.h">
       <Filter>Entity\HUD\PMetter</Filter>
+    </ClInclude>
+    <ClInclude Include="RedVenus.h">
+      <Filter>Entity\Enemy\Venus</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackTail.h">
+      <Filter>Entity\Projectile\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="FireShoot.h">
+      <Filter>Entity\Projectile\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="VenusFireShoot.h">
+      <Filter>Entity\Projectile\Others</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

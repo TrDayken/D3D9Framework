@@ -88,7 +88,4 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }
-
-void FireShoot::CollisionObject(LPGAMEOBJECT obj, int nx, int ny)
-{
-}
+	
