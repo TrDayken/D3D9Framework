@@ -320,7 +320,7 @@
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClCompile>
     <ClCompile Include="GrowUpFx.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Entity\Effect\Mario effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -474,6 +474,8 @@
     <ClInclude Include="CoinFx.h">
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClInclude>
-    <ClInclude Include="GrowUpFx.h" />
+    <ClInclude Include="GrowUpFx.h">
+      <Filter>Entity\Effect\Mario effect</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

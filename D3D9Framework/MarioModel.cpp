@@ -136,7 +136,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				}
 				else
 				{
-					//mario take damage
+					DebugOut(L"[Info] mario take damage");
 				}
 					
 			}
@@ -269,16 +269,15 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 	{
-		auto fx = FXObjectManager::GetInstance()->CreateFx("debris", this->Position); 
-		break;
+		Game::GetInstance()->setTemporal(0.0);
 	}
 	case DIK_W:
 	{
-		GameObject* koop = new RaccoonPowerUps();
+		GameObject* koop = new Goomba();
 
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
-		koop->setPosition(cam->getCameraPositionX() +500, cam->getCameraPositionY() + 500);
+		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
 		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
 		break;
 	}

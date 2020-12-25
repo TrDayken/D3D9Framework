@@ -163,7 +163,7 @@ int Run()
 
 			game->ProcessKeyboard();
 
-			Update(dt);
+			Update(dt * game->getTemporal());
 			Render();
 		}
 		else

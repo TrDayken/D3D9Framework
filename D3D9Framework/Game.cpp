@@ -163,6 +163,21 @@ void Game::SetFont(Font* font)
 	this->font = font; 
 }
 
+void Game::setTemporal(float x)
+{
+	this->temporal = x;
+}
+
+float Game::getTemporal()
+{
+	return this->temporal;
+}
+
+void Game::resetTemporal()
+{
+	temporal = 1.0f;
+}
+
 int Game::IsKeyDown(int KeyCode)
 {
 	return (keyStates[KeyCode] & 0x80) > 0;

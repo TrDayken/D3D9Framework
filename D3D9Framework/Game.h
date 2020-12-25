@@ -34,6 +34,8 @@ class Game
 	LPKEYEVENTHANDLER keyHandler;
 
 	Font* font;
+
+	float temporal = 1.0;
 public:
 	void InitKeyboard();
 	void Init(HWND hWnd);
@@ -42,6 +44,9 @@ public:
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, RECT* Rect);
 	void SetKeyHandler(LPKEYEVENTHANDLER handler) { keyHandler = handler; }
 	void SetFont(Font* font);
+	void setTemporal(float x); 
+	float getTemporal();
+	void resetTemporal();
 	int IsKeyDown(int KeyCode);
 	void ProcessKeyboard();
 
