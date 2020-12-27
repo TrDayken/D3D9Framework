@@ -56,7 +56,8 @@ enum class Tag
 	questionblock,
 	coin,
 	mushroom,
-	leaf
+	leaf,
+	vanity
 };
 
 class GameObject

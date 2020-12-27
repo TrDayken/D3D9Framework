@@ -38,7 +38,9 @@ void PMetter::Render()
 	P_Off->Draw(StaticPosition.x + x, StaticPosition.y);
 
 	x = 0;
-	int level = ((PlayScence*)ScenceManager::GetInstance()->getCurrentScence())->getPmetter();
+
+	int level = Global_Variable::GetInstance()->getPmetter();
+
 	int arrowlevel = level;
 
 	if (arrowlevel == 7) arrowlevel = 6;

@@ -125,6 +125,7 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		if (!(GetTickCount() - Flyingtime_start > RACCOON_MARIO_FLYTIME) && isFlying)
 		{
 			PMetter = 0;
+			Global_Variable::GetInstance()->UpdatePmetter(PMetter);
 			vy = -RACCOON_MARIO_FLY_FROCE * dt;
 		}
 		else
@@ -328,6 +329,7 @@ void RacoonMario::RacoonMarioRunandWalkState()
 		{
 			IncreasePMetterTime_Start = GetTickCount();
 			PMetter++;
+			Global_Variable::GetInstance()->UpdatePmetter(PMetter);
 		}
 
 		if (PMetter == 7)
@@ -347,6 +349,7 @@ void RacoonMario::RacoonMarioRunandWalkState()
 	{
 		DecayPMetterTime_Start = GetTickCount();
 		PMetter--;
+		Global_Variable::GetInstance()->UpdatePmetter(PMetter);
 	}
 
 	DebugOut(L"[INFO] PMETTER: %d \n ", PMetter);

@@ -172,8 +172,12 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapMario.cpp" />
+    <ClCompile Include="MapScence.cpp" />
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="MarioModel.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="NodeMap.cpp" />
     <ClCompile Include="PlayScence.cpp" />
     <ClCompile Include="PMetter.cpp" />
     <ClCompile Include="QuestionBlock.cpp" />
@@ -196,6 +200,7 @@
     <ClCompile Include="UIObject.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="VenusFireShoot.cpp" />
+    <ClCompile Include="WiggleTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFXObject.h" />
@@ -227,8 +232,12 @@
     <ClInclude Include="KoopaShell.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MapMario.h" />
+    <ClInclude Include="MapScence.h" />
     <ClInclude Include="Mario.h" />
     <ClInclude Include="MarioModel.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeMap.h" />
     <ClInclude Include="PlayScence.h" />
     <ClInclude Include="PMetter.h" />
     <ClInclude Include="QuestionBlock.h" />
@@ -249,6 +258,7 @@
     <ClInclude Include="UIObject.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="VenusFireShoot.h" />
+    <ClInclude Include="WiggleTree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

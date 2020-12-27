@@ -58,20 +58,6 @@ public:
 
 	int getPmetter();
 
-	//in game mechanics modification.
-	void setCoin(int coin); 
-	int getCoin(); 
-
-	void setLife(int life); 
-	int getLife(); 
-
-	void setScore(long score); 
-	long getScore(); 
-
-	void ResetCombo(); 
-	void ComboUp(); 
-	int getCombo(); 
-
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 };
 

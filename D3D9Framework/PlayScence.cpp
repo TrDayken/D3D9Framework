@@ -114,6 +114,7 @@ void PlayScence::Render()
 
 void PlayScence::Unload()
 {
+
 }
 
 void PlayScence::addtoScenceManager()

@@ -59,12 +59,6 @@
     <Filter Include="Entity\Mario">
       <UniqueIdentifier>{327360a0-31b7-4031-a40a-9083e2d4da30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Entity\Mario\MarioModel">
-      <UniqueIdentifier>{6671e8d9-87b4-4f24-8f71-47599908397e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entity\Mario\MarioModel\MarioState">
-      <UniqueIdentifier>{0c71ac5e-e9fa-4b7f-83a5-8cc6ce525189}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Entity\Blocks">
       <UniqueIdentifier>{e44468bc-d67a-497a-89ca-47ec78b1fe12}</UniqueIdentifier>
     </Filter>
@@ -158,6 +152,33 @@
     <Filter Include="Entity\Effect\Misc Effect">
       <UniqueIdentifier>{5b84265a-9ef0-4ae3-84c6-b5a5bf2677ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FrameWork\ScenceManager\Scence\MapScence">
+      <UniqueIdentifier>{27f7f6a1-8baa-4b8c-9b56-6624d145d9d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Map\GameWorld">
+      <UniqueIdentifier>{d830b725-c41e-4e95-8719-84ab4742dec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Map\GameWorld\Node">
+      <UniqueIdentifier>{c9a4134f-1ae2-4770-b0e4-cd96feaa27b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Map\GameWorld\NodeMap">
+      <UniqueIdentifier>{37c39aca-03da-42d6-bb4d-a56e005d0408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Mario\GameMario">
+      <UniqueIdentifier>{f26318bc-bf29-4b9e-aa88-8af53a59ce72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Mario\GameMario\MarioModel">
+      <UniqueIdentifier>{6671e8d9-87b4-4f24-8f71-47599908397e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Mario\GameMario\MarioModel\MarioState">
+      <UniqueIdentifier>{0c71ac5e-e9fa-4b7f-83a5-8cc6ce525189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Mario\MapMario">
+      <UniqueIdentifier>{6a79ae01-1ebf-44c9-91fc-1a0d0b4d67b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\VanityItem">
+      <UniqueIdentifier>{118ef1f0-ce1c-44e1-9cb1-e0ee4215b55c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -205,26 +226,23 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\FrameWork\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Mario.cpp">
-      <Filter>Entity\Mario</Filter>
-    </ClCompile>
     <ClCompile Include="Global_Variable.cpp">
       <Filter>Source Files\FrameWork\Game Variables</Filter>
     </ClCompile>
     <ClCompile Include="MarioModel.cpp">
-      <Filter>Entity\Mario\MarioModel</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel</Filter>
     </ClCompile>
     <ClCompile Include="RacoonMario.cpp">
-      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel\MarioState</Filter>
     </ClCompile>
     <ClCompile Include="BigMario.cpp">
-      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel\MarioState</Filter>
     </ClCompile>
     <ClCompile Include="SmallMario.cpp">
-      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel\MarioState</Filter>
     </ClCompile>
     <ClCompile Include="FireMario.cpp">
-      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel\MarioState</Filter>
     </ClCompile>
     <ClCompile Include="ScenceManager.cpp">
       <Filter>Source Files\FrameWork\ScenceManager</Filter>
@@ -322,6 +340,24 @@
     <ClCompile Include="GrowUpFx.cpp">
       <Filter>Entity\Effect\Mario effect</Filter>
     </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source Files\FrameWork\Map\GameWorld\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeMap.cpp">
+      <Filter>Source Files\FrameWork\Map\GameWorld\NodeMap</Filter>
+    </ClCompile>
+    <ClCompile Include="MapScence.cpp">
+      <Filter>Source Files\FrameWork\ScenceManager\Scence\MapScence</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario.cpp">
+      <Filter>Entity\Mario\GameMario</Filter>
+    </ClCompile>
+    <ClCompile Include="MapMario.cpp">
+      <Filter>Entity\Mario\MapMario</Filter>
+    </ClCompile>
+    <ClCompile Include="WiggleTree.cpp">
+      <Filter>Entity\VanityItem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -337,19 +373,19 @@
       <Filter>Source Files\FrameWork\Map\Tileset</Filter>
     </ClInclude>
     <ClInclude Include="SmallMario.h">
-      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel\MarioState</Filter>
     </ClInclude>
     <ClInclude Include="RacoonMario.h">
-      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel\MarioState</Filter>
     </ClInclude>
     <ClInclude Include="FireMario.h">
-      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel\MarioState</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Source Files\FrameWork\Camera</Filter>
     </ClInclude>
     <ClInclude Include="MarioModel.h">
-      <Filter>Entity\Mario\MarioModel</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel</Filter>
     </ClInclude>
     <ClInclude Include="Scence.h">
       <Filter>Source Files\FrameWork\ScenceManager\Scence</Filter>
@@ -374,9 +410,6 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Source Files\FrameWork</Filter>
-    </ClInclude>
-    <ClInclude Include="Mario.h">
-      <Filter>Entity\Mario</Filter>
     </ClInclude>
     <ClInclude Include="ScenceManager.h">
       <Filter>Source Files\FrameWork\ScenceManager</Filter>
@@ -436,7 +469,7 @@
       <Filter>Source Files\FrameWork\Object\FxObject</Filter>
     </ClInclude>
     <ClInclude Include="BigMario.h">
-      <Filter>Entity\Mario\MarioModel\MarioState</Filter>
+      <Filter>Entity\Mario\GameMario\MarioModel\MarioState</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>Source Files\FrameWork\Font</Filter>
@@ -476,6 +509,24 @@
     </ClInclude>
     <ClInclude Include="GrowUpFx.h">
       <Filter>Entity\Effect\Mario effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Source Files\FrameWork\Map\GameWorld\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeMap.h">
+      <Filter>Source Files\FrameWork\Map\GameWorld\NodeMap</Filter>
+    </ClInclude>
+    <ClInclude Include="MapScence.h">
+      <Filter>Source Files\FrameWork\ScenceManager\Scence\MapScence</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario.h">
+      <Filter>Entity\Mario\GameMario</Filter>
+    </ClInclude>
+    <ClInclude Include="MapMario.h">
+      <Filter>Entity\Mario\MapMario</Filter>
+    </ClInclude>
+    <ClInclude Include="WiggleTree.h">
+      <Filter>Entity\VanityItem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -17,6 +17,8 @@ void RedMushroomPowerUps::LoadAnimation()
 RedMushroomPowerUps::RedMushroomPowerUps()
 {
 	LoadAnimation();
+
+	this->ColTag = Collision2DTag::None;
 }
 
 void RedMushroomPowerUps::Render(Camera* camera)

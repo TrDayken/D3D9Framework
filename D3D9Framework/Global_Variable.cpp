@@ -2,6 +2,16 @@
 
 Global_Variable* Global_Variable::_instance = NULL;
 
+Global_Variable::Global_Variable()
+{
+	this->coin = 0;
+	this->life = 4; 
+	this->plevel = 0; 
+	this->combo = 0; 
+	this->score = 0; 
+	this->time = 0; 
+}
+
 void Global_Variable::ComboUp()
 {
 	combo += 1; 
@@ -47,6 +57,16 @@ void Global_Variable::AddLife(int x)
 void Global_Variable::ResetLife()
 {
 	this->life = 4;
+}
+
+void Global_Variable::UpdatePmetter(int x)
+{
+	this->plevel = x; 
+}
+
+int Global_Variable::getPmetter()
+{
+	return this->plevel;
 }
 
 std::string Global_Variable::FormatScore()

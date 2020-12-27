@@ -53,6 +53,7 @@ void SmallMario::SmallMarioRunandWalkState()
 			else
 				fullMetter = false;
 			PMetter++;
+			Global_Variable::GetInstance()->UpdatePmetter(PMetter);
 		}
 	}
 
@@ -60,6 +61,7 @@ void SmallMario::SmallMarioRunandWalkState()
 	{
 		DecayPMetterTime_Start = GetTickCount();
 		PMetter--;
+		Global_Variable::GetInstance()->UpdatePmetter(PMetter);
 	}
 }
 

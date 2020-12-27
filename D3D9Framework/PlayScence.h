@@ -20,8 +20,8 @@ protected:
 
 	std::vector<LPGAMEOBJECT> earseobjects;
 	std::vector <LPGAMEOBJECT> objects;
-
 	std::vector<UIObject*> UIElement;
+
 public:
 	PlayScence();
 	PlayScence(int id, LPCWSTR filePath);
@@ -33,13 +33,17 @@ public:
 
 	//spawnobject(obj)
 	void AddObject(LPGAMEOBJECT object) { objects.push_back(object); }
+
 	void DeleteObject(LPGAMEOBJECT object) { earseobjects.push_back(object); }
+
 	void AddUI(UIObject* UI) { UIElement.push_back(UI); };
+
 	Mario* GetPlayer() { return mario; }
 
-	int getPmetter() { return this->mario->getPmetter(); }
+	//int getPmetter() { return this->mario->getPmetter(); }
 
 	void addtoScenceManager();
+
 	Camera* getCamera();
 };
 

@@ -56,10 +56,14 @@ class Global_Variable
 
 	int time;
 
+	int plevel;
+
 	//store mario cards, unimplemented.
 	std::vector<int> Cards;
 
 public:
+
+	Global_Variable();
 
 	void ComboUp();
 	void ResetCombo();
@@ -74,6 +78,9 @@ public:
 
 	void AddLife(int x); 
 	void ResetLife(); 
+
+	void UpdatePmetter(int x);
+	int getPmetter();
 
 	std::string FormatScore();
 	std::string Formatcoin(); 

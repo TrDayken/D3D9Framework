@@ -219,6 +219,7 @@ void FireMario::FireMarioRunandWalkState()
 			else
 				fullMetter = false;
 			PMetter++;
+			Global_Variable::GetInstance()->UpdatePmetter(PMetter);
 		}
 	}
 
@@ -226,5 +227,6 @@ void FireMario::FireMarioRunandWalkState()
 	{
 		DecayPMetterTime_Start = GetTickCount();
 		PMetter--;
+		Global_Variable::GetInstance()->UpdatePmetter(PMetter);
 	}
 }

@@ -19,6 +19,8 @@
       </Texture>
       <Texture textureid = "tex-ui" path = "textures\\GameUI\\ui_x3.png"> 
       </Texture>
+      <Texture textureid = "tex-overworld" path = "textures\\OverWorld\\overworld_x3.png">
+      </Texture>
       
       <!--Map's Spite -->
       <Sprite path = "textures\\Mario\\MarioDB.xml">
@@ -31,6 +33,8 @@
       </Sprite>
       <Sprite path = "textures\\GameUI\\UiDB.xml">
       </Sprite>
+      <Sprite path = "textures\\OverWorld\\OverworldMapDB.xml">
+      </Sprite>
       
       <!--Map's Animation -->
       <Animation path = "textures\\Enemy\\EnemyAnim.xml">
@@ -42,6 +46,8 @@
       <Animation path ="textures\\Effect\\EffectAnim.xml">
       </Animation>
       <Animation path = "textures\\GameUI\\UiAnim.xml"> 
+      </Animation>
+      <Animation path = "textures\\OverWorld\\OverworldMapAnim.xml">
       </Animation>
     
     </Map>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="48" tileheight="48" infinite="0" nextlayerid="7" nextobjectid="71">
  <tileset firstgid="1" name="tileset(x3)" tilewidth="48" tileheight="48" tilecount="32" columns="8">
-  <image source="Assets/Maps/overworld-1.png" width="384" height="192"/>
+  <image source="overworld-1.png" width="384" height="192"/>
  </tileset>
  <layer id="1" name="black" width="16" height="14">
   <data encoding="csv">
@@ -75,154 +75,154 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="5" name="AnimatedBG" visible="0">
-  <object id="21" name="tree" x="72" y="72">
+ <objectgroup id="5" name="AnimatedBG">
+  <object id="21" name="tree" x="48" y="48">
    <point/>
   </object>
-  <object id="22" name="tree" x="120" y="72">
+  <object id="22" name="tree" x="96" y="48">
    <point/>
   </object>
-  <object id="23" name="tree" x="168" y="72">
+  <object id="23" name="tree" x="144" y="48">
    <point/>
   </object>
-  <object id="24" name="tree" x="168" y="120">
+  <object id="24" name="tree" x="144" y="96">
    <point/>
   </object>
-  <object id="25" name="tree" x="120" y="120">
+  <object id="25" name="tree" x="96" y="96">
    <point/>
   </object>
-  <object id="26" name="tree" x="72" y="120">
+  <object id="26" name="tree" x="48" y="96">
    <point/>
   </object>
-  <object id="28" name="tree" x="72" y="216">
+  <object id="28" name="tree" x="48" y="192">
    <point/>
   </object>
-  <object id="29" name="tree" x="120" y="216">
+  <object id="29" name="tree" x="96" y="192">
    <point/>
   </object>
-  <object id="30" name="tree" x="168" y="216">
+  <object id="30" name="tree" x="144" y="192">
    <point/>
   </object>
-  <object id="31" name="tree" x="168" y="264">
+  <object id="31" name="tree" x="144" y="240">
    <point/>
   </object>
-  <object id="32" name="tree" x="120" y="264">
+  <object id="32" name="tree" x="96" y="240">
    <point/>
   </object>
-  <object id="33" name="tree" x="72" y="264">
+  <object id="33" name="tree" x="48" y="240">
    <point/>
   </object>
-  <object id="34" name="tree" x="72" y="312">
+  <object id="34" name="tree" x="48" y="288">
    <point/>
   </object>
-  <object id="35" name="tree" x="264" y="120">
+  <object id="35" name="tree" x="240" y="96">
    <point/>
   </object>
-  <object id="36" name="tree" x="312" y="120">
+  <object id="36" name="tree" x="288" y="96">
    <point/>
   </object>
-  <object id="37" name="tree" x="360" y="120">
+  <object id="37" name="tree" x="336" y="96">
    <point/>
   </object>
-  <object id="38" name="tree" x="360" y="168">
+  <object id="38" name="tree" x="336" y="144">
    <point/>
   </object>
-  <object id="39" name="tree" x="312" y="168">
+  <object id="39" name="tree" x="288" y="144">
    <point/>
   </object>
-  <object id="40" name="tree" x="264" y="168">
+  <object id="40" name="tree" x="240" y="144">
    <point/>
   </object>
-  <object id="41" name="tree" x="264" y="216">
+  <object id="41" name="tree" x="240" y="192">
    <point/>
   </object>
-  <object id="42" name="tree" x="312" y="216">
+  <object id="42" name="tree" x="288" y="192">
    <point/>
   </object>
-  <object id="43" name="tree" x="360" y="216">
+  <object id="43" name="tree" x="336" y="192">
    <point/>
   </object>
-  <object id="44" name="tree" x="312" y="312">
+  <object id="44" name="tree" x="288" y="288">
    <point/>
   </object>
-  <object id="45" name="tree" x="360" y="312">
+  <object id="45" name="tree" x="336" y="288">
    <point/>
   </object>
-  <object id="46" name="tree" x="408" y="312">
+  <object id="46" name="tree" x="384" y="288">
    <point/>
   </object>
-  <object id="47" name="tree" x="456" y="264">
+  <object id="47" name="tree" x="432" y="240">
    <point/>
   </object>
-  <object id="48" name="tree" x="504" y="264">
+  <object id="48" name="tree" x="480" y="240">
    <point/>
   </object>
-  <object id="49" name="tree" x="456" y="216">
+  <object id="49" name="tree" x="432" y="192">
    <point/>
   </object>
-  <object id="50" name="tree" x="504" y="216">
+  <object id="50" name="tree" x="480" y="192">
    <point/>
   </object>
-  <object id="51" name="tree" x="552" y="216">
+  <object id="51" name="tree" x="528" y="192">
    <point/>
   </object>
-  <object id="52" name="tree" x="600" y="216">
+  <object id="52" name="tree" x="576" y="192">
    <point/>
   </object>
-  <object id="53" name="tree" x="648" y="216">
+  <object id="53" name="tree" x="624" y="192">
    <point/>
   </object>
-  <object id="54" name="tree" x="696" y="216">
+  <object id="54" name="tree" x="672" y="192">
    <point/>
   </object>
-  <object id="55" name="tree" x="648" y="168">
+  <object id="55" name="tree" x="624" y="144">
    <point/>
   </object>
-  <object id="56" name="tree" x="648" y="120">
+  <object id="56" name="tree" x="624" y="96">
    <point/>
   </object>
-  <object id="57" name="tree" x="648" y="72">
+  <object id="57" name="tree" x="624" y="48">
    <point/>
   </object>
-  <object id="58" name="tree" x="696" y="72">
+  <object id="58" name="tree" x="672" y="48">
    <point/>
   </object>
-  <object id="59" name="tree" x="696" y="120">
+  <object id="59" name="tree" x="672" y="96">
    <point/>
   </object>
-  <object id="60" name="tree" x="696" y="168">
+  <object id="60" name="tree" x="672" y="144">
    <point/>
   </object>
-  <object id="62" name="tree" x="696" y="264">
+  <object id="62" name="tree" x="672" y="240">
    <point/>
   </object>
-  <object id="63" name="tree" x="696" y="312">
+  <object id="63" name="tree" x="672" y="288">
    <point/>
   </object>
-  <object id="64" name="tree" x="696" y="360">
+  <object id="64" name="tree" x="672" y="336">
    <point/>
   </object>
-  <object id="65" name="tree" x="696" y="408">
+  <object id="65" name="tree" x="672" y="384">
    <point/>
   </object>
-  <object id="66" name="tree" x="696" y="456">
+  <object id="66" name="tree" x="672" y="432">
    <point/>
   </object>
-  <object id="67" name="tree" x="696" y="504">
+  <object id="67" name="tree" x="672" y="480">
    <point/>
   </object>
-  <object id="68" name="tree" x="456" y="120">
+  <object id="68" name="tree" x="432" y="96">
    <point/>
   </object>
-  <object id="69" name="tree" x="504" y="120">
+  <object id="69" name="tree" x="480" y="96">
    <point/>
   </object>
-  <object id="70" name="tree" x="552" y="120">
+  <object id="70" name="tree" x="528" y="96">
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="6" name="WorldGraph">
-  <object id="1" name="node-2" type="num-1" x="216" y="72">
+ <objectgroup id="6" name="WorldGraph" visible="0">
+  <object id="1" name="node-2" type="num-1" x="192" y="48">
    <properties>
     <property name="adjacent_list" value="1,3"/>
     <property name="adjacent_weight" value="d,r"/>
@@ -231,7 +231,7 @@
    </properties>
    <point/>
   </object>
-  <object id="2" name="node-0" type="num-0" x="120" y="168">
+  <object id="2" name="node-0" type="num-0" x="96" y="144">
    <properties>
     <property name="adjacent_list" value="1"/>
     <property name="adjacent_weight" value="r"/>
@@ -240,7 +240,7 @@
    </properties>
    <point/>
   </object>
-  <object id="3" name="node-1" x="216" y="168">
+  <object id="3" name="node-1" x="192" y="144">
    <properties>
     <property name="adjacent_list" value="0,2"/>
     <property name="adjacent_weight" value="l,u"/>
@@ -249,7 +249,7 @@
    </properties>
    <point/>
   </object>
-  <object id="4" name="node-3" x="312" y="72">
+  <object id="4" name="node-3" x="288" y="48">
    <properties>
     <property name="adjacent_list" value="2,4"/>
     <property name="adjacent_weight" value="l,r"/>
@@ -258,7 +258,7 @@
    </properties>
    <point/>
   </object>
-  <object id="5" name="node-5" type="num-3" x="504" y="72">
+  <object id="5" name="node-5" type="num-3" x="480" y="48">
    <properties>
     <property name="adjacent_list" value="4,6"/>
     <property name="adjacent_weight" value="l,r"/>
@@ -267,7 +267,7 @@
    </properties>
    <point/>
   </object>
-  <object id="6" name="node-4" type="num-2" x="408" y="72">
+  <object id="6" name="node-4" type="num-2" x="384" y="48">
    <properties>
     <property name="adjacent_list" value="3,5,9"/>
     <property name="adjacent_weight" value="l,r,d"/>
@@ -276,7 +276,7 @@
    </properties>
    <point/>
   </object>
-  <object id="7" name="node-6" x="600" y="72">
+  <object id="7" name="node-6" x="576" y="48">
    <properties>
     <property name="adjacent_list" value="5,7"/>
     <property name="adjacent_weight" value="l,d"/>
@@ -285,7 +285,7 @@
    </properties>
    <point/>
   </object>
-  <object id="8" name="node-7" type="bonus-gift" x="600" y="168">
+  <object id="8" name="node-7" type="bonus-gift" x="576" y="144">
    <properties>
     <property name="adjacent_list" value="6,8"/>
     <property name="adjacent_weight" value="u,l"/>
@@ -294,7 +294,7 @@
    </properties>
    <point/>
   </object>
-  <object id="9" name="node-8" type="num-4" x="504" y="168">
+  <object id="9" name="node-8" type="num-4" x="480" y="144">
    <properties>
     <property name="adjacent_list" value="9,7"/>
     <property name="adjacent_weight" value="l,r"/>
@@ -303,7 +303,7 @@
    </properties>
    <point/>
   </object>
-  <object id="10" name="node-9" x="408" y="168">
+  <object id="10" name="node-9" x="384" y="144">
    <properties>
     <property name="adjacent_list" value="4,8,10"/>
     <property name="adjacent_weight" value="u,r,d"/>
@@ -312,7 +312,7 @@
    </properties>
    <point/>
   </object>
-  <object id="11" name="node-10" type="bonus-slot" x="408" y="264">
+  <object id="11" name="node-10" type="bonus-slot" x="384" y="240">
    <properties>
     <property name="adjacent_list" value="9,11"/>
     <property name="adjacent_weight" value="u,l"/>
@@ -321,7 +321,7 @@
    </properties>
    <point/>
   </object>
-  <object id="12" name="node-11" type="boss-fortress" x="312" y="264">
+  <object id="12" name="node-11" type="boss-fortress" x="288" y="240">
    <properties>
     <property name="adjacent_list" value="12,10"/>
     <property name="adjacent_weight" value="l,r"/>
@@ -330,7 +330,7 @@
    </properties>
    <point/>
   </object>
-  <object id="13" name="node-12" x="216" y="264">
+  <object id="13" name="node-12" x="192" y="240">
    <properties>
     <property name="adjacent_list" value="11,13"/>
     <property name="adjacent_weight" value="r,d"/>
@@ -339,7 +339,7 @@
    </properties>
    <point/>
   </object>
-  <object id="14" name="node-13" x="216" y="360">
+  <object id="14" name="node-13" x="192" y="336">
    <properties>
     <property name="adjacent_list" value="12,14"/>
     <property name="adjacent_weight" value="u,d"/>
@@ -348,7 +348,7 @@
    </properties>
    <point/>
   </object>
-  <object id="15" name="node-14" type="num-5" x="216" y="456">
+  <object id="15" name="node-14" type="num-5" x="192" y="432">
    <properties>
     <property name="adjacent_list" value="13,15"/>
     <property name="adjacent_weight" value="u,r"/>
@@ -357,7 +357,7 @@
    </properties>
    <point/>
   </object>
-  <object id="16" name="node-15" x="312" y="456">
+  <object id="16" name="node-15" x="288" y="432">
    <properties>
     <property name="adjacent_list" value="14,16"/>
     <property name="adjacent_weight" value="l,r"/>
@@ -366,7 +366,7 @@
    </properties>
    <point/>
   </object>
-  <object id="17" name="node-16" type="num-6" x="408" y="456">
+  <object id="17" name="node-16" type="num-6" x="384" y="432">
    <properties>
     <property name="adjacent_list" value="15,17"/>
     <property name="adjacent_weight" value="l,u"/>
@@ -375,7 +375,7 @@
    </properties>
    <point/>
   </object>
-  <object id="18" name="node-17" x="408" y="360">
+  <object id="18" name="node-17" x="384" y="336">
    <properties>
     <property name="adjacent_list" value="18,19,16"/>
     <property name="adjacent_weight" value="l,r,d"/>
@@ -384,7 +384,7 @@
    </properties>
    <point/>
   </object>
-  <object id="19" name="node-18" type="bonus-gift" x="312" y="360">
+  <object id="19" name="node-18" type="bonus-gift" x="288" y="336">
    <properties>
     <property name="adjacent_list" value="17"/>
     <property name="adjacent_weight" value="r"/>
@@ -393,7 +393,7 @@
    </properties>
    <point/>
   </object>
-  <object id="20" name="node-19" type="boss-castle" x="600" y="360">
+  <object id="20" name="node-19" type="boss-castle" x="576" y="336">
    <properties>
     <property name="adjacent_list" value="17"/>
     <property name="adjacent_weight" value="l"/>

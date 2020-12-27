@@ -178,6 +178,7 @@ void BigMario::BigMarioRunandWalkState()
 			else
 				fullMetter = false;
 			PMetter++;
+			Global_Variable::GetInstance()->UpdatePmetter(PMetter); 
 		}
 	}
 	
@@ -185,5 +186,6 @@ void BigMario::BigMarioRunandWalkState()
 	{
 		DecayPMetterTime_Start = GetTickCount();
 		PMetter--;
+		Global_Variable::GetInstance()->UpdatePmetter(PMetter);
 	}
 }

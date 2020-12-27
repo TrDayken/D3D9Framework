@@ -4,6 +4,7 @@
 #include "QuestionBlock.h"
 #include "Brick.h"
 #include "Coin.h"
+#include "WiggleTree.h"
 #include "ScenceManager.h"
 
 Map::Map()
@@ -129,6 +130,18 @@ void Map::AddObject(TiXmlElement* RootElement)
 				brick->setY(y); 
 
 				ScenceManager::GetInstance()->getCurrentScence()->AddObject(brick); 
+			}
+			else if (name == "AnimatedBG")
+			{
+				WiggleTree* tree = new WiggleTree();
+
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+
+				tree->setX(x);
+				tree->setY(y);
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(tree);
 			}
 			else
 			{
