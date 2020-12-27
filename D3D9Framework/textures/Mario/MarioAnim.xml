@@ -8,6 +8,27 @@
 		 <Animation aniId="ani-small-mario-idle-front" frameTime="50" name="IDLE-FRONT">
 			<Sprite id="spr-small-mario-idle-front-0" left="397" top="8"  width="16" height="16" frameTime="100"/>
 		</Animation>
+
+    <!-- Animation MAP-->
+    <Animation aniId="ani-small-mario-map" frameTime="400" name="IDLE-FRONT">
+      <Sprite id="spr-small-mario-map-0" left="397" top="8"  width="16" height="16" frameTime="400"/>
+      <Sprite id="spr-small-mario-map-1" left="397" top="8"  width="16" height="16" frameTime="400"/>
+    </Animation>
+    <!-- Animation MAP-->
+    <Animation aniId="ani-big-mario-map" frameTime="400" name="IDLE-FRONT">
+      <Sprite id="spr-big-mario-map-0" left="397" top="8"  width="16" height="16" frameTime="400"/>
+      <Sprite id="spr-big-mario-map-1" left="397" top="8"  width="16" height="16" frameTime="400"/>
+    </Animation>
+    <!-- Animation MAP-->
+    <Animation aniId="ani-raccoon-mario-map" frameTime="400" name="IDLE-FRONT">
+      <Sprite id="spr-raccoon-mario-map-0" left="397" top="8"  width="16" height="16" frameTime="400"/>
+      <Sprite id="spr-raccoon-mario-map-1" left="397" top="8"  width="16" height="16" frameTime="400"/>
+    </Animation>
+    <!-- Animation MAP -->
+    <Animation aniId="ani-fire-mario-map" frameTime="400" name="FIRE">
+      <Sprite id="spr-fire-mario-map-0" left="124" top="115"  width="16" height="21" frameTime="400"/>
+      <Sprite id="spr-fire-mario-map-1" left="143" top="115"  width="16" height="21" frameTime="400"/>
+    </Animation>
 		<!-- Animation IDLE-->
 		<Animation aniId="ani-small-mario-idle" frameTime="100" name="IDLE">
 			<Sprite id="spr-small-mario-idle-0" left="254" top="9"  width="12" height="15" frameTime="100"/>

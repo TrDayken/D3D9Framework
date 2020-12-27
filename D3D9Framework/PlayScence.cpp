@@ -94,8 +94,6 @@ void PlayScence::Update(DWORD dt)
 void PlayScence::Render()
 {
 	tilemap->Render(camera);
-	
-	mario->Render(camera);
 
 	for (size_t i = 0; i < objects.size(); i++)
 	{
@@ -105,6 +103,8 @@ void PlayScence::Render()
 		//objects[i]->GetBoundingBox(l, t, r, b);
 		////DebugOut(L"[INFO] objects bounding box %f, %f, %f, %f \n", l, t, r, b);
 	}
+
+	mario->Render(camera);
 
 	for (size_t i = 0; i < UIElement.size(); i++)
 	{

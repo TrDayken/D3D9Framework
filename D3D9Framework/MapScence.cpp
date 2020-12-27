@@ -25,6 +25,7 @@ void MapScence::Load()
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
 
 	mario = new MapMario();
+	mario->setPosition(100,100);
 	//mario->setCamera(camera);
 }
 
@@ -75,8 +76,6 @@ void MapScence::Render()
 {
 	tilemap->Render(camera);
 
-	mario->Render(camera);
-
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Render(camera);
@@ -85,6 +84,8 @@ void MapScence::Render()
 		//objects[i]->GetBoundingBox(l, t, r, b);
 		////DebugOut(L"[INFO] objects bounding box %f, %f, %f, %f \n", l, t, r, b);
 	}
+
+	mario->Render(camera);
 
 	for (size_t i = 0; i < UIElement.size(); i++)
 	{

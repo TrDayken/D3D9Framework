@@ -208,7 +208,7 @@ void RacoonMario::Render(Camera* camera)
 		if (this->state.jump == JumpingStates::Stand)
 		{
 			ani = ANI_RACCOON_MARIO_SKID;
-			direction = -direction;
+			//direction = -direction;
 		}
 	}
 
@@ -352,5 +352,4 @@ void RacoonMario::RacoonMarioRunandWalkState()
 		Global_Variable::GetInstance()->UpdatePmetter(PMetter);
 	}
 
-	DebugOut(L"[INFO] PMETTER: %d \n ", PMetter);
 }

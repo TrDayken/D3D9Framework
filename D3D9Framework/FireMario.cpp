@@ -106,7 +106,7 @@ void FireMario::Render(Camera* camera)
 	{
 		if (this->state.jump == JumpingStates::Stand)
 		{
-			direction = -direction;
+			//direction = -direction;
 			ani = ANI_FIRE_MARIO_SKID;
 		}
 	}
@@ -206,8 +206,6 @@ void FireMario::FireMarioRunandWalkState()
 			else vx = 0;
 	}
 
-	DebugOut(L"[INFO] Mario vx: %f \n", vx);
-	DebugOut(L"[INFO] PMETTER: %d \n", PMetter);
 
 	if (PMetter < MARIO_PMETTER && state.movement == MovingStates::Run && abs(vx) >= MARIO_TOP_RUNNING_SPEED && state.jump == JumpingStates::Stand)
 	{
@@ -223,7 +221,7 @@ void FireMario::FireMarioRunandWalkState()
 		}
 	}
 
-	if (!isOnGround && PMetter > 0 && (GetTickCount() - DecayPMetterTime_Start > MARIO_DECAY_PEMETTER_TIME) && state.movement != MovingStates::Run && abs(vx) < MARIO_TOP_RUNNING_SPEED)
+	if (PMetter > 0 && (GetTickCount() - DecayPMetterTime_Start > MARIO_DECAY_PEMETTER_TIME) && state.movement != MovingStates::Run && abs(vx) < MARIO_TOP_RUNNING_SPEED)
 	{
 		DecayPMetterTime_Start = GetTickCount();
 		PMetter--;
