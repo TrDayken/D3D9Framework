@@ -7,6 +7,7 @@ Goomba::Goomba()
 	EntityTag = Tag::enemy;
 	direction = 1;
 	SetState(GoombaState::walking);
+	ColTag = Collision2DTag::None;
 }
 
 void Goomba::SetState(GoombaState state)
@@ -77,7 +78,7 @@ void Goomba::Render(Camera* camera)
 			ani = ANI_GOOMBA_DIE;
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y + diediff,direction, flipy);
+	animation_set[ani]->Render(camPos.x, camPos.y + diediff, this->Scale, direction, flipy);
 }
 
 void Goomba::LoadAnimation()

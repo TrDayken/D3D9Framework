@@ -126,7 +126,7 @@ void Koopa::Render(Camera* camera)
 			ani = ANI_RED_KOOPA_IDLE;
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y, -direction, flipy);
+	animation_set[ani]->Render(camPos.x, camPos.y, this->Scale, -direction, flipy);
 	//DebugOut(L"[INFO] KoopaState: %d \n", koopstate);
 
 	//RenderBoundingBox(camera);

@@ -30,10 +30,11 @@ class Node :
 
 public:
 
-	Node(int id);
+	Node();
 	~Node();
 
 	int getNodeID();
+	void setNodeID(int id);
 
 	void setPosition(Vector2 pos);
 	Vector2 getPosition();

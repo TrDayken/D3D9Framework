@@ -22,7 +22,7 @@ void FireShoot::Render(Camera* camera)
 
 	std::string ani = ANI_BULLET;
 
-	animation_set[ani]->Render(camPos.x, camPos.y, direction);
+	animation_set[ani]->Render(camPos.x, camPos.y, this->Scale, direction);
 }
 
 void FireShoot::GetBoundingBox(float& l, float& t, float& r, float& b)

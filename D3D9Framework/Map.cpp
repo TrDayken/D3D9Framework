@@ -5,6 +5,8 @@
 #include "Brick.h"
 #include "Coin.h"
 #include "WiggleTree.h"
+#include "Node.h"
+#include "NodeMap.h"
 #include "ScenceManager.h"
 
 Map::Map()
@@ -30,6 +32,8 @@ void Map::AddObject(TiXmlElement* RootElement)
 {
 	for (TiXmlElement* TMXObjectsgroup = RootElement->FirstChildElement("objectgroup"); TMXObjectsgroup != NULL; TMXObjectsgroup = TMXObjectsgroup->NextSiblingElement("objectgroup"))
 	{
+		NodeMap* nodemap = new NodeMap();
+
 		for (TiXmlElement* TMXObject = TMXObjectsgroup->FirstChildElement("object"); TMXObject != NULL; TMXObject = TMXObject->NextSiblingElement("object"))
 		{
 
@@ -75,7 +79,7 @@ void Map::AddObject(TiXmlElement* RootElement)
 			}
 			else if (name == "Items")
 			{
-				Coin* coin = new Coin(); 
+				Coin* coin = new Coin();
 
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
@@ -88,8 +92,8 @@ void Map::AddObject(TiXmlElement* RootElement)
 			else if (name == "QuestionBlocks")
 			{
 				QuestionBlock* questionblock = new QuestionBlock();
-				int quantity = 0; 
-				std::string blockname; 
+				int quantity = 0;
+				std::string blockname;
 
 				blockname = TMXObject->Attribute("name");
 				TMXObject->QueryFloatAttribute("x", &x);
@@ -111,11 +115,11 @@ void Map::AddObject(TiXmlElement* RootElement)
 
 
 				questionblock->SetQuantity(quantity);
-				questionblock->setX(x); 
+				questionblock->setX(x);
 				questionblock->setY(y);
 
 				if (quantity <= 0)
-					questionblock->SetDeflected(true); 
+					questionblock->SetDeflected(true);
 
 				ScenceManager::GetInstance()->getCurrentScence()->AddObject(questionblock);
 			}
@@ -126,10 +130,89 @@ void Map::AddObject(TiXmlElement* RootElement)
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
 
-				brick->setX(x); 
-				brick->setY(y); 
+				brick->setX(x);
+				brick->setY(y);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(brick); 
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(brick);
+			}
+
+			else if (name == "WorldGraph")
+			{
+				std::string objectname;
+				int nodename = 0;
+				std::vector<std::string> adlist;
+				std::vector<std::string> weight;
+				std::string scence;
+
+				objectname = TMXObject->Attribute("name");
+
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+				//auto type = split(TMXObject->Attribute("type"));
+
+				
+				for (TiXmlElement* TMXproperty = TMXObject->FirstChildElement("properties")->FirstChildElement("property"); TMXproperty != NULL; TMXproperty = TMXproperty->NextSiblingElement("property"))
+				{
+					std::string propertyname = TMXproperty->Attribute("name");
+
+					if (propertyname == "adjacent_list")
+					{
+						adlist = split(TMXproperty->Attribute("value"), ",");
+					}
+					else if (propertyname == "adjacent_weight")
+					{
+						weight = split(TMXproperty->Attribute("value"), ",");
+					}
+					else if (propertyname == "node_id")
+					{
+						nodename = std::stoi(TMXproperty->Attribute("value"));
+					}
+					else if (propertyname == "scene")
+					{
+						scence = TMXproperty->Attribute("value");
+					}
+				}
+
+				Node* node = new Node();
+
+				node->setNodeID(nodename);
+				node->setPosition(Vector2(x, y));
+				node->setScence(scence);
+
+				auto adjacentlist = node->getAdjacentList();
+
+				for (int i = 0; i < adlist.size(); i++)
+				{
+					auto id = std::stoi(adlist[i]);
+
+					Edge edge;
+					edge.nodeID = id;
+
+					NextNode next = NextNode::none;
+
+					if (weight[i] == "l") next = NextNode::left;
+					else if (weight[i] == "r") next = NextNode::right;
+					else if (weight[i] == "u") next = NextNode::up;
+					else if (weight[i] == "d") next = NextNode::down;
+
+					edge.direction = next; 
+
+					adjacentlist->push_back(edge);
+				}
+
+				nodemap->InsertNode(node);
+
+				//if (type.at(0).compare("num") == 0)
+				//{
+				//	//add gate
+				//}
+				//else if (type.at(0).compare("bonus") == 0)
+				//{
+				//	if (type.at(1).compare("slot") == 0)
+				//	{
+				//		//add another gate
+				//	}
+				//}
 			}
 			else if (name == "AnimatedBG")
 			{
@@ -146,7 +229,7 @@ void Map::AddObject(TiXmlElement* RootElement)
 			else
 			{
 				continue;
-			}	
+			}
 		}
 	}
 }

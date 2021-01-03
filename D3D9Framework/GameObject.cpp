@@ -6,6 +6,7 @@ GameObject::GameObject()
 	this->RenderPosition = VectorZero;
 	this->RelativePosition = VectorZero;
 	this->Position.x = this->Position.y = 0;
+	this->Scale = Vector2(1.0, 1.0);
 	vx = vy = 0;
 	direction = 1;
 	flipy = 1;
@@ -241,6 +242,7 @@ LPCOLLISIONEVENT GameObject::SweptAABBEx(LPGAMEOBJECT coO)
 
 void GameObject::CalcPotentialCollisions(std::vector<LPGAMEOBJECT>* coObjects, std::vector<LPCOLLISIONEVENT>& coEvents)
 {
+
 	for (UINT i = 0; i < coObjects->size(); i++)
 	{		
 

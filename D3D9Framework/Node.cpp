@@ -1,9 +1,7 @@
 #include "Node.h"
 
-Node::Node(int id)
+Node::Node()
 {
-	this->nodeID = id;
-
 	adjacentNodes = new std::vector<Edge>();
 }
 
@@ -17,6 +15,11 @@ Node::~Node()
 int Node::getNodeID()
 {
 	return this->nodeID;
+}
+
+void Node::setNodeID(int id)
+{
+	this->nodeID = id;
 }
 
 void Node::setPosition(Vector2 pos)

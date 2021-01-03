@@ -1,6 +1,6 @@
 #include "RedMushroomPowerUps.h"
 #include "AnimationManager.h"
-
+#include "MarioModel.h"
 void RedMushroomPowerUps::LoadAnimation()
 {
 	auto animation = AnimationManager::GetInstance();
@@ -98,5 +98,9 @@ void RedMushroomPowerUps::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 
 void RedMushroomPowerUps::OnOverLap(GameObject* obj)
 {
-
+	DebugOut(L"[INFO] collision %d \n", (int)obj->EntityTag);
+	if (obj->EntityTag == Tag::player)
+	{
+		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this); 
+	}
 }

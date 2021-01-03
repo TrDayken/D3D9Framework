@@ -25,7 +25,7 @@ void RaccoonPowerUps::Render(Camera* camera)
 {
 	GameObject::Render(camera);
 
-	animation_set["Idle"]->Render(RenderPosition.x, RenderPosition.y, direction);
+	animation_set["Idle"]->Render(RenderPosition.x, RenderPosition.y, this->Scale, direction);
 }
 
 void RaccoonPowerUps::GetBoundingBox(float& l, float& t, float& r, float& b)

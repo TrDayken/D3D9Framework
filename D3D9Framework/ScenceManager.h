@@ -24,6 +24,8 @@ public:
 	Scence* getCurrentScence();
 
 	static ScenceManager* GetInstance();
+
+	void LoadSource(const char* FilePath);
 };
 
 #endif // !__SCENCEMANAGER_H__

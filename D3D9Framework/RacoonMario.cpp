@@ -230,7 +230,7 @@ void RacoonMario::Render(Camera* camera)
 		crouchdiff = 0;
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, direction);
+	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, this->Scale, direction);
 
 }
 

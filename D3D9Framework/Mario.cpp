@@ -22,6 +22,8 @@ Mario::Mario(float x, float y)
 	CurrentMario = StateofMario[BIG];
 
 	//CurrentMario->setPosition(x, y);
+	this->ColTag = Collision2DTag::None;
+	this->EntityTag = Tag::player;
 }
 
 void Mario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* collision_objects)

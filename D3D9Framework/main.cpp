@@ -8,7 +8,6 @@
 #include "Textures.h"
 #include "SpriteManager.h"
 #include "Global_Variable.h"
-//#include "PlayScence.h"
 #include "ScenceManager.h"
 
 
@@ -31,6 +30,7 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void LoadResources()
 {
 	/*textures\\Mario\\MarioDB.xml*/
+	ScenceManager::GetInstance()->LoadSource("GameWorld\\GameWorld.xml");
 	ScenceManager::GetInstance()->LoadScenceFromXML("GameWorld\\GameWorld.xml");
 	Game::GetInstance()->SetKeyHandler(ScenceManager::GetInstance()->getCurrentScence()->GetKeyEventHandler());
 	ScenceManager::GetInstance()->getCurrentScence()->Load();

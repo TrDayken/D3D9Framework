@@ -22,7 +22,7 @@ public:
 	virtual void Render(Camera* camera);
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject = NULL);
-	virtual void OnOverLap(GameObject* obj);
+	virtual void OnOverLap(GameObject* obj) override;
 };
 
 #endif

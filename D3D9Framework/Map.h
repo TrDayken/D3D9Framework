@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <d3dx9.h>
+#include <string>
 
 #include "Utils.h"
 #include "Layer.h"

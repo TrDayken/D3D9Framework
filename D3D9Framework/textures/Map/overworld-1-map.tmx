@@ -269,7 +269,7 @@
   </object>
   <object id="6" name="node-4" type="num-2" x="384" y="48">
    <properties>
-    <property name="adjacent_list" value="3,5,9"/>
+    <  name="adjacent_list" value="3,5,9"/>
     <property name="adjacent_weight" value="l,r,d"/>
     <property name="node_id" type="int" value="4"/>
     <property name="scene" value=""/>

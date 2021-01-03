@@ -125,7 +125,7 @@ void SmallMario::Render(Camera* camera)
 		}
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y, direction);
+	animation_set[ani]->Render(camPos.x, camPos.y, this->Scale, direction);
 }
 
 void SmallMario::LoadAnimation()

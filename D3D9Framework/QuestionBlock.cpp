@@ -45,6 +45,10 @@ void QuestionBlock::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 	//		shietouttheobjectit's holding;
 	//	}
 	//}
+
+	//[Critical]
+	//when bounce state = 1 or 2 ; 
+	// detect as if there are an enemy above the block when mairo hit it?
 	if (!Deflected)
 	{
 		if (obj->EntityTag == Tag::player)

@@ -19,7 +19,11 @@ MarioModel::MarioModel(float x, float y)
 
 	LoadAnimation();
 
+	this->ColTag = Collision2DTag::None;
+
 	state.movement = MovingStates::Idle;
+
+	this->EntityTag = Tag::player;
 }
 
 void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
@@ -67,7 +71,6 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		float rdx = 0;
 		float rdy = 0;
 
-		// TODO: This is a very ugly designed function!!!!
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
 		//filter colision axis by axis
@@ -78,7 +81,9 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			dy = 0;
 
 			coEvents.clear();
+
 			CalcPotentialCollisions(&coObjectsResult, coEvents);
+
 			if (coEvents.size() > 0)
 			{
 				FilterCollisionX(coEvents, coEventsResult, min_tx, nx, rdx);
@@ -145,6 +150,11 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				LPGAMEOBJECT obj = e->obj;
 				if (e->ny > 0)
 					obj->OnCollisionEnter(this, e->nx, e->ny);
+			}
+			else if (e->obj->EntityTag == Tag::mushroom)
+			{
+				LPGAMEOBJECT obj = e->obj;
+				obj->OnOverLap(this); 
 			}
 
 		}
@@ -269,11 +279,17 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 	{
-		Game::GetInstance()->setTemporal(0.0);
+		GameObject* koop = new Goomba();
+
+		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
+
+		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
+		break;
 	}
 	case DIK_W:
 	{
-		GameObject* koop = new Goomba();
+		GameObject* koop = new RedMushroomPowerUps();
 
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 

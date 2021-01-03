@@ -117,7 +117,7 @@ void FireMario::Render(Camera* camera)
 		ani = ANI_FIRE_MARIO_CROUCH;
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, direction);
+	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, this->Scale, direction);
 
 	//RenderBoundingBox(camera);
 	//DebugOut(L"[INFO] %f, %f \n", camPos.x, camPos.y)

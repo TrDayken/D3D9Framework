@@ -71,6 +71,8 @@ protected:
 	// object position
 	Vector2 Position;
 
+	Vector2 Scale; 
+
 	// object relative sprite position
 	Vector2 RelativePosition;
 	Vector2 RenderPosition;

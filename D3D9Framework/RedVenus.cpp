@@ -116,7 +116,7 @@ void RedVenus::Render(Camera* camera)
 
 	RenderBoundingBox(camera);
 
-	animation_set[ani]->Render(RenderPosition.x, RenderPosition.y,direction);
+	animation_set[ani]->Render(RenderPosition.x, RenderPosition.y, this->Scale, direction);
 }
 
 void RedVenus::GetBoundingBox(float& l, float& t, float& r, float& b)

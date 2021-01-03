@@ -16,10 +16,13 @@ MapMario::MapMario()
 	LoadAnimation();
 
 	ismoving = false;
+
+	currentNode = 0;
 }
 
 MapMario::~MapMario()
 {
+	
 }
 
 void MapMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* collision_objects)
@@ -31,7 +34,7 @@ void MapMario::Render(Camera* camera)
 {
 	GameObject::Render(camera);
 
-	animation_set["FireMario"]->Render(RenderPosition.x, RenderPosition.y);
+	animation_set["SmallMario"]->Render(RenderPosition.x, RenderPosition.y);
 }
 
 void MapMario::OnKeyDown(int KeyCode)
