@@ -7,7 +7,7 @@ Goomba::Goomba()
 	EntityTag = Tag::enemy;
 	direction = 1;
 	SetState(GoombaState::walking);
-	ColTag = Collision2DTag::None;
+	ColTag = Collision2DTag::FourSide;
 }
 
 void Goomba::SetState(GoombaState state)

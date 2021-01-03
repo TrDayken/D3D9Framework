@@ -153,6 +153,7 @@
     <ClCompile Include="CoinFx.cpp" />
     <ClCompile Include="DebrisFx.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="EndGameReward.cpp" />
     <ClCompile Include="FireMario.cpp" />
     <ClCompile Include="FireShoot.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -178,8 +179,10 @@
     <ClCompile Include="MarioModel.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="NodeMap.cpp" />
+    <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="PlayScence.cpp" />
     <ClCompile Include="PMetter.cpp" />
+    <ClCompile Include="Portal.cpp" />
     <ClCompile Include="QuestionBlock.cpp" />
     <ClCompile Include="RaccoonPowerUps.cpp" />
     <ClCompile Include="RacoonMario.cpp" />
@@ -214,6 +217,7 @@
     <ClInclude Include="CoinFx.h" />
     <ClInclude Include="DebrisFx.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="EndGameReward.h" />
     <ClInclude Include="FireMario.h" />
     <ClInclude Include="FireShoot.h" />
     <ClInclude Include="Font.h" />
@@ -238,8 +242,10 @@
     <ClInclude Include="MarioModel.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NodeMap.h" />
+    <ClInclude Include="Pipe.h" />
     <ClInclude Include="PlayScence.h" />
     <ClInclude Include="PMetter.h" />
+    <ClInclude Include="Portal.h" />
     <ClInclude Include="QuestionBlock.h" />
     <ClInclude Include="RaccoonPowerUps.h" />
     <ClInclude Include="RacoonMario.h" />

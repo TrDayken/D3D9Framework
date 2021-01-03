@@ -12,6 +12,9 @@ void RedMushroomPowerUps::LoadAnimation()
 	state = 1;
 
 	this->EntityTag = Tag::mushroom;
+
+	collected = false;
+
 }
 
 RedMushroomPowerUps::RedMushroomPowerUps()
@@ -46,7 +49,11 @@ void RedMushroomPowerUps::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 
 	CalcPotentialCollisions(coObject, coEvents);
 
-
+	if (collected)
+		if (GetTickCount() - timecollected >= MUSHROOM_DELAY)
+		{
+			ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
+		}
 
 	if (coEvents.size() == 0)
 	{
@@ -98,9 +105,16 @@ void RedMushroomPowerUps::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 
 void RedMushroomPowerUps::OnOverLap(GameObject* obj)
 {
-	DebugOut(L"[INFO] collision %d \n", (int)obj->EntityTag);
+
 	if (obj->EntityTag == Tag::player)
 	{
-		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this); 
+		//DebugOut(L"[INFO] collision %d \n", (int)obj->EntityTag);
+		//ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this); 
+		if (!collected)
+		{
+			timecollected = GetTickCount();
+
+			collected = true;
+		}
 	}
 }

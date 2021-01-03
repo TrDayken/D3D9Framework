@@ -28,7 +28,8 @@ Mario::Mario(float x, float y)
 
 void Mario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* collision_objects)
 {
-	if (CurrentMario->getChangetoLevel() != DONTCHANGE) SwitchMario(CurrentMario->getChangetoLevel());
+	if (CurrentMario->getChangetoLevel() != DONTCHANGE) 
+		SwitchMario(CurrentMario->getChangetoLevel());
 
 	//call update on specific mario
 	CurrentMario->Update(dt, collision_objects);
@@ -87,13 +88,34 @@ void Mario::SwitchMario(int level)
 
 	//preconfiguration on the premario
 	CurrentMario->SetChangetoLevel(DONTCHANGE);
+
+	float offset = MARIO_BIG_BBOX_HEIGHT - MARIO_SMALL_BBOX_HEIGHT;
+
+	if (changetolevel == SMALL && prechangelevel != SMALL)
+	{
+		StateofMario[changetolevel]->SetPosition(this->Position.x, this->Position.y + offset);
+	}
+	else if (changetolevel != SMALL && prechangelevel == SMALL)
+	{
+		StateofMario[changetolevel]->SetPosition(this->Position.x, this->Position.y - offset);
+	}
+	else
+	{
+		StateofMario[changetolevel]->SetPosition(this->Position.x, this->Position.y);
+	}
+
+	StateofMario[changetolevel]->setDirection(CurrentMario->getDirection());
+
+	StateofMario[changetolevel]->setSpeed(CurrentMario->getVx(), CurrentMario->getVy()); 
+
+	StateofMario[changetolevel]->SetState(CurrentMario->getState());
+
+	StateofMario[changetolevel]->setJumpstate(CurrentMario->getJumpState());
+
+	StateofMario[changetolevel]->setMovestate(CurrentMario->getMoveState());
+
 	//change the mario to the desire mario
 	CurrentMario = StateofMario[changetolevel];
-	//update on the changed mario => prevent AABB overlaping
-	CurrentMario->SetPosition(this->Position.x, this->Position.y);
-
-	CurrentMario->setDirection(StateofMario[prechangelevel]->getDirection());
-	//delete &changetolevel;
 }
 
 void Mario::setCamera(Camera* camera)

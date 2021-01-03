@@ -1,13 +1,12 @@
 #include "RaccoonPowerUps.h"
 #include "AnimationManager.h"
+#include "ScenceManager.h"
 
 void RaccoonPowerUps::LoadAnimation()
 {
 	auto animation = AnimationManager::GetInstance();
 
 	AddAnimation("Idle", animation->GetAnimation("ani-super-leaf-red"));
-
-
 }
 
 RaccoonPowerUps::RaccoonPowerUps()
@@ -19,6 +18,10 @@ RaccoonPowerUps::RaccoonPowerUps()
 	this->EntityTag = Tag::leaf;
 
 	leaf_reveal_time = GetTickCount();
+
+	collected = false; 
+
+	this->ColTag = Collision2DTag::None; 
 }
 
 void RaccoonPowerUps::Render(Camera* camera)
@@ -42,6 +45,18 @@ void RaccoonPowerUps::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 
 	this->Position.x += dx;
 	this->Position.y += dy;
+
+	std::vector<LPCOLLISIONEVENT> coEvents;
+	std::vector<LPCOLLISIONEVENT> coEventsResult;
+	coEvents.clear();
+
+	CalcPotentialCollisions(coObject, coEvents);
+
+	if (collected)
+		if (GetTickCount() - timecollected >= DELAY)
+		{
+			ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
+		}
 
 	switch (state)
 	{
@@ -76,4 +91,13 @@ void RaccoonPowerUps::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 
 void RaccoonPowerUps::OnOverLap(GameObject* obj)
 {
+	if (obj->EntityTag == Tag::player)
+	{
+		if (!collected)
+		{
+			timecollected = GetTickCount();
+
+			collected = true;
+		}
+	}
 }

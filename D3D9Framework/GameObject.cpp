@@ -130,14 +130,7 @@ void GameObject::setHeight(float height)
 
 void GameObject::setDirection(int direction)
 {
-	if (direction != 0 && direction != 1)
-	{
-		direction = 1;
-	}
-	else
-	{
 		this->direction = direction;
-	}
 }
 
 int GameObject::getDirection()

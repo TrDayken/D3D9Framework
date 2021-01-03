@@ -179,6 +179,18 @@
     <Filter Include="Entity\VanityItem">
       <UniqueIdentifier>{118ef1f0-ce1c-44e1-9cb1-e0ee4215b55c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Misc\Coin">
+      <UniqueIdentifier>{e5f61d05-8004-4744-9713-a06535cef11c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Misc\EndGameReward">
+      <UniqueIdentifier>{b957bda9-f6e8-47ec-aeb0-80481a86f929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Blocks\SolidBlocks\Pipe">
+      <UniqueIdentifier>{9f610461-1e1a-48ce-9920-5ff65231ac3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Blocks\GhostBlock\Portal">
+      <UniqueIdentifier>{5280e1b2-757c-492a-977e-eec84344774a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -283,9 +295,6 @@
     <ClCompile Include="GhostPlatform.cpp">
       <Filter>Entity\Blocks\GhostBlock\GamePlatform</Filter>
     </ClCompile>
-    <ClCompile Include="Coin.cpp">
-      <Filter>Entity\Misc</Filter>
-    </ClCompile>
     <ClCompile Include="RedMushroomPowerUps.cpp">
       <Filter>Entity\Misc\PowerUps\Bigmario</Filter>
     </ClCompile>
@@ -357,6 +366,18 @@
     </ClCompile>
     <ClCompile Include="WiggleTree.cpp">
       <Filter>Entity\VanityItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Entity\Misc\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGameReward.cpp">
+      <Filter>Entity\Misc\EndGameReward</Filter>
+    </ClCompile>
+    <ClCompile Include="Pipe.cpp">
+      <Filter>Entity\Blocks\SolidBlocks\Pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <Filter>Entity\Blocks\GhostBlock\Portal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -450,9 +471,6 @@
     <ClInclude Include="GhostPlatform.h">
       <Filter>Entity\Blocks\GhostBlock\GamePlatform</Filter>
     </ClInclude>
-    <ClInclude Include="Coin.h">
-      <Filter>Entity\Misc</Filter>
-    </ClInclude>
     <ClInclude Include="RaccoonPowerUps.h">
       <Filter>Entity\Misc\PowerUps\Raccoon</Filter>
     </ClInclude>
@@ -527,6 +545,18 @@
     </ClInclude>
     <ClInclude Include="WiggleTree.h">
       <Filter>Entity\VanityItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Entity\Misc\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameReward.h">
+      <Filter>Entity\Misc\EndGameReward</Filter>
+    </ClInclude>
+    <ClInclude Include="Pipe.h">
+      <Filter>Entity\Blocks\SolidBlocks\Pipe</Filter>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
+      <Filter>Entity\Blocks\GhostBlock\Portal</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

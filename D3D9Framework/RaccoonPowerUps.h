@@ -14,11 +14,16 @@
 #define LEAF_WIDTH 48
 #define LEAF_HEIGHT 42
 
+#define DELAY 1
+
 class RaccoonPowerUps : public GameObject
 {
 	void LoadAnimation();
 
 	int state;
+
+	bool collected;
+	DWORD timecollected;
 
 	DWORD leaf_reveal_time, cycle_time;
 public:
@@ -27,7 +32,7 @@ public:
 	virtual void Render(Camera* camera);
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject = NULL);
-	virtual void OnOverLap(GameObject* obj);
+	virtual void OnOverLap(GameObject* obj) override;
 
 };
 

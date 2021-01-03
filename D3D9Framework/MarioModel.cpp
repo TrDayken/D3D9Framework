@@ -151,11 +151,6 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				if (e->ny > 0)
 					obj->OnCollisionEnter(this, e->nx, e->ny);
 			}
-			else if (e->obj->EntityTag == Tag::mushroom)
-			{
-				LPGAMEOBJECT obj = e->obj;
-				obj->OnOverLap(this); 
-			}
 
 		}
 
@@ -222,6 +217,16 @@ void MarioModel::setJumpstate(JumpingStates jump)
 		break;
 	}
 	this->state.jump = jump;
+}
+
+MovingStates MarioModel::getMoveState()
+{
+	return this->state.movement;
+}
+
+JumpingStates MarioModel::getJumpState()
+{
+	return this->state.jump;
 }
 
 void MarioModel::OnKeyDown(int KeyCode)
@@ -392,6 +397,18 @@ void MarioModel::KeyState(BYTE* state)
 		//}
 	}
 	//DebugOut(L"[INFO] Moving: %i, Jumping: %i \n", this->state.movement, this->state.jump);
+}
+
+void MarioModel::OnOverLap(GameObject* obj)
+{
+	if (obj->EntityTag == Tag::mushroom)
+	{
+		SetChangetoLevel(1);
+	}
+	else if (obj->EntityTag == Tag::leaf)
+	{
+		SetChangetoLevel(3); 
+	}
 }
 
 int MarioModel::getChangetoLevel()

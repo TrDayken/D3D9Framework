@@ -95,9 +95,14 @@ public:
 	void setMovestate(MovingStates move);
 	void setJumpstate(JumpingStates jump);
 
+	MovingStates getMoveState(); 
+	JumpingStates getJumpState();
+
 	virtual void OnKeyDown(int KeyCode);
 	virtual void OnKeyUp (int keyCode);
 	virtual void KeyState(BYTE* state);
+
+	virtual void OnOverLap(GameObject* obj) override;
 
 	virtual void LoadAnimation() {};
 
