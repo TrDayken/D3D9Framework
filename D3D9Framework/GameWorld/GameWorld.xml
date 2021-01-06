@@ -20,6 +20,8 @@
     </Texture>
     <Texture textureid = "tex-overworld" path = "textures\\OverWorld\\overworld_x3.png">
     </Texture>
+    <Texture textureid = "tex-reward" path = "textures\\Misc\\reward_x3.png" a="255" r="255" g="255" b="255">
+    </Texture>
 
     <!--Map's Spite -->
     <Sprite path = "textures\\Mario\\MarioDB.xml">

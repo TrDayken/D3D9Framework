@@ -6,6 +6,7 @@
 #include "RedMushroomPowerUps.h"
 #include "RaccoonPowerUps.h"
 #include "ScoreFx.h"
+#include "EndGameReward.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -285,7 +286,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 	{
-		GameObject* koop = new Goomba();
+		GameObject* koop = new EndGameReward();
 
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
