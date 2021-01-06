@@ -4,6 +4,7 @@
 #include "HitFx.h"
 #include "DebrisFx.h"
 #include "CoinFx.h"
+#include "ScoreFx.h"
 
 FXObjectManager* FXObjectManager::_instance = NULL; 
 
@@ -28,6 +29,10 @@ AbstractFXObject* FXObjectManager::CreateFx(std::string name, Vector2 start_posi
 	}
 	else if (name == "coin")
 		fx = new CoinFx();
+	else if (name == "score")
+	{
+		fx = new ScoreFx();
+	}
 	else
 		DebugOut(L"[ERROR] Cannot find Fx validation"); 
 

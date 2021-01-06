@@ -5,6 +5,7 @@
 #include "Goomba.h"
 #include "RedMushroomPowerUps.h"
 #include "RaccoonPowerUps.h"
+#include "ScoreFx.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -295,12 +296,15 @@ void MarioModel::OnKeyDown(int KeyCode)
 	}
 	case DIK_W:
 	{
-		GameObject* koop = new RedMushroomPowerUps();
+		auto score =	static_cast<ScoreFx*>(FXObjectManager::GetInstance()->CreateFx("score", this->Position));
 
-		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
+		score->setLevel(0);
+		//GameObject* koop = new RedMushroomPowerUps();
 
-		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
-		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
+		//Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
+
+		//koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
+		//ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
 		break;
 	}
 	}

@@ -1,5 +1,6 @@
 #include "CoinFx.h"
 #include "ScenceManager.h"
+#include "FXObjectManager.h"
 
 void CoinFx::LoadAnimation()
 {
@@ -12,7 +13,7 @@ CoinFx::CoinFx()
 {
 	LoadAnimation();
 
-	ANIMATIONTIME = 575;
+	ANIMATIONTIME = 600;
 
 	Bounce_start = GetTickCount(); 
 }
@@ -37,6 +38,8 @@ void CoinFx::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	if (GetTickCount() - Animation_created > ANIMATIONTIME)
 	{
+		FXObjectManager::GetInstance()->CreateFx("score", this->Position);
+		Global_Variable::GetInstance()->AddScore(100);
 		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 	}
 }
