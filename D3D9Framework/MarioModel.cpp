@@ -290,6 +290,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 
 		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
 		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
+
 		break;
 	}
 	case DIK_W:

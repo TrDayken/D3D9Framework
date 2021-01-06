@@ -84,6 +84,7 @@ public:
 
 	std::string FormatScore();
 	std::string Formatcoin(); 
+	std::string FormatLife();
 
 	static Global_Variable* GetInstance(); 
 };

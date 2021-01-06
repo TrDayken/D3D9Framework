@@ -37,7 +37,7 @@ void HUD::Render()
 	hud->Draw(0 + 32, WINDOW_HEIGHT - 150); 
 
 	Game::GetInstance()->GetFont()->RenderText("1", world);
-	Game::GetInstance()->GetFont()->RenderText("4", life);
+	Game::GetInstance()->GetFont()->RenderText(Global_Variable::GetInstance()->FormatLife(), life);
 	Game::GetInstance()->GetFont()->RenderText(Global_Variable::GetInstance()->FormatScore(), score);
 	Game::GetInstance()->GetFont()->RenderText(Global_Variable::GetInstance()->Formatcoin() , coin);
 	Game::GetInstance()->GetFont()->RenderText("248", timer);

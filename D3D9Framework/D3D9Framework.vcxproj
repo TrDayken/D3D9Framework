@@ -190,6 +190,7 @@
     <ClCompile Include="RedVenus.cpp" />
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="ScenceManager.cpp" />
+    <ClCompile Include="ScoreFx.cpp" />
     <ClCompile Include="SmallMario.cpp" />
     <ClCompile Include="SmokeFx.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -253,6 +254,7 @@
     <ClInclude Include="RedVenus.h" />
     <ClInclude Include="Scence.h" />
     <ClInclude Include="ScenceManager.h" />
+    <ClInclude Include="ScoreFx.h" />
     <ClInclude Include="SmallMario.h" />
     <ClInclude Include="SmokeFx.h" />
     <ClInclude Include="Sprite.h" />

@@ -85,6 +85,11 @@ std::string Global_Variable::Formatcoin()
 	return std::to_string(coin);
 }
 
+std::string Global_Variable::FormatLife()
+{
+	return std::to_string(life);
+}
+
 Global_Variable* Global_Variable::GetInstance()
 {
 	if (_instance == NULL)

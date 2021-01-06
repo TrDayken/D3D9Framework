@@ -379,6 +379,9 @@
     <ClCompile Include="Portal.cpp">
       <Filter>Entity\Blocks\GhostBlock\Portal</Filter>
     </ClCompile>
+    <ClCompile Include="ScoreFx.cpp">
+      <Filter>Entity\Effect\Misc Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -557,6 +560,9 @@
     </ClInclude>
     <ClInclude Include="Portal.h">
       <Filter>Entity\Blocks\GhostBlock\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreFx.h">
+      <Filter>Entity\Effect\Misc Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
