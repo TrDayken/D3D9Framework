@@ -7,6 +7,7 @@
 #include "WiggleTree.h"
 #include "Node.h"
 #include "NodeMap.h"
+#include "EndGameReward.h"
 #include "ScenceManager.h"
 
 Map::Map()
@@ -79,15 +80,21 @@ void Map::AddObject(TiXmlElement* RootElement)
 			}
 			else if (name == "Items")
 			{
-				Coin* coin = new Coin();
+				std::string name = TMXObject->Attribute("name");
+				GameObject* obj = NULL;
+
+				if (name == "coin")
+					obj = new Coin();
+				else if (name == "reward")
+					obj = new EndGameReward();
 
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
 
-				coin->setX(x);
-				coin->setY(y);
+				obj->setX(x);
+				obj->setY(y);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(coin);
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(obj);
 			}
 			else if (name == "QuestionBlocks")
 			{

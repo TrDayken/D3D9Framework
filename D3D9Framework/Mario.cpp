@@ -81,7 +81,6 @@ void Mario::SwitchMario(int level)
 	//set the right position big to small += y small to big -= y
 
 	// check the current mario position
-	if (CurrentMario->getCurrentLevel() == SMALL);
 	//get the desire mario changetolevel
 	int prechangelevel = CurrentMario->getCurrentLevel();
 	int changetolevel = CurrentMario->getChangetoLevel();

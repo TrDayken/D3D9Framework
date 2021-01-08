@@ -11,17 +11,12 @@
 #define MUSHROOM_WIDTH 48
 #define MUSHROOM_HEIGHT 48
 
-#define MUSHROOM_DELAY 1
-
 class RedMushroomPowerUps : public GameObject
 {
 	void LoadAnimation();
 
 	int state;
 
-
-	bool collected;
-	DWORD timecollected;
 public:
 	RedMushroomPowerUps();
 

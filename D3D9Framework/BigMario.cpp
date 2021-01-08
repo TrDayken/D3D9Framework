@@ -79,7 +79,6 @@ void BigMario::Render(Camera* camera)
 
 	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff,this->Scale, direction * renderdiretion, flipy);
 
-	RenderBoundingBox(camera);
 	//DebugOut(L"[INFO] %f, %f \n", camPos.x, camPos.y);
 }
 

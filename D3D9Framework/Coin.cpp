@@ -1,4 +1,5 @@
 #include "Coin.h"
+#include "ScenceManager.h"
 
 void Coin::LoadAnimation()
 {
@@ -29,4 +30,14 @@ void Coin::GetBoundingBox(float& l, float& t, float& r, float& b)
 	t = this->Position.y;
 	r = this->Position.x + COIN_BBOX_WIDTH;
 	b = this->Position.y + COIN_BBOX_HEIGHT;
+}
+
+void Coin::OnOverLap(GameObject* obj)
+{
+	if (obj->EntityTag == Tag::player)
+	{
+		Global_Variable::GetInstance()->AddCoin(1);
+		Global_Variable::GetInstance()->AddScore(50);
+		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
+	}
 }

@@ -40,6 +40,7 @@ void CoinFx::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	{
 		FXObjectManager::GetInstance()->CreateFx("score", this->Position);
 		Global_Variable::GetInstance()->AddScore(100);
+		Global_Variable::GetInstance()->AddCoin(1);
 		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 	}
 }

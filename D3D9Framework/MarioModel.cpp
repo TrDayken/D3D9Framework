@@ -286,7 +286,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 	{
-		GameObject* koop = new EndGameReward();
+		GameObject* koop = new RedMushroomPowerUps();
 
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
@@ -409,7 +409,8 @@ void MarioModel::OnOverLap(GameObject* obj)
 {
 	if (obj->EntityTag == Tag::mushroom)
 	{
-		SetChangetoLevel(1);
+		if(getCurrentLevel() < 1)
+			SetChangetoLevel(1);
 	}
 	else if (obj->EntityTag == Tag::leaf)
 	{

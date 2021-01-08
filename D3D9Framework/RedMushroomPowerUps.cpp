@@ -1,19 +1,14 @@
 #include "RedMushroomPowerUps.h"
 #include "AnimationManager.h"
 #include "MarioModel.h"
+#include "FXObjectManager.h"
+#include "ScoreFx.h"
+
 void RedMushroomPowerUps::LoadAnimation()
 {
 	auto animation = AnimationManager::GetInstance();
 
 	AddAnimation("Idle", animation->GetAnimation("ani-super-mushroom"));
-
-	RelativePosition = Vector2(0, 48);
-
-	state = 1;
-
-	this->EntityTag = Tag::mushroom;
-
-	collected = false;
 
 }
 
@@ -22,6 +17,12 @@ RedMushroomPowerUps::RedMushroomPowerUps()
 	LoadAnimation();
 
 	this->ColTag = Collision2DTag::None;
+
+	RelativePosition = Vector2(0, 48);
+
+	state = 1;
+
+	this->EntityTag = Tag::mushroom;
 }
 
 void RedMushroomPowerUps::Render(Camera* camera)
@@ -48,12 +49,6 @@ void RedMushroomPowerUps::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 	coEvents.clear();
 
 	CalcPotentialCollisions(coObject, coEvents);
-
-	if (collected)
-		if (GetTickCount() - timecollected >= MUSHROOM_DELAY)
-		{
-			ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
-		}
 
 	if (coEvents.size() == 0)
 	{
@@ -108,13 +103,8 @@ void RedMushroomPowerUps::OnOverLap(GameObject* obj)
 
 	if (obj->EntityTag == Tag::player)
 	{
-		//DebugOut(L"[INFO] collision %d \n", (int)obj->EntityTag);
-		//ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this); 
-		if (!collected)
-		{
-			timecollected = GetTickCount();
-
-			collected = true;
-		}
+		ScoreFx* score = static_cast<ScoreFx*>(FXObjectManager::GetInstance()->CreateFx("score", this->Position));
+		score->setLevel(4);
+		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this); 
 	}
 }

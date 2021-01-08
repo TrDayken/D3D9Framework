@@ -16,12 +16,12 @@
 #define MARIO_TOP_WALKING_SPEED			0.30f
 #define MARIO_TOP_RUNNING_SPEED			0.5f
 #define MARIO_MIN_SPEED					0.1f
-#define MARIO_JUMP_FORCE				-0.65f
+#define MARIO_JUMP_FORCE				-0.45f
 #define MARIO_MINIMUM_LIFT				-0.001f
 #define MARIO_DEFLECT_MOB				0.05f
 
 // mario status
-#define MARIO_HIGH_JUMP_TIME			200
+#define MARIO_HIGH_JUMP_TIME			400
 #define MARIO_UNTOUCHABLE_TIME			5000
 #define MARIO_PMETTER					7
 #define MARIO_PLUS_PMETTER_TIME			300
