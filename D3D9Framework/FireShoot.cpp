@@ -1,5 +1,5 @@
 #include "FireShoot.h"
-
+#include "FXObjectManager.h"
 
 FireShoot::FireShoot(float x, float y, int direction)
 {
@@ -81,12 +81,16 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->OnCollisionEnter(this, e->nx, e->ny);
+				FXObjectManager::GetInstance()->CreateFx("smoke", this->Position);
 				ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 			}
 
 			//delete when have horizontal collision with another object
-			else if (e->nx != 0 && nx != 0) 
+			else if (e->nx != 0 && nx != 0)
+			{
+				FXObjectManager::GetInstance()->CreateFx("smoke", this->Position);
 				ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
+			}
 		}
 
 	}

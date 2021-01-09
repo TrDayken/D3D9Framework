@@ -16,6 +16,8 @@ public:
 	void Render(Camera* camera);
 
 	void GetBoundingBox(float& l, float& t, float& r, float& b);
+
+	void OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny);
 };
 
 #endif

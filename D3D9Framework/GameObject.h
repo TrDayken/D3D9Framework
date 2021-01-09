@@ -110,9 +110,9 @@ public:
 	void setSpeed(float vx, float vy);
 	void GetSpeed(float& vx, float& vy);
 	
-	void setIsBeingHold(bool isBeingHold);
+	virtual void setIsBeingHold(bool isBeingHold);
 	bool IsHoldAble();
-	void setIsHoldAble(bool ishold);
+	virtual void setIsHoldAble(bool ishold);
 
 	float getX();
 	void setX(float x);

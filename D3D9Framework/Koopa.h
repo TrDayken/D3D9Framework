@@ -43,6 +43,8 @@ public:
 	void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
 	void Render(Camera* camera);
 
+	void setIsBeingHold(bool isBeingHold);
+
 	void SetState(KoopaState state);
 	void OnOverLap(GameObject* obj);
 	void OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny);

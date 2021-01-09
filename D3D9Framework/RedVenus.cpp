@@ -18,6 +18,8 @@ RedVenus::RedVenus()
 	hideTime_start = GetTickCount(); 
 
 	state = VenusState::hide;
+
+	this->ColTag == Collision2DTag::None; 
 }
 
 RedVenus::~RedVenus()
@@ -114,7 +116,7 @@ void RedVenus::Render(Camera* camera)
 	else
 		ani += "HeadDown"; 
 
-	RenderBoundingBox(camera);
+	//RenderBoundingBox(camera);
 
 	animation_set[ani]->Render(RenderPosition.x, RenderPosition.y, this->Scale, direction);
 }

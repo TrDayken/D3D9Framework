@@ -15,6 +15,8 @@ private:
 	int timer;
 	int reward;
 
+	bool collected;
+
 public:
 
 	EndGameReward();
@@ -29,6 +31,6 @@ public:
 
 	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 
-	void OnOverLap(GameObject* obj);
+	void OnOverLap(GameObject* obj) override;
 };
 

@@ -143,6 +143,13 @@ void Koopa::Render(Camera* camera)
 	//RenderBoundingBox(camera);
 }
 
+void Koopa::setIsBeingHold(bool isBeingHold)
+{
+	GameObject::setIsBeingHold(isBeingHold);
+
+	this->koopstate = KoopaState::slide;
+}
+
 void Koopa::SetState(KoopaState state)
 {
 	//GameObject::SetState(state);

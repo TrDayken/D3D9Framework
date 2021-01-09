@@ -1,11 +1,16 @@
 #include "EndGameReward.h"
 #include "SpriteManager.h"
+#include "Game.h"
 
 EndGameReward::EndGameReward()
 {
 	LoadAnimation(); 
 
 	timer = GetTickCount();
+
+	this->collected = false;
+
+	this->ColTag = Collision2DTag::None; 
 }
 
 EndGameReward::~EndGameReward()
@@ -14,6 +19,12 @@ EndGameReward::~EndGameReward()
 
 void EndGameReward::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
+	std::vector<LPCOLLISIONEVENT> coEvents;
+	std::vector<LPCOLLISIONEVENT> coEventsResult;
+	coEvents.clear();
+
+	CalcPotentialCollisions(coObjects, coEvents);
+
 	if (GetTickCount() - timer >= REWARD_CYCLE_TIME)
 	{
 		timer = GetTickCount();
@@ -30,6 +41,9 @@ void EndGameReward::Render(Camera* camera)
 	Vector2 pos = camera->toCameraPosistion(Position.x, Position.y);
 
 	items[reward]->Draw(pos.x, pos.y);
+
+	if (collected)
+		Game::GetInstance()->GetFont()->RenderText("COURSE CLEAR", pos);
 }
 
 void EndGameReward::LoadAnimation()
@@ -43,8 +57,17 @@ void EndGameReward::LoadAnimation()
 
 void EndGameReward::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
+	left = this->Position.x;
+
+	top = this->Position.y;
+
+	right = this->Position.x + REWARD_BBOX_X;
+
+	bottom = this->Position.y + REWARD_BBOX_Y;
 }
 
 void EndGameReward::OnOverLap(GameObject* obj)
 {
+	if (obj->EntityTag == Tag::player)
+		this->collected = true;
 }

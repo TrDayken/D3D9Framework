@@ -33,3 +33,7 @@ void Brick::GetBoundingBox(float& l, float& t, float& r, float& b)
 	r = this->Position.x + BRICK_BBOX_WIDTH;
 	b = this->Position.y + BRICK_BBOX_HEIGHT;
 }
+
+void Brick::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
+{
+}

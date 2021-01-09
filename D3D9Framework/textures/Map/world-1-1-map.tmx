@@ -345,7 +345,7 @@
   <object id="108" name="koopa" type="green-para" x="4248" y="900">
    <point/>
   </object>
-  <object id="109" name="piranha-plant" type="green" x="5376" y="1116">
+  <object id="109" name="piranha-plant" type="green" x="5352" y="1152">
    <point/>
   </object>
   <object id="157" name="venus-fire-trap" type="red" x="1080" y="1104">
@@ -361,7 +361,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="20" name="Items" visible="0">
+ <objectgroup id="20" name="Items">
   <object id="81" name="coin" type="basic" x="3216" y="960">
    <point/>
   </object>
