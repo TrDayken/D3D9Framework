@@ -9,6 +9,10 @@
 #include "NodeMap.h"
 #include "EndGameReward.h"
 #include "ScenceManager.h"
+#include "Pipe.h"
+#include "Goomba.h"
+#include "Koopa.h"
+#include "RedVenus.h"
 
 Map::Map()
 {
@@ -76,7 +80,32 @@ void Map::AddObject(TiXmlElement* RootElement)
 			}
 			else if (name == "Enemies")
 			{
-				continue;
+				GameObject* enemy = NULL;
+				std::string enemytype;
+
+				enemytype = TMXObject->Attribute("name");
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+
+				if (enemytype == "goomba")
+				{
+					enemy = new Goomba();
+				}
+				else if (enemytype == "koopa")
+				{
+					enemy = new Koopa();
+				}
+				else if (enemytype == "venus-fire-trap")
+				{
+					enemy = new RedVenus();
+				}
+				else
+					continue;
+
+				enemy->setX(x);
+				enemy->setY(y);
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(enemy);
 			}
 			else if (name == "Items")
 			{
@@ -142,7 +171,32 @@ void Map::AddObject(TiXmlElement* RootElement)
 
 				ScenceManager::GetInstance()->getCurrentScence()->AddObject(brick);
 			}
+			else if (name == "Pipes")
+			{
+				Pipe* pipe = new Pipe();
 
+				std::string pipetype;
+				int width, height;
+
+				pipetype = TMXObject->Attribute("type");
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+				TMXObject->QueryIntAttribute("width", &width);
+				TMXObject->QueryIntAttribute("height", &height);
+
+				if (pipetype == "green-up")
+					pipe->SetPipeDirection(PipeDirection::Up);
+				else if (pipetype == "green-down")
+					pipe->SetPipeDirection(PipeDirection::Down);
+				else if (pipetype == "green-vertical")
+					pipe->SetPipeDirection(PipeDirection::Vertical);
+
+				pipe->setX(x);
+				pipe->setY(y);
+				pipe->SetTile(width, height);
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(pipe);
+			}
 			else if (name == "WorldGraph")
 			{
 				std::string objectname;

@@ -41,3 +41,11 @@ void Coin::OnOverLap(GameObject* obj)
 		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 	}
 }
+
+void Coin::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
+{
+	std::vector<LPCOLLISIONEVENT> coEvents;
+	coEvents.clear();
+
+	CalcPotentialCollisions(coObjects,coEvents);
+}

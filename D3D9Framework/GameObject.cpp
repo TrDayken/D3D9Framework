@@ -242,7 +242,7 @@ void GameObject::CalcPotentialCollisions(std::vector<LPGAMEOBJECT>* coObjects, s
 		if(IsOverLapped(coObjects->at(i)))
 		{
 			this->OnOverLap(coObjects->at(i));
-			coObjects->at(i)->OnOverLap(this);
+			//coObjects->at(i)->OnOverLap(this);
 		}
 
 		LPCOLLISIONEVENT e = SweptAABBEx(coObjects->at(i));
@@ -259,6 +259,9 @@ void GameObject::CalcPotentialCollisions(std::vector<LPGAMEOBJECT>* coObjects, s
 
 			else if (e->ny < 0 && e->obj->ColTag == Collision2DTag::Top)
 				coEvents.push_back(e);
+
+			else if (e->obj->ColTag == Collision2DTag::None)
+				continue;
 
 		}
 		else

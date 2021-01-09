@@ -19,6 +19,8 @@ public:
 	void GetBoundingBox(float& l, float& t, float& r, float& b);
 
 	void OnOverLap(GameObject* obj);
+
+	void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
 };
 
 #endif

@@ -51,6 +51,7 @@ enum class Tag
 	enemy,
 	player,
 	projectile,
+	enemyprojectile,
 	shell,
 	tail,
 	questionblock,

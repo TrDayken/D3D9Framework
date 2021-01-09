@@ -92,8 +92,19 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 			if (e->obj->EntityTag == Tag::platform)
 			{
+
 				if (e->nx != 0)
 				vx = -vx;
+			}
+
+			if (e->obj->EntityTag == Tag::questionblock && this->koopstate == KoopaState::slide)
+			{
+				if (e->nx != 0);
+				{
+					e->obj->OnCollisionEnter(this, e->nx, e->ny);
+					direction = -direction;
+					vx = -vx;
+				}
 			}
 		}
 

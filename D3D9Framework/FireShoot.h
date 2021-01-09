@@ -17,6 +17,7 @@
 class FireShoot :public GameObject
 {
 public:
+	FireShoot();
 
 	FireShoot(float x, float y, int direction);
 

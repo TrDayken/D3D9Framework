@@ -59,6 +59,8 @@ public:
 	void SetDeflected(bool isdeflected);
 	bool GetDeflected(); 
 
+	void PopOutItem();
+
 };
 
 #endif // !__QUESTIONBLOCK_H__

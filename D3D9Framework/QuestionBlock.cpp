@@ -51,46 +51,9 @@ void QuestionBlock::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 	// detect as if there are an enemy above the block when mairo hit it?
 	if (!Deflected)
 	{
-		if (obj->EntityTag == Tag::player)
+		if (obj->EntityTag == Tag::player || obj->EntityTag == Tag::shell)
 		{
-			this->isBounce = true;
-			this->Start_Bounce_Time = GetTickCount();
-			this->BounceState = 1;
-			DebugOut(L"[INFO] start bounce \n");
-
-			switch (InBlockItem)
-			{
-			case Item::RedShroom:
-			{
-				GameObject* mush = new RedMushroomPowerUps(); 
-
-				mush->setPosition(this->Position.x, this->Position.y - 49);
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(mush);
-			}
-				break;
-			case Item::RaccoonLeaf:
-			{
-				GameObject* leaf = new RaccoonPowerUps();
-
-				leaf->setPosition(this->Position.x, this->Position.y);
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(leaf);
-			}
-				break;
-			case Item::FireFlower:
-				break;
-			case Item::GreenShroom:
-				break;
-			case Item::Coin:
-				FXObjectManager::GetInstance()->CreateFx("coin", this->Position);
-				break;
-			default:
-				break;
-			}
-
-			this->Quantity--;
-
-			if (this->Quantity <= 0)
-				this->Deflected = true;
+			PopOutItem();
 		}
 	}
 }
@@ -180,4 +143,45 @@ void QuestionBlock::SetDeflected(bool isdeflected)
 bool QuestionBlock::GetDeflected()
 {
 	return this->Deflected;
+}
+
+void QuestionBlock::PopOutItem()
+{
+	this->isBounce = true;
+	this->Start_Bounce_Time = GetTickCount();
+	this->BounceState = 1;
+
+	switch (InBlockItem)
+	{
+	case Item::RedShroom:
+	{
+		GameObject* mush = new RedMushroomPowerUps();
+
+		mush->setPosition(this->Position.x, this->Position.y - 49);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(mush);
+	}
+	break;
+	case Item::RaccoonLeaf:
+	{
+		GameObject* leaf = new RaccoonPowerUps();
+
+		leaf->setPosition(this->Position.x, this->Position.y);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(leaf);
+	}
+	break;
+	case Item::FireFlower:
+		break;
+	case Item::GreenShroom:
+		break;
+	case Item::Coin:
+		FXObjectManager::GetInstance()->CreateFx("coin", this->Position);
+		break;
+	default:
+		break;
+	}
+
+	this->Quantity--;
+
+	if (this->Quantity <= 0)
+		this->Deflected = true;
 }

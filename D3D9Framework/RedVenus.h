@@ -4,7 +4,7 @@
 
 #define VENUS_WIDTH 48
 #define VENUS_HEIGHT 92
-#define VENUS_WAIT 1000
+#define VENUS_WAIT 3000
 #define VENUS_HIDE 800
 
 #define VENUS_GROWTIME 100

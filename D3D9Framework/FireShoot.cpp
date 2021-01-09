@@ -3,12 +3,14 @@
 
 FireShoot::FireShoot(float x, float y, int direction)
 {
+	this->ColTag = Collision2DTag::None; 
+
 	EntityTag = Tag::projectile;
+
 	this->Position.x = x;
 	this->Position.y = y;
 	vx = direction * BULLET_VX;
 
-	this->ColTag = Collision2DTag::None; 
 	LoadAnimation();
 }
 

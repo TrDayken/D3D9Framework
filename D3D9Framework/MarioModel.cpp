@@ -7,6 +7,8 @@
 #include "RaccoonPowerUps.h"
 #include "ScoreFx.h"
 #include "EndGameReward.h"
+#include "Pipe.h"
+#include "FireShoot.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -32,6 +34,8 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	
 	GameObject::Update(dt);
+
+	this->dt = dt; 
 
 	std::vector<LPCOLLISIONEVENT> coEvents;
 	std::vector<LPCOLLISIONEVENT> coEventsResult;
@@ -286,9 +290,9 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 	{
-		GameObject* koop = new RedMushroomPowerUps();
-
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
+
+		GameObject* koop = new FireShoot(cam->getCameraPositionX(), cam->getCameraPositionY(),1);
 
 		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
 		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
@@ -329,10 +333,10 @@ void MarioModel::OnKeyUp(int keyCode)
 	case DIK_A:
 		if (Hold != NULL)
 		{
-			if(this->direction == Hold->getDirection())
-				Hold->setVx(-Hold->getVx());
+			Hold->setVx(KOOPA_SLIDE_SPEED * this->direction * dt);
 			Hold->setIsBeingHold(false);
 			Hold->setIsHoldAble(true);
+
 			Hold = NULL;
 		}
 		DecayPMetterTime_Start = GetTickCount();

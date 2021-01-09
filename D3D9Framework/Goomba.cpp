@@ -5,7 +5,7 @@ Goomba::Goomba()
 {
 	LoadAnimation();
 	EntityTag = Tag::enemy;
-	direction = 1;
+	direction = -1;
 	SetState(GoombaState::walking);
 	ColTag = Collision2DTag::FourSide;
 }
@@ -152,7 +152,7 @@ void Goomba::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				LPGAMEOBJECT obj = e->obj;
 				obj->OnCollisionEnter(this, e->nx, e->ny);
 			}
-			if (e->obj->EntityTag == Tag::platform)
+			if (e->obj->EntityTag == Tag::platform || e->obj->EntityTag == Tag::questionblock)
 			{
 				if (e->nx != 0)
 					vx = -vx;

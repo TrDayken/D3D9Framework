@@ -12,7 +12,7 @@
 //mario physic
 #define MARIO_GRAVITY					0.003f
 #define MARIO_ACCELERATION				0.002f
-#define MARIO_DRAG						0.003f
+#define MARIO_DRAG						0.005f
 #define MARIO_TOP_WALKING_SPEED			0.30f
 #define MARIO_TOP_RUNNING_SPEED			0.5f
 #define MARIO_MIN_SPEED					0.1f
@@ -32,6 +32,8 @@
 #define MARIO_BBOX_HEIGHT				80
 #define MARIO_BBOX_HEIGHT_CROUCH		54
 
+
+#define KOOPA_SLIDE_SPEED				0.03f
 
 enum class MovingStates
 {
