@@ -18,6 +18,12 @@ public:
 	void GetBoundingBox(float& l, float& t, float& r, float& b);
 
 	void OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny);
+
+	void OnOverLap(GameObject* obj);
+
+	void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
+
+	void Explode();
 };
 
 #endif

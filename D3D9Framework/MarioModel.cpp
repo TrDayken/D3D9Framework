@@ -151,7 +151,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				}
 					
 			}
-			else if (e->obj->EntityTag == Tag::questionblock)
+			else if (e->obj->EntityTag == Tag::questionblock || e->obj->EntityTag == Tag::brick)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				if (e->ny > 0)

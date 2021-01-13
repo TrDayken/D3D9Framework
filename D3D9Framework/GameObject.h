@@ -49,6 +49,7 @@ enum class Tag
 {
 	platform,
 	enemy,
+	brick,
 	player,
 	projectile,
 	enemyprojectile,

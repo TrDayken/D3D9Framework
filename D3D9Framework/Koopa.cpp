@@ -37,6 +37,7 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	vy += KOOPA_GRAVITY * dt;
 
 
+
 	std::vector<LPCOLLISIONEVENT> coEvents;
 	std::vector<LPCOLLISIONEVENT> coEventsResult;
 	std::vector<LPGAMEOBJECT> coObjectsResult;
@@ -44,13 +45,17 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	if (koopstate != KoopaState::die)
 	{
-		if(koopstate != KoopaState::shell && koopstate != KoopaState::slide)
-			//vx = KOOPA_WALKING_SPEED * dt;
-		if (direction == 1)
-			vx = KOOPA_WALKING_SPEED * dt;
-		else
-			vx = -KOOPA_WALKING_SPEED * dt;
+		if (koopstate != KoopaState::shell && koopstate != KoopaState::slide)
+		{
+			this->UpdatePosition();
+			if (direction == 1)
+				vx = KOOPA_WALKING_SPEED * dt;
+			else
+				vx = -KOOPA_WALKING_SPEED * dt;
+		}
 		CalcPotentialCollisions(coObjects, coEvents);
+
+
 	}
 
 	if (coEvents.size() == 0)
@@ -90,14 +95,19 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				obj->OnCollisionEnter(this, e->nx, e->ny);
 			}
 
-			if (e->obj->EntityTag == Tag::platform)
+			if (((e->obj->EntityTag == Tag::platform)||(e->obj->EntityTag == Tag::brick)) && (this->koopstate != KoopaState::shell) || (this->koopstate != KoopaState::slide))
 			{
+				if (e->ny < 0);
+				{
+					maxleft = e->obj->getX();
+					maxright = e->obj->getX() + e->obj->getWidth() - KOOPA_BBOX_WIDTH;
+				}
 
 				if (e->nx != 0)
 				vx = -vx;
 			}
 
-			if (e->obj->EntityTag == Tag::questionblock && this->koopstate == KoopaState::slide)
+			if ((e->obj->EntityTag == Tag::questionblock || e->obj->EntityTag == Tag::brick) && this->koopstate == KoopaState::slide)
 			{
 				if (e->nx != 0);
 				{
@@ -116,6 +126,8 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void Koopa::Render(Camera* camera)
 {
+	RenderBoundingBox(camera);
+
 	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 
 	std::string ani = ANI_RED_KOOPA_MOVE;
@@ -264,5 +276,19 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 				vx = -KOOPA_SLIDE_SPEED * dt;
 			}
 		}
+	}
+}
+
+void Koopa::UpdatePosition()
+{
+	if (this->Position.x < maxleft)
+	{
+		direction = 1;
+		vx = KOOPA_WALKING_SPEED ;
+	}
+	else if (this->Position.x > maxright)
+	{
+		direction = -1;
+		vx = -KOOPA_WALKING_SPEED;
 	}
 }

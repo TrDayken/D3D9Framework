@@ -14,7 +14,7 @@
 //koopa bbox settings
 #define KOOPA_BBOX_WIDTH			48
 #define KOOPA_BBOX_HEIGHT			78
-#define KOOPA_BBOX_HEIGHT_SHELL		48
+#define KOOPA_BBOX_HEIGHT_SHELL		45
 //koopa animation setting
 #define ANI_RED_KOOPA_MOVE		"ani-red-koopa-troopa-move"
 #define ANI_RED_KOOPA_CROUCH	"ani-red-koopa-troopa-crouch"
@@ -34,6 +34,8 @@ class Koopa :public GameObject
 {
 	KoopaState koopstate;
 	DWORD DelayDeadTime_start;
+
+	float maxleft, maxright;
 public:
 	Koopa();
 
@@ -48,6 +50,8 @@ public:
 	void SetState(KoopaState state);
 	void OnOverLap(GameObject* obj);
 	void OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny);
+
+	void UpdatePosition();
 };
 
 #endif // !__KOOPA_H__
