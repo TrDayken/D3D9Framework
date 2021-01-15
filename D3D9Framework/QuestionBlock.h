@@ -9,6 +9,7 @@
 
 enum class Item
 {
+	PSwitch,
 	RedShroom,
 	RaccoonLeaf,
 	FireFlower,
@@ -46,7 +47,7 @@ public:
 
 	void Render(Camera* camera);
 
-	void LoadAnimation();
+	virtual void LoadAnimation();
 
 	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 

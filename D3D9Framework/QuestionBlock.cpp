@@ -4,6 +4,7 @@
 #include "RedMushroomPowerUps.h"
 #include "RaccoonPowerUps.h"
 #include "FXObjectManager.h"
+#include "PSwitch.h"
 
 QuestionBlock::QuestionBlock()
 {
@@ -176,6 +177,14 @@ void QuestionBlock::PopOutItem()
 	case Item::Coin:
 		FXObjectManager::GetInstance()->CreateFx("coin", this->Position);
 		break;
+	case Item::PSwitch:
+	{
+		GameObject* pswitch = new PSwitch();
+
+		pswitch->setPosition(this->Position.x, this->Position.y - 48);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(pswitch);
+		break;
+	}
 	default:
 		break;
 	}

@@ -9,6 +9,8 @@
 #include "EndGameReward.h"
 #include "Pipe.h"
 #include "FireShoot.h"
+#include "PSwitch.h"
+#include "FakeGoldenBlock.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -149,12 +151,18 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				{
 					DebugOut(L"[Info] mario take damage");
 				}
-					
+
 			}
 			else if (e->obj->EntityTag == Tag::questionblock || e->obj->EntityTag == Tag::brick)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				if (e->ny > 0)
+					obj->OnCollisionEnter(this, e->nx, e->ny);
+			}
+			else if (e->obj->EntityTag == Tag::pswitch)
+			{
+				LPGAMEOBJECT obj = e->obj;
+				if (e->ny < 0)
 					obj->OnCollisionEnter(this, e->nx, e->ny);
 			}
 
@@ -292,7 +300,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 	{
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
-		GameObject* koop = new FireShoot(cam->getCameraPositionX(), cam->getCameraPositionY(),1);
+		GameObject* koop = new FakeGoldenBlock();
 
 		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
 		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);

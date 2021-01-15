@@ -35,14 +35,8 @@ typedef D3DXVECTOR2 Vector2;
 typedef D3DXVECTOR3 Vector3;
 #define VectorZero Vector2(0.0f,0.0f);
 
-enum Texture
-{
-	//mario texture
-	TEX_MARIO = 1,
 
-	//world texture
-	TEX_WORLD_1_1 = 110
-};
+#define PSWITCH_TIME  10000
 
 class Global_Variable
 {
@@ -57,6 +51,8 @@ class Global_Variable
 	int time;
 
 	int plevel;
+
+	DWORD Ptime_start; 
 
 	//store mario cards, unimplemented.
 	std::vector<int> Cards;
@@ -81,6 +77,10 @@ public:
 
 	void UpdatePmetter(int x);
 	int getPmetter();
+
+	void startPtime();
+	bool isPtimeUp();
+	DWORD getPTimeLeft();
 
 	std::string FormatScore();
 	std::string Formatcoin(); 

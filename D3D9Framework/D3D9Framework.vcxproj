@@ -154,6 +154,7 @@
     <ClCompile Include="DebrisFx.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="EndGameReward.cpp" />
+    <ClCompile Include="FakeGoldenBlock.cpp" />
     <ClCompile Include="FireMario.cpp" />
     <ClCompile Include="FireShoot.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="PlayScence.cpp" />
     <ClCompile Include="PMetter.cpp" />
     <ClCompile Include="Portal.cpp" />
+    <ClCompile Include="PSwitch.cpp" />
     <ClCompile Include="QuestionBlock.cpp" />
     <ClCompile Include="RaccoonPowerUps.cpp" />
     <ClCompile Include="RacoonMario.cpp" />
@@ -219,6 +221,7 @@
     <ClInclude Include="DebrisFx.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EndGameReward.h" />
+    <ClInclude Include="FakeGoldenBlock.h" />
     <ClInclude Include="FireMario.h" />
     <ClInclude Include="FireShoot.h" />
     <ClInclude Include="Font.h" />
@@ -247,6 +250,7 @@
     <ClInclude Include="PlayScence.h" />
     <ClInclude Include="PMetter.h" />
     <ClInclude Include="Portal.h" />
+    <ClInclude Include="PSwitch.h" />
     <ClInclude Include="QuestionBlock.h" />
     <ClInclude Include="RaccoonPowerUps.h" />
     <ClInclude Include="RacoonMario.h" />

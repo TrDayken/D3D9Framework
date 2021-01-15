@@ -113,7 +113,6 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				{
 					e->obj->OnCollisionEnter(this, e->nx, e->ny);
 					direction = -direction;
-					vx = -vx;
 				}
 			}
 		}
@@ -291,4 +290,11 @@ void Koopa::UpdatePosition()
 		direction = -1;
 		vx = -KOOPA_WALKING_SPEED;
 	}
+}
+
+void Koopa::setVx(float vx)
+{
+	this->vx = 0; 
+
+	this->vx = vx;
 }

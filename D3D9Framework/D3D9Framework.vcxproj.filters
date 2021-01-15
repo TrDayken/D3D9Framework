@@ -191,6 +191,9 @@
     <Filter Include="Entity\Blocks\GhostBlock\Portal">
       <UniqueIdentifier>{5280e1b2-757c-492a-977e-eec84344774a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Misc\PSwitch">
+      <UniqueIdentifier>{bf3d5256-85f3-4944-a822-ac38bd294f12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -382,6 +385,12 @@
     <ClCompile Include="ScoreFx.cpp">
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClCompile>
+    <ClCompile Include="PSwitch.cpp">
+      <Filter>Entity\Misc\PSwitch</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeGoldenBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -564,5 +573,9 @@
     <ClInclude Include="ScoreFx.h">
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClInclude>
+    <ClInclude Include="PSwitch.h">
+      <Filter>Entity\Misc\PSwitch</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeGoldenBlock.h" />
   </ItemGroup>
 </Project>

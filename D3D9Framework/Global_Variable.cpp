@@ -69,6 +69,21 @@ int Global_Variable::getPmetter()
 	return this->plevel;
 }
 
+void Global_Variable::startPtime()
+{
+	this->Ptime_start = GetTickCount();
+}
+
+bool Global_Variable::isPtimeUp()
+{
+	return ((GetTickCount() - Ptime_start) <= PSWITCH_TIME);
+}
+
+DWORD Global_Variable::getPTimeLeft()
+{
+	return PSWITCH_TIME -(GetTickCount() - Ptime_start);
+}
+
 std::string Global_Variable::FormatScore()
 {
 	std::string format = std::to_string(score);

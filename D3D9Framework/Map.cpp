@@ -13,6 +13,7 @@
 #include "Goomba.h"
 #include "Koopa.h"
 #include "RedVenus.h"
+#include "FakeGoldenBlock.h"
 
 Map::Map()
 {
@@ -147,6 +148,11 @@ void Map::AddObject(TiXmlElement* RootElement)
 				else if (blockname == "bmushroom")
 				{
 					questionblock->SetInBlockItem(Item::RedShroom);
+				}
+				else if (blockname == "bswitch")
+				{
+					questionblock = new FakeGoldenBlock();
+					questionblock->SetInBlockItem(Item::PSwitch);
 				}
 
 

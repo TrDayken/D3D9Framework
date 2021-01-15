@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="23" nextobjectid="199">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="23" nextobjectid="290">
  <editorsettings>
   <export target="../../../../../Resource/Xml/NewMap/BigMap/world-1-1-map.xml" format="tmx"/>
  </editorsettings>
@@ -303,7 +303,7 @@
   <object id="141" x="6624" y="1824" width="48" height="48"/>
   <object id="142" x="6336" y="1392" width="576" height="48"/>
  </objectgroup>
- <objectgroup id="14" name="Ghost" visible="0">
+ <objectgroup id="14" name="Ghost">
   <object id="143" x="720" y="1104" width="144" height="48"/>
   <object id="144" x="816" y="1008" width="144" height="48"/>
   <object id="145" x="1200" y="1104" width="240" height="48"/>
@@ -361,7 +361,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="20" name="Items" visible="0">
+ <objectgroup id="20" name="Items">
   <object id="81" name="coin" type="basic" x="3216" y="960">
    <point/>
   </object>
@@ -471,7 +471,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="18" name="QuestionBlocks" visible="0">
+ <objectgroup id="18" name="QuestionBlocks">
   <object id="54" name="bleaf" type="1" x="1968" y="1152">
    <point/>
   </object>
@@ -484,10 +484,10 @@
   <object id="104" name="bcoin" type="1" x="4272" y="384">
    <point/>
   </object>
-  <object id="183" name="bcoin" type="1" x="528.25" y="1056">
+  <object id="183" name="bcoin" type="1" x="624" y="1056">
    <point/>
   </object>
-  <object id="184" name="bcoin" type="1" x="576" y="1056">
+  <object id="184" name="bcoin" type="1" x="671.75" y="1056">
    <point/>
   </object>
   <object id="185" name="bcoin" type="1" x="672" y="912">
@@ -497,6 +497,9 @@
    <point/>
   </object>
   <object id="187" name="bcoin" type="1" x="1248" y="960">
+   <point/>
+  </object>
+  <object id="199" name="bswitch" type="1" x="6048" y="1104">
    <point/>
   </object>
  </objectgroup>
@@ -546,9 +549,6 @@
   <object id="71" x="6000" y="1104">
    <point/>
   </object>
-  <object id="72" x="6048" y="1104">
-   <point/>
-  </object>
   <object id="73" x="6240" y="1152">
    <point/>
   </object>
@@ -570,7 +570,7 @@
   <object id="164" name="pipe" type="green-down" x="6912" y="1392" width="96" height="96"/>
   <object id="198" name="pipe" type="green-up" x="1056" y="1104" width="96" height="144"/>
  </objectgroup>
- <objectgroup id="22" name="Warp" visible="0">
+ <objectgroup id="22" name="Warp">
   <object id="159" name="warp-entrance" type="down" x="6762" y="468" width="12" height="24"/>
   <object id="160" name="warp-mark" x="6720" y="624" width="96" height="48">
    <properties>

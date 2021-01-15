@@ -29,6 +29,7 @@ void VenusFireShoot::Render(Camera* camera)
 
 void VenusFireShoot::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
+
 	l = this->Position.x;
 	t = this->Position.y;
 	r = this->Position.x + BULLET_BBOX_WIDTH;

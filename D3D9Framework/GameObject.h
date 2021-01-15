@@ -59,7 +59,8 @@ enum class Tag
 	coin,
 	mushroom,
 	leaf,
-	vanity
+	vanity,
+	pswitch
 };
 
 class GameObject
@@ -115,28 +116,28 @@ public:
 	bool IsHoldAble();
 	virtual void setIsHoldAble(bool ishold);
 
-	float getX();
-	void setX(float x);
+	virtual float getX();
+	virtual void setX(float x);
 
-	float getY();
-	void setY(float y);
+	virtual float getY();
+	virtual void setY(float y);
 
-	float getVx();
-	void setVx(float vx);
+	virtual float getVx();
+	virtual void setVx(float vx);
 
-	float getVy();
-	void setVy(float vy);
+	virtual float getVy();
+	virtual void setVy(float vy);
 
-	float getWidth();
-	void setWidth(float width);
+	virtual float getWidth();
+	virtual void setWidth(float width);
 
-	float getHeight();
-	void setHeight(float height);
+	virtual float getHeight();
+	virtual void setHeight(float height);
 
-	void setDirection(int direction);
-	int getDirection();
+	virtual void setDirection(int direction);
+	virtual int getDirection();
 
-	int getState();
+	virtual int getState();
 
 	void RenderBoundingBox(Camera* camera);
 	
