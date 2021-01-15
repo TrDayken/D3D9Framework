@@ -23,6 +23,8 @@
 #define ANI_RACCOON_MARIO_HOLD_IDLE			"ani-raccoon-mario-hold-idle"
 #define ANI_RACCOON_MARIO_HOLD_MOVE			"ani-raccoon-mario-hold"
 #define ANI_RACCOON_MARIO_KICK				"ani-raccoon-mario-kick"
+
+#define ANI_RACCOON_MARIO_WARP				"ani-raccoon-mario-idle-front"
 // raccoon mario bbox status
 #define MARIO_RACCOON_BBOX_WIDTH					42
 #define MARIO_RACCOON_BBOX_HEIGHT					80

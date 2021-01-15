@@ -6,8 +6,7 @@
 #include "Camera.h"
 #include "AnimationManager.h"
 #include "ScenceManager.h"
-#include "Goomba.h"
-#include "Koopa.h"
+#include "WarpEntrance.h"
 
 //mario physic
 #define MARIO_GRAVITY					0.003f
@@ -32,7 +31,7 @@
 #define MARIO_BBOX_HEIGHT				80
 #define MARIO_BBOX_HEIGHT_CROUCH		54
 
-
+#define WARPTIME						1500
 #define KOOPA_SLIDE_SPEED				0.03f
 
 enum class MovingStates
@@ -86,6 +85,10 @@ protected:
 	bool isIncreasingPMetter = false;
 	int  PMetter = 0;
 	GameObject* Hold;
+
+	int warpping = 0;
+	WarpDirection dir;
+	DWORD warptime_start;
 public:
 	MarioModel(float x = 0, float y = 0);
 

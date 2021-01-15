@@ -391,6 +391,9 @@
     <ClCompile Include="FakeGoldenBlock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WarpEntrance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -577,5 +580,6 @@
       <Filter>Entity\Misc\PSwitch</Filter>
     </ClInclude>
     <ClInclude Include="FakeGoldenBlock.h" />
+    <ClInclude Include="WarpEntrance.h" />
   </ItemGroup>
 </Project>

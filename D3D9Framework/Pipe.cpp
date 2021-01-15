@@ -4,6 +4,14 @@
 Pipe::Pipe()
 {
 	AddAnimation();
+
+	dest_x = -1; 
+
+	dest_y = -1;
+
+	this->ColTag = Collision2DTag::FourSide ;
+
+	this->EntityTag = Tag::pipe;
 }
 
 void Pipe::AddAnimation()
@@ -79,10 +87,34 @@ void Pipe::Render(Camera* camera)
 	//RenderBoundingBox(camera);
 }
 
+void Pipe::setDes_x(float x)
+{
+	this->dest_x = x;
+}
+
+float Pipe::getDes_x()
+{
+	return this->dest_x;
+}
+
+void Pipe::setDes_y(float y)
+{
+	this->dest_y = y;
+}
+
+float Pipe::getDes_y()
+{
+	return this->dest_y;
+}
+
 void Pipe::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	l = this->Position.x; 
 	t = this->Position.y; 
 	r = this->Position.x + width;
 	b = this->Position.y + height;
+}
+
+void Pipe::OnOverLap(GameObject* obj)
+{
 }

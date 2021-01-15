@@ -17,6 +17,8 @@ RedVenus::RedVenus()
 
 	hideTime_start = GetTickCount(); 
 
+	this->EntityTag = Tag::plant;
+
 	state = VenusState::hide;
 
 	this->ColTag == Collision2DTag::None; 

@@ -12,6 +12,7 @@
 #include "PSwitch.h"
 #include "FakeGoldenBlock.h"
 #include "Brick.h"
+#include "WarpEntrance.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -35,7 +36,6 @@ MarioModel::MarioModel(float x, float y)
 
 void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
-	
 	GameObject::Update(dt);
 
 	this->dt = dt; 
@@ -59,6 +59,35 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	{
 		CalcPotentialCollisions(coObjects, coEvents);
 		for (UINT i = 0; i < coEvents.size(); i++)  coObjectsResult.push_back(coEvents[i]->obj);
+
+		if (warpping != 0)
+		{
+			if (GetTickCount() - warptime_start < WARPTIME)
+			{
+				switch (dir)
+				{
+				case WarpDirection::up:
+					this->Position.y--;
+					break;
+				case WarpDirection::down:
+					this->Position.y++;
+					break;
+				case WarpDirection::left:
+					break;
+				case WarpDirection::right:
+					break;
+				default:
+					break;
+				}
+			}
+			else
+			{
+				vx = 0; 
+				vy = 0;
+				warpping = 2;
+			}
+			return;
+		}
 	}
 
 	// reset untouchable timer if untouchable time has passed
@@ -150,7 +179,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				}
 				else
 				{
-					DebugOut(L"[Info] mario take damage");
+					DebugOut(L"[Info] mario take damage \n");
 				}
 
 			}
@@ -422,13 +451,36 @@ void MarioModel::OnOverLap(GameObject* obj)
 {
 	if (obj->EntityTag == Tag::mushroom)
 	{
-		if(getCurrentLevel() < 1)
+		if (getCurrentLevel() < 1)
 			SetChangetoLevel(1);
 	}
 	else if (obj->EntityTag == Tag::leaf)
 	{
-		SetChangetoLevel(3); 
+		SetChangetoLevel(3);
 	}
+	else if (obj->EntityTag == Tag::entrance && warpping == 0)
+	{
+		auto entrance = static_cast<WarpEntrance*>(obj);
+
+		if (Game::GetInstance()->IsKeyDown(entrance->getKeyDirection()))
+		{
+			DebugOut(L"[INFO] Start Pipe \n");
+			this->dir = entrance->getWarpDirection();
+			warpping = 1;
+			warptime_start = GetTickCount();
+		}
+
+
+	}
+	else if (obj->EntityTag == Tag::pipe && warpping == 2)
+	{
+		auto pipe = static_cast<Pipe*>(obj);
+
+		this->SetPosition(pipe->getDes_x(), pipe->getDes_y());
+
+		warpping = 0;
+	}
+
 }
 
 int MarioModel::getChangetoLevel()

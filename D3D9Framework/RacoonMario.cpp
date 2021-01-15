@@ -191,11 +191,6 @@ void RacoonMario::Render(Camera* camera)
 		animation_set[ani]->setMultiplier();
 	}
 
-	if (state.movement == MovingStates::Attack)
-	{
-		ani = ANI_RACCOON_MARIO_SPIN;
-	}
-
 	if (PMetter == 7 && this->state.movement != MovingStates::Idle)
 	{
 		ani = ANI_RACCOON_MARIO_RUN;
@@ -230,6 +225,17 @@ void RacoonMario::Render(Camera* camera)
 		crouchdiff = 0;
 	}
 
+
+	if (state.movement == MovingStates::Attack)
+	{
+		ani = ANI_RACCOON_MARIO_SPIN;
+	}
+
+	if (warpping != 0)
+	{
+		ani = ANI_RACCOON_MARIO_WARP;
+	}
+
 	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, this->Scale, direction);
 
 }
@@ -251,6 +257,7 @@ void RacoonMario::LoadAnimation()
 	AddAnimation(ANI_RACCOON_MARIO_HOLD_IDLE, animation->GetAnimation(ANI_RACCOON_MARIO_HOLD_IDLE));
 	AddAnimation(ANI_RACCOON_MARIO_HOLD_MOVE, animation->GetAnimation(ANI_RACCOON_MARIO_HOLD_MOVE));
 	AddAnimation(ANI_RACCOON_MARIO_KICK, animation->GetAnimation(ANI_RACCOON_MARIO_KICK));
+	AddAnimation(ANI_RACCOON_MARIO_WARP, animation->GetAnimation(ANI_RACCOON_MARIO_WARP));
 }
 
 void RacoonMario::GetBoundingBox(float& l, float& t, float& r, float& b)

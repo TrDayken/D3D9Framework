@@ -82,15 +82,14 @@ void FireMario::Render(Camera* camera)
 		animation_set[ani]->setMultiplier(2);
 	}
 
-	if (this->state.movement == MovingStates::Attack)
-	{
-		ani = ANI_FIRE_MARIO_ATTACK;
-	}
-
-
 	if (!isOnGround)
 	{
 		ani = ANI_FIRE_MARIO_JUMP;
+	}
+
+	if (this->state.movement == MovingStates::Attack)
+	{
+		ani = ANI_FIRE_MARIO_ATTACK;
 	}
 
 	if (PMetter == 7)

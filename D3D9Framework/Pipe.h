@@ -19,6 +19,10 @@ class Pipe :
 	std::vector<LPSPRITE> rendervector; 
 
 	PipeDirection dir; 
+
+	float dest_x;
+	float dest_y;
+
 public:
 	Pipe(); 
 
@@ -30,6 +34,14 @@ public:
 
 	void Render(Camera* camera);
 
+	void setDes_x(float x);
+	float getDes_x();
+
+	void setDes_y(float y);
+	float getDes_y();
+
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
+
+	void OnOverLap(GameObject* obj);
 };
 

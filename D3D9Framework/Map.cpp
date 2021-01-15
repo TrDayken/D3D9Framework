@@ -14,6 +14,8 @@
 #include "Koopa.h"
 #include "RedVenus.h"
 #include "FakeGoldenBlock.h"
+#include "WarpEntrance.h"
+
 
 Map::Map()
 {
@@ -184,6 +186,9 @@ void Map::AddObject(TiXmlElement* RootElement)
 				std::string pipetype;
 				int width, height;
 
+				float desx = -1;
+				float desy = -1;
+
 				pipetype = TMXObject->Attribute("type");
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
@@ -197,11 +202,73 @@ void Map::AddObject(TiXmlElement* RootElement)
 				else if (pipetype == "green-vertical")
 					pipe->SetPipeDirection(PipeDirection::Vertical);
 
+
+				TiXmlElement* TMXproperties = TMXObject->FirstChildElement("properties");
+
+				if (TMXproperties != nullptr)
+				{
+					for (TiXmlElement* TMXproperty = TMXproperties->FirstChildElement("property"); TMXproperty != NULL; TMXproperty = TMXproperty->NextSiblingElement("property"))
+					{
+						std::string propertyname = TMXproperty->Attribute("name");
+
+						if (propertyname == "dest-x")
+						{
+							TMXproperty->QueryFloatAttribute("value", &desx);
+						}
+						if (propertyname == "dest-y")
+						{
+							TMXproperty->QueryFloatAttribute("value", &desy);
+						}
+
+
+					}
+				}
+
+
+				pipe->setDes_x(desx);
+				pipe->setDes_y(desy);
 				pipe->setX(x);
 				pipe->setY(y);
 				pipe->SetTile(width, height);
 
 				ScenceManager::GetInstance()->getCurrentScence()->AddObject(pipe);
+			}
+			else if (name == "Warp") 
+			{
+				WarpEntrance* entrance = new WarpEntrance();
+				std::string dir; 
+
+
+				TMXObject->QueryFloatAttribute("x", &x);
+				TMXObject->QueryFloatAttribute("y", &y);
+				TMXObject->QueryFloatAttribute("width", &width);
+				TMXObject->QueryFloatAttribute("height", &height);
+
+				dir = TMXObject->Attribute("type");
+
+				if (dir == "up")
+				{
+					entrance->setWarpDirection(WarpDirection::up);
+				}
+				else if (dir == "down")
+				{
+					entrance->setWarpDirection(WarpDirection::down);
+				}
+				else if (dir == "right")
+				{
+					entrance->setWarpDirection(WarpDirection::right);
+				}
+				else if (dir == "left")
+				{
+					entrance->setWarpDirection(WarpDirection::left);
+				}
+
+				entrance->setX(x);
+				entrance->setY(y);
+				entrance->setWidth(width);
+				entrance->setHeight(height);
+
+				ScenceManager::GetInstance()->getCurrentScence()->AddObject(entrance);
 			}
 			else if (name == "WorldGraph")
 			{
@@ -217,26 +284,30 @@ void Map::AddObject(TiXmlElement* RootElement)
 				TMXObject->QueryFloatAttribute("y", &y);
 				//auto type = split(TMXObject->Attribute("type"));
 
-				
-				for (TiXmlElement* TMXproperty = TMXObject->FirstChildElement("properties")->FirstChildElement("property"); TMXproperty != NULL; TMXproperty = TMXproperty->NextSiblingElement("property"))
-				{
-					std::string propertyname = TMXproperty->Attribute("name");
+				TiXmlElement* TMXproperties = TMXObject->FirstChildElement("properties");
 
-					if (propertyname == "adjacent_list")
+				if (TMXproperties != nullptr)
+				{
+					for (TiXmlElement* TMXproperty = TMXproperties->FirstChildElement("property"); TMXproperty != NULL; TMXproperty = TMXproperty->NextSiblingElement("property"))
 					{
-						adlist = split(TMXproperty->Attribute("value"), ",");
-					}
-					else if (propertyname == "adjacent_weight")
-					{
-						weight = split(TMXproperty->Attribute("value"), ",");
-					}
-					else if (propertyname == "node_id")
-					{
-						nodename = std::stoi(TMXproperty->Attribute("value"));
-					}
-					else if (propertyname == "scene")
-					{
-						scence = TMXproperty->Attribute("value");
+						std::string propertyname = TMXproperty->Attribute("name");
+
+						if (propertyname == "adjacent_list")
+						{
+							adlist = split(TMXproperty->Attribute("value"), ",");
+						}
+						else if (propertyname == "adjacent_weight")
+						{
+							weight = split(TMXproperty->Attribute("value"), ",");
+						}
+						else if (propertyname == "node_id")
+						{
+							nodename = std::stoi(TMXproperty->Attribute("value"));
+						}
+						else if (propertyname == "scene")
+						{
+							scence = TMXproperty->Attribute("value");
+						}
 					}
 				}
 
