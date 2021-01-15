@@ -203,6 +203,9 @@
     <Filter Include="Entity\Blocks\SolidBlocks\QuestionBlock\MimicBlock">
       <UniqueIdentifier>{4bc38531-a21a-422e-a08d-b9de69457d17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Enemy\Piranha">
+      <UniqueIdentifier>{01176be2-8049-4326-89eb-1313f98a46ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -403,6 +406,12 @@
     <ClCompile Include="FakeGoldenBlock.cpp">
       <Filter>Entity\Blocks\SolidBlocks\QuestionBlock\MimicBlock</Filter>
     </ClCompile>
+    <ClCompile Include="GreenPiranha.cpp">
+      <Filter>Entity\Enemy\Piranha</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenVenus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -594,5 +603,9 @@
     <ClInclude Include="FakeGoldenBlock.h">
       <Filter>Entity\Blocks\SolidBlocks\QuestionBlock\MimicBlock</Filter>
     </ClInclude>
+    <ClInclude Include="GreenPiranha.h">
+      <Filter>Entity\Enemy\Piranha</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenVenus.h" />
   </ItemGroup>
 </Project>

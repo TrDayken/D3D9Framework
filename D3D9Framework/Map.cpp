@@ -16,6 +16,8 @@
 #include "FakeGoldenBlock.h"
 #include "WarpEntrance.h"
 #include "RedGoomba.h"
+#include "GreenPiranha.h"
+#include "GreenVenus.h"
 
 
 Map::Map()
@@ -105,7 +107,14 @@ void Map::AddObject(TiXmlElement* RootElement)
 				}
 				else if (enemyname == "venus-fire-trap")
 				{
-					enemy = new RedVenus();
+					if (enemytype == "green")
+						enemy = new GreenVenus();
+					else if (enemytype == "red")
+						enemy = new RedVenus();
+				}
+				else if (enemyname == "piranha-plant")
+				{
+					enemy = new GreenPiranha();
 				}
 				else
 					continue;

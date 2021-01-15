@@ -164,6 +164,8 @@
     <ClCompile Include="GhostPlatform.cpp" />
     <ClCompile Include="Global_Variable.cpp" />
     <ClCompile Include="Goomba.cpp" />
+    <ClCompile Include="GreenPiranha.cpp" />
+    <ClCompile Include="GreenVenus.cpp" />
     <ClCompile Include="GrowUpFx.cpp" />
     <ClCompile Include="HitFx.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -232,6 +234,8 @@
     <ClInclude Include="GhostPlatform.h" />
     <ClInclude Include="Global_Variable.h" />
     <ClInclude Include="Goomba.h" />
+    <ClInclude Include="GreenPiranha.h" />
+    <ClInclude Include="GreenVenus.h" />
     <ClInclude Include="GrowUpFx.h" />
     <ClInclude Include="HitFx.h" />
     <ClInclude Include="HUD.h" />
