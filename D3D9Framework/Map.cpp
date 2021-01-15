@@ -15,6 +15,7 @@
 #include "RedVenus.h"
 #include "FakeGoldenBlock.h"
 #include "WarpEntrance.h"
+#include "RedGoomba.h"
 
 
 Map::Map()
@@ -84,21 +85,25 @@ void Map::AddObject(TiXmlElement* RootElement)
 			else if (name == "Enemies")
 			{
 				GameObject* enemy = NULL;
-				std::string enemytype;
+				std::string enemyname, enemytype;
 
-				enemytype = TMXObject->Attribute("name");
+				enemyname = TMXObject->Attribute("name");
+				enemytype = TMXObject->Attribute("type");
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
 
-				if (enemytype == "goomba")
+				if (enemyname == "goomba")
 				{
-					enemy = new Goomba();
+					if (enemytype == "basic")
+						enemy = new Goomba();
+					else if(enemytype == "red-para")
+						enemy = new RedGoomba();
 				}
-				else if (enemytype == "koopa")
+				else if (enemyname == "koopa")
 				{
 					enemy = new Koopa();
 				}
-				else if (enemytype == "venus-fire-trap")
+				else if (enemyname == "venus-fire-trap")
 				{
 					enemy = new RedVenus();
 				}

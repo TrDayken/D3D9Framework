@@ -1,5 +1,6 @@
 #include "GameObject.h"
 #include "Game.h"
+#include "ScenceManager.h"
 
 GameObject::GameObject()
 {
@@ -10,6 +11,8 @@ GameObject::GameObject()
 	vx = vy = 0;
 	direction = 1;
 	flipy = 1;
+
+	Active = false;
 }
 
 GameObject::~GameObject()
@@ -143,6 +146,16 @@ int GameObject::getState()
 	return 0;
 }
 
+bool GameObject::isActive()
+{
+	return this->Active;
+}
+
+void GameObject::setActive(bool active)
+{
+	this->Active = active;
+}
+
 void GameObject::RenderBoundingBox(Camera* camera)
 {
 	RECT rect;
@@ -168,6 +181,7 @@ void GameObject::AddAnimation(std::string name, LPANIMATION animation)
 
 void GameObject::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
+
 	this->dt = dt;
 	dx = vx * dt;
 	dy = vy * dt;

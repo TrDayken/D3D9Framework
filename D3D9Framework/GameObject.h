@@ -101,6 +101,9 @@ protected:
 	DWORD dt;
 	std::unordered_map<std::string,LPANIMATION> animation_set;
 
+	bool Active;
+
+	Camera* camera;
 public: 
 	Tag EntityTag;
 	GameObject();
@@ -141,6 +144,9 @@ public:
 	virtual int getDirection();
 
 	virtual int getState();
+
+	virtual bool isActive();
+	virtual void setActive(bool active);
 
 	void RenderBoundingBox(Camera* camera);
 	

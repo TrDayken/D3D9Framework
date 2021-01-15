@@ -170,7 +170,6 @@
     <ClCompile Include="InvisibleBrick.cpp" />
     <ClCompile Include="KeyEventHandler.cpp" />
     <ClCompile Include="Koopa.cpp" />
-    <ClCompile Include="KoopaShell.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -188,6 +187,7 @@
     <ClCompile Include="QuestionBlock.cpp" />
     <ClCompile Include="RaccoonPowerUps.cpp" />
     <ClCompile Include="RacoonMario.cpp" />
+    <ClCompile Include="RedGoomba.cpp" />
     <ClCompile Include="RedMushroomPowerUps.cpp" />
     <ClCompile Include="RedVenus.cpp" />
     <ClCompile Include="Scence.cpp" />
@@ -238,7 +238,6 @@
     <ClInclude Include="InvisibleBrick.h" />
     <ClInclude Include="KeyEventHandler.h" />
     <ClInclude Include="Koopa.h" />
-    <ClInclude Include="KoopaShell.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapMario.h" />
@@ -255,6 +254,7 @@
     <ClInclude Include="QuestionBlock.h" />
     <ClInclude Include="RaccoonPowerUps.h" />
     <ClInclude Include="RacoonMario.h" />
+    <ClInclude Include="RedGoomba.h" />
     <ClInclude Include="RedMushroomPowerUps.h" />
     <ClInclude Include="RedVenus.h" />
     <ClInclude Include="Scence.h" />

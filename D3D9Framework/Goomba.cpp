@@ -1,5 +1,6 @@
 #include "Goomba.h"
 #include "Game.h"
+#include "PlayScence.h"
 
 Goomba::Goomba()
 {
@@ -7,6 +8,7 @@ Goomba::Goomba()
 	EntityTag = Tag::enemy;
 	direction = -1;
 	SetState(GoombaState::walking);
+	DelayPattern_start = GetTickCount();
 	ColTag = Collision2DTag::FourSide;
 }
 
@@ -24,6 +26,10 @@ void Goomba::SetState(GoombaState state)
 	case GoombaState::walking:
 		vx = -GOOMBA_WALKING_SPEED;
 		goomstate = GoombaState::walking;
+		break;
+	case GoombaState::flying:
+		goomstate = GoombaState::flying;
+		vx = -GOOMBA_WALKING_SPEED;
 		break;
 	case GoombaState::flydie:
 		FlyDieTime_start = GetTickCount();
@@ -78,6 +84,11 @@ void Goomba::Render(Camera* camera)
 			ani = ANI_GOOMBA_DIE;
 	}
 
+	if (goomstate == GoombaState::flying)
+	{
+		ani = ANI_GOOMBA_FLY;
+	}
+
 	animation_set[ani]->Render(camPos.x, camPos.y + diediff, this->Scale, direction, flipy);
 }
 
@@ -88,11 +99,18 @@ void Goomba::LoadAnimation()
 	AddAnimation(ANI_GOOMBA_IDLE, animation->GetAnimation(ANI_GOOMBA_IDLE));
 	AddAnimation(ANI_GOOMBA_WALK, animation->GetAnimation(ANI_GOOMBA_WALK));
 	AddAnimation(ANI_GOOMBA_DIE, animation->GetAnimation(ANI_GOOMBA_DIE));
+	AddAnimation(ANI_GOOMBA_FLY, animation->GetAnimation(ANI_GOOMBA_FLY));
+
+	//AddAnimation("Idle", animations->Clone("ani-red-para-goomba-idle"));
+	//AddAnimation("Walk", animations->Clone("ani-red-para-goomba-walk"));
+	//AddAnimation("Fly", animations->Clone("ani-red-para-goomba-fly"));
 }
 
 void Goomba::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	GameObject::Update(dt);
+
+	DebugOut(L"[INFO] where x: %f , where y : %f \n", this->Position.x, this->Position.y);
 
 	std::vector<LPCOLLISIONEVENT> coEvents;
 	std::vector<LPCOLLISIONEVENT> coEventsResult;
@@ -143,16 +161,39 @@ void Goomba::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			direction = -direction;
 			//vx = -vx;
 		}
+		
+		if (ny < 0)
+		{
+			if (goomstate == GoombaState::flying)
+			{
+
+				if (jumpcount < 3 && (GetTickCount() - DelayPattern_start) > DELAY_PATTERN)
+				{
+					vy =+ -RED_PARAGOOMBA_LOW_JUMP;
+					jumpcount++;
+				}
+				if (jumpcount == 3)
+				{
+					vy =+ -RED_PARAGOOMBA_HIGH_JUMP;
+
+					DelayPattern_start = GetTickCount();
+
+					jumpcount = 0;
+				}
+			}
+		}
 
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
+
+
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			if (e->obj->EntityTag == Tag::enemy)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->OnCollisionEnter(this, e->nx, e->ny);
 			}
-			if (e->obj->EntityTag == Tag::platform || e->obj->EntityTag == Tag::questionblock)
+			if (e->obj->EntityTag == Tag::platform || e->obj->EntityTag == Tag::questionblock || e->obj->EntityTag == Tag::pipe || e->obj->EntityTag == Tag::brick)
 			{
 				if (e->nx != 0)
 					vx = -vx;
@@ -176,7 +217,7 @@ void Goomba::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 
 	if (obj->EntityTag == Tag::shell && (obj->getVx() != 0))
 	{
-		if (goomstate == GoombaState::walking)
+		if (goomstate == GoombaState::walking || goomstate == GoombaState::flying)
 		{
 			SetState(GoombaState::flydie);
 		}
@@ -206,7 +247,10 @@ void Goomba::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 	{
 		if (ny < 0)
 		{
-			SetState(GoombaState::die);
+			if (goomstate == GoombaState::flying)
+				SetState(GoombaState::walking);
+			else
+				SetState(GoombaState::die);
 			vy = 0;
 		}
 	}

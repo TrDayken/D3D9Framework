@@ -34,11 +34,11 @@ void Koopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 
 void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
+	if (isBeingHold) return;
+
 	GameObject::Update(dt);
 
 	vy += KOOPA_GRAVITY * dt;
-
-
 
 	std::vector<LPCOLLISIONEVENT> coEvents;
 	std::vector<LPCOLLISIONEVENT> coEventsResult;
@@ -233,7 +233,7 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 		if (koopstate == KoopaState::walking)
 		{
 			SetState(KoopaState::die);
-			vy = -0.05f;
+			vy = -0.9;
 		}
 	}
 
@@ -246,12 +246,6 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 	//		vx = -vx;
 	//	}
 	//}
-
-	if (obj->EntityTag == Tag::enemy)
-	{
-		direction = -direction;
-		vx = -vx;
-	}
 
 	if (obj->EntityTag == Tag::projectile)
 	{
