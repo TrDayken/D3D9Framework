@@ -103,7 +103,7 @@ void RedMushroomPowerUps::OnOverLap(GameObject* obj)
 
 	if (obj->EntityTag == Tag::player)
 	{
-		DebugOut(L"[INFO] collide \n");
+
 		ScoreFx* score = static_cast<ScoreFx*>(FXObjectManager::GetInstance()->CreateFx("score", this->Position));
 		score->setLevel(4);
 		Global_Variable::GetInstance()->AddScore(1000);

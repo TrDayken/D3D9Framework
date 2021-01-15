@@ -21,6 +21,8 @@ void Koopa::LoadAnimation()
 
 void Koopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
+	if (isBeingHold) return;
+
 	left = this->Position.x;
 	top = this->Position.y;
 	right = this->Position.x + KOOPA_BBOX_WIDTH;
@@ -82,6 +84,7 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			if (koopstate != KoopaState::slide)
 			{
 				direction = -direction;
+				vx = -vx;
 				//vx = -vx;
 			}
 		}
@@ -95,26 +98,47 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				obj->OnCollisionEnter(this, e->nx, e->ny);
 			}
 
-			if (((e->obj->EntityTag == Tag::platform)||(e->obj->EntityTag == Tag::brick)) && (this->koopstate != KoopaState::shell) || (this->koopstate != KoopaState::slide))
+			if ((e->obj->EntityTag == Tag::platform) && (this->koopstate != KoopaState::shell) || (this->koopstate != KoopaState::slide))
 			{
-				if (e->ny < 0);
+				if (e->ny < 0)
 				{
 					maxleft = e->obj->getX();
 					maxright = e->obj->getX() + e->obj->getWidth() - KOOPA_BBOX_WIDTH;
 				}
 
 				if (e->nx != 0)
-				vx = -vx;
+					vx = -vx;
 			}
 
-			if ((e->obj->EntityTag == Tag::questionblock || e->obj->EntityTag == Tag::brick) && this->koopstate == KoopaState::slide)
+			if (e->obj->EntityTag == Tag::platform && this->koopstate == KoopaState::slide)
 			{
-				if (e->nx != 0);
+				if (e->nx != 0)
+				{
+					vx = -vx;
+				}
+			}
+
+			if ((e->obj->EntityTag == Tag::questionblock) && this->koopstate == KoopaState::slide)
+			{
+				if (e->nx != 0)
 				{
 					e->obj->OnCollisionEnter(this, e->nx, e->ny);
 					direction = -direction;
 				}
 			}
+			
+			if ((e->obj->EntityTag == Tag::brick) && this->koopstate == KoopaState::slide);
+			{
+				if (e->nx != 0)
+				{
+					e->obj->OnCollisionEnter(this, e->nx, e->ny);
+					direction = -direction;
+					vx = - vx;
+				}
+
+			}
+
+
 		}
 
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];

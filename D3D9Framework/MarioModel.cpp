@@ -11,6 +11,7 @@
 #include "FireShoot.h"
 #include "PSwitch.h"
 #include "FakeGoldenBlock.h"
+#include "Brick.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -300,7 +301,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 	{
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 
-		GameObject* koop = new FakeGoldenBlock();
+		GameObject* koop = new Brick();
 
 		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
 		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);

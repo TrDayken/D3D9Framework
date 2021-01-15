@@ -6,6 +6,9 @@
 #define BRICK_BBOX_WIDTH 48
 #define BRICK_BBOX_HEIGHT 48
 
+#define BRICK_STATE 0
+#define COIN_STATE 1
+
 class Brick : public GameObject
 {
 public:

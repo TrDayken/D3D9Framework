@@ -2,6 +2,7 @@
 #include "AnimationManager.h"
 #include "FXObjectManager.h"
 #include "ScenceManager.h"
+#include "Global_Variable.h"
 
 Brick::Brick()
 {
@@ -10,13 +11,20 @@ Brick::Brick()
 	ColTag = Collision2DTag::FourSide;
 
 	EntityTag = Tag::brick;
+
+	this->state = BRICK_STATE;
 }
 
 void Brick::Render(Camera* camera)
 {
 	GameObject::Render(camera); 
 
-	animation_set["GoldenBrick"]->Render(RenderPosition.x, RenderPosition.y); 
+	std::string ani = "GoldenBrick";
+
+	if (state == COIN_STATE)
+		ani = "PTime";
+
+	animation_set[ani]->Render(RenderPosition.x, RenderPosition.y); 
 
 	//RenderBoundingBox(camera);
 }
@@ -26,6 +34,8 @@ void Brick::LoadAnimation()
 	auto animation = AnimationManager::GetInstance();
 
 	this->AddAnimation("GoldenBrick", animation->GetAnimation("ani-brick"));
+	this->AddAnimation("PTime", animation->GetAnimation("ani-idle-coin"));
+
 }
 
 void Brick::GetBoundingBox(float& l, float& t, float& r, float& b)
@@ -46,9 +56,16 @@ void Brick::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 
 void Brick::OnOverLap(GameObject* obj)
 {
-	if (obj->EntityTag == Tag::tail)
+	if (obj->EntityTag == Tag::tail && state == BRICK_STATE)
 	{
 		this->Explode();
+	}
+
+	if (obj->EntityTag == Tag::player && state == COIN_STATE)
+	{
+		Global_Variable::GetInstance()->AddCoin(1);
+		Global_Variable::GetInstance()->AddScore(50);
+		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 	}
 }
 
@@ -60,6 +77,19 @@ void Brick::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	coEvents.clear();
 
 	CalcPotentialCollisions(coObjects, coEvents);
+
+	if (Global_Variable::GetInstance()->isPtimeUp())
+	{
+		this->state = COIN_STATE;
+		ColTag = Collision2DTag::None;
+
+	}
+	else
+	{
+		this->state = BRICK_STATE;
+		ColTag = Collision2DTag::FourSide;
+
+	}
 }
 
 void Brick::Explode()
