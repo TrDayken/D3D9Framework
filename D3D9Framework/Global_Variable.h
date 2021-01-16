@@ -38,6 +38,8 @@ typedef D3DXVECTOR3 Vector3;
 
 #define PSWITCH_TIME  10000
 
+#define GAME_TIME 300000
+
 class Global_Variable
 {
 	static Global_Variable* _instance;
@@ -54,8 +56,12 @@ class Global_Variable
 
 	DWORD Ptime_start; 
 
+	DWORD Game_time_start;
+
 	//store mario cards, unimplemented.
 	std::vector<int> Cards;
+
+	bool isinsecret = false;
 
 public:
 
@@ -82,9 +88,19 @@ public:
 	bool isPtimeUp();
 	DWORD getPTimeLeft();
 
+	bool getSecret();
+	void setSecret(bool se);
+
 	std::string FormatScore();
 	std::string Formatcoin(); 
 	std::string FormatLife();
+	std::string FormatTime(); 
+
+	void setCard(int cardid);
+	std::vector<int> getCardCarousel();
+
+	DWORD getGameTimeLeft();
+	void startGameTime();
 
 	static Global_Variable* GetInstance(); 
 };

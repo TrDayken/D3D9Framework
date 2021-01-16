@@ -41,7 +41,8 @@ enum class MovingStates
 	Walk,
 	Run,
 	Crouch,
-	Attack
+	Attack,
+	pipe
 };
 
 enum class JumpingStates
@@ -62,6 +63,8 @@ struct MarioStateSet
 class MarioModel : public GameObject
 {
 protected:
+
+	bool isInvincible;
 	int InvincibleFrame;
 	DWORD InvincibleTime_Start;
 	DWORD HighJumpTime_Start;
@@ -117,11 +120,19 @@ public:
 
 	int getChangetoLevel();
 
+	bool getInvincible();
+	void setInvincible(bool is);
+
+	DWORD getInvincible_Time();
+	void setInvincible_Time(DWORD time);
+
 	void SetChangetoLevel(int level);
 
 	void SetPosition(int x, int y);
 
 	int getPmetter(); 
+
+	void TakeDmg();
 };
 
 #endif

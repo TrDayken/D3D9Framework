@@ -60,6 +60,7 @@ public:
 	void setScrollX(bool isscrollX);
 	void setScrollY(bool isscrollY);
 
+	void setIsFollow(bool is);
 	bool IsFollow();
 
 	void Update(DWORD dt);

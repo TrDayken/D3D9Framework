@@ -61,6 +61,7 @@ void RacoonMario::OnKeyUp(int KeyCode)
 	case DIK_X:
 		isFlying = false;
 		isFloating = false;
+		state.jump == JumpingStates::Float;
 		break;
 	}
 
@@ -142,36 +143,6 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	}
 	else vy += MARIO_GRAVITY * dt;
 	
-	//if (flying == 0 && !isOnGround)
-	//	if (holdfly)
-	//	{
-	//		vy = FLOAT_GRAVITY;
-	//		setJumpstate(JumpingStates::Float);
-	//	}
-	//	else
-	//	{
-	//		vy += MARIO_GRAVITY * dt;
-	//	}
-	//
-	//DebugOut(L"%d \n", flying);
-	//if (flying == 1 && (GetTickCount() - Flyingtime_start) < RACCOON_MARIO_FLYTIME)
-	//{
-	//	flying = 2;
-	//	PMetter = 0;
-	//	if (holdfly)
-	//	{
-	//		vy = -FLOAT_GRAVITY * dt;
-	//		//setJumpstate(JumpingStates::Fly);
-	//	}
-	//	else
-	//	{
-	//		vy = -RACCOON_MARIO_FLY_FROCE * dt;
-	//		setJumpstate(JumpingStates::Fly);
-	//	}
-	//	
-	//}
-	//else if(flying ==2 && !(GetTickCount() - Flyingtime_start < RACCOON_MARIO_FLYTIME))
-	//	flying = 0;
 }
 
 void RacoonMario::Render(Camera* camera)

@@ -84,6 +84,16 @@ DWORD Global_Variable::getPTimeLeft()
 	return PSWITCH_TIME -(GetTickCount() - Ptime_start);
 }
 
+bool Global_Variable::getSecret()
+{
+	return this->isinsecret;
+}
+
+void Global_Variable::setSecret(bool se)
+{
+	this->isinsecret = se;
+}
+
 std::string Global_Variable::FormatScore()
 {
 	std::string format = std::to_string(score);
@@ -103,6 +113,43 @@ std::string Global_Variable::Formatcoin()
 std::string Global_Variable::FormatLife()
 {
 	return std::to_string(life);
+}
+
+std::string Global_Variable::FormatTime()
+{
+	return std::to_string(getGameTimeLeft()/1000);
+}
+
+void Global_Variable::setCard(int cardid)
+{
+	this->Cards.push_back(cardid);
+}
+
+std::vector<int> Global_Variable::getCardCarousel()
+{
+	std::vector<int> card = this->Cards;
+
+	if (this->Cards.size() < 3);
+	{
+		card = this->Cards;
+	}
+
+	for (int i = Cards.size(); i < 3; i++)
+	{
+		card.push_back(0);
+	}
+
+	return card;
+}
+
+DWORD Global_Variable::getGameTimeLeft()
+{
+	return GAME_TIME - (GetTickCount() - Game_time_start);
+}
+
+void Global_Variable::startGameTime()
+{
+	this->Game_time_start = GetTickCount();
 }
 
 Global_Variable* Global_Variable::GetInstance()

@@ -5,6 +5,7 @@
 #include "DebrisFx.h"
 #include "CoinFx.h"
 #include "ScoreFx.h"
+#include "GrowUpFx.h"
 
 FXObjectManager* FXObjectManager::_instance = NULL; 
 
@@ -23,6 +24,10 @@ AbstractFXObject* FXObjectManager::CreateFx(std::string name, Vector2 start_posi
 		fx = new SmokeFx();
 	else if (name == "hit")
 		fx = new HitFx(); 
+	else if (name == "grow")
+	{
+		fx = new GrowUpFx();
+	}
 	else if (name == "debris")
 	{
 		fx = new DebrisFx();

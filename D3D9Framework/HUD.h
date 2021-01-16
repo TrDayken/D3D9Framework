@@ -15,6 +15,10 @@ private:
 
 	LPSPRITE hud; 
 
+	std::unordered_map<int, LPSPRITE> CardVisual;
+
+	std::vector<int> cards;
+
 public:
 
 	HUD();

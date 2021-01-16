@@ -1,6 +1,7 @@
 #include "EndGameReward.h"
 #include "SpriteManager.h"
 #include "Game.h"
+#include "Global_Variable.h"
 
 EndGameReward::EndGameReward()
 {
@@ -40,7 +41,8 @@ void EndGameReward::Render(Camera* camera)
 {
 	Vector2 pos = camera->toCameraPosistion(Position.x, Position.y);
 
-	items[reward]->Draw(pos.x, pos.y);
+	if (!collected)
+		items[reward]->Draw(pos.x, pos.y);
 
 	if (collected)
 		Game::GetInstance()->GetFont()->RenderText("COURSE CLEAR", pos);
@@ -68,6 +70,12 @@ void EndGameReward::GetBoundingBox(float& left, float& top, float& right, float&
 
 void EndGameReward::OnOverLap(GameObject* obj)
 {
-	if (obj->EntityTag == Tag::player)
-		this->collected = true;
+	if (!collected)
+	{
+		if (obj->EntityTag == Tag::player)
+		{
+			Global_Variable::GetInstance()->setCard(this->reward + 1 );
+			this->collected = true;
+		}
+	}
 }

@@ -109,6 +109,11 @@ void Camera::setScrollY(bool isscrollY)
 	this->scroll_y = isscrollY;
 }
 
+void Camera::setIsFollow(bool is)
+{
+	this->isfollow = is;
+}
+
 bool Camera::IsFollow()
 {
 	return this->isfollow;

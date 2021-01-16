@@ -1,18 +1,8 @@
 #include "MarioModel.h"
 #include "FXObjectManager.h"
 #include "Game.h"
-#include "RedVenus.h"
-#include "Goomba.h"
-#include "RedMushroomPowerUps.h"
-#include "RaccoonPowerUps.h"
 #include "ScoreFx.h"
-#include "EndGameReward.h"
 #include "Pipe.h"
-#include "FireShoot.h"
-#include "PSwitch.h"
-#include "FakeGoldenBlock.h"
-#include "Brick.h"
-#include "WarpEntrance.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -24,6 +14,7 @@ MarioModel::MarioModel(float x, float y)
 	this->changestate = -1;
 
 	InvincibleFrame = 0;
+	isInvincible = false;
 
 	LoadAnimation();
 
@@ -94,7 +85,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	if (GetTickCount() - InvincibleTime_Start > MARIO_UNTOUCHABLE_TIME)
 	{
 		InvincibleTime_Start = 0;
-		InvincibleFrame = 0;
+		isInvincible = false;
 	}
 
 	// No collision occured, proceed normally
@@ -168,18 +159,34 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				e->obj->setIsHoldAble(false);
 				Hold = e->obj;
 			}
-			else if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell)
+			else if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell || e->obj->EntityTag == Tag::plant )
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->OnCollisionEnter(this, e->nx, e->ny);
 				if (e->ny < 0)
 				{
-					vy = -MARIO_DEFLECT_MOB * dt;
-					state.jump = JumpingStates::Jump;
+					if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell)
+					{
+						vy = -MARIO_DEFLECT_MOB * dt;
+						state.jump = JumpingStates::Jump;
+					}
+					if (e->obj->EntityTag == Tag::plant && !(this->isInvincible))
+					{
+						InvincibleTime_Start = GetTickCount();
+						isInvincible = true;
+						this->TakeDmg();
+						DebugOut(L"[Info] mario take damage \n");
+					}
 				}
 				else
 				{
-					DebugOut(L"[Info] mario take damage \n");
+					if (!(this->isInvincible))
+					{
+						InvincibleTime_Start = GetTickCount();
+						isInvincible = true;
+						this->TakeDmg();
+						DebugOut(L"[Info] mario take damage \n");
+					}
 				}
 
 			}
@@ -228,7 +235,8 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	if (vy > 0)
 	{
-		state.jump = JumpingStates::Fall;
+		if (state.jump != JumpingStates::Float)
+			state.jump = JumpingStates::Fall;
 		//isOnGround = false;
 	}
 	
@@ -328,20 +336,12 @@ void MarioModel::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 	{
-		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
-
-		GameObject* koop = new Brick();
-
-		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
-		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
 
 		break;
 	}
 	case DIK_W:
 	{
-		auto score =	static_cast<ScoreFx*>(FXObjectManager::GetInstance()->CreateFx("score", this->Position));
 
-		score->setLevel(0);
 		//GameObject* koop = new RedMushroomPowerUps();
 
 		//Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
@@ -465,6 +465,10 @@ void MarioModel::OnOverLap(GameObject* obj)
 		if (Game::GetInstance()->IsKeyDown(entrance->getKeyDirection()))
 		{
 			DebugOut(L"[INFO] Start Pipe \n");
+
+			state.movement = MovingStates::pipe;
+
+
 			this->dir = entrance->getWarpDirection();
 			warpping = 1;
 			warptime_start = GetTickCount();
@@ -479,6 +483,19 @@ void MarioModel::OnOverLap(GameObject* obj)
 		this->SetPosition(pipe->getDes_x(), pipe->getDes_y());
 
 		warpping = 0;
+
+		state.movement == MovingStates::Idle;
+
+		if (Global_Variable::GetInstance()->getSecret() == false)
+			Global_Variable::GetInstance()->setSecret(true);
+		else
+			Global_Variable::GetInstance()->setSecret(false);
+	}
+	else if (obj->EntityTag == Tag::enemyprojectile)
+	{
+		InvincibleTime_Start = GetTickCount();
+		isInvincible = true;
+		this->TakeDmg();
 	}
 
 }
@@ -486,6 +503,26 @@ void MarioModel::OnOverLap(GameObject* obj)
 int MarioModel::getChangetoLevel()
 {
 	return this->changestate;
+}
+
+bool MarioModel::getInvincible()
+{
+	return this->isInvincible;
+}
+
+void MarioModel::setInvincible(bool is)
+{
+	this->isInvincible = is;
+}
+
+DWORD MarioModel::getInvincible_Time()
+{
+	return this->InvincibleTime_Start;
+}
+
+void MarioModel::setInvincible_Time(DWORD time)
+{
+	this->InvincibleTime_Start = time;
 }
 
 void MarioModel::SetChangetoLevel(int level)
@@ -501,4 +538,20 @@ void MarioModel::SetPosition(int x, int y)
 int MarioModel::getPmetter()
 {
 	return this->PMetter;
+}
+
+void MarioModel::TakeDmg()
+{
+	if (this->getCurrentLevel() > 1)
+	{
+		this->SetChangetoLevel(1);
+	}
+	else if (this->getCurrentLevel() == 1)
+	{
+		this->SetChangetoLevel(0);
+	}
+	else if (this->getCurrentLevel() == 0)
+	{
+		DebugOut(L"this mario die \n" );
+	}
 }

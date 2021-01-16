@@ -110,7 +110,7 @@ void Goomba::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	GameObject::Update(dt);
 
-	DebugOut(L"[INFO] where x: %f , where y : %f \n", this->Position.x, this->Position.y);
+	//DebugOut(L"[INFO] where x: %f , where y : %f \n", this->Position.x, this->Position.y);
 
 	std::vector<LPCOLLISIONEVENT> coEvents;
 	std::vector<LPCOLLISIONEVENT> coEventsResult;

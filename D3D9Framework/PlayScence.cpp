@@ -29,6 +29,8 @@ void PlayScence::Load()
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
 	
 
+	Global_Variable::GetInstance()->startGameTime();
+
 }
 
 void PlayScence::Update(DWORD dt)
@@ -68,9 +70,31 @@ void PlayScence::Update(DWORD dt)
 		earseobjects.clear();
 	}
 
+	bool isfollow = false; 
+
+	if (!camera->IsFollow())
+	{
+		camera->setCameraPosition(6192 + 48, 1920);
+
+		if (Global_Variable::GetInstance()->getSecret() == false)
+		{
+			camera->setIsFollow(true);
+		}
+	}
+
 
 	if (camera->IsFollow())
-		camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, mario->getY() - WINDOW_HEIGHT/2);/*800*/
+	{
+		if (Global_Variable::GetInstance()->getSecret() == true)
+		{
+			camera->setIsFollow(false);
+		}
+		else if ((this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Fly || this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Float) || mario->getY() < 600 || mario->getY() > 1300)
+			camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, mario->getY() - WINDOW_HEIGHT / 2);/*800*/
+		else 
+			camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, 720);
+
+	}
 
 	//mario->Update(dt, &coObjects);
 
