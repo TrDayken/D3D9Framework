@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="23" nextobjectid="301">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="23" nextobjectid="324">
  <editorsettings>
   <export target="../../../../../Resource/Xml/NewMap/BigMap/world-1-1-map.xml" format="tmx"/>
  </editorsettings>
@@ -336,6 +336,15 @@
   <object id="105" name="koopa" type="green" x="4392" y="1200">
    <point/>
   </object>
+  <object id="106" name="koopa" type="green-para" x="3960" y="900">
+   <point/>
+  </object>
+  <object id="107" name="koopa" type="green-para" x="4104" y="900">
+   <point/>
+  </object>
+  <object id="108" name="koopa" type="green-para" x="4248" y="900">
+   <point/>
+  </object>
   <object id="109" name="piranha-plant" type="green" x="5352" y="1152">
    <point/>
   </object>
@@ -547,6 +556,15 @@
    <point/>
   </object>
   <object id="75" x="6288" y="1200">
+   <point/>
+  </object>
+  <object id="321" x="5856" y="1104">
+   <point/>
+  </object>
+  <object id="322" x="5808" y="1104">
+   <point/>
+  </object>
+  <object id="323" x="5808" y="1152">
    <point/>
   </object>
  </objectgroup>

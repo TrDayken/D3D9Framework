@@ -141,6 +141,16 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 		}
 
+		if (coEvents.size() == 1 && koopstate == KoopaState::walking)
+		{
+
+			LPCOLLISIONEVENT e = coEvents[0];
+
+
+			LPGAMEOBJECT obj = e->obj;
+		}
+
+
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	}
 

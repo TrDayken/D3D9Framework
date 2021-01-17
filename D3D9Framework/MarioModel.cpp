@@ -337,6 +337,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 	case DIK_Q:
 	{
 
+		this->Position = Vector2(6144, 1008);
 		break;
 	}
 	case DIK_W:
