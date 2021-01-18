@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "ScoreFx.h"
 #include "Pipe.h"
+#include "FireShoot.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -35,7 +36,6 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	std::vector<LPCOLLISIONEVENT> coEventsResult;
 	std::vector<LPGAMEOBJECT> coObjectsResult;
 	coEvents.clear();
-
 	
 
 	//if (x + dx <= 1)
@@ -101,7 +101,8 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		float rdy = 0;
 
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
-
+		
+		
 		//filter colision axis by axis
 		if (min_tx > min_ty)
 		{
@@ -343,12 +344,9 @@ void MarioModel::OnKeyDown(int KeyCode)
 	case DIK_W:
 	{
 
-		//GameObject* koop = new RedMushroomPowerUps();
+		GameObject* koop = new FireShoot(this->Position.x, this->Position.y, this->direction);
 
-		//Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
-
-		//koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY());
-		//ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
 		break;
 	}
 	}
@@ -492,7 +490,7 @@ void MarioModel::OnOverLap(GameObject* obj)
 		else
 			Global_Variable::GetInstance()->setSecret(false);
 	}
-	else if (obj->EntityTag == Tag::enemyprojectile)
+	else if (obj->EntityTag == Tag::enemyprojectile && (!this->isInvincible))
 	{
 		InvincibleTime_Start = GetTickCount();
 		isInvincible = true;

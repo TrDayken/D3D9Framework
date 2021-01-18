@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
-#define REWARD_CYCLE_TIME 70 
+#define REWARD_CYCLE_TIME 150 
 #define REWARD_BBOX_X 48
 #define REWARD_BBOX_Y 48
 

@@ -147,6 +147,7 @@
     <ClCompile Include="AnimationManager.cpp" />
     <ClCompile Include="AttackTail.cpp" />
     <ClCompile Include="BigMario.cpp" />
+    <ClCompile Include="BoomerangBrother.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Coin.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="EndGameReward.cpp" />
     <ClCompile Include="FakeGoldenBlock.cpp" />
+    <ClCompile Include="FallingPlatform.cpp" />
     <ClCompile Include="FireMario.cpp" />
     <ClCompile Include="FireShoot.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -166,6 +168,7 @@
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="GreenPiranha.cpp" />
     <ClCompile Include="GreenVenus.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="GrowUpFx.cpp" />
     <ClCompile Include="HitFx.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -217,6 +220,7 @@
     <ClInclude Include="AnimationManager.h" />
     <ClInclude Include="AttackTail.h" />
     <ClInclude Include="BigMario.h" />
+    <ClInclude Include="BoomerangBrother.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Coin.h" />
@@ -225,6 +229,7 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EndGameReward.h" />
     <ClInclude Include="FakeGoldenBlock.h" />
+    <ClInclude Include="FallingPlatform.h" />
     <ClInclude Include="FireMario.h" />
     <ClInclude Include="FireShoot.h" />
     <ClInclude Include="Font.h" />
@@ -236,6 +241,7 @@
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="GreenPiranha.h" />
     <ClInclude Include="GreenVenus.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="GrowUpFx.h" />
     <ClInclude Include="HitFx.h" />
     <ClInclude Include="HUD.h" />

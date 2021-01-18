@@ -206,6 +206,15 @@
     <Filter Include="Entity\Enemy\Piranha">
       <UniqueIdentifier>{01176be2-8049-4326-89eb-1313f98a46ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Blocks\SolidBlocks\FallingBlock">
+      <UniqueIdentifier>{1114c517-0534-4152-8caf-9d1a98a34252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Enemy\BoomerangBrother">
+      <UniqueIdentifier>{5437fbc5-037c-4c89-b6c8-61c7783207e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FrameWork\Grid">
+      <UniqueIdentifier>{c882a72d-995a-4dfc-908c-79753b04c659}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -410,7 +419,16 @@
       <Filter>Entity\Enemy\Piranha</Filter>
     </ClCompile>
     <ClCompile Include="GreenVenus.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Entity\Enemy\Venus</Filter>
+    </ClCompile>
+    <ClCompile Include="FallingPlatform.cpp">
+      <Filter>Entity\Blocks\SolidBlocks\FallingBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomerangBrother.cpp">
+      <Filter>Entity\Enemy\BoomerangBrother</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files\FrameWork\Grid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -606,6 +624,17 @@
     <ClInclude Include="GreenPiranha.h">
       <Filter>Entity\Enemy\Piranha</Filter>
     </ClInclude>
-    <ClInclude Include="GreenVenus.h" />
+    <ClInclude Include="GreenVenus.h">
+      <Filter>Entity\Enemy\Venus</Filter>
+    </ClInclude>
+    <ClInclude Include="FallingPlatform.h">
+      <Filter>Entity\Blocks\SolidBlocks\FallingBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomerangBrother.h">
+      <Filter>Entity\Enemy\BoomerangBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Source Files\FrameWork\Grid</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

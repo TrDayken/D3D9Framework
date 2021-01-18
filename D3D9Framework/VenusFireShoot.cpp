@@ -2,7 +2,7 @@
 
 VenusFireShoot::VenusFireShoot(float x, float y, int direction, int vertical )
 {
-	ColTag == Collision2DTag::None;
+	ColTag = Collision2DTag::None;
 
 	EntityTag = Tag::enemyprojectile;
 
@@ -45,6 +45,7 @@ void VenusFireShoot::LoadAnimation()
 
 void VenusFireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
+
 	GameObject::Update(dt);
 
 	this->Position.x += dx;
