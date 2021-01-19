@@ -21,6 +21,7 @@ class MapScence :
 public: 
 
 	MapScence();
+	MapScence(std::string id, std::string mappath, std::string filepath);
 	~MapScence();
 
 	virtual void Load();

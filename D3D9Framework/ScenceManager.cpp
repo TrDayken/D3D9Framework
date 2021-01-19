@@ -20,15 +20,33 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 
 		for (TiXmlElement* XMLScence = root->FirstChildElement("Scence"); XMLScence != NULL ; XMLScence = XMLScence->NextSiblingElement("Scence"))
 		{
+			std::string id, mappath, filepath;
+
+			TiXmlElement* XMLmap = XMLScence->FirstChildElement("Map");
+
+			id = XMLmap->Attribute("id");
+			mappath = XMLmap->Attribute("filelocation");
+			filepath = XMLmap->Attribute("filepath");
+
 			Scence* scence = NULL;
 			std::string type = XMLScence->Attribute("type");
 
-			if (type == "PlayScence");
-				scence = new MapScence();
+			if (type == "PlayScence")
+			{
+				scence = new PlayScence(id, mappath, filepath);
+				this->Pair(id, scence);
+
+			}
+			else if (type == "MapScence")
+			{
+				scence = new MapScence(id, mappath, filepath);
+				this->Pair(id, scence);
+				AddScence(scence);
+			}
 
 			TiXmlElement* XMLMap = XMLScence->FirstChildElement("Map");
 
-			AddScence(scence);
+
 		}
 
 		DebugOut(L"[INFO] Load Scence successful \n");
@@ -93,4 +111,28 @@ void ScenceManager::LoadSource(const char* FilePath)
 			}
 		}
 	}
+}
+
+void ScenceManager::SwitchScence(std::string id)
+{
+	currentscence->Unload();
+
+	currentscence = loadedScenes[id];
+	currentscence->Load();
+	Game::GetInstance()->SetKeyHandler(currentscence->GetKeyEventHandler());
+}
+
+void ScenceManager::Pair(std::string id, Scence* scence)
+{
+	this->loadedScenes[id] = scence;
+}
+
+void ScenceManager::Load()
+{
+	this->currentscence->Load();
+}
+
+void ScenceManager::Unload()
+{
+	this->currentscence->Unload();
 }

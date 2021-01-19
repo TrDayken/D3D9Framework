@@ -4,8 +4,9 @@ Scence::Scence()
 {
 }
 
-Scence::Scence(int id, LPCWSTR filePath)
+Scence::Scence(std::string id, std::string mappath, std::string filePath)
 {
 	this->id = id;
+	this->mapPath = mappath;
 	this->sceneFilePath = filePath;
 }

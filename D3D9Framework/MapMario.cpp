@@ -1,6 +1,6 @@
 #include "MapMario.h"
 #include "AnimationManager.h"
-
+#include "ScenceManager.h"
 
 void MapMario::LoadAnimation()
 {
@@ -106,6 +106,12 @@ void MapMario::OnKeyDown(int KeyCode)
 	if (this->ismovingx || this->ismovingy) return;
 
 	auto currentnode = map->getNode(this->currentNode);
+
+	if (KeyCode == DIK_A)
+	{
+		if (currentnode->getScence() != "")
+			ScenceManager::GetInstance()->SwitchScence(currentnode->getScence());
+	}	
 
 
 	int acceptedKey;

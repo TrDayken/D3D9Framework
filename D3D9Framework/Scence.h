@@ -11,13 +11,17 @@ class Scence
 {
 protected:
 	KeyEventHandler* key_handler;
-	int id;
-	LPCWSTR sceneFilePath;
+
+	std::string id;
+	std::string sceneFilePath;
+	std::string mapPath;
 	Camera* camera;
+
+	bool unload;
 
 public:
 	Scence();
-	Scence(int id, LPCWSTR filePath);
+	Scence(std::string id,std::string mappath, std::string filePath);
 
 	KeyEventHandler* GetKeyEventHandler() { return key_handler; }
 

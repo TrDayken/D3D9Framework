@@ -5,14 +5,15 @@ PlayScence::PlayScence()
 	key_handler = new PlayScenceKeyHandler(this);
 }
 
-PlayScence::PlayScence(int id, LPCWSTR filePath) : Scence(id, filePath)
-{ 
+PlayScence::PlayScence(std::string id, std::string mappath, std::string filepath) : Scence(id, mappath, filepath)
+{
 	key_handler = new PlayScenceKeyHandler(this);
 }
 
+
 void PlayScence::Load()
 {
-	addtoScenceManager();
+	this->unload = false;
 
 	hud = new HUD(); 
 
@@ -23,7 +24,7 @@ void PlayScence::Load()
 	objects.push_back(mario);
 
 	tilemap = new Map();
-	tilemap->LoadMapfromTMX("textures\\Map\\world-1-1-map.tmx", "textures\\Map\\");
+	tilemap->LoadMapfromTMX(this->mapPath.c_str(), this->sceneFilePath.c_str());
 
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
@@ -41,13 +42,14 @@ void PlayScence::Update(DWORD dt)
 
 	for (size_t i = 0; i < objects.size(); i++)
 	{
-		
+		if (unload) return;
 		objects[i]->Update(dt, &coObjects);
 		
 	}
 
 	for (size_t i = 0; i < UIElement.size(); i++)
 	{
+		if (unload) return;
 		UIElement[i]->Update(dt); 
 	}
 
@@ -126,7 +128,24 @@ void PlayScence::Render()
 
 void PlayScence::Unload()
 {
+	this->unload = true; 
 
+	for (int i = 0; (unsigned)i < objects.size(); i++)
+		delete objects[i];
+
+	objects.clear();
+
+	for (int i = 0; (unsigned)i < UIElement.size(); i++)
+		delete UIElement[i];
+	UIElement.clear();
+
+	tilemap->Unload();
+
+	//delete uiobject
+
+	mario = NULL;
+
+	DebugOut(L"[UNLOADED] PlayScence has unloaded \n");
 }
 
 void PlayScence::addtoScenceManager()

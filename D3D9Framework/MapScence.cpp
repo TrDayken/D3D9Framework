@@ -6,14 +6,17 @@ MapScence::MapScence()
 	key_handler = new MapScenceKeyHandler(this);
 }
 
+MapScence::MapScence(std::string id, std::string mappath, std::string filepath):Scence(id, mappath, filepath)
+{
+	key_handler = new MapScenceKeyHandler(this);
+}
+
 MapScence::~MapScence()
 {
 }
 
 void MapScence::Load()
 {
-	addtoScenceManager();
-
 	hud = new HUD();
 
 	AddUI(hud);
@@ -22,7 +25,7 @@ void MapScence::Load()
 	mario->setPosition(96, 144);
 
 	tilemap = new Map();
-	tilemap->LoadMapfromTMX("textures\\Map\\overworld-1-map.tmx", "textures\\Map\\");
+	tilemap->LoadMapfromTMX(this->mapPath.c_str(), this->sceneFilePath.c_str());
 
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());

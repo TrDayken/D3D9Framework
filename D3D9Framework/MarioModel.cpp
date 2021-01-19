@@ -338,7 +338,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 	case DIK_Q:
 	{
 
-		this->Position = Vector2(6144, 1008);
+		ScenceManager::GetInstance()->SwitchScence("world-map");
 		break;
 	}
 	case DIK_W:

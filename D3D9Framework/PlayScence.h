@@ -24,7 +24,7 @@ protected:
 
 public:
 	PlayScence();
-	PlayScence(int id, LPCWSTR filePath);
+	PlayScence(std::string id, std::string mappath, std::string filepath);
 
 	virtual void Load();
 	virtual void Update(DWORD dt);
