@@ -7,5 +7,7 @@ public:
 	GreenShroom();
 
 	void LoadAnimation();
+
+	virtual void OnOverLap(GameObject* obj) override;
 };
 
