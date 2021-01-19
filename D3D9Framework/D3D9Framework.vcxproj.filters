@@ -215,6 +215,15 @@
     <Filter Include="Source Files\FrameWork\Grid">
       <UniqueIdentifier>{c882a72d-995a-4dfc-908c-79753b04c659}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FrameWork\Grid\Cell">
+      <UniqueIdentifier>{5228dd81-383d-4d9a-a41b-1c29e3496dcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\VanityItem\Decoration">
+      <UniqueIdentifier>{1c47b3d1-1e79-45c9-8583-db04d293a7a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\VanityItem\Visual">
+      <UniqueIdentifier>{8f7a47fc-a5d4-4507-aea9-66b64f6db7fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -385,9 +394,6 @@
     <ClCompile Include="MapMario.cpp">
       <Filter>Entity\Mario\MapMario</Filter>
     </ClCompile>
-    <ClCompile Include="WiggleTree.cpp">
-      <Filter>Entity\VanityItem</Filter>
-    </ClCompile>
     <ClCompile Include="Coin.cpp">
       <Filter>Entity\Misc\Coin</Filter>
     </ClCompile>
@@ -429,6 +435,15 @@
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Source Files\FrameWork\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\FrameWork\Grid\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="WiggleTree.cpp">
+      <Filter>Entity\VanityItem\Decoration</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeVisual.cpp">
+      <Filter>Entity\VanityItem\Visual</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -591,9 +606,6 @@
     <ClInclude Include="MapMario.h">
       <Filter>Entity\Mario\MapMario</Filter>
     </ClInclude>
-    <ClInclude Include="WiggleTree.h">
-      <Filter>Entity\VanityItem</Filter>
-    </ClInclude>
     <ClInclude Include="Coin.h">
       <Filter>Entity\Misc\Coin</Filter>
     </ClInclude>
@@ -635,6 +647,15 @@
     </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>Source Files\FrameWork\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Source Files\FrameWork\Grid\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="WiggleTree.h">
+      <Filter>Entity\VanityItem\Decoration</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeVisual.h">
+      <Filter>Entity\VanityItem\Visual</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

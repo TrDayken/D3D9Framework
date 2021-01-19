@@ -24,7 +24,7 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 			std::string type = XMLScence->Attribute("type");
 
 			if (type == "PlayScence");
-				scence = new PlayScence();
+				scence = new MapScence();
 
 			TiXmlElement* XMLMap = XMLScence->FirstChildElement("Map");
 

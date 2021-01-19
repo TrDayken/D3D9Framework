@@ -18,14 +18,16 @@ void MapScence::Load()
 
 	AddUI(hud);
 
+	mario = new MapMario();
+	mario->setPosition(96, 144);
+
 	tilemap = new Map();
 	tilemap->LoadMapfromTMX("textures\\Map\\overworld-1-map.tmx", "textures\\Map\\");
 
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
 
-	mario = new MapMario();
-	mario->setPosition(100,100);
+
 	//mario->setCamera(camera);
 }
 

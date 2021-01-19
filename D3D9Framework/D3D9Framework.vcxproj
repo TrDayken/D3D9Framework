@@ -150,6 +150,7 @@
     <ClCompile Include="BoomerangBrother.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="CoinFx.cpp" />
     <ClCompile Include="DebrisFx.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="MarioModel.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="NodeMap.cpp" />
+    <ClCompile Include="NodeVisual.cpp" />
     <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="PlayScence.cpp" />
     <ClCompile Include="PMetter.cpp" />
@@ -223,6 +225,7 @@
     <ClInclude Include="BoomerangBrother.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="CoinFx.h" />
     <ClInclude Include="DebrisFx.h" />
@@ -256,6 +259,7 @@
     <ClInclude Include="MarioModel.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NodeMap.h" />
+    <ClInclude Include="NodeVisual.h" />
     <ClInclude Include="Pipe.h" />
     <ClInclude Include="PlayScence.h" />
     <ClInclude Include="PMetter.h" />

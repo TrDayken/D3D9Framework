@@ -10,6 +10,8 @@ Global_Variable::Global_Variable()
 	this->combo = 0; 
 	this->score = 0; 
 	this->time = 0; 
+
+	this->Game_time_start = GetTickCount();
 }
 
 void Global_Variable::ComboUp()

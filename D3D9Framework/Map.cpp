@@ -18,7 +18,8 @@
 #include "RedGoomba.h"
 #include "GreenPiranha.h"
 #include "GreenVenus.h"
-
+#include "MapScence.h"
+#include "NodeVisual.h"
 
 Map::Map()
 {
@@ -293,6 +294,7 @@ void Map::AddObject(TiXmlElement* RootElement)
 				std::string scence;
 
 				objectname = TMXObject->Attribute("name");
+				auto nodetype = TMXObject->Attribute("type");
 
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
@@ -323,6 +325,36 @@ void Map::AddObject(TiXmlElement* RootElement)
 							scence = TMXproperty->Attribute("value");
 						}
 					}
+				}
+
+				if(nodetype != NULL)
+				if (nodetype != "")
+				{
+					auto num = split(nodetype, "-");
+
+					if (num.at(0) == "num")
+					{
+						NodeVisual* visual = new NodeVisual();
+
+						visual->setPosition(x, y);
+						visual->SetNumber(stoi(num.at(1)));
+
+
+						ScenceManager::GetInstance()->getCurrentScence()->AddObject(visual);
+					}
+					else if (num.at(0) == "bonus")
+					{
+						if (num.at(1) == "slot")
+						{
+							NodeVisual* visual = new NodeVisual();
+
+							visual->setPosition(x, y);
+							visual->SetNumber(7);
+
+							ScenceManager::GetInstance()->getCurrentScence()->AddObject(visual);
+						}
+					}
+
 				}
 
 				Node* node = new Node();
@@ -381,6 +413,18 @@ void Map::AddObject(TiXmlElement* RootElement)
 			else
 			{
 				continue;
+			}
+
+
+		}
+
+		Scence* scence = ScenceManager::GetInstance()->getCurrentScence();
+		if (scence != NULL)
+		{
+			auto mapscence = dynamic_cast<MapScence*>(scence);
+			if (mapscence != NULL)
+			{
+				mapscence->GetPlayer()->setMap(nodemap);
 			}
 		}
 	}
