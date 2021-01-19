@@ -5,6 +5,7 @@
 #include "RaccoonPowerUps.h"
 #include "FXObjectManager.h"
 #include "PSwitch.h"
+#include "GreenShroom.h"
 
 QuestionBlock::QuestionBlock()
 {
@@ -173,7 +174,13 @@ void QuestionBlock::PopOutItem()
 	case Item::FireFlower:
 		break;
 	case Item::GreenShroom:
+	{
+		GameObject* shroom = new GreenShroom();
+
+		shroom->setPosition(this->Position.x, this->Position.y - 49);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(shroom);
 		break;
+	}
 	case Item::Coin:
 		FXObjectManager::GetInstance()->CreateFx("coin", this->Position);
 		break;

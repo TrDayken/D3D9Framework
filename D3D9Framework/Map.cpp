@@ -171,6 +171,21 @@ void Map::AddObject(TiXmlElement* RootElement)
 					questionblock = new FakeGoldenBlock();
 					questionblock->SetInBlockItem(Item::PSwitch);
 				}
+				else if (blockname == "fcoin")
+				{
+					questionblock = new FakeGoldenBlock();
+					questionblock->SetInBlockItem(Item::Coin);
+				}
+				else if (blockname == "fleaf")
+				{
+					questionblock = new FakeGoldenBlock();
+					questionblock->SetInBlockItem(Item::RaccoonLeaf);
+				}
+				else if (blockname == "f1up-mushroom")
+				{
+					questionblock = new FakeGoldenBlock();
+					questionblock->SetInBlockItem(Item::GreenShroom);
+				}
 
 
 				questionblock->SetQuantity(quantity);

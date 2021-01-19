@@ -445,6 +445,9 @@
     <ClCompile Include="NodeVisual.cpp">
       <Filter>Entity\VanityItem\Visual</Filter>
     </ClCompile>
+    <ClCompile Include="GreenShroom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -657,5 +660,6 @@
     <ClInclude Include="NodeVisual.h">
       <Filter>Entity\VanityItem\Visual</Filter>
     </ClInclude>
+    <ClInclude Include="GreenShroom.h" />
   </ItemGroup>
 </Project>

@@ -57,6 +57,10 @@
     <Map id= "world-1-1" filelocation = "textures\\Map\\world-1-1-map.tmx" filepath = "textures\\Map\\">
     </Map>
   </Scence>
+  <Scence type = "PlayScence">
+    <Map id= "world-1-4" filelocation = "textures\\Map\\world-1-4-map.tmx" filepath = "textures\\Map\\">
+    </Map>
+  </Scence>
   <Scence type = "MapScence">
     <Map id= "world-map" filelocation = "textures\\Map\\overworld-1-map.tmx" filepath = "textures\\Map\\">
     </Map>

@@ -168,6 +168,7 @@
     <ClCompile Include="Global_Variable.cpp" />
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="GreenPiranha.cpp" />
+    <ClCompile Include="GreenShroom.cpp" />
     <ClCompile Include="GreenVenus.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="GrowUpFx.cpp" />
@@ -243,6 +244,7 @@
     <ClInclude Include="Global_Variable.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="GreenPiranha.h" />
+    <ClInclude Include="GreenShroom.h" />
     <ClInclude Include="GreenVenus.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GrowUpFx.h" />

@@ -343,10 +343,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 	}
 	case DIK_W:
 	{
-
-		GameObject* koop = new FireShoot(this->Position.x, this->Position.y, this->direction);
-
-		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
+		this->Position = Vector2(3072, 384);
 		break;
 	}
 	}
