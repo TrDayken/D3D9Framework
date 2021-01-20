@@ -10,6 +10,14 @@
 #include "UIObject.h"
 #include "HUD.h"
 
+#define LAYER_SIZE 6
+// 0 collectibles
+// 1 block
+// 2 entities
+// 3 mario
+// 4 pipe
+// 5 fx
+
 class PlayScence : public Scence
 {
 protected:

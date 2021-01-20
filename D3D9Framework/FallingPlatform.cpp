@@ -9,6 +9,8 @@ FallingPlatform::FallingPlatform()
 	this->ColTag = Collision2DTag::FourSide;
 
 	this->EntityTag = Tag::unstableplatform;
+
+	this->setRenderOrder(1);
 }
 
 void FallingPlatform::LoadAnimation()

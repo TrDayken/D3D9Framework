@@ -15,6 +15,8 @@ Coin::Coin()
 	ColTag = Collision2DTag::None;
 
 	EntityTag = Tag::coin; 
+
+	this->setRenderOrder(0);
 }
 
 void Coin::Render(Camera* camera)

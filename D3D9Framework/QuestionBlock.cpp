@@ -21,6 +21,8 @@ QuestionBlock::QuestionBlock()
 
 	this->ColTag = Collision2DTag::FourSide;
 
+	this->setRenderOrder(1);
+
 	//this->relativePosition = VectorZero;
 }
 

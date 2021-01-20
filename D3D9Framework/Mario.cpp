@@ -24,6 +24,8 @@ Mario::Mario(float x, float y)
 	//CurrentMario->setPosition(x, y);
 	this->ColTag = Collision2DTag::None;
 	this->EntityTag = Tag::player;
+
+	this->setRenderOrder(3);
 }
 
 void Mario::Unload()

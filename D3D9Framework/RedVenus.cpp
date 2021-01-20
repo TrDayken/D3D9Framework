@@ -22,6 +22,8 @@ RedVenus::RedVenus()
 	state = VenusState::hide;
 
 	this->ColTag == Collision2DTag::None; 
+
+	this->setRenderOrder(2);
 }
 
 RedVenus::~RedVenus()

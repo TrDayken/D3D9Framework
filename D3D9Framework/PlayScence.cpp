@@ -109,16 +109,21 @@ void PlayScence::Render()
 {
 	tilemap->Render(camera);
 
-	for (size_t i = 0; i < objects.size(); i++)
-	{
-		objects[i]->Render(camera);
+	//for (size_t i = 0; i < objects.size(); i++)
+	//{
+	//	objects[i]->Render(camera);
+	//}
 
-		//float l, t, r, b;
-		//objects[i]->GetBoundingBox(l, t, r, b);
-		////DebugOut(L"[INFO] objects bounding box %f, %f, %f, %f \n", l, t, r, b);
+	for (size_t j = 0; j < LAYER_SIZE; j++)
+	{
+		for (int i = 0; (unsigned)i < objects.size(); i++)
+		{
+			if (objects[i]->getRenderOrder() == j)
+				objects[i]->Render(camera);
+		}
 	}
 
-	//mario->Render(camera);
+
 
 	for (size_t i = 0; i < UIElement.size(); i++)
 	{

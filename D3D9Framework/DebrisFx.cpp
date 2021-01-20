@@ -15,6 +15,8 @@ DebrisFx::DebrisFx()
 	ANIMATIONTIME = 1000;
 
 	Bounce_start = GetTickCount(); 
+
+	this->setRenderOrder(5);
 }
 
 void DebrisFx::Render(Camera* camera)

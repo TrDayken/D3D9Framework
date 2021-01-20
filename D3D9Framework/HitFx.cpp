@@ -12,6 +12,8 @@ HitFx::HitFx()
 	LoadAnimation();
 	
 	ANIMATIONTIME = 100;
+
+	this->setRenderOrder(5);
 }
 
 void HitFx::Render(Camera* camera)

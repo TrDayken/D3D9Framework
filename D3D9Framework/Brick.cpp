@@ -13,6 +13,8 @@ Brick::Brick()
 	EntityTag = Tag::brick;
 
 	this->state = BRICK_STATE;
+
+	this->setRenderOrder(1);
 }
 
 void Brick::Render(Camera* camera)

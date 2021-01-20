@@ -12,6 +12,8 @@ Pipe::Pipe()
 	this->ColTag = Collision2DTag::FourSide ;
 
 	this->EntityTag = Tag::pipe;
+
+	this->setRenderOrder(4);
 }
 
 void Pipe::AddAnimation()

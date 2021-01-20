@@ -105,6 +105,8 @@ protected:
 	bool Active;
 
 	Camera* camera;
+
+	int renderorder = -1;
 public: 
 	Tag EntityTag;
 	GameObject();
@@ -118,6 +120,9 @@ public:
 
 	void setSpeed(float vx, float vy);
 	void GetSpeed(float& vx, float& vy);
+
+	void setRenderOrder(int value);
+	int getRenderOrder();
 	
 	virtual void setIsBeingHold(bool isBeingHold);
 	bool IsHoldAble();

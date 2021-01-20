@@ -11,6 +11,8 @@ GreenPiranha::GreenPiranha()
 	state = PiranhaState::hide;
 
 	this->ColTag == Collision2DTag::None;
+
+	this->setRenderOrder(2);
 }
 
 GreenPiranha::~GreenPiranha()

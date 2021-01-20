@@ -18,11 +18,13 @@ RedMushroomPowerUps::RedMushroomPowerUps()
 
 	this->ColTag = Collision2DTag::None;
 
-	RelativePosition = Vector2(0, 48);
+	RelativePosition = Vector2(0, 48/2);
 
 	state = 1;
 
 	this->EntityTag = Tag::mushroom;
+	
+	this->setRenderOrder(0);
 }
 
 void RedMushroomPowerUps::Render(Camera* camera)

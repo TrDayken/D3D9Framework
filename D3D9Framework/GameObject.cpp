@@ -56,6 +56,16 @@ void GameObject::GetSpeed(float& vx, float& vy)
 	vy = this->vy;
 }
 
+void GameObject::setRenderOrder(int value)
+{
+	this->renderorder = value; 
+}
+
+int GameObject::getRenderOrder()
+{
+	return this->renderorder;
+}
+
 void GameObject::setIsBeingHold(bool isBeingHold)
 {
 	this->isBeingHold = isBeingHold;
