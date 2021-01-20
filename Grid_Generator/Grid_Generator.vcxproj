@@ -153,11 +153,15 @@
     <ClCompile Include="..\D3D9Framework\tinyXML\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="Grid_Generator.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObjectGroup.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\D3D9Framework\tinyXML\tinyxml\tinystr.h" />
     <ClInclude Include="..\D3D9Framework\tinyXML\tinyxml\tinyxml.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjectGroup.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

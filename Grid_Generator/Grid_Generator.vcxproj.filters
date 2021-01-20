@@ -16,6 +16,9 @@
     <Filter Include="Source Files\tinyXML">
       <UniqueIdentifier>{cad7c553-329a-4350-8623-f1c192af4919}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{a1118048-fb91-4f84-85a5-3cb8820f10db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Grid_Generator.cpp">
@@ -36,6 +39,12 @@
     <ClCompile Include="Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\D3D9Framework\tinyXML\tinyxml\tinyxml.h">
@@ -45,6 +54,12 @@
       <Filter>Source Files\tinyXML</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectGroup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

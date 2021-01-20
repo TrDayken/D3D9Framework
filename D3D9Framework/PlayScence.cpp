@@ -32,7 +32,7 @@ void PlayScence::Load()
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
 
-	grid = new Grid(6000, 6000);
+	grid = new Grid(tilemap->getMapWidth(), tilemap->getMapHeight());
 	
 
 	Global_Variable::GetInstance()->startGameTime();
