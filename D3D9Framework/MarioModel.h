@@ -118,6 +118,9 @@ public:
 
 	virtual int getCurrentLevel() { return -1; };
 
+	void setHold(GameObject* obj);
+	GameObject* getHold();
+
 	int getChangetoLevel();
 
 	bool getInvincible();

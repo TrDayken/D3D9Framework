@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 
+#define WINDOW_TITLE L"Super Mario"
+#define WINDOW_CLASS_NAME L"Super Mario Bros 3"
 
 #define D3DCOLOR_WHITE D3DCOLOR_XRGB(255, 255, 255)
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(181, 235, 242)
@@ -14,8 +16,6 @@
 #define WINDOW_WIDTH 776 //640 //1920 //768
 #define WINDOW_HEIGHT 744 //480 //1020 //672
 
-#define WINDOW_TITLE L"Super Mario"
-#define WINDOW_CLASS_NAME L"Super Mario Bros 3"
 //camera configuration
 #define CAMERA_WIDTH 768
 #define CAMERA_HEIGHT 672

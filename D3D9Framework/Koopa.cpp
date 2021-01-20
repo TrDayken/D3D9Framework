@@ -245,6 +245,12 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 			SetState(KoopaState::die);
 			vy = -0.9;
 		}
+
+		if (koopstate == KoopaState::shell)
+		{
+			SetState(KoopaState::slide);
+			this->vx = -obj->getVx();
+		}
 	}
 
 	//if (obj->EntityTag == Tag::platform)

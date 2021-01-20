@@ -126,6 +126,8 @@ void Mario::SwitchMario(int level)
 
 	StateofMario[changetolevel]->setInvincible_Time(CurrentMario->getInvincible_Time());
 
+	StateofMario[changetolevel]->setHold(CurrentMario->getHold());
+
 	Global_Variable::GetInstance()->setMarioLevel(changetolevel);
 
 	//change the mario to the desire mario

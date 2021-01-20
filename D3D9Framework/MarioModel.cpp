@@ -518,6 +518,16 @@ void MarioModel::OnOverLap(GameObject* obj)
 
 }
 
+void MarioModel::setHold(GameObject* obj)
+{
+	this->Hold = obj;
+}
+
+GameObject* MarioModel::getHold()
+{
+	return this->Hold;
+}
+
 int MarioModel::getChangetoLevel()
 {
 	return this->changestate;
