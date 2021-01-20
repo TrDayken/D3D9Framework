@@ -4,6 +4,7 @@
 #include "ScoreFx.h"
 #include "Pipe.h"
 #include "FireShoot.h"
+#include "FallingPlatform.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -134,7 +135,9 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			this->Position.x += min_tx * dx + nx * 0.4f;
 			this->Position.y += min_tx * dy;
 			dx = 0;
+
 			coEvents.clear();
+
 			CalcPotentialCollisions(&coObjectsResult, coEvents);
 			if (coEvents.size() > 0)
 			{
@@ -160,7 +163,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				e->obj->setIsHoldAble(false);
 				Hold = e->obj;
 			}
-			else if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell || e->obj->EntityTag == Tag::plant )
+			else if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::shell || e->obj->EntityTag == Tag::plant)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->OnCollisionEnter(this, e->nx, e->ny);
@@ -190,6 +193,16 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 					}
 				}
 
+			}
+			else if (e->obj->EntityTag == Tag::unstableplatform)
+			{
+				LPGAMEOBJECT obj = e->obj;
+				if (e->ny < 0)
+				{
+					obj->OnCollisionEnter(this, e->nx, e->ny);
+					this->isOnGround = true;
+					this->setJumpstate(JumpingStates::Stand);
+				}
 			}
 			else if (e->obj->EntityTag == Tag::questionblock || e->obj->EntityTag == Tag::brick)
 			{
@@ -236,7 +249,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	if (vy > 0)
 	{
-		if (state.jump != JumpingStates::Float)
+		if (state.jump != JumpingStates::Float || state.jump != JumpingStates::Stand)
 			state.jump = JumpingStates::Fall;
 		//isOnGround = false;
 	}
@@ -345,6 +358,15 @@ void MarioModel::OnKeyDown(int KeyCode)
 	{
 		this->Position = Vector2(6720, 432);
 		break;
+	}
+	case DIK_E:
+	{
+		GameObject* koop = new FallingPlatform();
+
+		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
+
+		koop->setPosition(cam->getCameraPositionX(), cam->getCameraPositionY() + 200);
+		ScenceManager::GetInstance()->getCurrentScence()->AddObject(koop);
 	}
 	}
 }

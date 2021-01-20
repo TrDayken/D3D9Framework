@@ -196,6 +196,7 @@
     <ClCompile Include="RaccoonPowerUps.cpp" />
     <ClCompile Include="RacoonMario.cpp" />
     <ClCompile Include="RedGoomba.cpp" />
+    <ClCompile Include="RedKoopaParaTroppa.cpp" />
     <ClCompile Include="RedMushroomPowerUps.cpp" />
     <ClCompile Include="RedVenus.cpp" />
     <ClCompile Include="Scence.cpp" />
@@ -271,6 +272,7 @@
     <ClInclude Include="RaccoonPowerUps.h" />
     <ClInclude Include="RacoonMario.h" />
     <ClInclude Include="RedGoomba.h" />
+    <ClInclude Include="RedKoopaParaTroppa.h" />
     <ClInclude Include="RedMushroomPowerUps.h" />
     <ClInclude Include="RedVenus.h" />
     <ClInclude Include="Scence.h" />

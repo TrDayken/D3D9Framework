@@ -224,6 +224,15 @@
     <Filter Include="Entity\VanityItem\Visual">
       <UniqueIdentifier>{8f7a47fc-a5d4-4507-aea9-66b64f6db7fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Enemy\Koopa\flying Koopa">
+      <UniqueIdentifier>{8f1230a4-c200-4f96-b52e-17f58dfbd36e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Enemy\Koopa\flying Koopa\Red">
+      <UniqueIdentifier>{db3720f6-a968-4c32-9fdc-b4e9449e5f2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Misc\PowerUps\OneUp">
+      <UniqueIdentifier>{1a783c3e-d18e-45f1-97a4-7e4ea40ce9d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -445,8 +454,11 @@
     <ClCompile Include="NodeVisual.cpp">
       <Filter>Entity\VanityItem\Visual</Filter>
     </ClCompile>
+    <ClCompile Include="RedKoopaParaTroppa.cpp">
+      <Filter>Entity\Enemy\Koopa\flying Koopa\Red</Filter>
+    </ClCompile>
     <ClCompile Include="GreenShroom.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Entity\Misc\PowerUps\OneUp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -660,6 +672,11 @@
     <ClInclude Include="NodeVisual.h">
       <Filter>Entity\VanityItem\Visual</Filter>
     </ClInclude>
-    <ClInclude Include="GreenShroom.h" />
+    <ClInclude Include="RedKoopaParaTroppa.h">
+      <Filter>Entity\Enemy\Koopa\flying Koopa\Red</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenShroom.h">
+      <Filter>Entity\Misc\PowerUps\OneUp</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

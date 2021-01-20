@@ -48,6 +48,7 @@ enum class Collision2DTag
 enum class Tag
 {
 	platform,
+	unstableplatform,
 	plant,
 	entrance,
 	pipe,

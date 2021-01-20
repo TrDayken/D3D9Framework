@@ -141,6 +141,8 @@ void PlayScence::Unload()
 
 	tilemap->Unload();
 
+	this->camera->~Camera();
+
 	//delete uiobject
 
 	this->mario->Unload();

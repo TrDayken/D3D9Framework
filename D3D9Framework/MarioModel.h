@@ -9,7 +9,7 @@
 #include "WarpEntrance.h"
 
 //mario physic
-#define MARIO_GRAVITY					0.003f
+#define MARIO_GRAVITY					0.002f
 #define MARIO_ACCELERATION				0.002f
 #define MARIO_DRAG						0.005f
 #define MARIO_TOP_WALKING_SPEED			0.30f

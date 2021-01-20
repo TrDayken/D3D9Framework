@@ -100,6 +100,26 @@ void MapScence::Render()
 
 void MapScence::Unload()
 {
+	this->unload = true;
+
+	for (int i = 0; (unsigned)i < objects.size(); i++)
+		delete objects[i];
+
+	objects.clear();
+
+	for (int i = 0; (unsigned)i < UIElement.size(); i++)
+		delete UIElement[i];
+	UIElement.clear();
+
+	tilemap->Unload();
+
+	this->camera->~Camera();
+
+	//delete uiobject
+
+	mario = NULL;
+
+	DebugOut(L"[UNLOADED] MapScence has unloaded \n");
 }
 
 void MapScence::addtoScenceManager()
