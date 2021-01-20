@@ -40,6 +40,12 @@ typedef D3DXVECTOR3 Vector3;
 
 #define GAME_TIME 300000
 
+#define DONTCHANGE	-1
+#define SMALL		0
+#define BIG			1
+#define FIRE		2
+#define RACOON		3
+
 class Global_Variable
 {
 	static Global_Variable* _instance;
@@ -53,6 +59,8 @@ class Global_Variable
 	int time;
 
 	int plevel;
+
+	int mariolevel;
 
 	DWORD Ptime_start; 
 
@@ -74,6 +82,8 @@ public:
 	void ResetScore();
 	void AddScore(long x); 
 
+	void setMarioLevel(int value);
+	int getMarioLevel();
 
 	void AddCoin(int x); 
 	void ResetCoin();

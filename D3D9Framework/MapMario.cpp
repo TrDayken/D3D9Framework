@@ -94,7 +94,19 @@ void MapMario::Render(Camera* camera)
 {
 	GameObject::Render(camera);
 
-	animation_set["SmallMario"]->Render(RenderPosition.x, RenderPosition.y);
+	std::string ani;
+
+	switch (Global_Variable::GetInstance()->getMarioLevel())
+	{
+	case 0: ani = "SmallMario"; break;
+	case 1: ani = "BigMario"; break;
+	case 2: ani = "FireMario"; break;
+	case 3: ani = "RaccoonMario"; break;
+	default:
+		break;
+	}
+
+	animation_set[ani]->Render(RenderPosition.x, RenderPosition.y);
 }
 
 void MapMario::OnKeyDown(int KeyCode)

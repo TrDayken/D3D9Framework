@@ -40,6 +40,8 @@ private:
 public:
 	Mario(float x = 0.0f, float y = 0.0f);
 		
+	void Unload();
+
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* collision_objects = NULL);
 	virtual void Render(Camera* camera);
 	virtual void OnOverLap(GameObject* obj);

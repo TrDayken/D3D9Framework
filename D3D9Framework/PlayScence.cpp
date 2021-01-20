@@ -143,6 +143,8 @@ void PlayScence::Unload()
 
 	//delete uiobject
 
+	this->mario->Unload();
+
 	mario = NULL;
 
 	DebugOut(L"[UNLOADED] PlayScence has unloaded \n");

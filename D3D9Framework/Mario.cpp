@@ -19,11 +19,20 @@ Mario::Mario(float x, float y)
 	StateofMario.push_back(new RacoonMario());
 
 	//initial current mario = BIG
-	CurrentMario = StateofMario[BIG];
+	CurrentMario = StateofMario[Global_Variable::GetInstance()->getMarioLevel()];
 
 	//CurrentMario->setPosition(x, y);
 	this->ColTag = Collision2DTag::None;
 	this->EntityTag = Tag::player;
+}
+
+void Mario::Unload()
+{
+	for (int i = 0; (unsigned)i < StateofMario.size(); i++)
+		delete StateofMario[i];
+
+	CurrentMario = NULL;
+	
 }
 
 void Mario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* collision_objects)
@@ -117,8 +126,11 @@ void Mario::SwitchMario(int level)
 
 	StateofMario[changetolevel]->setInvincible_Time(CurrentMario->getInvincible_Time());
 
+	Global_Variable::GetInstance()->setMarioLevel(changetolevel);
+
 	//change the mario to the desire mario
 	CurrentMario = StateofMario[changetolevel];
+
 }
 
 void Mario::setCamera(Camera* camera)

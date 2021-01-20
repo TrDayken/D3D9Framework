@@ -41,6 +41,16 @@ void Global_Variable::AddScore(long x)
 	this->score += x;
 }
 
+void Global_Variable::setMarioLevel(int value)
+{
+	this->mariolevel = value;
+}
+
+int Global_Variable::getMarioLevel()
+{
+	return this->mariolevel;
+}
+
 void Global_Variable::AddCoin(int x)
 {
 	this->coin += x;
