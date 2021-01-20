@@ -13,6 +13,9 @@ PlayScence::PlayScence(std::string id, std::string mappath, std::string filepath
 
 void PlayScence::Load()
 {
+
+
+
 	this->unload = false;
 
 	hud = new HUD(); 
@@ -28,6 +31,8 @@ void PlayScence::Load()
 
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
+
+	grid = new Grid(6000, 6000);
 	
 
 	Global_Variable::GetInstance()->startGameTime();
@@ -71,6 +76,8 @@ void PlayScence::Update(DWORD dt)
 		}
 		earseobjects.clear();
 	}
+
+	grid->Update();
 
 	bool isfollow = false; 
 

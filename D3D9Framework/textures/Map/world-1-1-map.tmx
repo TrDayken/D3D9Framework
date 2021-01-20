@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="23" nextobjectid="324">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="23" nextobjectid="334">
  <editorsettings>
   <export target="../../../../../Resource/Xml/NewMap/BigMap/world-1-1-map.xml" format="tmx"/>
  </editorsettings>

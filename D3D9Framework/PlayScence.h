@@ -9,6 +9,7 @@
 #include "Goomba.h"
 #include "UIObject.h"
 #include "HUD.h"
+#include "Grid.h"
 
 #define LAYER_SIZE 6
 // 0 collectibles
@@ -25,6 +26,8 @@ protected:
 	Map* tilemap;
 
 	HUD* hud; 
+
+	Grid* grid; 
 
 	std::vector<LPGAMEOBJECT> earseobjects;
 	std::vector <LPGAMEOBJECT> objects;
