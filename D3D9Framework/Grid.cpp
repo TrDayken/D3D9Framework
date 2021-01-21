@@ -34,17 +34,33 @@ void Grid::Update()
 
 void Grid::AddObject(GameObject* object)
 {
-	throw(OSS_UNIMPLEMENTED);
+	Cell* cell = getCellbyObjPosition(object->getX(), object->getY());
+	cell->AddObject(object);
+	object->setOwnerCell(cell);
 }
 
-void Grid::AddObject(GameObject* object, int cellx, int celly, int spanx, int spany)
+void Grid::AddObject(GameObject* object, int cellx, int celly)
 {
-	throw(OSS_UNIMPLEMENTED);
+	Cell* cell = this->cells[celly][cellx];
+	cell->AddObject(object);
+	object->setOwnerCell(cell);
+}
+
+void Grid::RemoveObject(GameObject* obj)
+{
+	Cell* cell = getCellbyObjPosition(obj->getX(), obj->getY());
+	cell->RemoveObject(obj);
 }
 
 Cell* Grid::getCell(int x, int y)
 {
-	return nullptr;
+	if (x < 0) x = 0;
+	if (x >= maxXCells) x = maxXCells;
+
+	if (y < 0) y = 0;
+	if (y >= maxYCells) y = maxYCells;
+
+	return cells[y][x];
 }
 
 Cell* Grid::getCellbyObjPosition(float x, float y)
@@ -57,7 +73,8 @@ Cell* Grid::getCellbyObjPosition(float x, float y)
 
 std::vector<GameObject*> Grid::getActiveGameObject()
 {
-	std::vector<GameObject*> coObject;
+
+	std::unordered_set<GameObject* > coObject;
 
 	for (size_t i = 0; i < activecells.size(); i++)
 	{
@@ -66,14 +83,17 @@ std::vector<GameObject*> Grid::getActiveGameObject()
 		auto o = x.begin();
 		while (o != x.end())
 		{
-			if (dynamic_cast<LPGAMEOBJECT>(*o))
-				coObject.push_back(*o);
-			//UpdateActiveObjects(*o);
+
+			coObject.insert(*o);
 			o++;
 		}
 	}
 
-	return coObject;
+	std::vector<GameObject*> returned;
+
+	returned.insert(returned.end(), coObject.begin(), coObject.end());
+
+	return returned;
 }
 
 void Grid::UpdateActiveCell()
@@ -95,13 +115,72 @@ void Grid::UpdateGridObjects()
 void Grid::UpdateGridObjectpos(GameObject* obj)
 {
 
-	Cell* newCell = getCell(obj->getX(), obj->getY());
+	Cell* newCell = getCellbyObjPosition(obj->getX(), obj->getY());
 	if (newCell != obj->getOnwerCell())
 	{
 		obj->getOnwerCell()->RemoveObject(obj);
 		newCell->AddObject(obj);
 		obj->setOwnerCell(newCell);
 	}
+}
+
+void Grid::DistributeGrid(std::vector<GameObject*> objects, std::string gridfilepath)
+{
+	TiXmlDocument doc(gridfilepath.c_str());
+
+
+	if (!doc.LoadFile())
+	{
+		printf("%s", doc.ErrorDesc());
+	}
+	else
+	{
+		TiXmlElement* root = doc.RootElement();
+
+		for (TiXmlElement* group = root->FirstChildElement("group"); group != NULL; group = group->NextSiblingElement("group"))
+		{
+			int id; 
+
+			group->QueryIntAttribute("id", &id);
+
+			for (TiXmlElement* object = group->FirstChildElement("object"); object != NULL; object = object->NextSiblingElement("object"))
+			{
+				int objid, cellx, celly, spanx, spany;
+				
+				object->QueryIntAttribute("id", &objid);
+				object->QueryIntAttribute("cellx", &cellx);
+				object->QueryIntAttribute("celly", &celly);
+				object->QueryIntAttribute("spanx", &spanx);
+				object->QueryIntAttribute("spany", &spany);
+
+				GameObject* obj = NULL;
+				for (int i = 0; i < objects.size(); i++)
+				{
+					int u = objects[i]->getID();
+					if (objects[i]->getID() == objid)
+					{
+						obj = objects[i];
+
+						for (int m = 0; m < spany; m++)
+						{
+							for (int n = 0; n < spanx; n++)
+							{
+								this->AddObject(obj, cellx + n, celly + m);
+							}
+						}
+
+						continue;
+					}
+				}
+
+
+			}
+		}
+
+		DebugOut(L"[INFO] Read file complete");
+	}
+
+
 }
 
 void Grid::getActiveCell()

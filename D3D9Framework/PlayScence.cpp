@@ -20,18 +20,23 @@ void PlayScence::Load()
 
 	AddUI(hud);
 
-	mario = new Mario(100, 1000);
-	mario->setCamera(camera);
-	objects.push_back(mario);
-
 	tilemap = new Map();
 	tilemap->LoadMapfromTMX(this->mapPath.c_str(), this->sceneFilePath.c_str());
 
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
+	
+	auto node = split(this->mapPath, "\\");
+
+	std::string gridfilepath = node[0] + "\\" + node[2] + "\\grid-" + node[4];
 
 	grid = new Grid(tilemap->getMapWidth(), tilemap->getMapHeight());
-	
+
+	grid->DistributeGrid(objects, gridfilepath);
+
+	mario = new Mario(100, 1000);
+	mario->setCamera(camera);
+
 
 	Global_Variable::GetInstance()->startGameTime();
 
@@ -43,11 +48,16 @@ void PlayScence::Update(DWORD dt)
 
 	coObjects = objects; 
 
-	for (size_t i = 0; i < objects.size(); i++)
+	grid->Update();
+
+	activegameobject = grid->getActiveGameObject();
+	activegameobject.push_back(mario);
+
+	for (size_t i = 0; i < activegameobject.size(); i++)
 	{
 		if (unload) return;
-		objects[i]->Update(dt, &coObjects);
-		
+		activegameobject[i]->Update(dt, &activegameobject);
+
 	}
 
 	for (size_t i = 0; i < UIElement.size(); i++)
@@ -75,7 +85,7 @@ void PlayScence::Update(DWORD dt)
 		earseobjects.clear();
 	}
 
-	grid->Update();
+
 
 	bool isfollow = false; 
 
@@ -121,10 +131,10 @@ void PlayScence::Render()
 
 	for (size_t j = 0; j < LAYER_SIZE; j++)
 	{
-		for (int i = 0; (unsigned)i < objects.size(); i++)
+		for (int i = 0; (unsigned)i < activegameobject.size(); i++)
 		{
-			if (objects[i]->getRenderOrder() == j)
-				objects[i]->Render(camera);
+			if (activegameobject[i]->getRenderOrder() == j)
+				activegameobject[i]->Render(camera);
 		}
 	}
 
@@ -161,6 +171,27 @@ void PlayScence::Unload()
 
 	DebugOut(L"[UNLOADED] PlayScence has unloaded \n");
 }
+
+Grid* PlayScence::getGrid()
+{
+	return this->grid;
+}
+
+void PlayScence::setGrid(Grid* grid)
+{
+	this->grid = grid; 
+}
+
+void PlayScence::AddObject(LPGAMEOBJECT object)
+{
+	grid->AddObject(object);
+}
+
+void PlayScence::DeleteObject(LPGAMEOBJECT object)
+{
+	grid->RemoveObject(object);
+}
+
 
 void PlayScence::addtoScenceManager()
 {

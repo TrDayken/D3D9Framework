@@ -40,6 +40,8 @@ public:
 
 	void DeleteObject(LPGAMEOBJECT object) { earseobjects.push_back(object); }
 
+	void PushObjectList(LPGAMEOBJECT object) { objects.push_back(object); }
+
 	void AddUI(UIObject* UI) { UIElement.push_back(UI); }
 
 	MapMario* GetPlayer() { return mario; }

@@ -32,7 +32,9 @@ public:
 	//add object to grid
 	void AddObject(GameObject* object);
 
-	void AddObject(GameObject* object, int cellx, int celly, int spanx, int spany);
+	void AddObject(GameObject* object, int cellx, int celly);
+
+	void RemoveObject(GameObject* obj);
 
 	//use this to get specific cell in grid
 	Cell* getCell(int x, int y);
@@ -47,6 +49,8 @@ public:
 	void UpdateGridObjects();
 
 	void UpdateGridObjectpos(GameObject* obj);
+
+	void DistributeGrid(std::vector<GameObject*> objects, std::string gridfilepath);
 
 };
 

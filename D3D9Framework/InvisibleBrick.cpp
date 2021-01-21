@@ -4,11 +4,13 @@ InvisibleBrick::InvisibleBrick()
 {
 	ColTag = Collision2DTag::FourSide;
 	EntityTag = Tag::platform;
+
+	this->setRenderOrder(3);
 }
 
 void InvisibleBrick::Render(Camera* camera)
 {
-	//RenderBoundingBox(camera);
+	RenderBoundingBox(camera);
 }
 
 void InvisibleBrick::GetBoundingBox(float& l, float& t, float& r, float& b)

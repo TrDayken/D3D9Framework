@@ -48,7 +48,7 @@ void Map::AddObject(TiXmlElement* RootElement)
 
 		for (TiXmlElement* TMXObject = TMXObjectsgroup->FirstChildElement("object"); TMXObject != NULL; TMXObject = TMXObject->NextSiblingElement("object"))
 		{
-
+			int id;
 			float x, y, width, height;
 			//LPGAMEOBJECT object{};
 			std::string name = TMXObjectsgroup->Attribute("name");
@@ -56,39 +56,47 @@ void Map::AddObject(TiXmlElement* RootElement)
 			{
 				InvisibleBrick* invisiblebrick = new InvisibleBrick();
 
+				TMXObject->QueryIntAttribute("id", &id);
+
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
 				TMXObject->QueryFloatAttribute("width", &width);
 				TMXObject->QueryFloatAttribute("height", &height);
 
+				invisiblebrick->setID(id);
 				invisiblebrick->setX(x);
 				invisiblebrick->setY(y);
 				invisiblebrick->setWidth(width);
 				invisiblebrick->setHeight(height);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(invisiblebrick);
+				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(invisiblebrick);
 				//object = new InvisibleBrick();
 			}
 			else if (name == "Ghost")
 			{
 				GhostPlatform* ghostplatform = new GhostPlatform();
 
+				TMXObject->QueryIntAttribute("id", &id);
+
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
 				TMXObject->QueryFloatAttribute("width", &width);
 				TMXObject->QueryFloatAttribute("height", &height);
 
+				ghostplatform->setID(id);
 				ghostplatform->setX(x);
 				ghostplatform->setY(y);
 				ghostplatform->setWidth(width);
 				ghostplatform->setHeight(height);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(ghostplatform);
+				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(ghostplatform);
 			}
 			else if (name == "Enemies")
 			{
 				GameObject* enemy = NULL;
 				std::string enemyname, enemytype;
+
+				TMXObject->QueryIntAttribute("id", &id);
 
 				enemyname = TMXObject->Attribute("name");
 				enemytype = TMXObject->Attribute("type");
@@ -120,13 +128,16 @@ void Map::AddObject(TiXmlElement* RootElement)
 				else
 					continue;
 
+				enemy->setID(id);
+
 				enemy->setX(x);
 				enemy->setY(y);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(enemy);
+				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(enemy);
 			}
 			else if (name == "Items")
 			{
+
 				std::string name = TMXObject->Attribute("name");
 				GameObject* obj = NULL;
 
@@ -135,19 +146,25 @@ void Map::AddObject(TiXmlElement* RootElement)
 				else if (name == "reward")
 					obj = new EndGameReward();
 
+				TMXObject->QueryIntAttribute("id", &id);
+
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
+
+				obj->setID(id);
 
 				obj->setX(x);
 				obj->setY(y);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(obj);
+				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(obj);
 			}
 			else if (name == "QuestionBlocks")
 			{
 				QuestionBlock* questionblock = new QuestionBlock();
 				int quantity = 0;
 				std::string blockname;
+
+				TMXObject->QueryIntAttribute("id", &id);
 
 				blockname = TMXObject->Attribute("name");
 				TMXObject->QueryFloatAttribute("x", &x);
@@ -187,7 +204,7 @@ void Map::AddObject(TiXmlElement* RootElement)
 					questionblock->SetInBlockItem(Item::GreenShroom);
 				}
 
-
+				questionblock->setID(id);
 				questionblock->SetQuantity(quantity);
 				questionblock->setX(x);
 				questionblock->setY(y);
@@ -195,19 +212,22 @@ void Map::AddObject(TiXmlElement* RootElement)
 				if (quantity <= 0)
 					questionblock->SetDeflected(true);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(questionblock);
+				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(questionblock);
 			}
 			else if (name == "Bricks")
 			{
 				Brick* brick = new Brick();
 
+				TMXObject->QueryIntAttribute("id", &id);
+
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
 
+				brick->setID(id);
 				brick->setX(x);
 				brick->setY(y);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(brick);
+				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(brick);
 			}
 			else if (name == "Pipes")
 			{
@@ -218,6 +238,8 @@ void Map::AddObject(TiXmlElement* RootElement)
 
 				float desx = -1;
 				float desy = -1;
+
+				TMXObject->QueryIntAttribute("id", &id);
 
 				pipetype = TMXObject->Attribute("type");
 				TMXObject->QueryFloatAttribute("x", &x);
@@ -254,20 +276,21 @@ void Map::AddObject(TiXmlElement* RootElement)
 					}
 				}
 
-
+				pipe->setID(id);
 				pipe->setDes_x(desx);
 				pipe->setDes_y(desy);
 				pipe->setX(x);
 				pipe->setY(y);
 				pipe->SetTile(width, height);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(pipe);
+				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(pipe);
 			}
 			else if (name == "Warp") 
 			{
 				WarpEntrance* entrance = new WarpEntrance();
 				std::string dir; 
 
+				TMXObject->QueryIntAttribute("id", &id);
 
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
@@ -293,12 +316,13 @@ void Map::AddObject(TiXmlElement* RootElement)
 					entrance->setWarpDirection(WarpDirection::left);
 				}
 
+				entrance->setID(id);
 				entrance->setX(x);
 				entrance->setY(y);
 				entrance->setWidth(width);
 				entrance->setHeight(height);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(entrance);
+				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(entrance);
 			}
 			else if (name == "WorldGraph")
 			{
@@ -307,6 +331,8 @@ void Map::AddObject(TiXmlElement* RootElement)
 				std::vector<std::string> adlist;
 				std::vector<std::string> weight;
 				std::string scence;
+
+				TMXObject->QueryIntAttribute("id", &id);
 
 				objectname = TMXObject->Attribute("name");
 				auto nodetype = TMXObject->Attribute("type");
@@ -355,7 +381,7 @@ void Map::AddObject(TiXmlElement* RootElement)
 						visual->SetNumber(stoi(num.at(1)));
 
 
-						ScenceManager::GetInstance()->getCurrentScence()->AddObject(visual);
+						ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(visual);
 					}
 					else if (num.at(0) == "bonus")
 					{
@@ -366,7 +392,7 @@ void Map::AddObject(TiXmlElement* RootElement)
 							visual->setPosition(x, y);
 							visual->SetNumber(7);
 
-							ScenceManager::GetInstance()->getCurrentScence()->AddObject(visual);
+							ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(visual);
 						}
 					}
 
@@ -417,13 +443,15 @@ void Map::AddObject(TiXmlElement* RootElement)
 			{
 				WiggleTree* tree = new WiggleTree();
 
+				TMXObject->QueryIntAttribute("id", &id);
+
 				TMXObject->QueryFloatAttribute("x", &x);
 				TMXObject->QueryFloatAttribute("y", &y);
 
 				tree->setX(x);
 				tree->setY(y);
 
-				ScenceManager::GetInstance()->getCurrentScence()->AddObject(tree);
+				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(tree);
 			}
 			else
 			{

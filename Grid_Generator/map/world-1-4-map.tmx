@@ -159,7 +159,7 @@
  </layer>
  <objectgroup id="8" name="Solid">
   <object id="138" x="5760" y="720" width="384" height="96"/>
-  <object id="139" x="6192" y="768" width="1632" height="48"/>
+  <object id="139" x="6096" y="768" width="1632" height="48"/>
   <object id="141" x="6096" y="240" width="48" height="480"/>
  </objectgroup>
  <objectgroup id="17" name="QuestionBlocks">

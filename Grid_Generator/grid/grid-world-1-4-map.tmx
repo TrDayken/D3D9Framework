@@ -3,7 +3,7 @@
     <config cellwidth="388" cellheight="372" />
     <group id="8" name="Solid">
         <object id="138" cellx="14" celly="1" spanx="2" spany="2" />
-        <object id="139" cellx="15" celly="2" spanx="6" spany="1" />
+        <object id="139" cellx="15" celly="2" spanx="5" spany="1" />
         <object id="141" cellx="15" celly="0" spanx="1" spany="2" />
     </group>
     <group id="17" name="QuestionBlocks">

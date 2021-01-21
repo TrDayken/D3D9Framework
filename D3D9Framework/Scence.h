@@ -28,6 +28,7 @@ public:
 	virtual Camera* getCamera() { return this->camera; }
 	virtual void AddObject(LPGAMEOBJECT object) = 0;
 	virtual void DeleteObject(LPGAMEOBJECT object) = 0;
+	virtual void PushObjectList(LPGAMEOBJECT object) = 0;
 	virtual void AddUI(UIObject* UI) = 0; 
 	//virtual void DeleteUI(UIObject* UI) {};
 	virtual void Load() = 0;
