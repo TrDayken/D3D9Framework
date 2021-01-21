@@ -22,7 +22,9 @@
 #include "Utils.h"
 #include "ObjectGroup.h"
 
-void LoadXML(std::string filepath)
+std::vector<ObjectGroup*> objectgroups;
+
+void LoadXML(std::string filepath, int cellwidth, int cellheight)
 {
     TiXmlDocument doc(filepath.c_str());
 
@@ -33,15 +35,67 @@ void LoadXML(std::string filepath)
     }
     else
     {
+        TiXmlElement* root = doc.RootElement();
 
+        for (TiXmlElement* XMLobjectgroup = root->FirstChildElement("objectgroup"); XMLobjectgroup != NULL; XMLobjectgroup = XMLobjectgroup->NextSiblingElement("objectgroup"))
+        {
+            objectgroups.push_back(new ObjectGroup(XMLobjectgroup,  cellwidth,  cellheight));
+        }
     }
+
+    DebugOut(L"[INFO] Read file complete");
 }
 
-void CreateXML()
+void CreateXML(std::string filepath, int cellwidth, int cellheight)
 {
+    auto node = split(filepath, "\\");
+
+    TiXmlDocument doc;
+
+    //XML declaration
+    TiXmlDeclaration* dec = new TiXmlDeclaration("1.0", "utf-8", "");
+    doc.LinkEndChild(dec);
+
+    //root node
+    TiXmlElement* root = new TiXmlElement("grid");
+    doc.LinkEndChild(root);
+
+    TiXmlElement* config = new TiXmlElement("config");
+    config->SetAttribute("cellwidth", cellwidth);
+    config->SetAttribute("cellheight", cellheight);
+
+    root->LinkEndChild(config);
+
+    for (int i = 0; i < objectgroups.size(); i++)
+    {
+        TiXmlElement* group = new TiXmlElement("group");
+        group->SetAttribute("id", objectgroups[i]->getID());
+        group->SetAttribute("name", objectgroups[i]->getName().c_str());
+
+        auto objects = objectgroups[i]->getObject();
+
+        for (auto o : objects)
+        {
+            TiXmlElement* object = new TiXmlElement("object");
+
+            object->SetAttribute("id", o->getID());
+            object->SetAttribute("cellx", o->getCellx());
+            object->SetAttribute("celly", o->getCelly());
+            object->SetAttribute("spanx", o->getSpanx());
+            object->SetAttribute("spany", o->getSpany());
+
+            group->LinkEndChild(object);
+        }
+
+        root->LinkEndChild(group);
+    }
+
+    std::string filename = "grid\\grid-" + node[1];
+
+    doc.SaveFile(filename.c_str());
+
+    DebugOut(L"[INFO] Create file complete");
 }
-
-
 
 int main()
 {
@@ -58,9 +112,9 @@ int main()
     std::cout << "Enter Cell Height \n";
     std::cin >> cellheight;
   
-    LoadXML(filepath);
+    LoadXML(filepath, cellwidth, cellheight);
 
-
+    CreateXML(filepath, cellwidth, cellheight);
 }
 
 

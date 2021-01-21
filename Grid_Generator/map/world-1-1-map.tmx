@@ -558,15 +558,6 @@
   <object id="75" x="6288" y="1200">
    <point/>
   </object>
-  <object id="321" x="5856" y="1104">
-   <point/>
-  </object>
-  <object id="322" x="5808" y="1104">
-   <point/>
-  </object>
-  <object id="323" x="5808" y="1152">
-   <point/>
-  </object>
  </objectgroup>
  <objectgroup id="21" name="Pipes">
   <object id="112" name="pipe" type="green-up" x="5328" y="1152" width="96" height="96"/>

@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Object.h"
+#include "tinyXML/tinyxml/tinyxml.h"
 
 class ObjectGroup
 {
@@ -13,6 +14,10 @@ class ObjectGroup
 
 	std::vector<Object*> objects;
 public: 
+	ObjectGroup();
+	ObjectGroup(TiXmlElement* XMLobjectgroup, int cellwidth, int cellheight);
+	~ObjectGroup();
+
 
 	void setID(int id);
 	int getID();

@@ -14,8 +14,6 @@ PlayScence::PlayScence(std::string id, std::string mappath, std::string filepath
 void PlayScence::Load()
 {
 
-
-
 	this->unload = false;
 
 	hud = new HUD(); 
