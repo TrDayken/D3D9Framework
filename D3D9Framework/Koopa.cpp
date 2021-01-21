@@ -7,6 +7,8 @@ Koopa::Koopa()
 	EntityTag = Tag::enemy;
 	direction = 1;
 	koopstate = KoopaState::walking;
+
+	this->setRenderOrder(2);
 }
 
 void Koopa::LoadAnimation()

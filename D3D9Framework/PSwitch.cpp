@@ -13,6 +13,8 @@ PSwitch::PSwitch()
 	ispressed  = false; 
 
 	DebugOut(L"[INFO] pswitch created \n");
+
+	this->setRenderOrder(1);
 }
 
 void PSwitch::LoadAnimation()

@@ -25,6 +25,8 @@ MarioModel::MarioModel(float x, float y)
 	state.movement = MovingStates::Idle;
 
 	this->EntityTag = Tag::player;
+	
+	this->setRenderOrder(3);
 }
 
 void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)

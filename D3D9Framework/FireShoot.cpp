@@ -12,6 +12,8 @@ FireShoot::FireShoot(float x, float y, int direction)
 	vx = direction * BULLET_VX;
 
 	LoadAnimation();
+
+	this->setRenderOrder(5);
 }
 
 FireShoot::~FireShoot()

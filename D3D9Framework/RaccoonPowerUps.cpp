@@ -22,6 +22,8 @@ RaccoonPowerUps::RaccoonPowerUps()
 	collected = false; 
 
 	this->ColTag = Collision2DTag::None; 
+
+	this->setRenderOrder(0);
 }
 
 void RaccoonPowerUps::Render(Camera* camera)
@@ -64,6 +66,7 @@ void RaccoonPowerUps::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObject)
 	{
 		if (GetTickCount() - leaf_reveal_time > LEAF_REVEAL_TIME)
 		{
+			this->setRenderOrder(5);
 			cycle_time = GetTickCount();
 			vy = 0;
 			state = 2;

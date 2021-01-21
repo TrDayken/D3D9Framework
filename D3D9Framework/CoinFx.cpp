@@ -16,6 +16,8 @@ CoinFx::CoinFx()
 	ANIMATIONTIME = 600;
 
 	Bounce_start = GetTickCount(); 
+
+	this->setRenderOrder(5);
 }
 
 void CoinFx::Render(Camera* camera)

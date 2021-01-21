@@ -32,6 +32,16 @@ void GameObject::getPosition(float& x, float& y)
 	y = this->Position.y;
 }
 
+void GameObject::setOwnerCell(Cell* cell)
+{
+	this->ownercell = cell;
+}
+
+Cell* GameObject::getOnwerCell()
+{
+	return this->ownercell;
+}
+
 void GameObject::setRelativePosition(float x, float y)
 {
 	this->RelativePosition.x = x; 
@@ -54,6 +64,26 @@ void GameObject::GetSpeed(float& vx, float& vy)
 {
 	vx = this->vx;
 	vy = this->vy;
+}
+
+void GameObject::setRenderOrder(int value)
+{
+	this->renderorder = value; 
+}
+
+int GameObject::getRenderOrder()
+{
+	return this->renderorder;
+}
+
+void GameObject::setID(int id)
+{
+	this->id = id;
+}
+
+int GameObject::getID()
+{
+	return this->id;
 }
 
 void GameObject::setIsBeingHold(bool isBeingHold)

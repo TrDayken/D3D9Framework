@@ -10,6 +10,8 @@ Goomba::Goomba()
 	SetState(GoombaState::walking);
 	DelayPattern_start = GetTickCount();
 	ColTag = Collision2DTag::FourSide;
+
+	this->setRenderOrder(2);
 }
 
 void Goomba::SetState(GoombaState state)

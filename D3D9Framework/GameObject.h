@@ -9,6 +9,9 @@
 #include "AnimationManager.h"
 #include "Camera.h"
 #include "Textures.h"
+#include "Cell.h"
+
+class Cell;
 
 class GameObject;
 typedef GameObject* LPGAMEOBJECT;
@@ -70,7 +73,7 @@ enum class Tag
 class GameObject
 {
 protected:
-	
+	int id = -1;
 
 	//object direction 1 = right , -1 = left
 	int direction, flipy;
@@ -105,6 +108,10 @@ protected:
 	bool Active;
 
 	Camera* camera;
+
+	int renderorder = -1;
+
+	Cell* ownercell;
 public: 
 	Tag EntityTag;
 	GameObject();
@@ -112,13 +119,22 @@ public:
 	//speed and position geter/seter
 	void setPosition(float x, float y);
 	void getPosition(float& x, float& y);
+
+	void setOwnerCell(Cell* cell);
+	Cell* getOnwerCell();
 	
 	void setRelativePosition(float x, float y);
 	void getRelativePosition(float& x, float& y);
 
 	void setSpeed(float vx, float vy);
 	void GetSpeed(float& vx, float& vy);
-	
+
+	void setRenderOrder(int value);
+	int getRenderOrder();
+
+	void setID(int id);
+	int getID();
+
 	virtual void setIsBeingHold(bool isBeingHold);
 	bool IsHoldAble();
 	virtual void setIsHoldAble(bool ishold);

@@ -12,6 +12,8 @@ EndGameReward::EndGameReward()
 	this->collected = false;
 
 	this->ColTag = Collision2DTag::None; 
+
+	this->setRenderOrder(1);
 }
 
 EndGameReward::~EndGameReward()

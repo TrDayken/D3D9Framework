@@ -41,8 +41,9 @@ AbstractFXObject* FXObjectManager::CreateFx(std::string name, Vector2 start_posi
 	else
 		DebugOut(L"[ERROR] Cannot find Fx validation"); 
 
-	ScenceManager::GetInstance()->getCurrentScence()->AddObject(fx); 
 	fx->setStartPosition(start_positon); 
+
+	ScenceManager::GetInstance()->getCurrentScence()->AddObject(fx); 
 
 	return fx;
 }

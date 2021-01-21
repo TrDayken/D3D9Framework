@@ -11,6 +11,8 @@ VenusFireShoot::VenusFireShoot(float x, float y, int direction, int vertical )
 	vx = BULLET_VX * direction;
 	vy = BULLET_VY * vertical;
 	LoadAnimation();
+
+	this->setRenderOrder(5);
 }
 
 VenusFireShoot::~VenusFireShoot()

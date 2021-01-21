@@ -233,6 +233,9 @@
     <Filter Include="Entity\Misc\PowerUps\OneUp">
       <UniqueIdentifier>{1a783c3e-d18e-45f1-97a4-7e4ea40ce9d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FrameWork\ScenceManager\Scence\IntroScence">
+      <UniqueIdentifier>{b434bd6a-ebb6-4aa6-87c5-2b2e9db7f6de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -460,6 +463,9 @@
     <ClCompile Include="GreenShroom.cpp">
       <Filter>Entity\Misc\PowerUps\OneUp</Filter>
     </ClCompile>
+    <ClCompile Include="IntroScence.cpp">
+      <Filter>Source Files\FrameWork\ScenceManager\Scence\IntroScence</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -677,6 +683,9 @@
     </ClInclude>
     <ClInclude Include="GreenShroom.h">
       <Filter>Entity\Misc\PowerUps\OneUp</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroScence.h">
+      <Filter>Source Files\FrameWork\ScenceManager\Scence\IntroScence</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -15,6 +15,8 @@ SmokeFx::SmokeFx()
 	LoadAnimation(); 
 
 	ANIMATIONTIME = 400; 
+
+	this->setRenderOrder(5);
 }
 
 void SmokeFx::Render(Camera* camera)

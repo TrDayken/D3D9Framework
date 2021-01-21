@@ -13,15 +13,12 @@ PlayScence::PlayScence(std::string id, std::string mappath, std::string filepath
 
 void PlayScence::Load()
 {
+
 	this->unload = false;
 
 	hud = new HUD(); 
 
 	AddUI(hud);
-
-	mario = new Mario(100, 1000);
-	mario->setCamera(camera);
-	objects.push_back(mario);
 
 	tilemap = new Map();
 	tilemap->LoadMapfromTMX(this->mapPath.c_str(), this->sceneFilePath.c_str());
@@ -29,6 +26,17 @@ void PlayScence::Load()
 	camera = new Camera();
 	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
 	
+	auto node = split(this->mapPath, "\\");
+
+	std::string gridfilepath = node[0] + "\\" + node[2] + "\\grid-" + node[4];
+
+	grid = new Grid(tilemap->getMapWidth(), tilemap->getMapHeight());
+
+	grid->DistributeGrid(objects, gridfilepath);
+
+	mario = new Mario(100, 1000);
+	mario->setCamera(camera);
+
 
 	Global_Variable::GetInstance()->startGameTime();
 
@@ -40,11 +48,16 @@ void PlayScence::Update(DWORD dt)
 
 	coObjects = objects; 
 
-	for (size_t i = 0; i < objects.size(); i++)
+	grid->Update();
+
+	activegameobject = grid->getActiveGameObject();
+	activegameobject.push_back(mario);
+
+	for (size_t i = 0; i < activegameobject.size(); i++)
 	{
 		if (unload) return;
-		objects[i]->Update(dt, &coObjects);
-		
+		activegameobject[i]->Update(dt, &activegameobject);
+
 	}
 
 	for (size_t i = 0; i < UIElement.size(); i++)
@@ -71,6 +84,8 @@ void PlayScence::Update(DWORD dt)
 		}
 		earseobjects.clear();
 	}
+
+
 
 	bool isfollow = false; 
 
@@ -109,16 +124,21 @@ void PlayScence::Render()
 {
 	tilemap->Render(camera);
 
-	for (size_t i = 0; i < objects.size(); i++)
-	{
-		objects[i]->Render(camera);
+	//for (size_t i = 0; i < objects.size(); i++)
+	//{
+	//	objects[i]->Render(camera);
+	//}
 
-		//float l, t, r, b;
-		//objects[i]->GetBoundingBox(l, t, r, b);
-		////DebugOut(L"[INFO] objects bounding box %f, %f, %f, %f \n", l, t, r, b);
+	for (size_t j = 0; j < LAYER_SIZE; j++)
+	{
+		for (int i = 0; (unsigned)i < activegameobject.size(); i++)
+		{
+			if (activegameobject[i]->getRenderOrder() == j)
+				activegameobject[i]->Render(camera);
+		}
 	}
 
-	//mario->Render(camera);
+
 
 	for (size_t i = 0; i < UIElement.size(); i++)
 	{
@@ -151,6 +171,27 @@ void PlayScence::Unload()
 
 	DebugOut(L"[UNLOADED] PlayScence has unloaded \n");
 }
+
+Grid* PlayScence::getGrid()
+{
+	return this->grid;
+}
+
+void PlayScence::setGrid(Grid* grid)
+{
+	this->grid = grid; 
+}
+
+void PlayScence::AddObject(LPGAMEOBJECT object)
+{
+	grid->AddObject(object);
+}
+
+void PlayScence::DeleteObject(LPGAMEOBJECT object)
+{
+	grid->RemoveObject(object);
+}
+
 
 void PlayScence::addtoScenceManager()
 {

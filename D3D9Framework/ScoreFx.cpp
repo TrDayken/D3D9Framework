@@ -18,6 +18,8 @@ ScoreFx::ScoreFx()
 	level = 0;
 
 	speed = -FLOAT_SPEED;
+
+	this->setRenderOrder(5);
 }
 
 void ScoreFx::setLevel(int level)
