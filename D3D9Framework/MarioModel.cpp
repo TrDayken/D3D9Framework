@@ -159,6 +159,8 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			//if collide with obj with the right tag -> process the mario collide with the object
+			isOnMovingPlatform = false;
+
 			if (e->obj->EntityTag == Tag::shell && e->obj->IsHoldAble() && Game::GetInstance()->IsKeyDown(DIK_A))
 			{
 				e->obj->setIsBeingHold(true);
@@ -198,11 +200,12 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 			}
 			else if (e->obj->EntityTag == Tag::unstableplatform)
 			{
+
 				LPGAMEOBJECT obj = e->obj;
 				if (e->ny < 0)
 				{
+					isOnMovingPlatform = true;
 					obj->OnCollisionEnter(this, e->nx, e->ny);
-					this->isOnGround = true;
 					this->setJumpstate(JumpingStates::Stand);
 				}
 			}
@@ -211,6 +214,8 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				LPGAMEOBJECT obj = e->obj;
 				if (e->ny > 0)
 					obj->OnCollisionEnter(this, e->nx, e->ny);
+
+
 			}
 			else if (e->obj->EntityTag == Tag::pswitch)
 			{
@@ -232,7 +237,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		if (ny != 0) {
 			if (isOnGround)
 				vy = 0;
-			if (ny < 0)
+			if (ny < 0 )
 			{
 				// mario collide top down
 				state.jump = JumpingStates::Stand;
@@ -285,6 +290,7 @@ void MarioModel::setJumpstate(JumpingStates jump)
 		break;
 	}
 	this->state.jump = jump;
+
 }
 
 MovingStates MarioModel::getMoveState()
@@ -319,11 +325,12 @@ void MarioModel::OnKeyDown(int KeyCode)
 		}
 		break;
 	case DIK_S:
-		if (isOnGround && state.jump != JumpingStates::Fall)
+		if ((isOnGround && state.jump != JumpingStates::Fall) || isOnMovingPlatform)
 		{
 				setJumpstate(JumpingStates::Jump);
 				isOnGround = false;
 				isHighJump = true;
+				isOnMovingPlatform = false;
 				HighJumpTime_Start = GetTickCount();
 				vy = MARIO_JUMP_FORCE;
 		}

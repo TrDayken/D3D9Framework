@@ -48,8 +48,12 @@ void FallingPlatform::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		this->vx = 0;
 		this->vy += 0.0002f * dt;
 
-		if (vy > 0.15)
-			vy = 0.15;
+		if (vy > 0.25)
+			vy = 0.25;
+	}
+	else
+	{
+		this->vx = -MOVE_SPEED;
 	}
 }
 

@@ -2,6 +2,7 @@
 #include "SpriteManager.h"
 #include "Game.h"
 #include "Global_Variable.h"
+#include "ScenceManager.h"
 
 EndGameReward::EndGameReward()
 {
@@ -36,6 +37,13 @@ void EndGameReward::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 		if (reward > 2)
 			reward = 0; 
+	}
+
+	if (collected)
+	{
+		ScenceManager::GetInstance()->getCurrentScence()->getCamera()->setIsStatic(true);
+		ScenceManager::GetInstance()->getCurrentScence()->getCamera()->setScrollX(true);
+		//ScenceManager::GetInstance()->getCurrentScence()->getCamera()->setCameraPosition(Vector2(this->Position.x -360, this->Position.y -264));
 	}
 }
 

@@ -40,7 +40,7 @@ void HUD::Update(DWORD dt)
 
 void HUD::Render()
 {
-	Game::GetInstance()->Draw(0, 594, Textures::GetInstance()->GetTexture("tex-pannel"), 0, 0, 824, 150);
+	Game::GetInstance()->Draw(0, 594 -24, Textures::GetInstance()->GetTexture("tex-pannel"), 0, 0, 824, 150);
 
 	hud->Draw(0 + 32, WINDOW_HEIGHT - 150); 
 

@@ -34,8 +34,36 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 			if (type == "PlayScence")
 			{
 				scence = new PlayScence(id, mappath, filepath);
+				auto cast = dynamic_cast<PlayScence*>(scence);
 				this->Pair(id, scence);
 
+				TiXmlElement* XMLCamera = XMLScence->FirstChildElement("Camera");
+
+				if (XMLCamera != NULL)
+				{
+
+					int boundl = 0, boundt = 0, boundr = 0, boundb = 0;
+
+					XMLCamera->QueryIntAttribute("boundl", &boundl);
+					XMLCamera->QueryIntAttribute("boundt", &boundt);
+					XMLCamera->QueryIntAttribute("boundr", &boundr);
+					XMLCamera->QueryIntAttribute("boundb", &boundb);
+
+					cast->setStartBound(boundl, boundr, boundt, boundb);
+
+					float startx, starty;
+					bool isstatic, isfollow, scrollx, scrolly;
+
+					XMLCamera->QueryFloatAttribute("startx", &startx);
+					XMLCamera->QueryFloatAttribute("starty", &starty);
+
+					XMLCamera->QueryBoolAttribute("static", &isstatic);
+					XMLCamera->QueryBoolAttribute("follow", &isfollow);
+					XMLCamera->QueryBoolAttribute("scrollx", &scrollx);
+					XMLCamera->QueryBoolAttribute("scrolly", &scrolly);
+
+					cast->setStartConfig(startx, starty, isstatic, isfollow, scrollx, scrolly);
+				}
 			}
 			else if (type == "MapScence")
 			{
@@ -43,8 +71,6 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 				this->Pair(id, scence);
 				AddScence(scence);
 			}
-
-			TiXmlElement* XMLMap = XMLScence->FirstChildElement("Map");
 
 
 		}

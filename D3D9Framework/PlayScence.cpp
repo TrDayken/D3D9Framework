@@ -24,7 +24,16 @@ void PlayScence::Load()
 	tilemap->LoadMapfromTMX(this->mapPath.c_str(), this->sceneFilePath.c_str());
 
 	camera = new Camera();
-	camera->setBound(0, 0, tilemap->getMapWidth(), tilemap->getMapHeight());
+
+	camera->setCameraPositionX(startx);
+	camera->setCameraPositionY(starty);
+
+	camera->setIsFollow(isfollow);
+	camera->setIsStatic(isstatic);
+	camera->setScrollX(scrollx);
+	camera->setScrollY(scrolly);
+
+	camera->setBound(boundl, boundt, boundr, boundb);
 	
 	auto node = split(this->mapPath, "\\");
 
@@ -85,11 +94,28 @@ void PlayScence::Update(DWORD dt)
 		earseobjects.clear();
 	}
 
+	if (camera->IsStatic())
+	{
+		//	if (following_object->getX() < this->bound_left + 48)
+		//	{
+		//		following_object->setX(this->bound_left + 48);
+		//		following_object->setVx(0.0f);
+		//	}
+		//	if (following_object->getX() + 48 > this->bound_right + WINDOW_WIDTH - 200)
+		//	{
+		//		following_object->setX(this->bound_right + WINDOW_WIDTH - 200);
+		//		following_object->setVx(0.0f);
+		//	}
+
+		if (mario->GetCurrentMario()->getX() < camera->getCameraPositionX() )
+		{
+			mario->GetCurrentMario()->setX(camera->getCameraPositionX());
+			//mario->setX(camera->getBoundleft() + 48);
+		}
+	}
 
 
-	bool isfollow = false; 
-
-	if (!camera->IsFollow())
+	if (!camera->IsFollow() && !camera->IsStatic())
 	{
 		camera->setCameraPosition(6192 + 48, 1920);
 
@@ -100,13 +126,13 @@ void PlayScence::Update(DWORD dt)
 	}
 
 
-	if (camera->IsFollow())
+	if (camera->IsFollow() && !camera->IsStatic())
 	{
 		if (Global_Variable::GetInstance()->getSecret() == true)
 		{
 			camera->setIsFollow(false);
 		}
-		else if ((this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Fly || this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Float) || mario->getY() < 600 || mario->getY() > 1300)
+		else if ((this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Fly || this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Float) || mario->getY() < 600)
 			camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, mario->getY() - WINDOW_HEIGHT / 2);/*800*/
 		else 
 			camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, 720);
@@ -190,6 +216,26 @@ void PlayScence::AddObject(LPGAMEOBJECT object)
 void PlayScence::DeleteObject(LPGAMEOBJECT object)
 {
 	grid->RemoveObject(object);
+}
+
+void PlayScence::setStartBound(int l, int r, int t, int b)
+{
+	this->boundl = l;
+	this->boundr = r;
+	this->boundt = t;
+	this->boundb = b;
+}
+
+void PlayScence::setStartConfig(float startx, float starty, bool isstatic, bool isfollow, bool scrollx, bool scrolly)
+{
+	this->startx = startx;
+	this->starty = starty;
+
+	this->isstatic = isstatic;
+	this->isfollow = isfollow;
+	this->scrollx = scrollx;
+	this->scrolly = scrolly;
+
 }
 
 

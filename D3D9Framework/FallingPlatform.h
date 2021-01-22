@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
+#define MOVE_SPEED 0.075f
+
 enum class Direction
 {
 	left,

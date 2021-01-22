@@ -10,10 +10,11 @@ Camera::Camera()
 	//right and bottom should be setCameraXXX(map - camera_width)
 	bound_left = bound_top = bound_right = bound_bottom = 0;
 
-	scroll_x = false;
+	scroll_x = true;
 	scroll_y = false;
 
-	isfollow = true;
+	isfollow = false;
+	isstatic = true;
 }
 
 Camera::~Camera()
@@ -119,6 +120,16 @@ bool Camera::IsFollow()
 	return this->isfollow;
 }
 
+void Camera::setIsStatic(bool is)
+{
+	this->isstatic = is;
+}
+
+bool Camera::IsStatic()
+{
+	return this->isstatic;;
+}
+
 void Camera::Update(DWORD dt)
 {
 	//if (!(following_object == NULL))
@@ -140,12 +151,12 @@ void Camera::Update(DWORD dt)
 
 	if (scroll_x)
 	{
-		camera_Position.x += CAMERA_DEFAULT_SCROLLING_SPEED_VX * dt;
+		camera_Position.x += CAMERA_DEFAULT_SCROLLING_SPEED_VX;
 	}
 
 	if (scroll_y)
 	{
-		camera_Position.y += CAMERA_DEFAULT_SCROLLING_SPEED_VY * dt;
+		camera_Position.y += CAMERA_DEFAULT_SCROLLING_SPEED_VY ;
 	}
 
 	//DebugOut(L"[INFO] cam posx: %f \n", camera_Position.x);

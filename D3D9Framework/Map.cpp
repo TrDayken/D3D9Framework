@@ -20,6 +20,7 @@
 #include "GreenVenus.h"
 #include "MapScence.h"
 #include "NodeVisual.h"
+#include "FallingPlatform.h"
 
 Map::Map()
 {
@@ -285,6 +286,24 @@ void Map::AddObject(TiXmlElement* RootElement)
 
 				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(pipe);
 			}
+			else if (name == "MovingPlatforms")
+			{
+			FallingPlatform* platform = new FallingPlatform();
+
+			TMXObject->QueryIntAttribute("id", &id);
+
+			TMXObject->QueryFloatAttribute("x", &x);
+			TMXObject->QueryFloatAttribute("y", &y);
+
+
+			platform->setID(id);
+			platform->setX(x);
+			platform->setY(y);
+
+
+			ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(platform);
+			}
+
 			else if (name == "Warp") 
 			{
 				WarpEntrance* entrance = new WarpEntrance();

@@ -86,6 +86,7 @@ protected:
 	bool isOnGround;
 	bool isHighJump;
 	bool isIncreasingPMetter = false;
+	bool isOnMovingPlatform = false; 
 	int  PMetter = 0;
 	GameObject* Hold;
 

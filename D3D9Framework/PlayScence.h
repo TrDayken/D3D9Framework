@@ -35,6 +35,12 @@ protected:
 	std::vector<LPGAMEOBJECT> activegameobject;
 	std::vector<UIObject*> UIElement;
 
+	int boundl, boundt, boundr, boundb;
+
+	bool isstatic, isfollow, scrollx, scrolly;
+
+	float startx, starty;
+
 public:
 	PlayScence();
 	PlayScence(std::string id, std::string mappath, std::string filepath);
@@ -57,7 +63,9 @@ public:
 
 	void PushObjectList(LPGAMEOBJECT object) { objects.push_back(object); }
 
+	void setStartBound(int l, int r, int t, int b);
 
+	void setStartConfig(float startx, float starty, bool isstatic, bool isfollow, bool scrollx, bool scrolly);
 
 	void AddUI(UIObject* UI) { UIElement.push_back(UI); };
 

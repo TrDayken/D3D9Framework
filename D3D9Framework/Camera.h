@@ -32,6 +32,7 @@ private:
 
 
 	bool isfollow;
+	bool isstatic;
 	//LPGAMEOBJECT following_object;
 public:
 	Camera();
@@ -62,6 +63,9 @@ public:
 
 	void setIsFollow(bool is);
 	bool IsFollow();
+
+	void setIsStatic(bool is);
+	bool IsStatic();
 
 	void Update(DWORD dt);
 
