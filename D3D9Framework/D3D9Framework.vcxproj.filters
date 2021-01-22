@@ -236,6 +236,9 @@
     <Filter Include="Source Files\FrameWork\ScenceManager\Scence\IntroScence">
       <UniqueIdentifier>{b434bd6a-ebb6-4aa6-87c5-2b2e9db7f6de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Enemy\Koopa\flying Koopa\Green">
+      <UniqueIdentifier>{cf7becf9-f31c-4f27-a5fa-9d77e614a439}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -466,6 +469,9 @@
     <ClCompile Include="IntroScence.cpp">
       <Filter>Source Files\FrameWork\ScenceManager\Scence\IntroScence</Filter>
     </ClCompile>
+    <ClCompile Include="GreenKoopa.cpp">
+      <Filter>Entity\Enemy\Koopa\flying Koopa\Green</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -686,6 +692,9 @@
     </ClInclude>
     <ClInclude Include="IntroScence.h">
       <Filter>Source Files\FrameWork\ScenceManager\Scence\IntroScence</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenKoopa.h">
+      <Filter>Entity\Enemy\Koopa\flying Koopa\Green</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

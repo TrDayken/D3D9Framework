@@ -181,7 +181,7 @@
  </objectgroup>
  <objectgroup id="13" name="Ghost">
   <object id="142" x="0" y="576" width="480" height="48"/>
-  <object id="143" x="5904" y="624" width="144" height="48"/>
+  <object id="143" x="5907.5" y="624" width="140.5" height="48"/>
  </objectgroup>
  <objectgroup id="10" name="Bricks">
   <object id="144" x="816" y="576">
@@ -561,7 +561,7 @@
   <object id="259" name="koopa" type="red" x="3216" y="492">
    <point/>
   </object>
-  <object id="260" name="koopa" type="red" x="5952" y="528">
+  <object id="260" name="koopa" type="red" x="6000" y="528">
    <point/>
   </object>
   <object id="261" name="koopa" type="red-para" x="5616" y="432">

@@ -4,7 +4,7 @@
 #include "ScoreFx.h"
 #include "Pipe.h"
 #include "FireShoot.h"
-#include "FallingPlatform.h"
+#include "Koopa.h"
 
 MarioModel::MarioModel(float x, float y)
 {
@@ -264,10 +264,20 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	//if mario hold an object set the object with mario position;
 	if (Hold != NULL)
 	{
-		if (direction == 1)
-			Hold->setPosition(this->Position.x + 30, this->Position.y + 25);
+		if (this->getCurrentLevel() > 0)
+		{
+			if (direction == 1)
+				Hold->setPosition(this->Position.x + 30, this->Position.y + 25);
+			else
+				Hold->setPosition(this->Position.x - 30, this->Position.y + 25);
+		}
 		else
-			Hold->setPosition(this->Position.x - 30, this->Position.y + 25);
+		{
+			if (direction == 1)
+				Hold->setPosition(this->Position.x + 30, this->Position.y);
+			else
+				Hold->setPosition(this->Position.x - 30, this->Position.y);
+		}
 	}
 
 	// clean up collision events
@@ -370,7 +380,7 @@ void MarioModel::OnKeyDown(int KeyCode)
 	}
 	case DIK_E:
 	{
-		GameObject* koop = new FallingPlatform();
+		GameObject* koop = new Koopa();
 
 		Camera* cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
 

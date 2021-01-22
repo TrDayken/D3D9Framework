@@ -21,6 +21,7 @@
 #include "MapScence.h"
 #include "NodeVisual.h"
 #include "FallingPlatform.h"
+#include "GreenKoopa.h"
 
 Map::Map()
 {
@@ -113,7 +114,34 @@ void Map::AddObject(TiXmlElement* RootElement)
 				}
 				else if (enemyname == "koopa")
 				{
-					enemy = new Koopa();
+					if (enemytype == "red-para")
+					{
+						enemy = new Koopa();
+						auto cast = dynamic_cast<Koopa*>(enemy);
+
+						cast->SetState(KoopaState::fly);
+					}
+					else if (enemytype == "red")
+					{
+						enemy = new Koopa();
+						auto cast = dynamic_cast<Koopa*>(enemy);
+
+						cast->SetState(KoopaState::walking);
+					}
+					else if (enemytype == "green-para")
+					{
+						enemy = new GreenKoopa();
+						auto cast = dynamic_cast<GreenKoopa*>(enemy);
+
+						cast->SetState(KoopaState::fly);
+					}
+					else if (enemytype == "green")
+					{
+						enemy = new GreenKoopa();
+						auto cast = dynamic_cast<GreenKoopa*>(enemy);
+
+						cast->SetState(KoopaState::walking);
+					}
 				}
 				else if (enemyname == "venus-fire-trap")
 				{

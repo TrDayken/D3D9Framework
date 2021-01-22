@@ -34,7 +34,7 @@
     </Scence>
     <Scence type = "PlayScence">
         <Map id= "world-1-4" filelocation = "textures\\Map\\world-1-4-map.tmx" filepath = "textures\\Map\\"></Map>
-        <Camera startx =" 0" starty = "240"  boundl = "0" boundt = "0" boundr="6144" boundb="1968" static= "true" follow = "false" scrollx ="true" scrolly = "false"></Camera>
+        <Camera startx =" 5200" starty = "240"  boundl = "0" boundt = "0" boundr="6144" boundb="1968" static= "true" follow = "false" scrollx ="true" scrolly = "false"></Camera>
     </Scence>
     <Scence type = "MapScence">
         <Map id= "world-map" filelocation = "textures\\Map\\overworld-1-map.tmx" filepath = "textures\\Map\\"></Map>

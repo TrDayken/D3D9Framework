@@ -1,24 +1,17 @@
-#include "Koopa.h"
+#include "GreenKoopa.h"
 
-Koopa::Koopa()
+GreenKoopa::GreenKoopa()
 {
 	LoadAnimation();
 	ColTag = Collision2DTag::FourSide;
 	EntityTag = Tag::enemy;
-	direction = 1;
-	koopstate = KoopaState::fly;
-
-	Range = 0;
-	tempy = 0;
-	vy = KOOPA_FLY_SPEED;
 	direction = -1;
-
-	Cycletime = GetTickCount();
+	koopstate = KoopaState::fly;
 
 	this->setRenderOrder(2);
 }
 
-void Koopa::LoadAnimation()
+void GreenKoopa::LoadAnimation()
 {
 	AnimationManager* animation = AnimationManager::GetInstance();
 
@@ -28,7 +21,7 @@ void Koopa::LoadAnimation()
 	AddAnimation(ANI_RED_KOOPA_CROUCH, animation->GetAnimation(ANI_RED_KOOPA_CROUCH));
 }
 
-void Koopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+void GreenKoopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	if (isBeingHold) return;
 
@@ -41,37 +34,13 @@ void Koopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 		bottom = this->Position.y + KOOPA_BBOX_HEIGHT;
 }
 
-void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
+void GreenKoopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
 	if (isBeingHold) return;
 
 	GameObject::Update(dt);
 
-
-
-	if (koopstate != KoopaState::fly)
-	{
-		vy += KOOPA_GRAVITY * dt;
-	}
-	else
-	{
-		tempy += dy;
-		Range += dy;
-		if (abs(Range) >= KOOPA_FLY_RANGE)
-		{
-			if (tempy > 0)
-			{
-				tempy = KOOPA_FLY_RANGE;
-				vy = -KOOPA_FLY_SPEED;
-			}
-			else
-			{
-				tempy = 0;
-				vy = KOOPA_FLY_SPEED;
-			}
-			Range = 0;
-		}
-	}
+	vy += KOOPA_GRAVITY * dt;
 
 	std::vector<LPCOLLISIONEVENT> coEvents;
 	std::vector<LPCOLLISIONEVENT> coEventsResult;
@@ -80,7 +49,7 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 	if (koopstate != KoopaState::die)
 	{
-		if (koopstate != KoopaState::shell && koopstate != KoopaState::slide && koopstate != KoopaState::fly)
+		if (koopstate != KoopaState::shell && koopstate != KoopaState::slide)
 		{
 			this->UpdatePosition();
 			if (direction == 1)
@@ -113,6 +82,13 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		if (ny != 0)
 		{
 			vy = 0;
+			if (ny < 0)
+			{
+				if (koopstate == KoopaState::fly)
+				{
+					vy -= 0.9;
+				}
+			}
 		}
 		if (nx != 0)
 		{
@@ -162,14 +138,14 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 					direction = -direction;
 				}
 			}
-			
+
 			if ((e->obj->EntityTag == Tag::brick) && this->koopstate == KoopaState::slide);
 			{
 				if (e->nx != 0)
 				{
 					e->obj->OnCollisionEnter(this, e->nx, e->ny);
 					direction = -direction;
-					vx = - vx;
+					vx = -vx;
 				}
 
 			}
@@ -181,11 +157,9 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	}
-
-	//DebugOut(L"[INFO] Koopa's speed: %f \n", this->vx);
 }
 
-void Koopa::Render(Camera* camera)
+void GreenKoopa::Render(Camera* camera)
 {
 	RenderBoundingBox(camera);
 
@@ -197,7 +171,7 @@ void Koopa::Render(Camera* camera)
 	{
 		ani = ANI_RED_KOOPA_MOVE;
 	}
-	
+
 	if (koopstate == KoopaState::shell)
 	{
 		ani = ANI_RED_KOOPA_IDLE;
@@ -216,18 +190,14 @@ void Koopa::Render(Camera* camera)
 	//RenderBoundingBox(camera);
 }
 
-void Koopa::setIsBeingHold(bool isBeingHold)
+void GreenKoopa::setIsBeingHold(bool isBeingHold)
 {
 	GameObject::setIsBeingHold(isBeingHold);
 
 	this->koopstate = KoopaState::slide;
 }
 
-void Koopa::flying()
-{
-}
-
-void Koopa::SetState(KoopaState state)
+void GreenKoopa::SetState(KoopaState state)
 {
 	//GameObject::SetState(state);
 	switch (state)
@@ -256,7 +226,7 @@ void Koopa::SetState(KoopaState state)
 	}
 }
 
-void Koopa::OnOverLap(GameObject* obj)
+void GreenKoopa::OnOverLap(GameObject* obj)
 {
 	if (obj->EntityTag == Tag::tail)
 	{
@@ -266,7 +236,7 @@ void Koopa::OnOverLap(GameObject* obj)
 	}
 }
 
-void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
+void GreenKoopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 {
 	if (koopstate == KoopaState::die) return;
 
@@ -329,7 +299,7 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 						//obj->setVy(-10.3f);
 					}
 				}
-			}	
+			}
 
 			if (koopstate == KoopaState::fly)
 			{
@@ -341,7 +311,7 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 		if (koopstate == KoopaState::shell)
 		{
 			if (nx < 0)
-			{	
+			{
 				SetState(KoopaState::slide);
 				vx = KOOPA_SLIDE_SPEED * dt;
 			}
@@ -354,23 +324,27 @@ void Koopa::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 	}
 }
 
-void Koopa::UpdatePosition()
+void GreenKoopa::UpdatePosition()
 {
-	if (this->Position.x < maxleft)
-	{
-		direction = 1;
-		vx = KOOPA_WALKING_SPEED ;
-	}
-	else if (this->Position.x > maxright)
-	{
-		direction = -1;
-		vx = -KOOPA_WALKING_SPEED;
-	}
+	//if (this->Position.x < maxleft)
+	//{
+	//	direction = 1;
+	//	vx = KOOPA_WALKING_SPEED;
+	//}
+	//else if (this->Position.x > maxright)
+	//{
+	//	direction = -1;
+	//	vx = -KOOPA_WALKING_SPEED;
+	//}
 }
 
-void Koopa::setVx(float vx)
+void GreenKoopa::setVx(float vx)
 {
-	this->vx = 0; 
+	this->vx = 0;
 
 	this->vx = vx;
+}
+
+void GreenKoopa::flying()
+{
 }

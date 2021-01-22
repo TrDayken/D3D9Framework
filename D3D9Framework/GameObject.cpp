@@ -304,8 +304,8 @@ void GameObject::CalcPotentialCollisions(std::vector<LPGAMEOBJECT>* coObjects, s
 			else if (e->ny < 0 && e->obj->ColTag == Collision2DTag::Top)
 				coEvents.push_back(e);
 
-			else if (e->obj->ColTag == Collision2DTag::None)
-				continue;
+			//else if (e->obj->ColTag == Collision2DTag::None)
+			//	continue;
 
 		}
 		else
