@@ -472,6 +472,15 @@
     <ClCompile Include="GreenKoopa.cpp">
       <Filter>Entity\Enemy\Koopa\flying Koopa\Green</Filter>
     </ClCompile>
+    <ClCompile Include="FireFlowerFx.cpp">
+      <Filter>Entity\Effect\Misc Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="StarManFx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MushroomFx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyXML\tinyxml\tinystr.h">
@@ -696,5 +705,10 @@
     <ClInclude Include="GreenKoopa.h">
       <Filter>Entity\Enemy\Koopa\flying Koopa\Green</Filter>
     </ClInclude>
+    <ClInclude Include="FireFlowerFx.h">
+      <Filter>Entity\Effect\Misc Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="StarManFx.h" />
+    <ClInclude Include="MushroomFx.h" />
   </ItemGroup>
 </Project>

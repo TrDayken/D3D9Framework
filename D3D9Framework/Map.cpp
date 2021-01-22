@@ -268,6 +268,11 @@ void Map::AddObject(TiXmlElement* RootElement)
 				float desx = -1;
 				float desy = -1;
 
+				bool isstatic = false, isfollow = false, scrollx = false, scrolly = false;
+				float lock_x = 0, lock_y = 0;
+
+				int caml = 0, camt = 0, camr = 0, camb = 0;
+
 				TMXObject->QueryIntAttribute("id", &id);
 
 				pipetype = TMXObject->Attribute("type");
@@ -275,6 +280,8 @@ void Map::AddObject(TiXmlElement* RootElement)
 				TMXObject->QueryFloatAttribute("y", &y);
 				TMXObject->QueryIntAttribute("width", &width);
 				TMXObject->QueryIntAttribute("height", &height);
+
+
 
 				if (pipetype == "green-up")
 					pipe->SetPipeDirection(PipeDirection::Up);
@@ -290,6 +297,8 @@ void Map::AddObject(TiXmlElement* RootElement)
 				{
 					for (TiXmlElement* TMXproperty = TMXproperties->FirstChildElement("property"); TMXproperty != NULL; TMXproperty = TMXproperty->NextSiblingElement("property"))
 					{
+
+
 						std::string propertyname = TMXproperty->Attribute("name");
 
 						if (propertyname == "dest-x")
@@ -302,8 +311,60 @@ void Map::AddObject(TiXmlElement* RootElement)
 						}
 
 
+						if (propertyname == "isstatic")
+						{
+							TMXproperty->QueryBoolAttribute("value", &isstatic);
+						}
+						if (propertyname == "isfollow")
+						{
+							TMXproperty->QueryBoolAttribute("value", &isfollow);
+						}
+						if (propertyname == "scrollx")
+						{
+							TMXproperty->QueryBoolAttribute("value", &scrollx);
+						}
+						if (propertyname == "scrolly")
+						{
+							TMXproperty->QueryBoolAttribute("value", &scrolly);
+						}
+						if (propertyname == "lock-x")
+						{
+							TMXproperty->QueryFloatAttribute("value", &lock_x);
+						}
+						if (propertyname == "lock-y")
+						{
+							TMXproperty->QueryFloatAttribute("value", &lock_y);
+						}
+
+
+						if (propertyname == "caml")
+						{
+							TMXproperty->QueryIntAttribute("value", &caml);
+						}
+						if (propertyname == "camt")
+						{
+							TMXproperty->QueryIntAttribute("value", &camt);
+						}
+						if (propertyname == "camr")
+						{
+							TMXproperty->QueryIntAttribute("value", &camr);
+						}
+						if (propertyname == "camb")
+						{
+							TMXproperty->QueryIntAttribute("value", &camb);
+						}
 					}
+	
 				}
+
+				pipe->setCamProp(camt, caml, camr, camb);
+
+				pipe->setIsfollow(isfollow);
+				pipe->setIsstatic(isstatic);
+				pipe->setScrollx(scrollx);
+				pipe->setScrolly(scrolly);
+				pipe->setLockx(lock_x);
+				pipe->setLocky(lock_y);
 
 				pipe->setID(id);
 				pipe->setDes_x(desx);
@@ -331,7 +392,6 @@ void Map::AddObject(TiXmlElement* RootElement)
 
 			ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(platform);
 			}
-
 			else if (name == "Warp") 
 			{
 				WarpEntrance* entrance = new WarpEntrance();

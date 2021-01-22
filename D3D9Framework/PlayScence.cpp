@@ -132,7 +132,7 @@ void PlayScence::Update(DWORD dt)
 		{
 			camera->setIsFollow(false);
 		}
-		else if ((this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Fly || this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Float) || mario->getY() < 600)
+		else if ((this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Fly || this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Float) || mario->getY() < 500)
 			camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, mario->getY() - WINDOW_HEIGHT / 2);/*800*/
 		else 
 			camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, 720);

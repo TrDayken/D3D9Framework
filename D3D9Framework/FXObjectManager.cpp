@@ -6,6 +6,9 @@
 #include "CoinFx.h"
 #include "ScoreFx.h"
 #include "GrowUpFx.h"
+#include "FireFlowerFx.h"
+#include "StarManFx.h"
+#include "MushroomFx.h"
 
 FXObjectManager* FXObjectManager::_instance = NULL; 
 
@@ -37,6 +40,18 @@ AbstractFXObject* FXObjectManager::CreateFx(std::string name, Vector2 start_posi
 	else if (name == "score")
 	{
 		fx = new ScoreFx();
+	}
+	else if (name == "fireflower")
+	{
+		fx = new FireFlowerFx();
+	}
+	else if (name == "starman")
+	{
+		fx = new StarManfx();
+	}
+	else if (name == "mushroom")
+	{
+		fx = new MushroomFx();
 	}
 	else
 		DebugOut(L"[ERROR] Cannot find Fx validation"); 

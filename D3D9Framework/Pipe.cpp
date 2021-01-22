@@ -109,6 +109,94 @@ float Pipe::getDes_y()
 	return this->dest_y;
 }
 
+void Pipe::setLockx(float x)
+{
+	this->lock_x = x;
+}
+
+void Pipe::setLocky(float y)
+{
+	this->lock_y = y;
+}
+
+float Pipe::getLockx()
+{
+	return this->lock_x;
+}
+
+float Pipe::getLocky()
+{
+	return this->lock_y;
+}
+
+void Pipe::setIsstatic(bool is)
+{
+	this->isstatic = is; 
+}
+
+void Pipe::setIsfollow(bool is)
+{
+	this->isfollow = is;
+}
+
+void Pipe::setScrollx(bool is)
+{
+	this->scroll_x = is;
+}
+
+void Pipe::setScrolly(bool is)
+{
+	this->scroll_y = is;
+}
+
+bool Pipe::getIsstatic()
+{
+	return this->isstatic;
+}
+
+bool Pipe::getIsfollow()
+{
+	return this->isfollow;
+}
+
+bool Pipe::getScrollx()
+{
+	return this->scroll_x;
+}
+
+bool Pipe::getScrolly()
+{
+	return this->scroll_y;
+}
+
+void Pipe::setCamProp(int camt, int caml, int camr, int camb)
+{
+	this->camt = camt;
+	this->caml = caml;
+	this->camr = camr; 
+	this->camb = camb;
+}
+
+int Pipe::getCamt()
+{
+	return this->camt;
+}
+
+int Pipe::getCaml()
+{
+	return this->caml;
+}
+
+int Pipe::getCamr()
+{
+	return this->camr;
+}
+
+int Pipe::getCamb()
+{
+	return this->camb;
+}
+
 void Pipe::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	l = this->Position.x; 

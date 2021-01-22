@@ -519,14 +519,21 @@ void MarioModel::OnOverLap(GameObject* obj)
 
 		this->SetPosition(pipe->getDes_x(), pipe->getDes_y());
 
+		auto cam = ScenceManager::GetInstance()->getCurrentScence()->getCamera();
+
+		cam->setIsFollow(pipe->getIsfollow());
+		cam->setIsStatic(pipe->getIsstatic());
+		cam->setCameraPositionX(pipe->getLockx());
+		cam->setCameraPositionY(pipe->getLocky());
+		cam->setScrollX(pipe->getScrollx());
+		cam->setScrollY(pipe->getScrolly());
+
+		cam->setBound(pipe->getCaml(), pipe->getCamt(), pipe->getCamr(), pipe->getCamb());
+
 		warpping = 0;
 
 		state.movement == MovingStates::Idle;
 
-		if (Global_Variable::GetInstance()->getSecret() == false)
-			Global_Variable::GetInstance()->setSecret(true);
-		else
-			Global_Variable::GetInstance()->setSecret(false);
 	}
 	else if (obj->EntityTag == Tag::enemyprojectile && (!this->isInvincible))
 	{

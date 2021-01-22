@@ -12,10 +12,14 @@ private:
 
 	Sprite* items[3];
 
+	Sprite* cards[3];
+
 	int timer;
 	int reward;
 
 	bool collected;
+
+	int finalreward;
 
 public:
 

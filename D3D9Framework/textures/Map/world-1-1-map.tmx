@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="23" nextobjectid="334">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="23" nextobjectid="338">
  <editorsettings>
   <export target="../../../../../Resource/Xml/NewMap/BigMap/world-1-1-map.xml" format="tmx"/>
  </editorsettings>
@@ -564,9 +564,19 @@
   <object id="113" name="pipe" type="green-up" x="5520" y="1104" width="96" height="144"/>
   <object id="114" name="pipe" type="green-up" x="6768" y="480" width="96" height="480">
    <properties>
+    <property name="camb" value="1968"/>
+    <property name="caml" value="0"/>
+    <property name="camr" value="8448"/>
+    <property name="camt" value="0"/>
     <property name="dest-x" value="6288"/>
     <property name="dest-y" value="1440"/>
+    <property name="isfollow" value="false"/>
+    <property name="isstatic" value="true"/>
+    <property name="lock-x" value="6240"/>
+    <property name="lock-y" value="1392"/>
     <property name="out-direction" value="down"/>
+    <property name="scrollx" value="false"/>
+    <property name="scrolly" value="false"/>
    </properties>
   </object>
   <object id="115" name="pipe" type="green-vertical" x="6768" y="1152" width="96" height="96"/>
@@ -575,9 +585,19 @@
   <object id="162" name="pipe" type="green-down" x="6240" y="1392" width="96" height="96"/>
   <object id="164" name="pipe" type="green-down" x="6912" y="1392" width="96" height="96">
    <properties>
+    <property name="camb" value="1968"/>
+    <property name="caml" value="0"/>
+    <property name="camr" value="8448"/>
+    <property name="camt" value="0"/>
     <property name="dest-x" value="6960"/>
     <property name="dest-y" value="1056.00"/>
+    <property name="isfollow" value="true"/>
+    <property name="isstatic" value="false"/>
+    <property name="lock-x" value="0"/>
+    <property name="lock-y" value="0"/>
     <property name="out-direction" value="down"/>
+    <property name="scrollx" value="false"/>
+    <property name="scrolly" value="false"/>
    </properties>
   </object>
   <object id="198" name="pipe" type="green-up" x="1056" y="1104" width="96" height="144"/>
