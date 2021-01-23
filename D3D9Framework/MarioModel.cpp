@@ -31,6 +31,18 @@ MarioModel::MarioModel(float x, float y)
 
 void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 {
+
+	if (Global_Variable::GetInstance()->getPlaystate() == 2)
+	{
+		this->vx = MARIO_TOP_WALKING_SPEED;
+
+		this->state.movement = MovingStates::Walk;
+
+		direction = 1; 
+
+		
+	}
+
 	GameObject::Update(dt);
 
 	this->dt = dt; 
@@ -180,9 +192,9 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 					}
 					if (e->obj->EntityTag == Tag::plant && !(this->isInvincible))
 					{
+						this->TakeDmg();
 						InvincibleTime_Start = GetTickCount();
 						isInvincible = true;
-						this->TakeDmg();
 						DebugOut(L"[Info] mario take damage \n");
 					}
 				}
@@ -190,9 +202,9 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				{
 					if (!(this->isInvincible))
 					{
+						this->TakeDmg();
 						InvincibleTime_Start = GetTickCount();
 						isInvincible = true;
-						this->TakeDmg();
 						DebugOut(L"[Info] mario take damage \n");
 					}
 				}
@@ -264,6 +276,7 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	//if mario hold an object set the object with mario position;
 	if (Hold != NULL)
 	{
+		if (Global_Variable::GetInstance()->getPlaystate() == 1) return;
 		if (this->getCurrentLevel() > 0)
 		{
 			if (direction == 1)
@@ -537,11 +550,15 @@ void MarioModel::OnOverLap(GameObject* obj)
 	}
 	else if (obj->EntityTag == Tag::enemyprojectile && (!this->isInvincible))
 	{
+		this->TakeDmg();
 		InvincibleTime_Start = GetTickCount();
 		isInvincible = true;
-		this->TakeDmg();
 	}
-
+	if (obj->EntityTag == Tag::dead)
+	{
+		Global_Variable::GetInstance()->setPlaystate(1);
+		Global_Variable::GetInstance()->AddLife(-1);
+	}
 }
 
 void MarioModel::setHold(GameObject* obj)
@@ -596,6 +613,8 @@ int MarioModel::getPmetter()
 
 void MarioModel::TakeDmg()
 {
+	if (isInvincible == true) return;
+
 	if (this->getCurrentLevel() > 1)
 	{
 		this->SetChangetoLevel(1);
@@ -606,6 +625,9 @@ void MarioModel::TakeDmg()
 	}
 	else if (this->getCurrentLevel() == 0)
 	{
+		Global_Variable::GetInstance()->AddLife(-1);
+		Global_Variable::GetInstance()->setPlaystate(1); // lose
+		//Game::GetInstance()->setTemporal(0);
 		DebugOut(L"this mario die \n" );
 	}
 }

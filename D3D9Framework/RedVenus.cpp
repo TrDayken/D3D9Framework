@@ -4,6 +4,7 @@
 #include "PlayScence.h"
 #include "VenusFireShoot.h"
 
+
 void RedVenus::ShootFireBall()
 {
 	VenusFireShoot* fireshoot = new VenusFireShoot(this->Position.x, this->Position.y, -direction, (int)head);
@@ -21,7 +22,7 @@ RedVenus::RedVenus()
 
 	state = VenusState::hide;
 
-	this->ColTag == Collision2DTag::None; 
+	this->ColTag = Collision2DTag::FourSide; 
 
 	this->setRenderOrder(2);
 }
@@ -104,6 +105,14 @@ void RedVenus::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	}
 
 
+}
+
+void RedVenus::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
+{
+	if (obj->EntityTag == Tag::projectile)
+	{
+		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
+	}
 }
 
 void RedVenus::Render(Camera* camera)

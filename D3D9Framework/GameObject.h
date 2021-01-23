@@ -54,6 +54,7 @@ enum class Tag
 	unstableplatform,
 	plant,
 	entrance,
+	dead,
 	pipe,
 	enemy,
 	brick,

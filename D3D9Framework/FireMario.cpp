@@ -64,6 +64,13 @@ void FireMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void FireMario::Render(Camera* camera)
 {
+	int alpha = 255;
+	if (isInvincible == true)
+	{
+		alpha = 144;
+	}
+
+
 	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 	int renderdirection = 1;
 
@@ -116,7 +123,25 @@ void FireMario::Render(Camera* camera)
 		ani = ANI_FIRE_MARIO_CROUCH;
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, this->Scale, direction);
+	if (warpping != 0)
+	{
+		ani = ANI_FIRE_MARIO_WARP;
+	}
+
+	if (Hold != NULL)
+	{
+		if (this->state.movement == MovingStates::Idle)
+			ani = ANI_FIRE_MARIO_HOLD_IDLE;
+		if (this->state.movement == MovingStates::Walk || this->state.movement == MovingStates::Run)
+			ani = ANI_FIRE_MARIO_HOLD;
+
+		if (this->state.jump == JumpingStates::Jump)
+		{
+			ani = ANI_FIRE_MARIO_HOLD_JUMP;
+		}
+	}
+
+	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, this->Scale, direction, 1,alpha);
 
 	//RenderBoundingBox(camera);
 	//DebugOut(L"[INFO] %f, %f \n", camPos.x, camPos.y)
@@ -135,6 +160,11 @@ void FireMario::LoadAnimation()
 	AddAnimation(ANI_FIRE_MARIO_HIGH_SPEED, animation->GetAnimation(ANI_FIRE_MARIO_HIGH_SPEED));
 	AddAnimation(ANI_FIRE_MARIO_HIGH_JUMP, animation->GetAnimation(ANI_FIRE_MARIO_HIGH_JUMP));
 	AddAnimation(ANI_FIRE_MARIO_ATTACK, animation->GetAnimation(ANI_FIRE_MARIO_ATTACK));
+	AddAnimation(ANI_FIRE_MARIO_WARP, animation->GetAnimation(ANI_FIRE_MARIO_WARP));
+
+	AddAnimation(ANI_FIRE_MARIO_HOLD, animation->GetAnimation(ANI_FIRE_MARIO_HOLD));
+	AddAnimation(ANI_FIRE_MARIO_HOLD_IDLE, animation->GetAnimation(ANI_FIRE_MARIO_HOLD_IDLE));
+	AddAnimation(ANI_FIRE_MARIO_HOLD_JUMP, animation->GetAnimation(ANI_FIRE_MARIO_HOLD_JUMP));
 }
 
 void FireMario::GetBoundingBox(float& l, float& t, float& r, float& b)

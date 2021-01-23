@@ -79,7 +79,7 @@ void FireShoot::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
 
-			if (e->obj->EntityTag == Tag::enemy)
+			if (e->obj->EntityTag == Tag::enemy || e->obj->EntityTag == Tag::plant)
 			{
 				LPGAMEOBJECT obj = e->obj;
 				obj->OnCollisionEnter(this, e->nx, e->ny);

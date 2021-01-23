@@ -81,6 +81,16 @@ int Global_Variable::getPmetter()
 	return this->plevel;
 }
 
+void Global_Variable::startCycleTime()
+{
+	this->Cycle_time = GetTickCount();
+}
+
+DWORD Global_Variable::getCycleTime()
+{
+	return this->Cycle_time;
+}
+
 void Global_Variable::startPtime()
 {
 	this->Ptime_start = GetTickCount();
@@ -94,6 +104,16 @@ bool Global_Variable::isPtimeUp()
 DWORD Global_Variable::getPTimeLeft()
 {
 	return PSWITCH_TIME -(GetTickCount() - Ptime_start);
+}
+
+void Global_Variable::setPlaystate(int state)
+{
+	this->playstate = state;
+}
+
+int Global_Variable::getPlaystate()
+{
+	return this->playstate;
 }
 
 bool Global_Variable::getSecret()

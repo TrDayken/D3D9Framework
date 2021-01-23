@@ -9,6 +9,7 @@
 #include "FireFlowerFx.h"
 #include "StarManFx.h"
 #include "MushroomFx.h"
+#include "MarioDeathFx.h"
 
 FXObjectManager* FXObjectManager::_instance = NULL; 
 
@@ -52,6 +53,10 @@ AbstractFXObject* FXObjectManager::CreateFx(std::string name, Vector2 start_posi
 	else if (name == "mushroom")
 	{
 		fx = new MushroomFx();
+	}
+	else if (name == "death")
+	{
+		fx = new MarioDeathFx();
 	}
 	else
 		DebugOut(L"[ERROR] Cannot find Fx validation"); 

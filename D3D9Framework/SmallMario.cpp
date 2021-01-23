@@ -93,6 +93,12 @@ void SmallMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void SmallMario::Render(Camera* camera)
 {
+	int alpha = 255;
+	if (isInvincible == true)
+	{
+		alpha = 144;
+	}
+
 	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 
 	std::string ani = ANI_SMALL_MARIO_IDLE;
@@ -125,7 +131,26 @@ void SmallMario::Render(Camera* camera)
 		}
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y, this->Scale, direction);
+	if (warpping != 0)
+	{
+		ani = ANI_SMALL_MARIO_WARP;
+	}
+
+
+	if (Hold != NULL)
+	{
+		if (this->state.movement == MovingStates::Idle)
+			ani = ANI_SMALL_MARIO_HOLD_IDLE;
+		if (this->state.movement == MovingStates::Walk || this->state.movement == MovingStates::Run)
+			ani = ANI_SMALL_MARIO_HOLD;
+
+		if (this->state.jump == JumpingStates::Jump)
+		{
+			ani = ANI_SMALL_MARIO_HOLD_JUMP;
+		}
+	}
+
+	animation_set[ani]->Render(camPos.x, camPos.y, this->Scale, direction,1, alpha);
 }
 
 void SmallMario::LoadAnimation()
@@ -138,6 +163,12 @@ void SmallMario::LoadAnimation()
 	AddAnimation(ANI_SMALL_MARIO_RUN, animation->GetAnimation(ANI_SMALL_MARIO_RUN));
 	AddAnimation(ANI_SMALL_MARIO_JUMP, animation->GetAnimation(ANI_SMALL_MARIO_JUMP));
 	AddAnimation(ANI_SMALL_MARIO_CROUCH, animation->GetAnimation(ANI_SMALL_MARIO_CROUCH));
+	AddAnimation(ANI_SMALL_MARIO_WARP, animation->GetAnimation(ANI_SMALL_MARIO_WARP));
+
+	AddAnimation(ANI_SMALL_MARIO_HOLD_IDLE, animation->GetAnimation(ANI_SMALL_MARIO_HOLD_IDLE));
+	AddAnimation(ANI_SMALL_MARIO_HOLD_JUMP, animation->GetAnimation(ANI_SMALL_MARIO_HOLD_JUMP));
+	AddAnimation(ANI_SMALL_MARIO_HOLD, animation->GetAnimation(ANI_SMALL_MARIO_HOLD));
+
 }
 
 void SmallMario::GetBoundingBox(float& l, float& t, float& r, float& b)

@@ -65,9 +65,14 @@ class Global_Variable
 
 	int mariolevel;
 
+	// 0 = playing, 1= lose, 2 = victory
+	int playstate = 0;
+
 	DWORD Ptime_start; 
 
 	DWORD Game_time_start;
+
+	DWORD Cycle_time;
 
 	//store mario cards, unimplemented.
 	std::vector<int> Cards;
@@ -97,9 +102,15 @@ public:
 	void UpdatePmetter(int x);
 	int getPmetter();
 
+	void startCycleTime();
+	DWORD getCycleTime();
+
 	void startPtime();
 	bool isPtimeUp();
 	DWORD getPTimeLeft();
+
+	void setPlaystate(int state);
+	int getPlaystate();
 
 	bool getSecret();
 	void setSecret(bool se);

@@ -86,7 +86,7 @@ void Pipe::Render(Camera* camera)
 
 	//headTile->Draw(this->RenderPosition.x, this->RenderPosition.y);
 
-	RenderBoundingBox(camera);
+	//RenderBoundingBox(camera);
 }
 
 void Pipe::setDes_x(float x)

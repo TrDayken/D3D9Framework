@@ -147,6 +147,13 @@ void RacoonMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void RacoonMario::Render(Camera* camera)
 {
+	int alpha = 255;
+	if (isInvincible == true)
+	{
+		alpha = 144;
+	}
+
+
 	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 
 	std::string ani = ANI_RACCOON_MARIO_IDLE;
@@ -207,7 +214,20 @@ void RacoonMario::Render(Camera* camera)
 		ani = ANI_RACCOON_MARIO_WARP;
 	}
 
-	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, this->Scale, direction);
+	if (Hold != NULL)
+	{
+		if (this->state.movement == MovingStates::Idle)
+			ani = ANI_RACCOON_MARIO_HOLD_IDLE;
+		if (this->state.movement == MovingStates::Walk || this->state.movement == MovingStates::Run)
+			ani = ANI_RACCOON_MARIO_HOLD;
+
+		if (this->state.jump == JumpingStates::Jump)
+		{
+			ani = ANI_RACCOON_MARIO_HOLD_JUMP;
+		}
+	}
+
+	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff, this->Scale, direction,1, alpha);
 
 }
 
@@ -225,8 +245,9 @@ void RacoonMario::LoadAnimation()
 	AddAnimation(ANI_RACCOON_MARIO_FLY, animation->GetAnimation(ANI_RACCOON_MARIO_FLY));
 	AddAnimation(ANI_RACCOON_MARIO_SPIN, animation->GetAnimation(ANI_RACCOON_MARIO_SPIN));
 
+	AddAnimation(ANI_RACCOON_MARIO_HOLD_JUMP, animation->GetAnimation(ANI_RACCOON_MARIO_HOLD_JUMP));
 	AddAnimation(ANI_RACCOON_MARIO_HOLD_IDLE, animation->GetAnimation(ANI_RACCOON_MARIO_HOLD_IDLE));
-	AddAnimation(ANI_RACCOON_MARIO_HOLD_MOVE, animation->GetAnimation(ANI_RACCOON_MARIO_HOLD_MOVE));
+	AddAnimation(ANI_RACCOON_MARIO_HOLD, animation->GetAnimation(ANI_RACCOON_MARIO_HOLD));
 	AddAnimation(ANI_RACCOON_MARIO_KICK, animation->GetAnimation(ANI_RACCOON_MARIO_KICK));
 	AddAnimation(ANI_RACCOON_MARIO_WARP, animation->GetAnimation(ANI_RACCOON_MARIO_WARP));
 }

@@ -39,13 +39,18 @@ void Mario::Unload()
 
 void Mario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* collision_objects)
 {
+	if (Global_Variable::GetInstance()->getPlaystate() == 1) return;
 	if (CurrentMario->getChangetoLevel() != DONTCHANGE) 
 		SwitchMario(CurrentMario->getChangetoLevel());
 
-	//call update on specific mario
-	CurrentMario->Update(dt, collision_objects);
 	//after update need to reupdate the mariostate position to mario to render camera;
 	this->setPosition(CurrentMario->getX(), CurrentMario->getY());
+
+	//call update on specific mario
+	CurrentMario->Update(dt, collision_objects);
+
+
+
 
 }
 

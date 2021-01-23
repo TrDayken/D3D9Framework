@@ -26,6 +26,8 @@ void Koopa::LoadAnimation()
 	AddAnimation(ANI_RED_KOOPA_IDLE, animation->GetAnimation(ANI_RED_KOOPA_IDLE));
 	AddAnimation(ANI_RED_KOOPA_SLIDE, animation->GetAnimation(ANI_RED_KOOPA_SLIDE));
 	AddAnimation(ANI_RED_KOOPA_CROUCH, animation->GetAnimation(ANI_RED_KOOPA_CROUCH));
+
+	AddAnimation(ANI_RED_KOOPA_FLY, animation->GetAnimation(ANI_RED_KOOPA_FLY));
 }
 
 void Koopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -187,7 +189,7 @@ void Koopa::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void Koopa::Render(Camera* camera)
 {
-	RenderBoundingBox(camera);
+	//RenderBoundingBox(camera);
 
 	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 
@@ -208,6 +210,10 @@ void Koopa::Render(Camera* camera)
 			ani = ANI_RED_KOOPA_SLIDE;
 		else
 			ani = ANI_RED_KOOPA_IDLE;
+	}
+	else if(koopstate == KoopaState::fly)
+	{
+		ani = ANI_RED_KOOPA_FLY;
 	}
 
 	animation_set[ani]->Render(camPos.x, camPos.y, this->Scale, -direction, flipy);
@@ -252,6 +258,10 @@ void Koopa::SetState(KoopaState state)
 	case KoopaState::slide:
 		isHoldAble = false;
 		koopstate = KoopaState::slide;
+		break;
+	case KoopaState::fly:
+		isHoldAble = false;
+		koopstate = KoopaState::fly;
 		break;
 	}
 }

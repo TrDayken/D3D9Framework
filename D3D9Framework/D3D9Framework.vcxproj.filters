@@ -475,11 +475,20 @@
     <ClCompile Include="FireFlowerFx.cpp">
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClCompile>
+    <ClCompile Include="MushroomFx.cpp">
+      <Filter>Entity\Effect\Misc Effect</Filter>
+    </ClCompile>
     <ClCompile Include="StarManFx.cpp">
+      <Filter>Entity\Effect\Misc Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MushroomFx.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Boomerang.cpp">
+      <Filter>Entity\Enemy\BoomerangBrother</Filter>
+    </ClCompile>
+    <ClCompile Include="MarioDeathFx.cpp">
+      <Filter>Entity\Effect\Mario effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -708,7 +717,18 @@
     <ClInclude Include="FireFlowerFx.h">
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClInclude>
-    <ClInclude Include="StarManFx.h" />
-    <ClInclude Include="MushroomFx.h" />
+    <ClInclude Include="MushroomFx.h">
+      <Filter>Entity\Effect\Misc Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="StarManFx.h">
+      <Filter>Entity\Effect\Misc Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathBox.h" />
+    <ClInclude Include="Boomerang.h">
+      <Filter>Entity\Enemy\BoomerangBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioDeathFx.h">
+      <Filter>Entity\Effect\Mario effect</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

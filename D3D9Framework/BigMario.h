@@ -16,12 +16,17 @@
 #define ANI_BIG_MARIO_CROUCH		"ani-big-mario-crouch"	
 #define ANI_BIG_MARIO_HIGH_JUMP		"ani-big-mario-high-jump"
 #define ANI_BIG_MARIO_HIGH_SPEED	"ani-big-mario-high-speed"
+
+#define ANI_BIG_MARIO_HOLD_IDLE		"ani-big-mario-hold-idle"
+#define ANI_BIG_MARIO_HOLD_JUMP		"ani-big-mario-hold-jump"
 #define ANI_BIG_MARIO_HOLD			"ani-big-mario-hold"
 #define ANI_BIG_MARIO_KICK			"ani-big-mario-kick"
 // big mario bbox status
 #define MARIO_BIG_BBOX_WIDTH				42
 #define MARIO_BIG_BBOX_HEIGHT				80
 #define MARIO_BIG_BBOX_HEIGHT_CROUCH		54
+
+#define ANI_BIG_MARIO_WARP					"ani-big-mario-idle-front"
 
 class BigMario : public MarioModel
 {

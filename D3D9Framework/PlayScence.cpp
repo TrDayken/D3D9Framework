@@ -14,6 +14,8 @@ PlayScence::PlayScence(std::string id, std::string mappath, std::string filepath
 void PlayScence::Load()
 {
 
+	Global_Variable::GetInstance()->setPlaystate(0);
+
 	this->unload = false;
 
 	hud = new HUD(); 
@@ -53,6 +55,18 @@ void PlayScence::Load()
 
 void PlayScence::Update(DWORD dt)
 {
+	if (Global_Variable::GetInstance()->getPlaystate() == 1)
+	{
+		ScenceManager::GetInstance()->SwitchScence("world-map");
+		return;
+	}
+
+	if (Global_Variable::GetInstance()->getPlaystate() == 2 && (GetTickCount() - Global_Variable::GetInstance()->getCycleTime() > 3000))
+	{
+		ScenceManager::GetInstance()->SwitchScence("world-map");
+		return;
+	}
+
 	std::vector<LPGAMEOBJECT> coObjects;
 
 	coObjects = objects; 
@@ -132,7 +146,7 @@ void PlayScence::Update(DWORD dt)
 		{
 			camera->setIsFollow(false);
 		}
-		else if ((this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Fly || this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Float) || mario->getY() < 500)
+		else if ((this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Fly || this->mario->GetCurrentMario()->getJumpState() == JumpingStates::Float) || mario->getY() < jumpbound)
 			camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, mario->getY() - WINDOW_HEIGHT / 2);/*800*/
 		else 
 			camera->setCameraPosition(mario->getX() - WINDOW_WIDTH / 2, 720);
@@ -148,6 +162,7 @@ void PlayScence::Update(DWORD dt)
 
 void PlayScence::Render()
 {
+	if (unload) return;
 	tilemap->Render(camera);
 
 	//for (size_t i = 0; i < objects.size(); i++)
@@ -159,6 +174,7 @@ void PlayScence::Render()
 	{
 		for (int i = 0; (unsigned)i < activegameobject.size(); i++)
 		{
+			if (unload) return;
 			if (activegameobject[i]->getRenderOrder() == j)
 				activegameobject[i]->Render(camera);
 		}
@@ -224,6 +240,11 @@ void PlayScence::setStartBound(int l, int r, int t, int b)
 	this->boundr = r;
 	this->boundt = t;
 	this->boundb = b;
+}
+
+void PlayScence::setJumpBound(int j)
+{
+	this->jumpbound = j;
 }
 
 void PlayScence::setStartConfig(float startx, float starty, bool isstatic, bool isfollow, bool scrollx, bool scrolly)

@@ -147,12 +147,14 @@
     <ClCompile Include="AnimationManager.cpp" />
     <ClCompile Include="AttackTail.cpp" />
     <ClCompile Include="BigMario.cpp" />
+    <ClCompile Include="Boomerang.cpp" />
     <ClCompile Include="BoomerangBrother.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="CoinFx.cpp" />
+    <ClCompile Include="DeathBox.cpp" />
     <ClCompile Include="DebrisFx.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="EndGameReward.cpp" />
@@ -186,6 +188,7 @@
     <ClCompile Include="MapMario.cpp" />
     <ClCompile Include="MapScence.cpp" />
     <ClCompile Include="Mario.cpp" />
+    <ClCompile Include="MarioDeathFx.cpp" />
     <ClCompile Include="MarioModel.cpp" />
     <ClCompile Include="MushroomFx.cpp" />
     <ClCompile Include="Node.cpp" />
@@ -229,12 +232,14 @@
     <ClInclude Include="AnimationManager.h" />
     <ClInclude Include="AttackTail.h" />
     <ClInclude Include="BigMario.h" />
+    <ClInclude Include="Boomerang.h" />
     <ClInclude Include="BoomerangBrother.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="CoinFx.h" />
+    <ClInclude Include="DeathBox.h" />
     <ClInclude Include="DebrisFx.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EndGameReward.h" />
@@ -267,6 +272,7 @@
     <ClInclude Include="MapMario.h" />
     <ClInclude Include="MapScence.h" />
     <ClInclude Include="Mario.h" />
+    <ClInclude Include="MarioDeathFx.h" />
     <ClInclude Include="MarioModel.h" />
     <ClInclude Include="MushroomFx.h" />
     <ClInclude Include="Node.h" />

@@ -15,6 +15,12 @@
 #define ANI_SMALL_MARIO_JUMP		"ani-small-mario-jump"
 #define ANI_SMALL_MARIO_CROUCH		"ani-small-mario-crouch"	
 
+#define ANI_SMALL_MARIO_HOLD_IDLE		"ani-small-mario-hold-idle"
+#define ANI_SMALL_MARIO_HOLD_JUMP		"ani-small-mario-hold-jump"
+#define ANI_SMALL_MARIO_HOLD			"ani-small-mario-hold"
+
+#define ANI_SMALL_MARIO_WARP				"ani-small-mario-idle-front"
+
 // small mario bbox status
 #define MARIO_SMALL_BBOX_HEIGHT	45
 #define MARIO_SMALL_BBOX_WIDTH	39

@@ -41,5 +41,7 @@ public:
 	virtual void LoadAnimation();
 
 	virtual void Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects = NULL);
+
+	void OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny);
 };
 

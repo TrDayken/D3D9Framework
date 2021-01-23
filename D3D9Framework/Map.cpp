@@ -22,6 +22,8 @@
 #include "NodeVisual.h"
 #include "FallingPlatform.h"
 #include "GreenKoopa.h"
+#include "BoomerangBrother.h"
+#include "DeathBox.h"
 
 Map::Map()
 {
@@ -153,6 +155,10 @@ void Map::AddObject(TiXmlElement* RootElement)
 				else if (enemyname == "piranha-plant")
 				{
 					enemy = new GreenPiranha();
+				}
+				else if (enemyname == "boomerang-brother")
+				{
+					enemy = new BoomerangBrother();
 				}
 				else
 					continue;
@@ -431,6 +437,25 @@ void Map::AddObject(TiXmlElement* RootElement)
 
 				ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(entrance);
 			}
+			else if (name == "DeadBox")
+			{
+			DeathBox* invisiblebrick = new DeathBox();
+
+			TMXObject->QueryIntAttribute("id", &id);
+
+			TMXObject->QueryFloatAttribute("x", &x);
+			TMXObject->QueryFloatAttribute("y", &y);
+			TMXObject->QueryFloatAttribute("width", &width);
+			TMXObject->QueryFloatAttribute("height", &height);
+
+			invisiblebrick->setID(id);
+			invisiblebrick->setX(x);
+			invisiblebrick->setY(y);
+			invisiblebrick->setWidth(width);
+			invisiblebrick->setHeight(height);
+
+			ScenceManager::GetInstance()->getCurrentScence()->PushObjectList(invisiblebrick);
+ }
 			else if (name == "WorldGraph")
 			{
 				std::string objectname;

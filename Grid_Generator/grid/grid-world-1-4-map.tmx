@@ -118,6 +118,9 @@
     <group id="9" name="Warp">
         <object id="245" cellx="15" celly="1" spanx="1" spany="1" />
     </group>
+    <group id="18" name="DeadBox">
+        <object id="288" cellx="1" celly="2" spanx="15" spany="1" />
+    </group>
     <group id="15" name="MovingPlatforms">
         <object id="246" cellx="2" celly="1" spanx="1" spany="1" />
         <object id="247" cellx="4" celly="1" spanx="1" spany="1" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="23" nextobjectid="338">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="176" height="41" tilewidth="48" tileheight="48" infinite="0" nextlayerid="25" nextobjectid="342">
  <editorsettings>
   <export target="../../../../../Resource/Xml/NewMap/BigMap/world-1-1-map.xml" format="tmx"/>
  </editorsettings>
@@ -605,5 +605,11 @@
  <objectgroup id="22" name="Warp">
   <object id="159" name="warp-entrance" type="down" x="6810" y="467" width="12" height="24"/>
   <object id="165" name="warp-entrance" type="up" x="6954" y="1476" width="12" height="24"/>
+ </objectgroup>
+ <objectgroup id="24" name="DeadBox">
+  <object id="338" x="6672" y="1296" width="96" height="48"/>
+  <object id="339" x="4800" y="1296" width="144" height="48"/>
+  <object id="340" x="4464" y="1296" width="96" height="48"/>
+  <object id="341" x="3264" y="1296" width="192" height="48"/>
  </objectgroup>
 </map>

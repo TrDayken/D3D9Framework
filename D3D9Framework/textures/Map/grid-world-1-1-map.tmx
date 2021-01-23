@@ -145,4 +145,10 @@
         <object id="159" cellx="17" celly="1" spanx="1" spany="1" />
         <object id="165" cellx="17" celly="3" spanx="1" spany="2" />
     </group>
+    <group id="24" name="DeadBox">
+        <object id="338" cellx="17" celly="3" spanx="1" spany="1" />
+        <object id="339" cellx="12" celly="3" spanx="1" spany="1" />
+        <object id="340" cellx="11" celly="3" spanx="1" spany="1" />
+        <object id="341" cellx="8" celly="3" spanx="1" spany="1" />
+    </group>
 </grid>

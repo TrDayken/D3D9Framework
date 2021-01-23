@@ -22,6 +22,12 @@
 #define ANI_FIRE_MARIO_KICK				"ani-fire-mario-kick"
 #define ANI_FIRE_MARIO_ATTACK			"ani-fire-mario-throw"
 
+#define ANI_FIRE_MARIO_HOLD_IDLE		"ani-fire-mario-hold-idle"
+#define ANI_FIRE_MARIO_HOLD_JUMP		"ani-fire-mario-hold-jump"
+#define ANI_FIRE_MARIO_HOLD			"ani-fire-mario-hold"
+
+#define ANI_FIRE_MARIO_WARP				"ani-fire-mario-idle-front"
+
 // fire mario bbox status
 #define MARIO_FIRE_BBOX_WIDTH				42
 #define MARIO_FIRE_BBOX_HEIGHT				80

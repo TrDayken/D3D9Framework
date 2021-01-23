@@ -31,6 +31,12 @@ void BigMario::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 
 void BigMario::Render(Camera* camera)
 {
+	int alpha = 255;
+	if (isInvincible == true)
+	{
+		alpha = 144;
+	}
+
 	Vector2 camPos = camera->toCameraPosistion(this->Position.x, this->Position.y);
 
 	int renderdiretion = 1;
@@ -74,10 +80,27 @@ void BigMario::Render(Camera* camera)
 		ani = ANI_BIG_MARIO_CROUCH;
 	}
 
+	if (warpping != 0)
+	{
+		ani = ANI_BIG_MARIO_WARP;
+	}
+
+	if (Hold != NULL)
+	{
+		if(this->state.movement == MovingStates::Idle)
+			ani = ANI_BIG_MARIO_HOLD_IDLE;
+		if (this->state.movement == MovingStates::Walk || this->state.movement == MovingStates::Run)
+			ani = ANI_BIG_MARIO_HOLD;
+
+		if (this->state.jump == JumpingStates::Jump)
+		{
+			ani = ANI_BIG_MARIO_HOLD_JUMP;
+		}
+	}
 
 	//DebugOut(L"[INFO] Mario Pos %f %f \n", camPos.x, camPos.y);
 
-	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff,this->Scale, direction * renderdiretion, flipy);
+	animation_set[ani]->Render(camPos.x, camPos.y + crouchdiff,this->Scale, direction * renderdiretion, flipy, alpha);
 
 	//DebugOut(L"[INFO] %f, %f \n", camPos.x, camPos.y);
 }
@@ -94,6 +117,12 @@ void BigMario::LoadAnimation()
 	AddAnimation(ANI_BIG_MARIO_CROUCH, animation->GetAnimation(ANI_BIG_MARIO_CROUCH));
 	AddAnimation(ANI_BIG_MARIO_HIGH_SPEED, animation->GetAnimation(ANI_BIG_MARIO_HIGH_SPEED));
 	AddAnimation(ANI_BIG_MARIO_HIGH_JUMP, animation->GetAnimation(ANI_BIG_MARIO_HIGH_JUMP));
+
+	AddAnimation(ANI_BIG_MARIO_WARP, animation->GetAnimation(ANI_BIG_MARIO_WARP));
+
+	AddAnimation(ANI_BIG_MARIO_HOLD, animation->GetAnimation(ANI_BIG_MARIO_HOLD));
+	AddAnimation(ANI_BIG_MARIO_HOLD_IDLE, animation->GetAnimation(ANI_BIG_MARIO_HOLD_IDLE));
+	AddAnimation(ANI_BIG_MARIO_HOLD_JUMP, animation->GetAnimation(ANI_BIG_MARIO_HOLD_JUMP));
 }
 
 void BigMario::GetBoundingBox(float& l, float& t, float& r, float& b)

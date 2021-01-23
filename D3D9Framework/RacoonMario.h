@@ -20,9 +20,12 @@
 #define ANI_RACCOON_MARIO_FLOAT				"ani-raccoon-mario-float"
 #define ANI_RACCOON_MARIO_FLY				"ani-raccoon-mario-fly"
 #define ANI_RACCOON_MARIO_SPIN				"ani-raccoon-mario-spin"
-#define ANI_RACCOON_MARIO_HOLD_IDLE			"ani-raccoon-mario-hold-idle"
-#define ANI_RACCOON_MARIO_HOLD_MOVE			"ani-raccoon-mario-hold"
+#define ANI_RACCOON_MARIO_HOLD_IDLE		"ani-raccoon-mario-hold-idle"
+#define ANI_RACCOON_MARIO_HOLD_JUMP		"ani-raccoon-mario-hold-jump"
+#define ANI_RACCOON_MARIO_HOLD			"ani-raccoon-mario-hold"
 #define ANI_RACCOON_MARIO_KICK				"ani-raccoon-mario-kick"
+
+
 
 #define ANI_RACCOON_MARIO_WARP				"ani-raccoon-mario-idle-front"
 // raccoon mario bbox status

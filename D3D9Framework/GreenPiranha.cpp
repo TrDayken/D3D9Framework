@@ -1,4 +1,5 @@
 #include "GreenPiranha.h"
+#include "ScenceManager.h"
 
 GreenPiranha::GreenPiranha()
 {
@@ -10,7 +11,7 @@ GreenPiranha::GreenPiranha()
 
 	state = PiranhaState::hide;
 
-	this->ColTag == Collision2DTag::None;
+	this->ColTag = Collision2DTag::FourSide;
 
 	this->setRenderOrder(2);
 }
@@ -98,5 +99,13 @@ void GreenPiranha::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 		}
 	}
 	break;
+	}
+}
+
+void GreenPiranha::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
+{
+	if (obj->EntityTag == Tag::projectile)
+	{
+		ScenceManager::GetInstance()->getCurrentScence()->DeleteObject(this);
 	}
 }

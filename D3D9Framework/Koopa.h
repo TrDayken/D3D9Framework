@@ -26,6 +26,7 @@
 #define ANI_RED_KOOPA_CROUCH	"ani-red-koopa-troopa-crouch"
 #define ANI_RED_KOOPA_IDLE		"ani-red-koopa-troopa-shell-idle"
 #define ANI_RED_KOOPA_SLIDE		"ani-red-koopa-troopa-shell-run"
+#define ANI_RED_KOOPA_FLY		"ani-red-koopa-paratroopa-fly"
 
 enum class KoopaState
 {

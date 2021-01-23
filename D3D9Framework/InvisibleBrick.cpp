@@ -10,7 +10,7 @@ InvisibleBrick::InvisibleBrick()
 
 void InvisibleBrick::Render(Camera* camera)
 {
-	RenderBoundingBox(camera);
+	//RenderBoundingBox(camera);
 }
 
 void InvisibleBrick::GetBoundingBox(float& l, float& t, float& r, float& b)

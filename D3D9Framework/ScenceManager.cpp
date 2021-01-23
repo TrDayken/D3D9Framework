@@ -41,8 +41,10 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 
 				if (XMLCamera != NULL)
 				{
-
+					int jumpbound = 0;
 					int boundl = 0, boundt = 0, boundr = 0, boundb = 0;
+
+					XMLCamera->QueryIntAttribute("jumpbound", &jumpbound);
 
 					XMLCamera->QueryIntAttribute("boundl", &boundl);
 					XMLCamera->QueryIntAttribute("boundt", &boundt);
@@ -62,6 +64,7 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 					XMLCamera->QueryBoolAttribute("scrollx", &scrollx);
 					XMLCamera->QueryBoolAttribute("scrolly", &scrolly);
 
+					cast->setJumpBound(jumpbound);
 					cast->setStartConfig(startx, starty, isstatic, isfollow, scrollx, scrolly);
 				}
 			}

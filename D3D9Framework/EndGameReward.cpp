@@ -113,7 +113,8 @@ void EndGameReward::OnOverLap(GameObject* obj)
 			finalreward = reward ;
 			Global_Variable::GetInstance()->setCard(this->reward + 1 );
 			this->collected = true;
-
+			Global_Variable::GetInstance()->setPlaystate(2);
+			Global_Variable::GetInstance()->startCycleTime();
 			switch (finalreward)
 			{
 			case 0:
@@ -127,7 +128,11 @@ void EndGameReward::OnOverLap(GameObject* obj)
 				break;
 			default:
 				break;
+
+
 			}
 		}
+
+
 	}
 }

@@ -41,6 +41,8 @@ protected:
 
 	float startx, starty;
 
+	int jumpbound; 
+
 public:
 	PlayScence();
 	PlayScence(std::string id, std::string mappath, std::string filepath);
@@ -64,6 +66,8 @@ public:
 	void PushObjectList(LPGAMEOBJECT object) { objects.push_back(object); }
 
 	void setStartBound(int l, int r, int t, int b);
+
+	void setJumpBound(int j);
 
 	void setStartConfig(float startx, float starty, bool isstatic, bool isfollow, bool scrollx, bool scrolly);
 
