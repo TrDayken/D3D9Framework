@@ -61,7 +61,7 @@ void RacoonMario::OnKeyUp(int KeyCode)
 	case DIK_X:
 		isFlying = false;
 		isFloating = false;
-		state.jump == JumpingStates::Float;
+		state.jump = JumpingStates::Float;
 		break;
 	}
 

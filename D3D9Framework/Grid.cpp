@@ -2,7 +2,7 @@
 #include "ScenceManager.h"
 
 Grid::Grid(int mapwidth, int mapheight)
-{//check
+{
 	maxXCells = mapwidth / CELL_WIDTH;
 	maxYCells = mapheight / CELL_HEIGHT;
 
@@ -22,7 +22,7 @@ Grid::Grid(int mapwidth, int mapheight)
 }
 
 Grid::~Grid()
-{//check
+{
 }
 
 void Grid::Update()
@@ -55,10 +55,12 @@ void Grid::RemoveObject(GameObject* obj)
 Cell* Grid::getCell(int x, int y)
 {
 	if (x < 0) x = 0;
-	if (x >= maxXCells) x = maxXCells;
+	if (x >= maxXCells) 
+		x = maxXCells;
 
 	if (y < 0) y = 0;
-	if (y >= maxYCells) y = maxYCells;
+	if (y >= maxYCells) 
+		y = maxYCells;
 
 	return cells[y][x];
 }

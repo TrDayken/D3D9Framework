@@ -11,7 +11,7 @@
 //mario physic
 #define MARIO_GRAVITY					0.002f
 #define MARIO_ACCELERATION				0.002f
-#define MARIO_DRAG						0.005f
+#define MARIO_DRAG						0.05f
 #define MARIO_TOP_WALKING_SPEED			0.30f
 #define MARIO_TOP_RUNNING_SPEED			0.5f
 #define MARIO_MIN_SPEED					0.1f

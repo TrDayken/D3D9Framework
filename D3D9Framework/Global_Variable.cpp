@@ -31,6 +31,20 @@ int Global_Variable::GetCombo()
 	return this->combo;
 }
 
+void Global_Variable::Downintro()
+{
+	if (introinstance == 0)
+	{
+		introinstance = 1;
+	}
+	else introinstance = 0;
+}
+
+int Global_Variable::getIntroInstance()
+{
+	return introinstance;
+}
+
 void Global_Variable::ResetScore()
 {
 	this->score = 0; 

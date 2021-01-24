@@ -46,10 +46,7 @@ void FallingPlatform::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	if (stepedon)
 	{
 		this->vx = 0;
-		this->vy += 0.0002f * dt;
-
-		if (vy > 0.25)
-			vy = 0.25;
+		this->vy = 0.1;
 	}
 	else
 	{

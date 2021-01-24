@@ -202,10 +202,13 @@ void MarioModel::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 				{
 					if (!(this->isInvincible))
 					{
-						this->TakeDmg();
-						InvincibleTime_Start = GetTickCount();
-						isInvincible = true;
-						DebugOut(L"[Info] mario take damage \n");
+						if (e->obj->EntityTag != Tag::shell)
+						{
+							this->TakeDmg();
+							InvincibleTime_Start = GetTickCount();
+							isInvincible = true;
+							DebugOut(L"[Info] mario take damage \n");
+						}
 					}
 				}
 
@@ -545,7 +548,7 @@ void MarioModel::OnOverLap(GameObject* obj)
 
 		warpping = 0;
 
-		state.movement == MovingStates::Idle;
+		state.movement = MovingStates::Idle;
 
 	}
 	else if (obj->EntityTag == Tag::enemyprojectile && (!this->isInvincible))

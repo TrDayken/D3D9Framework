@@ -65,6 +65,8 @@ class Global_Variable
 
 	int mariolevel;
 
+	int introinstance; 
+
 	// 0 = playing, 1= lose, 2 = victory
 	int playstate = 0;
 
@@ -86,6 +88,10 @@ public:
 	void ComboUp();
 	void ResetCombo();
 	int GetCombo(); 
+
+	void Downintro();
+	int getIntroInstance();
+	
 
 	void ResetScore();
 	void AddScore(long x); 

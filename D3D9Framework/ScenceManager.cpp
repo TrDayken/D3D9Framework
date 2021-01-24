@@ -1,7 +1,7 @@
 #include "ScenceManager.h"
 #include "PlayScence.h"
 #include "MapScence.h"
-
+#include "IntroScence.h"
 
 ScenceManager* ScenceManager::_instance = NULL;
 
@@ -72,9 +72,15 @@ void ScenceManager::LoadScenceFromXML(const char* FilePath)
 			{
 				scence = new MapScence(id, mappath, filepath);
 				this->Pair(id, scence);
-				AddScence(scence);
-			}
 
+			}
+			else if (type == "IntroScence")
+			{
+				scence = new IntroScence(id, mappath, filepath);
+				this->Pair(id, scence);
+				AddScence(scence);
+
+			}
 
 		}
 

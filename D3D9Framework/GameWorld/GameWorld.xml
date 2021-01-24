@@ -13,13 +13,15 @@
         <Texture textureid = "tex-overworld" path = "textures\\OverWorld\\overworld_x3.png"></Texture>
         <Texture textureid = "tex-reward" path = "textures\\Misc\\reward_x3.png" a="255" r="255" g="255" b="255"></Texture>
         <Texture textureid = "tex-pipe" path = "textures\\Misc\\pipe.png"></Texture>
-        <!--Map's Spite -->
+        <Texture textureid = "tex-intro" path = "textures\\Misc\\intro_x3.png"></Texture>
+      <!--Map's Spite -->
         <Sprite path = "textures\\Mario\\MarioDB.xml"></Sprite>
         <Sprite path = "textures\\Misc\\MiscDB.xml" ></Sprite>
         <Sprite path = "textures\\Enemy\\EnemyDB.xml"></Sprite>
         <Sprite path = "textures\\Effect\\EffectDB.xml"></Sprite>
         <Sprite path = "textures\\GameUI\\UiDB.xml"></Sprite>
         <Sprite path = "textures\\OverWorld\\OverworldMapDB.xml"></Sprite>
+        <Sprite path = "textures\\Misc\\IntroDB.xml"></Sprite>
         <!--Map's Animation -->
         <Animation path = "textures\\Enemy\\EnemyAnim.xml"></Animation>
         <Animation path = "textures\\Mario\\MarioAnim.xml"></Animation>
@@ -27,6 +29,7 @@
         <Animation path ="textures\\Effect\\EffectAnim.xml"></Animation>
         <Animation path = "textures\\GameUI\\UiAnim.xml"></Animation>
         <Animation path = "textures\\OverWorld\\OverworldMapAnim.xml"></Animation>
+        <Animation path = "textures\\Misc\\IntroAnim.xml"></Animation>
     </Source>
     <Scence type = "PlayScence">
         <Map id= "world-1-1" filelocation = "textures\\Map\\world-1-1-map.tmx" filepath = "textures\\Map\\"></Map>
@@ -39,4 +42,7 @@
     <Scence type = "MapScence">
         <Map id= "world-map" filelocation = "textures\\Map\\overworld-1-map.tmx" filepath = "textures\\Map\\"></Map>
     </Scence>
+  <Scence type = "IntroScence">
+    <Map id= "intro" filelocation = "textures\\Map\\intro-map.tmx" filepath = "textures\\Map\\"></Map>
+  </Scence>
 </Game>

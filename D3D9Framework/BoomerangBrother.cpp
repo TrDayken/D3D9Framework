@@ -40,6 +40,13 @@ void BoomerangBrother::Update(DWORD dt, std::vector<LPGAMEOBJECT>* coObjects)
 	this->Position.x += dx;
 	this->Position.y += dy;
 
+	std::vector<LPCOLLISIONEVENT> coEvents;
+	std::vector<LPCOLLISIONEVENT> coEventsResult;
+	std::vector<LPGAMEOBJECT> coObjectsResult;
+	coEvents.clear();
+
+	CalcPotentialCollisions(coObjects, coEvents);
+
 
 if (die)
 	{
@@ -111,5 +118,16 @@ void BoomerangBrother::OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny)
 			FlyDieTime_start = GetTickCount();
 			this->ColTag = Collision2DTag::None;
 		}
+	}
+}
+
+void BoomerangBrother::OnOverLap(GameObject* obj)
+{
+	if (obj->EntityTag == Tag::tail)
+	{
+		FlyDieTime_start = GetTickCount();
+		this->ColTag = Collision2DTag::None;
+
+		this->die = true;
 	}
 }

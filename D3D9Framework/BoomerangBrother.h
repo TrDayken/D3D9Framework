@@ -40,6 +40,8 @@ public:
 	void Throw();
 
 	void OnCollisionEnter(LPGAMEOBJECT obj, int nx, int ny);
+
+	void OnOverLap(GameObject* obj) override;
 };
 
 

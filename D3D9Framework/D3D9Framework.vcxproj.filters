@@ -239,6 +239,9 @@
     <Filter Include="Entity\Enemy\Koopa\flying Koopa\Green">
       <UniqueIdentifier>{cf7becf9-f31c-4f27-a5fa-9d77e614a439}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Blocks\GhostBlock\DeathBox">
+      <UniqueIdentifier>{37828fde-fcf6-4bbe-929d-c2e4e26fa10c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -481,14 +484,23 @@
     <ClCompile Include="StarManFx.cpp">
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClCompile>
-    <ClCompile Include="DeathBox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Boomerang.cpp">
       <Filter>Entity\Enemy\BoomerangBrother</Filter>
     </ClCompile>
     <ClCompile Include="MarioDeathFx.cpp">
       <Filter>Entity\Effect\Mario effect</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathBox.cpp">
+      <Filter>Entity\Blocks\GhostBlock\DeathBox</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontIntro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NumberThree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Curtain.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -723,12 +735,17 @@
     <ClInclude Include="StarManFx.h">
       <Filter>Entity\Effect\Misc Effect</Filter>
     </ClInclude>
-    <ClInclude Include="DeathBox.h" />
     <ClInclude Include="Boomerang.h">
       <Filter>Entity\Enemy\BoomerangBrother</Filter>
     </ClInclude>
     <ClInclude Include="MarioDeathFx.h">
       <Filter>Entity\Effect\Mario effect</Filter>
     </ClInclude>
+    <ClInclude Include="DeathBox.h">
+      <Filter>Entity\Blocks\GhostBlock\DeathBox</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontIntro.h" />
+    <ClInclude Include="NumberThree.h" />
+    <ClInclude Include="Curtain.h" />
   </ItemGroup>
 </Project>

@@ -89,6 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>26495;4005;4996;4244;4018;4305;4101;4715;4067;26495;28251;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -116,6 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>26495;4005;4996;4244;4018;4305;4101;4715;4067;26495;28251;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,6 +156,7 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="CoinFx.cpp" />
+    <ClCompile Include="Curtain.cpp" />
     <ClCompile Include="DeathBox.cpp" />
     <ClCompile Include="DebrisFx.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -164,6 +167,7 @@
     <ClCompile Include="FireMario.cpp" />
     <ClCompile Include="FireShoot.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FrontIntro.cpp" />
     <ClCompile Include="FXObjectManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -194,6 +198,7 @@
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="NodeMap.cpp" />
     <ClCompile Include="NodeVisual.cpp" />
+    <ClCompile Include="NumberThree.cpp" />
     <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="PlayScence.cpp" />
     <ClCompile Include="PMetter.cpp" />
@@ -239,6 +244,7 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="CoinFx.h" />
+    <ClInclude Include="Curtain.h" />
     <ClInclude Include="DeathBox.h" />
     <ClInclude Include="DebrisFx.h" />
     <ClInclude Include="Debug.h" />
@@ -249,6 +255,7 @@
     <ClInclude Include="FireMario.h" />
     <ClInclude Include="FireShoot.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="FrontIntro.h" />
     <ClInclude Include="FXObjectManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -278,6 +285,7 @@
     <ClInclude Include="Node.h" />
     <ClInclude Include="NodeMap.h" />
     <ClInclude Include="NodeVisual.h" />
+    <ClInclude Include="NumberThree.h" />
     <ClInclude Include="Pipe.h" />
     <ClInclude Include="PlayScence.h" />
     <ClInclude Include="PMetter.h" />
