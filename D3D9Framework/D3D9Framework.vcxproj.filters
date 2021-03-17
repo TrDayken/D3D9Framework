@@ -494,13 +494,13 @@
       <Filter>Entity\Blocks\GhostBlock\DeathBox</Filter>
     </ClCompile>
     <ClCompile Include="FrontIntro.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NumberThree.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Entity\VanityItem\Decoration</Filter>
     </ClCompile>
     <ClCompile Include="Curtain.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Entity\VanityItem\Decoration</Filter>
+    </ClCompile>
+    <ClCompile Include="NumberThree.cpp">
+      <Filter>Entity\VanityItem\Decoration</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -744,8 +744,14 @@
     <ClInclude Include="DeathBox.h">
       <Filter>Entity\Blocks\GhostBlock\DeathBox</Filter>
     </ClInclude>
-    <ClInclude Include="FrontIntro.h" />
-    <ClInclude Include="NumberThree.h" />
-    <ClInclude Include="Curtain.h" />
+    <ClInclude Include="FrontIntro.h">
+      <Filter>Entity\VanityItem\Decoration</Filter>
+    </ClInclude>
+    <ClInclude Include="Curtain.h">
+      <Filter>Entity\VanityItem\Decoration</Filter>
+    </ClInclude>
+    <ClInclude Include="NumberThree.h">
+      <Filter>Entity\VanityItem\Decoration</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
